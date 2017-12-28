@@ -10,11 +10,11 @@ class App extends Component {
 	<Helmet>
           <html lang="en" />
           <meta charSet="utf-8" />
-          <title>My TEST Title</title>
+          <title>A11y React Demo</title>
         </Helmet>
 
         <header className="App-header">
-          <h1 className="App-title">Welcome to my A11y React Demo</h1>
+          <h1 tabindex="-1" className="App-title">Welcome to my A11y React Demo</h1>
         </header>
 
       </div>
