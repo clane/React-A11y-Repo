@@ -21,10 +21,12 @@ class App extends Component {
 
         <header className="App-header">
           <h1 className="App-title">Welcome to my A11y React Demo</h1>
-        </header>
+          </header>
+  <Router>
+    <Route path="/Game" component={Game} />
+  </Router>
 
-<ShoppingList name="Mark" />
-<Game/>
+
       </div>
     );
   }
