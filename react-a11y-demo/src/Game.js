@@ -165,7 +165,7 @@ export class Game extends Component {
           ref={componentH1 => {
             this.topHeading = componentH1;
           }}
-          tabindex="-1">Tic-Tac-Toe</h1>
+          tabIndex="-1">Tic-Tac-Toe</h1>
         <div className="game-board">
           <Board />
         </div>
