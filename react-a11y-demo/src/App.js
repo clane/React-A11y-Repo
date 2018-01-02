@@ -21,7 +21,7 @@ class App extends Component {
         </Helmet>
 
         <header className="App-header">
-          <h1 className="App-title">Welcome to my A11y React Demo</h1>
+          <h1 className="App-title">A11y React Demo</h1>
 	</header>
 
         <BrowserRouter>
