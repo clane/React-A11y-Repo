@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Helmet } from "react-helmet";
 
 class ShoppingList extends React.Component {
   render() {

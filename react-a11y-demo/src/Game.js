@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 
 
 function Square(props) {
@@ -148,6 +149,11 @@ export class Game extends React.Component {
   render() {
     return (
       <div className="game">
+        <Helmet>
+          <html lang="en" />
+          <meta charSet="utf-8" />
+          <title>Tic-Tac-Toe</title>
+        </Helmet>
         <div className="game-board">
           <Board />
         </div>
