@@ -146,6 +146,13 @@ class Board extends Component {
 }
 
 export class Game extends Component {
+
+
+  componentDidMount() {
+    this.topHeading.focus();
+  }
+
+
   render() {
     return (
       <div className="game">
@@ -154,6 +161,11 @@ export class Game extends Component {
           <meta charSet="utf-8" />
           <title>Tic-Tac-Toe</title>
         </Helmet>
+        <h1 
+          ref={componentH1 => {
+            this.topHeading = componentH1;
+          }}
+          tabindex="-1">Tic-Tac-Toe</h1>
         <div className="game-board">
           <Board />
         </div>
