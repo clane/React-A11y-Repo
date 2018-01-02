@@ -5,7 +5,7 @@ class NavigationList extends React.Component {
   render() {
     return (
       <div className="Navigation-List">
-        <ul>
+        <ul role="navigation">
           <li><Link to="Game">Game</Link></li>
           <li><Link to="ShoppingList">Shopping List</Link></li>
         </ul>
