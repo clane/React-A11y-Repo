@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-class NavigationList extends React.Component {
+class NavigationList extends Component {
   render() {
     return (
       <div className="Navigation-List">

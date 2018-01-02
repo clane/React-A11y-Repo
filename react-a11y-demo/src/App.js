@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import {
   BrowserRouter,
   Route,
-  Link
 } from 'react-router-dom'
 import NavigationList from './NavigationList.js';
 import ShoppingList from './ShoppingList.js';
