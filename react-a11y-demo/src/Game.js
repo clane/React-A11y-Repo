@@ -1,53 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
-import { Helmet } from "react-helmet";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
-
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-	<Helmet>
-          <html lang="en" />
-          <meta charSet="utf-8" />
-          <title>A11y React Demo</title>
-        </Helmet>
-
-        <header className="App-header">
-          <h1 className="App-title">Welcome to my A11y React Demo</h1>
-        </header>
-
-<ShoppingList name="Mark" />
-<Game/>
-      </div>
-    );
-  }
-}
-
-
-class ShoppingList extends React.Component {
-  render() {
-    return (
-      <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
-        <ul>
-          <li>Instagram</li>
-          <li>WhatsApp</li>
-          <li>Oculus</li>
-        </ul>
-      </div>
-    );
-  }
-}
-
-// Example usage: <ShoppingList name="Mark" />
-
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
 function Square(props) {
   return (
@@ -192,7 +145,7 @@ class Board extends React.Component {
   }
 }
 
-class Game extends React.Component {
+export class Game extends React.Component {
   render() {
     return (
       <div className="game">
@@ -210,6 +163,7 @@ class Game extends React.Component {
 
 // ========================================
 
+ReactDOM.render(<Game />, document.getElementById("root"));
 
 function calculateWinner(squares) {
   const lines = [
@@ -232,4 +186,3 @@ function calculateWinner(squares) {
 }
 
 
-export default App;
