@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import NavigationList from './NavigationList.js';
 import ShoppingList from './ShoppingList.js';
 import Game from './Game.js';
 
@@ -21,10 +22,11 @@ class App extends Component {
 
         <header className="App-header">
           <h1 className="App-title">Welcome to my A11y React Demo</h1>
-        </header>
+	</header>
 
-	<BrowserRouter>
+        <BrowserRouter>
   	  <div>
+	    <NavigationList/>
             <Route path="/ShoppingList" component={ShoppingList} />
             <Route path="/Game" component={Game} />
           </div>

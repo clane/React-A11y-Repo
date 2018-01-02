@@ -1,0 +1,17 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
+
+class NavigationList extends React.Component {
+  render() {
+    return (
+      <div className="Navigation-List">
+        <ul>
+          <li><Link to="Game">Game</Link></li>
+          <li><Link to="ShoppingList">Shopping List</Link></li>
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default NavigationList;
