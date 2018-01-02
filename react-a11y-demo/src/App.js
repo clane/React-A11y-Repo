@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Helmet } from "react-helmet";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Link
 } from 'react-router-dom'
@@ -21,11 +21,14 @@ class App extends Component {
 
         <header className="App-header">
           <h1 className="App-title">Welcome to my A11y React Demo</h1>
-          </header>
-  <Router>
-    <Route path="/Game" component={Game} />
-  </Router>
+        </header>
 
+	<BrowserRouter>
+  	  <div>
+            <Route path="/ShoppingList" component={ShoppingList} />
+            <Route path="/Game" component={Game} />
+          </div>
+        </BrowserRouter>
 
       </div>
     );
