@@ -67,9 +67,9 @@ ol, ul {
   margin-left: 20px;
 }
 
-[data-active='false'] { background-color: red; }
+[data-active='false'] { }
 
-[data-active='true'] { background-color: green; }
+[data-active='true'] {outline-style: dotted; } 
 
 
 
