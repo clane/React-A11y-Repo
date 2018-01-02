@@ -14,7 +14,7 @@ overflow: hidden;
 white-space: nowrap;
 }
 
-
+.game-board { width:50%; margin:auto; } 
 
 
 #root { width:33%; margin:auto; }
