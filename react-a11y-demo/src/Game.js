@@ -39,7 +39,8 @@ class Board extends Component {
     this.statusContainer.focus();
   }
 
-  handleKeyboard(e) {
+  handleKeyboard(e) { 
+    //up and right arrow keys
     if(e.keyCode === 40 || e.keyCode === 39){
       this.setState((prevState) => {
         if(prevState.activeD < 8){
@@ -50,8 +51,13 @@ class Board extends Component {
       });
     }
     if(e.keyCode === 38 || e.keyCode === 37){
+      //left and down arrow keys
       this.setState((prevState) => {
-        return {activeD: prevState.activeD - 1};
+        if(prevState.activeD > 0){
+          return {activeD: prevState.activeD - 1};
+        } else {
+          return {activeD: 8};
+        }
       });
     }
 
