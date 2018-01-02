@@ -41,20 +41,21 @@ class Board extends Component {
 
   handleKeyboard(e) {
     if(e.keyCode === 40 || e.keyCode === 39){
-      console.log('down arrow key pressed ' );
       this.setState((prevState) => {
-        return {activeD: prevState.activeD + 1};
+        if(prevState.activeD < 8){
+          return {activeD: prevState.activeD + 1};
+        } else {
+          return {activeD: 0};
+        } 
       });
     }
     if(e.keyCode === 38 || e.keyCode === 37){
-      console.log('up arrow key pressed ' );
       this.setState((prevState) => {
         return {activeD: prevState.activeD - 1};
       });
     }
 
      if(e.keyCode === 13 ){
-      console.log('Enter key pressed ' );
       this.handleClick(this.state.activeD);
     }
     
