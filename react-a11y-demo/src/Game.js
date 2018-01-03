@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-
+import "./Game.css";
 
 function Square(props) {
   return (
@@ -18,7 +18,7 @@ function Square(props) {
   );
 }
 
-class Board extends React.Component {
+class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,22 +39,29 @@ class Board extends React.Component {
     this.statusContainer.focus();
   }
 
-  handleKeyboard(e) {
+  handleKeyboard(e) { 
+    //up and right arrow keys
     if(e.keyCode === 40 || e.keyCode === 39){
-      console.log('down arrow key pressed ' );
       this.setState((prevState) => {
-        return {activeD: prevState.activeD + 1};
+        if(prevState.activeD < 9){
+          return {activeD: prevState.activeD + 1};
+        } else {
+          return {activeD: 1};
+        } 
       });
     }
     if(e.keyCode === 38 || e.keyCode === 37){
-      console.log('up arrow key pressed ' );
+      //left and down arrow keys
       this.setState((prevState) => {
-        return {activeD: prevState.activeD - 1};
+        if(prevState.activeD > 1){
+          return {activeD: prevState.activeD - 1};
+        } else {
+          return {activeD: 9};
+        }
       });
     }
 
      if(e.keyCode === 13 ){
-      console.log('Enter key pressed ' );
       this.handleClick(this.state.activeD);
     }
     
@@ -122,21 +129,21 @@ class Board extends React.Component {
           <tbody>
             <tr role="row" className="board-row">
               <th scope="row">Row 1</th>
-             {this.renderSquare(0)}
              {this.renderSquare(1)}
              {this.renderSquare(2)}
+             {this.renderSquare(3)}
             </tr>
             <tr role="row" className="board-row">
               <th scope="row">Row 2</th>
-             {this.renderSquare(3)}
              {this.renderSquare(4)}
              {this.renderSquare(5)}
+             {this.renderSquare(6)}
             </tr>
             <tr role="row" className="board-row">
               <th scope="row">Row 3</th>
-             {this.renderSquare(6)}
              {this.renderSquare(7)}
              {this.renderSquare(8)}
+             {this.renderSquare(9)}
             </tr>
           </tbody>
         </table>
@@ -145,7 +152,12 @@ class Board extends React.Component {
   }
 }
 
-export class Game extends React.Component {
+export class Game extends Component {
+
+  componentDidMount() {
+    this.topHeading.focus();
+  }
+
   render() {
     return (
       <div className="game">
@@ -154,6 +166,11 @@ export class Game extends React.Component {
           <meta charSet="utf-8" />
           <title>Tic-Tac-Toe</title>
         </Helmet>
+        <h1 
+          ref={componentH1 => {
+            this.topHeading = componentH1;
+          }}
+          tabIndex="-1">Tic-Tac-Toe</h1>
         <div className="game-board">
           <Board />
         </div>
@@ -168,16 +185,18 @@ export class Game extends React.Component {
 
 
 function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
+
+const lines = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
     [1, 4, 7],
     [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
+    [1, 5, 9],
+    [3, 5, 7]
   ];
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {

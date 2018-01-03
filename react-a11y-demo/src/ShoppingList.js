@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
 
-class ShoppingList extends React.Component {
+class ShoppingList extends Component {
   render() {
     return (
       <div className="shopping-list">
