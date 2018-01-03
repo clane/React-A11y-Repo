@@ -17,7 +17,6 @@ white-space: nowrap;
 .game-board { } 
 
 
-
 table { border-collapse: collapse; }
 ol, ul {
   padding-left: 30px;
@@ -31,7 +30,9 @@ ol, ul {
 
 .status {
   margin-bottom: 10px;
+  width:30%;
 }
+.status:focus{ outline:2px dotted blue; } 
 
 .square {
   background: #fff;
