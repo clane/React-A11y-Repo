@@ -64,7 +64,6 @@ class Board extends Component {
      if(e.keyCode === 13 ){
       //Enter key
       this.handleClick(this.state.activeD);
-      this.statusContainer.focus();
     }
     
 
