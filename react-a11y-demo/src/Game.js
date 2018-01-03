@@ -43,20 +43,20 @@ class Board extends Component {
     //up and right arrow keys
     if(e.keyCode === 40 || e.keyCode === 39){
       this.setState((prevState) => {
-        if(prevState.activeD < 8){
+        if(prevState.activeD < 9){
           return {activeD: prevState.activeD + 1};
         } else {
-          return {activeD: 0};
+          return {activeD: 1};
         } 
       });
     }
     if(e.keyCode === 38 || e.keyCode === 37){
       //left and down arrow keys
       this.setState((prevState) => {
-        if(prevState.activeD > 0){
+        if(prevState.activeD > 1){
           return {activeD: prevState.activeD - 1};
         } else {
-          return {activeD: 8};
+          return {activeD: 9};
         }
       });
     }
@@ -129,21 +129,21 @@ class Board extends Component {
           <tbody>
             <tr role="row" className="board-row">
               <th scope="row">Row 1</th>
-             {this.renderSquare(0)}
              {this.renderSquare(1)}
              {this.renderSquare(2)}
+             {this.renderSquare(3)}
             </tr>
             <tr role="row" className="board-row">
               <th scope="row">Row 2</th>
-             {this.renderSquare(3)}
              {this.renderSquare(4)}
              {this.renderSquare(5)}
+             {this.renderSquare(6)}
             </tr>
             <tr role="row" className="board-row">
               <th scope="row">Row 3</th>
-             {this.renderSquare(6)}
              {this.renderSquare(7)}
              {this.renderSquare(8)}
+             {this.renderSquare(9)}
             </tr>
           </tbody>
         </table>
@@ -154,11 +154,9 @@ class Board extends Component {
 
 export class Game extends Component {
 
-
   componentDidMount() {
     this.topHeading.focus();
   }
-
 
   render() {
     return (
