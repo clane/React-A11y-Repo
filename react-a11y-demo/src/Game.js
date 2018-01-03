@@ -62,7 +62,9 @@ class Board extends Component {
     }
 
      if(e.keyCode === 13 ){
+      //Enter key
       this.handleClick(this.state.activeD);
+      this.statusContainer.focus();
     }
     
 
@@ -173,10 +175,6 @@ export class Game extends Component {
           tabIndex="-1">Tic-Tac-Toe</h1>
         <div className="game-board">
           <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
         </div>
       </div>
     );
