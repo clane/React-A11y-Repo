@@ -1,10 +1,9 @@
 #root { width:960px; margin:auto; } 
 
 .App {
-  text-align: center;
 }
 
-
+h1 { width:30%; } 
 .App-header {
   background-color: #222;
   height: 60px;
@@ -20,7 +19,7 @@
   font-size: large;
 }
 
-[role="navigation"]  { width:50%; margin: 20px auto; } 
+[role="navigation"]  {  } 
 [role="navigation"]  li { width:25%; display:inline-block; list-style-type:none;  } 
 
 
