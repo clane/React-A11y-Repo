@@ -32,12 +32,10 @@ ol, ul {
   margin-bottom: 10px;
   width:30%;
 }
-.status:focus{ outline:2px dotted blue; } 
 
 .square {
   background: #fff;
   border: 1px solid #999;
-  
   font-size: 114px;
   font-weight: bold;
   line-height: 34px;

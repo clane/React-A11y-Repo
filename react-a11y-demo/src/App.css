@@ -1,3 +1,5 @@
+*:focus { outline:3px solid blue; } 
+
 #root { width:960px; margin:auto; } 
 
 .App {
@@ -11,9 +13,13 @@ h1 { width:30%; }
   color: white;
 }
 
+h2 { width:30%; } 
+
 .App-title {
   font-size: 1.5em;
 }
+
+
 
 .App-intro {
   font-size: large;
