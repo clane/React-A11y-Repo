@@ -27,7 +27,6 @@ class Board extends Component {
       activeD: 0
     };
     this.state.squares[0] = 'unused square 0';//needed to deal will index 0
-    console.log(this.state.squares);
   }
   handleClick(i) {
     const squares = this.state.squares.slice();
@@ -101,6 +100,7 @@ class Board extends Component {
     return (
 
       <div role="application" aria-label="tic-tac-toe">
+        <h3>Game Status</h3>
         <div
           tabIndex="-1"
           className="status"
@@ -110,8 +110,8 @@ class Board extends Component {
         >
           {status}
         </div>
-
-        <table tabIndex="0">
+        <h3>Square Values Table</h3>
+        <table id="squareValuesTable">
           <thead>
             <tr><th>Square Number</th><th>Value</th></tr>
           </thead>
@@ -127,7 +127,9 @@ class Board extends Component {
             <tr><td>9</td><td>{this.state.squares[9]}</td></tr> 
           </tbody>
         </table>
-        
+       
+        <h3>Game Board</h3>
+ 
         <table tabIndex="0"
           aria-label = "tic-tac-toe grid"
           aria-activedescendant = {this.state.activeD}
@@ -191,6 +193,9 @@ export class Game extends Component {
             this.topHeading = componentH2;
           }}
           tabIndex="-1">Tic-Tac-Toe</h2>
+
+		<p>Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.</p>
+
         <div className="game-board">
           <Board />
         </div>
@@ -208,7 +213,6 @@ const lines = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9],
-    [1, 4, 7],
     [1, 4, 7],
     [2, 5, 8],
     [1, 5, 9],

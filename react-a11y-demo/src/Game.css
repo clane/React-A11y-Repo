@@ -1,4 +1,5 @@
-
+#squareValuesTable { margin-bottom:20px; } 
+#squareValuesTable th, #squareValuesTable td { border:2px solid #000; } 
 
 
 [role="grid"] th {
