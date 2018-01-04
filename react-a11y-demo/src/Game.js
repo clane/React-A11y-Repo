@@ -22,12 +22,13 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null),
+      squares: Array(10).fill(null,1),
       xIsNext: true,
       activeD: 0
     };
+    this.state.squares[0] = 'unused square 0';//needed to deal will index 0
+    console.log(this.state.squares);
   }
-
   handleClick(i) {
     const squares = this.state.squares.slice();
     squares[i] = this.state.xIsNext ? "X" : "O";
@@ -182,6 +183,8 @@ export class Game extends Component {
 
 
 function calculateWinner(squares) {
+
+console.log(squares); 
 
 const lines = [
     [1, 2, 3],
