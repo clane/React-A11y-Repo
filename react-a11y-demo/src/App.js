@@ -6,7 +6,7 @@ import {
   Route,
 } from 'react-router-dom'
 import NavigationList from './NavigationList.js';
-import ShoppingList from './ShoppingList.js';
+import HomePage from './HomePage.js';
 import Game from './Game.js';
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
         <BrowserRouter>
   	  <div>
 	    <NavigationList/>
-            <Route path="/ShoppingList" component={ShoppingList} />
+            <Route path="/HomePage" component={HomePage} />
             <Route path="/Game" component={Game} />
           </div>
         </BrowserRouter>

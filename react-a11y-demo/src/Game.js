@@ -168,11 +168,11 @@ export class Game extends Component {
           <meta charSet="utf-8" />
           <title>Tic-Tac-Toe</title>
         </Helmet>
-        <h1 
+        <h2 
           ref={componentH1 => {
             this.topHeading = componentH1;
           }}
-          tabIndex="-1">Tic-Tac-Toe</h1>
+          tabIndex="-1">Tic-Tac-Toe</h2>
         <div className="game-board">
           <Board />
         </div>
