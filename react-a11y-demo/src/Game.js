@@ -110,6 +110,24 @@ class Board extends Component {
         >
           {status}
         </div>
+
+        <table tabIndex="0">
+          <thead>
+            <tr><th>Square Number</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>{this.state.squares[1]}</td></tr> 
+            <tr><td>2</td><td>{this.state.squares[2]}</td></tr> 
+            <tr><td>3</td><td>{this.state.squares[3]}</td></tr> 
+            <tr><td>4</td><td>{this.state.squares[4]}</td></tr> 
+            <tr><td>5</td><td>{this.state.squares[5]}</td></tr> 
+            <tr><td>6</td><td>{this.state.squares[6]}</td></tr> 
+            <tr><td>7</td><td>{this.state.squares[7]}</td></tr> 
+            <tr><td>8</td><td>{this.state.squares[8]}</td></tr> 
+            <tr><td>9</td><td>{this.state.squares[9]}</td></tr> 
+          </tbody>
+        </table>
+        
         <table tabIndex="0"
           aria-label = "tic-tac-toe grid"
           aria-activedescendant = {this.state.activeD}
