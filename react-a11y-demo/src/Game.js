@@ -125,6 +125,7 @@ class Board extends Component {
     let status;
     if (winner) {
       status = "Winner: " + winner;
+      this.state.clearButtonDisabled = false;
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
@@ -252,7 +253,6 @@ export class Game extends Component {
 }
 
 function calculateWinner(squares) {
-  console.log(squares);
 
   const lines = [
     [1, 2, 3],
@@ -268,11 +268,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-
-      this.setState(prevState => {
-        return { clearButtonDisabled: false };
-      });
-      return squares[a];
+            return squares[a];
     }
   }
   return null;
