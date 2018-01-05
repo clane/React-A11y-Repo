@@ -196,6 +196,9 @@ export class Game extends Component {
 
 		<p>Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.</p>
 
+<p>Each of the following sets of numbers represent winning combinations of squares when each square in the set is populated with one player's mark, X or O: [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [1, 5, 9], [3, 5, 7]. Screen reader users can use the Square Values Table below to determine if they have populated a winning set of squares. </p>
+
+
         <div className="game-board">
           <Board />
         </div>
