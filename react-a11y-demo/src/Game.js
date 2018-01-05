@@ -99,76 +99,80 @@ class Board extends Component {
 
     return (
 
-      <div role="application" aria-label="tic-tac-toe">
-        <h3>Game Status</h3>
-        <div
-          tabIndex="-1"
-          className="status"
-          ref={status => {
-            this.statusContainer = status;
-          }}
-        >
-          {status}
+      <div id="gameContainer"  aria-label="tic-tac-toe">
+        <div id="left">
+		<h3>Game Status</h3>
+		<div
+		  tabIndex="-1"
+		  className="status"
+		  ref={status => {
+		    this.statusContainer = status;
+		  }}
+		>
+		  {status}
+		</div>
+		<h3>Square Values Table</h3>
+		<table id="squareValuesTable">
+		  <thead>
+		    <tr><th>Square Number</th><th>Value</th></tr>
+		  </thead>
+		  <tbody>
+		    <tr><td>1</td><td>{this.state.squares[1]}</td></tr> 
+		    <tr><td>2</td><td>{this.state.squares[2]}</td></tr> 
+		    <tr><td>3</td><td>{this.state.squares[3]}</td></tr> 
+		    <tr><td>4</td><td>{this.state.squares[4]}</td></tr> 
+		    <tr><td>5</td><td>{this.state.squares[5]}</td></tr> 
+		    <tr><td>6</td><td>{this.state.squares[6]}</td></tr> 
+		    <tr><td>7</td><td>{this.state.squares[7]}</td></tr> 
+		    <tr><td>8</td><td>{this.state.squares[8]}</td></tr> 
+		    <tr><td>9</td><td>{this.state.squares[9]}</td></tr> 
+		  </tbody>
+		</table>
         </div>
-        <h3>Square Values Table</h3>
-        <table id="squareValuesTable">
-          <thead>
-            <tr><th>Square Number</th><th>Value</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>{this.state.squares[1]}</td></tr> 
-            <tr><td>2</td><td>{this.state.squares[2]}</td></tr> 
-            <tr><td>3</td><td>{this.state.squares[3]}</td></tr> 
-            <tr><td>4</td><td>{this.state.squares[4]}</td></tr> 
-            <tr><td>5</td><td>{this.state.squares[5]}</td></tr> 
-            <tr><td>6</td><td>{this.state.squares[6]}</td></tr> 
-            <tr><td>7</td><td>{this.state.squares[7]}</td></tr> 
-            <tr><td>8</td><td>{this.state.squares[8]}</td></tr> 
-            <tr><td>9</td><td>{this.state.squares[9]}</td></tr> 
-          </tbody>
-        </table>
-       
-        <h3>Game Board</h3>
- 
-        <table tabIndex="0"
-          aria-label = "tic-tac-toe grid"
-          aria-activedescendant = {this.state.activeD}
-          role="grid" 
-          cellPadding="0" 
-          ref={board => {
-            this.boardContainer = board;
-          }}
-          onKeyDown={e => this.handleKeyboard(e)}
-        >
-          <thead>
-            <tr>
-              <th role="presentation"></th>
-              <th scope="col">Column 1</th>
-              <th scope="col">Column 2</th>
-              <th scope="col">Column 3</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr role="row" className="board-row">
-              <th scope="row">Row 1</th>
-             {this.renderSquare(1)}
-             {this.renderSquare(2)}
-             {this.renderSquare(3)}
-            </tr>
-            <tr role="row" className="board-row">
-              <th scope="row">Row 2</th>
-             {this.renderSquare(4)}
-             {this.renderSquare(5)}
-             {this.renderSquare(6)}
-            </tr>
-            <tr role="row" className="board-row">
-              <th scope="row">Row 3</th>
-             {this.renderSquare(7)}
-             {this.renderSquare(8)}
-             {this.renderSquare(9)}
-            </tr>
-          </tbody>
-        </table>
+
+        <div id="right">       
+		<h3>Game Board</h3>
+	 
+		<table tabIndex="0"
+		  aria-label = "tic-tac-toe grid"
+		  aria-activedescendant = {this.state.activeD}
+		  role="grid" 
+		  cellPadding="0" 
+		  ref={board => {
+		    this.boardContainer = board;
+		  }}
+		  onKeyDown={e => this.handleKeyboard(e)}
+		>
+		  <thead>
+		    <tr>
+		      <th role="presentation"></th>
+		      <th scope="col">Column 1</th>
+		      <th scope="col">Column 2</th>
+		      <th scope="col">Column 3</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr role="row" className="board-row">
+		      <th scope="row">Row 1</th>
+		     {this.renderSquare(1)}
+		     {this.renderSquare(2)}
+		     {this.renderSquare(3)}
+		    </tr>
+		    <tr role="row" className="board-row">
+		      <th scope="row">Row 2</th>
+		     {this.renderSquare(4)}
+		     {this.renderSquare(5)}
+		     {this.renderSquare(6)}
+		    </tr>
+		    <tr role="row" className="board-row">
+		      <th scope="row">Row 3</th>
+		     {this.renderSquare(7)}
+		     {this.renderSquare(8)}
+		     {this.renderSquare(9)}
+		    </tr>
+		  </tbody>
+		</table>
+        </div>
       </div>
     );
   }
