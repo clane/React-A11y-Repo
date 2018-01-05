@@ -22,7 +22,7 @@ class HomePage extends Component {
           }}
          >
          Welcome to my A11y React Demo</h2>
-        <p>I will be presenting examples of accessible React components here.</p>
+        <p>I will be presenting examples of accessible React components here. This is a work in progress. The code can be found at <a href="https://github.com/clane/React-A11y-Repo">https://github.com/clane/React-A11y-Repo</a>.</p>
       </div>
     );
   }
