@@ -28,7 +28,6 @@ class App extends Component {
 	    <NavigationList/>
             <Route path="/HomePage" component={HomePage} />
             <Route path="/Game" component={Game} />
-            <Route path="*" component={HomePage} />
           </div>
         </BrowserRouter>
 
