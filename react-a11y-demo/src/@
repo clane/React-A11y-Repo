@@ -30,11 +30,7 @@ class Board extends Component {
   }
   handleClick(i) {
     const squares = this.state.squares.slice();
-    if(squares[i]) {
-        alert('Square ' + i + ' is already set to ' + squares[i]);        
-    } else {
-        squares[i] = this.state.xIsNext ? "X" : "O";
-    }  
+    squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
