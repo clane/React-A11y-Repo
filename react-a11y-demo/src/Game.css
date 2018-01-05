@@ -1,5 +1,5 @@
 
-#gameContainer { overflow:hidden; }
+#gameContainer { overflow:hidden; background-color:ghostWhite; }
 #left,#right { float:left; }
 #left { padding-left:5%; width:26% }
 #right { width:50%; float:left; }
