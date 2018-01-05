@@ -24,20 +24,21 @@ class Board extends Component {
     this.state = {
       squares: Array(10).fill(null, 1),
       xIsNext: true,
-      activeD: 1
+      activeD: 1,
+      clearButtonDisabled: true 
     };
     this.state.squares[0] = "unused square 0"; //needed to deal will index 0
   }
-  clearBoard(e){
 
+  clearBoard(e){
     this.setState({
       squares: Array(10).fill(null, 1),
       xIsNext: true,
-      activeD: 1 
+      activeD: 1,
+      clearButtonDisabled: true 
     });
-
-
   }
+
   handleClick(i) {
     const squares = this.state.squares.slice();
     if (squares[i]) {
@@ -140,9 +141,10 @@ class Board extends Component {
             }}
           >
             {status}
-            <button id="clear" onClick={e => this.clearBoard(e)}>Clear Board</button>
-           
           </div>
+
+          <button id="clear" disabled={this.state.clearButtonDisabled} onClick={e => this.clearBoard(e)}>Clear Board</button>
+
           <h3>Square Values Table</h3>
           <table id="squareValuesTable">
             <thead>
@@ -267,6 +269,8 @@ function calculateWinner(squares) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
+
+      this.state.clearButtonDisabled = false;
     }
   }
   return null;
