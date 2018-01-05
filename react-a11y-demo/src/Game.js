@@ -24,7 +24,7 @@ class Board extends Component {
     this.state = {
       squares: Array(10).fill(null,1),
       xIsNext: true,
-      activeD: 0
+      activeD: 1
     };
     this.state.squares[0] = 'unused square 0';//needed to deal will index 0
   }
