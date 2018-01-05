@@ -26,7 +26,6 @@ class App extends Component {
         <BrowserRouter>
   	  <div>
 	    <NavigationList/>
-            <Route path="/" component={HomePage} />
             <Route path="/HomePage" component={HomePage} />
             <Route path="/Game" component={Game} />
           </div>
