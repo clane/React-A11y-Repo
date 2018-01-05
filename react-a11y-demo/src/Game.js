@@ -125,7 +125,14 @@ class Board extends Component {
     let status;
     if (winner) {
       status = "Winner: " + winner;
-      this.state.clearButtonDisabled = false;
+      this.state.clearButtonDisabled = false;//causes warning that recommends to use setState
+      //trying to use setState here causes maximum depth error, see https://github.com/facebookincubator/create-react-app/issues/3251
+      /*
+      this.setState({
+        clearButtonDisabled: false 
+      });
+      */
+
     } else {
       //check for no winner
       if(
@@ -139,7 +146,8 @@ class Board extends Component {
         this.state.squares[8] &&
         this.state.squares[9] 
       ){
-        this.state.clearButtonDisabled = false;
+      this.state.clearButtonDisabled = false;//causes warning that recommends to use setState
+
         status = "No winner";
       } else { 
           status = "Next player: " + (this.state.xIsNext ? "X" : "O");
