@@ -28,6 +28,16 @@ class Board extends Component {
     };
     this.state.squares[0] = "unused square 0"; //needed to deal will index 0
   }
+  clearBoard(e){
+
+    this.setState({
+      squares: Array(10).fill(null, 1),
+      xIsNext: true,
+      activeD: 1 
+    });
+
+
+  }
   handleClick(i) {
     const squares = this.state.squares.slice();
     if (squares[i]) {
@@ -130,6 +140,8 @@ class Board extends Component {
             }}
           >
             {status}
+            <button id="clear" onClick={e => this.clearBoard(e)}>Clear Board</button>
+           
           </div>
           <h3>Square Values Table</h3>
           <table id="squareValuesTable">
