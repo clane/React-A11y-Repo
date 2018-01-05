@@ -124,7 +124,7 @@ class Board extends Component {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
-      status = "Winner: " + winner;
+      status = "Game Over -  Winner: " + winner;
       this.state.clearButtonDisabled = false;//causes warning that recommends to use setState
       //trying to use setState here causes maximum depth error, see https://github.com/facebookincubator/create-react-app/issues/3251
       /*
@@ -148,9 +148,9 @@ class Board extends Component {
       ){
       this.state.clearButtonDisabled = false;//causes warning that recommends to use setState
 
-        status = "No winner";
+        status = "Game over no winner";
       } else { 
-          status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+          status = "Game in progress - Next player: " + (this.state.xIsNext ? "X" : "O");
       } 
     }
 
