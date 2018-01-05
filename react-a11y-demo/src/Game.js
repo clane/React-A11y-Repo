@@ -149,7 +149,7 @@ class Board extends Component {
     return (
       <div id="gameContainer" aria-label="tic-tac-toe">
         <div id="left">
-          <h3>Game Status</h3>
+          <h3 id="status">Game Status</h3>
           <div
             tabIndex="-1"
             className="status"
@@ -162,8 +162,8 @@ class Board extends Component {
 
           <button id="clear" disabled={this.state.clearButtonDisabled} onClick={e => this.clearBoard(e)}>Clear Board</button>
 
-          <h3>Square Values Table</h3>
-          <table id="squareValuesTable">
+          <h3 id="squareValuesTableHeading">Square Values Table</h3>
+          <table id="squareValuesTable" aria-labelledby="squareValuesHeading" aria-describedby="status">
             <thead>
               <tr><th>Square Number</th><th>Value</th></tr>
             </thead>
@@ -182,11 +182,11 @@ class Board extends Component {
         </div>
 
         <div id="right">
-          <h3>Game Board</h3>
+          <h3 id="boardHeading">Game Board</h3>
 
           <table
             tabIndex="0"
-            aria-label="tic-tac-toe grid"
+            aria-labelledby="boardHeading"
             aria-activedescendant={this.state.activeD}
             role="grid"
             cellPadding="0"
@@ -194,6 +194,7 @@ class Board extends Component {
               this.boardContainer = board;
             }}
             onKeyDown={e => this.handleKeyboard(e)}
+            aria-describedby="status"
           >
             <thead>
               <tr>
