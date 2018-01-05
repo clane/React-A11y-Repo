@@ -51,7 +51,7 @@ class Board extends Component {
       xIsNext: !this.state.xIsNext,
       activeD: this.state.activeD
     });
-    this.statusContainer.focus();
+    //this.statusContainer.focus();
   }
 
   handleKeyboard(e) {
@@ -156,6 +156,7 @@ class Board extends Component {
             ref={status => {
               this.statusContainer = status;
             }}
+            aria-live="assertive"
           >
             {status}
           </div>
