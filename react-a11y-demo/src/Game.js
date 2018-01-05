@@ -268,9 +268,10 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      this.setState(prevState => {
+        return { clearButtonDisabled: false };
+      });
       return squares[a];
-
-      this.state.clearButtonDisabled = false;
     }
   }
   return null;
