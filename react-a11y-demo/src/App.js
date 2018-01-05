@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import {
   BrowserRouter,
   Route,
+  Redirect
 } from 'react-router-dom'
 import NavigationList from './NavigationList.js';
 import HomePage from './HomePage.js';
@@ -28,6 +29,7 @@ class App extends Component {
 	    <NavigationList/>
             <Route path="/HomePage" component={HomePage} />
             <Route path="/Game" component={Game} />
+	    <Redirect from="/" to="/HomePage"/>
           </div>
         </BrowserRouter>
 
