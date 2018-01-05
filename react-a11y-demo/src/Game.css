@@ -74,7 +74,7 @@ ol, ul {
 
 [data-active='false'] { }
 
-[data-active='true'] {outline-style: dotted; } 
+[data-active='true'] {outline: 5px dotted #000; } 
 
 
 
