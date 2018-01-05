@@ -127,7 +127,23 @@ class Board extends Component {
       status = "Winner: " + winner;
       this.state.clearButtonDisabled = false;
     } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+      //check for no winner
+      if(
+        this.state.squares[1] &&
+        this.state.squares[2] &&
+        this.state.squares[3] &&
+        this.state.squares[4] &&
+        this.state.squares[5] &&
+        this.state.squares[6] &&
+        this.state.squares[7] &&
+        this.state.squares[8] &&
+        this.state.squares[9] 
+      ){
+        this.state.clearButtonDisabled = false;
+        status = "No winner";
+      } else { 
+          status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+      } 
     }
 
     return (
