@@ -1,4 +1,12 @@
 
+header { overflow:hidden; }
+header h1 { width:23%; float:left; }
+
+.App-logo {
+  width:92px;
+  float:left;
+}
+`
 #gameContainer { overflow:hidden; background-color:ghostWhite; }
 #left,#right { float:left; }
 #left { padding-left:5%; width:26% }

@@ -9,6 +9,8 @@ import {
 import NavigationList from './NavigationList.js';
 import HomePage from './HomePage.js';
 import Game from './Game.js';
+import logo from './logo.svg';
+
 
 class App extends Component {
   render() {
@@ -21,6 +23,7 @@ class App extends Component {
         </Helmet>
 
         <header className="App-header">
+          <img src={logo} className="App-logo" alt="Reacts official logo" />
           <h1 className="App-title">A11y React Demo</h1>
 	</header>
 
