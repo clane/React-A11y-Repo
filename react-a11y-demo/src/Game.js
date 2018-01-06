@@ -54,8 +54,10 @@ class Board extends Component {
       squares: squares,
       xIsNext: !this.state.xIsNext,
     });
+    this.calculateWinner(); 
     this.setGameStatus();
     this.statusContainer.focus();
+    return null; 
   }
 
   handleKeyboard(e) {
@@ -141,10 +143,10 @@ class Board extends Component {
         clearButtonDisabled: false
       });
     }
-    this.calculateWinner();  
   }
 
   calculateWinner() {
+    console.log('calculateWinner called');
     const squares = this.state.squares.slice();
     const lines = [
       [1, 2, 3],
@@ -161,24 +163,14 @@ class Board extends Component {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         this.setState({
-          winner: squares[a]
+          winner: squares[a],
+          clearButtonDisabled: false
         });
-        return null;
-      } else {
-        this.setState({
-          winner: "No winner yet"
-        });
-        return null;
       }
     }
     return null;
   }
 
-  componentDidUpdate(newProps, newState){
-    console.log(newState);
-    return true;
-  } 
- 
   render() {
     let nextPlayer = this.state.xIsNext ? "X" : "0";
     return (
