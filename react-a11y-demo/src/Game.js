@@ -124,15 +124,16 @@ class Board extends Component {
 
 
   setGameStatus(){
-      //Check if 8 of the  9 squares are populated
-      let populatedCnt = 1; 
+      let populatedCnt = 1;//Since this is called onClick, at least 1 square will be populated on first click, no click attempts on a pre-populated square are possible on first click 
       for(var i = 1; i < this.state.squares.length; i++){
       	if(this.state.squares[i]){ 
           populatedCnt = populatedCnt + 1; 
           console.log('squares populated: ' + populatedCnt);  
         } 
       }  
-      if (populatedCnt <  8)  {
+      //Check if less than 8 of the 9 squares are populated when this method is called
+      let populatedMaxCnt = 8; 
+      if (populatedCnt <  populatedMaxCnt)  {
           this.setState({
             gameInProgress: true
           });
