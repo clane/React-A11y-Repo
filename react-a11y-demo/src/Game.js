@@ -25,7 +25,7 @@ class Board extends Component {
       squares: Array(10).fill(null, 1),
       xIsNext: true,
       activeD: 1,
-      clearButtonDisabled: true 
+      gameInProgress: true 
     };
     this.state.squares[0] = "unused square 0"; //needed to deal will index 0
   }
@@ -35,7 +35,7 @@ class Board extends Component {
       squares: Array(10).fill(null, 1),
       xIsNext: true,
       activeD: 1,
-      clearButtonDisabled: true 
+      gameInProgress: true 
     });
   }
 
@@ -147,11 +147,11 @@ calculateWinner(squares) {
     let status;
     if (winner) {
       status = "Game Over -  Winner: " + winner;
-      this.state.clearButtonDisabled = false;//causes warning that recommends to use setState
+      this.state.gameInProgress = false;//causes warning that recommends to use setState
       //trying to use setState here causes maximum depth error, see https://github.com/facebookincubator/create-react-app/issues/3251
       /*
       this.setState({
-        clearButtonDisabled: false 
+        gameInProgress: false 
       });
       */
 
@@ -168,7 +168,7 @@ calculateWinner(squares) {
         this.state.squares[8] &&
         this.state.squares[9] 
       ){
-        this.state.clearButtonDisabled = false;//causes warning that recommends to use setState
+        this.state.gameInProgress = false;//causes warning that recommends to use setState
         status = "Game over no winner";
       } else { 
           status = "Game in progress - Next player: " + (this.state.xIsNext ? "X" : "O");
@@ -189,7 +189,7 @@ calculateWinner(squares) {
             {status}
           </div>
 
-          <button id="clear" disabled={this.state.clearButtonDisabled} onClick={e => this.clearBoard(e)}>Clear Board</button>
+          <button id="clear" disabled={this.state.gameInProgress} onClick={e => this.clearBoard(e)}>Clear Board</button>
 
           <h3 id="squareValuesTableHeading">Square Values Table</h3>
           <table id="squareValuesTable" aria-labelledby="squareValuesHeading" aria-describedby="status">
