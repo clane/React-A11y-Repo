@@ -29,7 +29,7 @@ class Board extends Component {
       winner: null,
       clearButtonDisabled: true
     };
-    this.state.squares[0] = "unused square 0"; //needed to deal will index 0
+    this.state.squares[0] = null; //needed to deal will index 0
   }
 
   clearBoard(e) {
@@ -38,7 +38,6 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: null,
-      winner: null,
       clearButtonDisabled: true
     });
   }
@@ -54,7 +53,6 @@ class Board extends Component {
       squares: squares,
       xIsNext: !this.state.xIsNext,
     });
-    this.calculateWinner(); 
     this.setGameStatus();
     this.statusContainer.focus();
     return null; 
@@ -145,9 +143,7 @@ class Board extends Component {
     }
   }
 
-  calculateWinner() {
-    console.log('calculateWinner called');
-    const squares = this.state.squares.slice();
+  calculateWinner(squares) {
     const lines = [
       [1, 2, 3],
       [4, 5, 6],
@@ -162,16 +158,14 @@ class Board extends Component {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        this.setState({
-          winner: squares[a],
-          clearButtonDisabled: false
-        });
+        this.state.clearButtonDisabled = false;
+        return squares[a];
       }
     }
-    return null;
   }
 
   render() {
+    let winner = this.calculateWinner(this.state.squares.slice());
     let nextPlayer = this.state.xIsNext ? "X" : "0";
     return (
       <div id="gameContainer" aria-label="tic-tac-toe">
@@ -186,7 +180,7 @@ class Board extends Component {
           >
             <div>Game Status: {this.state.gameInProgress}</div>
             <div>Next Player: {nextPlayer}</div>
-            <div>Winner: {this.state.winner}</div>
+            <div>Winner: {winner}</div>
           </div>
 
           <button
