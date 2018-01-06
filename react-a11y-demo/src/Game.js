@@ -25,7 +25,7 @@ class Board extends Component {
       squares: Array(10).fill(null, 1),
       xIsNext: true,
       activeD: 1,
-      gameInProgress: true,
+      gameInProgress: null,
       winner: null
     };
     this.state.squares[0] = "unused square 0"; //needed to deal will index 0
@@ -36,7 +36,7 @@ class Board extends Component {
       squares: Array(10).fill(null, 1),
       xIsNext: true,
       activeD: 1,
-      gameInProgress: true,
+      gameInProgress: null,
       winner: null
     });
   }
@@ -122,32 +122,28 @@ class Board extends Component {
     );
   }
 
-
-  setGameStatus(){
-      let populatedCnt = 1;//Since this is called onClick, at least 1 square will be populated on first click, no click attempts on a pre-populated square are possible on first click 
-      for(var i = 1; i < this.state.squares.length; i++){
-      	if(this.state.squares[i]){ 
-          populatedCnt = populatedCnt + 1; 
-          console.log('squares populated: ' + populatedCnt);  
-        } 
-      }  
-      //Check if less than 8 of the 9 squares are populated when this method is called
-      let populatedMaxCnt = 8; 
-      if (populatedCnt <  populatedMaxCnt)  {
-          this.setState({
-            gameInProgress: true
-          });
-      } else { 
-          this.setState({
-            gameInProgress: false
-          });
-      } 
-      console.log(populatedCnt);  
-      console.log(this.state.gameInProgress);  
+  setGameStatus() {
+    let populatedCnt = 1; //Since this is called onClick, at least 1 square will be populated on first click, no click attempts on a pre-populated square are possible on first click
+    for (var i = 1; i < this.state.squares.length; i++) {
+      if (this.state.squares[i]) {
+        populatedCnt = populatedCnt + 1;
+        console.log("squares populated: " + populatedCnt);
+      }
+    }
+    //Check if less than 8 of the 9 squares are populated when this method is called
+    let populatedMaxCnt = 8;
+    if (populatedCnt < populatedMaxCnt) {
+      this.setState({
+        gameInProgress: "In progress",
+      });
+    } else {
+      this.setState({
+        gameInProgress: "Game Over!" 
+      });
+    }
   }
 
   calculateWinner(squares) {
-    console.log('calculateWinner'); 
     const lines = [
       [1, 2, 3],
       [4, 5, 6],
@@ -166,23 +162,15 @@ class Board extends Component {
       ) {
         this.setState({
           gameInProgress: false,
-          winner: squares[a] 
+          winner: squares[a]
         });
-        console.log('winner:' +  this.state.winner);
-                return squares[a];
+        return squares[a];
       }
     }
     return null;
   }
 
   render() {
-    let status;
-    if (this.state.winner) {
-      status = "Game Over -  Winner: " + this.state.winner;
-    } else {
-      //check for no winner
-    }
-
     return (
       <div id="gameContainer" aria-label="tic-tac-toe">
         <div id="left">
@@ -194,7 +182,7 @@ class Board extends Component {
               this.statusContainer = status;
             }}
           >
-            {status}
+           Game in Progress: {this.state.gameInProgress}
           </div>
 
           <button
