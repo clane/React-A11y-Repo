@@ -55,6 +55,7 @@ class Board extends Component {
       xIsNext: !this.state.xIsNext,
       activeD: this.state.activeD
     });
+    this.calculateWinner();
     this.setGameStatus();
     this.statusContainer.focus();
   }
@@ -143,10 +144,10 @@ class Board extends Component {
       });
     }
 
-    this.calculateWinner(this.state.squares.slice());
   }
 
-  calculateWinner(squares) {
+  calculateWinner() {
+    const squares = this.state.squares.slice();
     const lines = [
       [1, 2, 3],
       [4, 5, 6],
