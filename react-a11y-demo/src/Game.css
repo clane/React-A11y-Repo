@@ -6,10 +6,10 @@ header h1 { width:23%; float:left; }
   width:92px;
   float:left;
 }
-`
-#gameContainer { overflow:hidden; background-color:ghostWhite; }
+
+#gameContainer { overflow:hidden; background-color:blanchedalmond; }
 #left,#right { float:left; }
-#left { padding-left:5%; width:26% }
+#left { padding-left:5%; width:40% }
 #right { width:50%; float:left; }
 
 #squareValuesTable { margin-bottom:20px; } 
