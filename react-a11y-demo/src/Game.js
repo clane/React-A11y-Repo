@@ -26,8 +26,8 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: null,
-      winner: "No winner yet, less than 3 squares populated",
-      clearButtonDisabled: true 
+      winner: null,
+      clearButtonDisabled: true
     };
     this.state.squares[0] = "unused square 0"; //needed to deal will index 0
   }
@@ -38,8 +38,8 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: null,
-      winner: "No winner yet, less than 3 squares populated", 
-      clearButtonDisabled: true 
+      winner: "No winner yet",
+      clearButtonDisabled: true
     });
   }
 
@@ -55,7 +55,6 @@ class Board extends Component {
       xIsNext: !this.state.xIsNext,
       activeD: this.state.activeD
     });
-
     this.setGameStatus();
     this.statusContainer.focus();
   }
@@ -131,14 +130,11 @@ class Board extends Component {
         populatedCnt = populatedCnt + 1;
       }
     }
-    if(populatedCnt >= 3){
-      this.calculateWinner(this.state.squares); 
-    }
     //Check if less than 8 of the 9 squares are populated when this method is called
     let populatedMaxCnt = 8;
-    if ((populatedCnt < populatedMaxCnt)) {
+    if (populatedCnt < populatedMaxCnt) {
       this.setState({
-        gameInProgress: "In progress",
+        gameInProgress: "In progress"
       });
     } else {
       this.setState({
@@ -146,6 +142,8 @@ class Board extends Component {
         clearButtonDisabled: false
       });
     }
+
+    this.calculateWinner(this.state.squares.slice());
   }
 
   calculateWinner(squares) {
@@ -162,20 +160,18 @@ class Board extends Component {
 
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
-      if (
-        squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
-      ) {
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        console.log('winner'); 
         this.setState({
-          winner: "winner is: " + squares[a]
+          winner: squares[a]
         });
-      } else { 
-         this.setState({
-          winner: "No winner yet" 
+      } else {
+        console.log('no winner'); 
+        this.setState({
+          winner: "No winner yet"
         });
-
-      } 
+      }
     }
-    console.log(this.state.winner); 
     return null;
   }
 
@@ -191,8 +187,8 @@ class Board extends Component {
               this.statusContainer = status;
             }}
           >
-           <div>Game in Progress: {this.state.gameInProgress}</div>
-           <div>Winner: {this.state.winner}</div>
+            <div>Game Status: {this.state.gameInProgress}</div>
+            <div>Winner: {this.state.winner}</div>
           </div>
 
           <button
