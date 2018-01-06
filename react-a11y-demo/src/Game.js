@@ -53,7 +53,6 @@ class Board extends Component {
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
-      activeD: this.state.activeD
     });
     this.setGameStatus();
     this.statusContainer.focus();
