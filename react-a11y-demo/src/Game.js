@@ -38,7 +38,7 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: null,
-      winner: "No winner yet",
+      winner: null,
       clearButtonDisabled: true
     });
   }
@@ -55,7 +55,6 @@ class Board extends Component {
       xIsNext: !this.state.xIsNext,
       activeD: this.state.activeD
     });
-    this.calculateWinner();
     this.setGameStatus();
     this.statusContainer.focus();
   }
@@ -143,7 +142,7 @@ class Board extends Component {
         clearButtonDisabled: false
       });
     }
-
+    this.calculateWinner();  
   }
 
   calculateWinner() {
@@ -162,21 +161,27 @@ class Board extends Component {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        console.log('winner'); 
         this.setState({
           winner: squares[a]
         });
+        return null;
       } else {
-        console.log('no winner'); 
         this.setState({
           winner: "No winner yet"
         });
+        return null;
       }
     }
     return null;
   }
 
+  componentDidUpdate(newProps, newState){
+    console.log(newState);
+    return true;
+  } 
+ 
   render() {
+    let nextPlayer = this.state.xIsNext ? "X" : "0";
     return (
       <div id="gameContainer" aria-label="tic-tac-toe">
         <div id="left">
@@ -189,6 +194,7 @@ class Board extends Component {
             }}
           >
             <div>Game Status: {this.state.gameInProgress}</div>
+            <div>Next Player: {nextPlayer}</div>
             <div>Winner: {this.state.winner}</div>
           </div>
 
@@ -274,6 +280,7 @@ class Board extends Component {
 }
 
 export class Game extends Component {
+
   componentDidMount() {
     this.topHeading.focus();
   }
