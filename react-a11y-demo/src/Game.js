@@ -25,17 +25,19 @@ class Board extends Component {
       squares: Array(10).fill(null, 1),
       xIsNext: true,
       activeD: 1,
-      gameInProgress: true 
+      gameInProgress: true,
+      winner: null
     };
     this.state.squares[0] = "unused square 0"; //needed to deal will index 0
   }
 
-  clearBoard(e){
+  clearBoard(e) {
     this.setState({
       squares: Array(10).fill(null, 1),
       xIsNext: true,
       activeD: 1,
-      gameInProgress: true 
+      gameInProgress: true,
+      winner: null
     });
   }
 
@@ -51,6 +53,8 @@ class Board extends Component {
       xIsNext: !this.state.xIsNext,
       activeD: this.state.activeD
     });
+
+    this.setGameStatus();
     this.statusContainer.focus();
   }
 
@@ -104,11 +108,9 @@ class Board extends Component {
 
   renderSquare(i) {
     let active = false;
-
     if (i === this.state.activeD) {
       active = true;
     }
-
     return (
       <Square
         id={i}
@@ -120,59 +122,64 @@ class Board extends Component {
     );
   }
 
-calculateWinner(squares) {
 
-  const lines = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
-    [1, 5, 9],
-    [3, 5, 7]
-  ];
-
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
+  setGameStatus(){
+      //Check if 8 of the  9 squares are populated
+      let populatedCnt = 1; 
+      for(var i = 1; i < this.state.squares.length; i++){
+      	if(this.state.squares[i]){ 
+          populatedCnt = populatedCnt + 1; 
+          console.log('squares populated: ' + populatedCnt);  
+        } 
+      }  
+      if (populatedCnt <  8)  {
+          this.setState({
+            gameInProgress: true
+          });
+      } else { 
+          this.setState({
+            gameInProgress: false
+          });
+      } 
+      console.log(populatedCnt);  
+      console.log(this.state.gameInProgress);  
   }
-  return null;
-}
+
+  calculateWinner(squares) {
+    console.log('calculateWinner'); 
+    const lines = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+      [1, 4, 7],
+      [2, 5, 8],
+      [3, 6, 9],
+      [1, 5, 9],
+      [3, 5, 7]
+    ];
+
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (
+        squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
+      ) {
+        this.setState({
+          gameInProgress: false,
+          winner: squares[a] 
+        });
+        console.log('winner:' +  this.state.winner);
+                return squares[a];
+      }
+    }
+    return null;
+  }
 
   render() {
-    const winner = this.calculateWinner(this.state.squares);
     let status;
-    if (winner) {
-      status = "Game Over -  Winner: " + winner;
-      this.state.gameInProgress = false;//causes warning that recommends to use setState
-      //trying to use setState here causes maximum depth error, see https://github.com/facebookincubator/create-react-app/issues/3251
-      /*
-      this.setState({
-        gameInProgress: false 
-      });
-      */
-
+    if (this.state.winner) {
+      status = "Game Over -  Winner: " + this.state.winner;
     } else {
       //check for no winner
-      if(
-        this.state.squares[1] &&
-        this.state.squares[2] &&
-        this.state.squares[3] &&
-        this.state.squares[4] &&
-        this.state.squares[5] &&
-        this.state.squares[6] &&
-        this.state.squares[7] &&
-        this.state.squares[8] &&
-        this.state.squares[9] 
-      ){
-        this.state.gameInProgress = false;//causes warning that recommends to use setState
-        status = "Game over no winner";
-      } else { 
-          status = "Game in progress - Next player: " + (this.state.xIsNext ? "X" : "O");
-      } 
     }
 
     return (
@@ -189,10 +196,20 @@ calculateWinner(squares) {
             {status}
           </div>
 
-          <button id="clear" disabled={this.state.gameInProgress} onClick={e => this.clearBoard(e)}>Clear Board</button>
+          <button
+            id="clear"
+            disabled={this.state.gameInProgress}
+            onClick={e => this.clearBoard(e)}
+          >
+            Clear Board
+          </button>
 
           <h3 id="squareValuesTableHeading">Square Values Table</h3>
-          <table id="squareValuesTable" aria-labelledby="squareValuesHeading" aria-describedby="status">
+          <table
+            id="squareValuesTable"
+            aria-labelledby="squareValuesHeading"
+            aria-describedby="status"
+          >
             <thead>
               <tr><th>Square Number</th><th>Value</th></tr>
             </thead>
@@ -297,7 +314,5 @@ export class Game extends Component {
     );
   }
 }
-
-
 
 export default Game;
