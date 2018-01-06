@@ -26,7 +26,8 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: null,
-      winner: null
+      winner: "No winner yet, less than 3 squares populated",
+      clearButtonDisabled: true 
     };
     this.state.squares[0] = "unused square 0"; //needed to deal will index 0
   }
@@ -37,7 +38,8 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: null,
-      winner: null
+      winner: "No winner yet, less than 3 squares populated", 
+      clearButtonDisabled: true 
     });
   }
 
@@ -127,18 +129,21 @@ class Board extends Component {
     for (var i = 1; i < this.state.squares.length; i++) {
       if (this.state.squares[i]) {
         populatedCnt = populatedCnt + 1;
-        console.log("squares populated: " + populatedCnt);
       }
+    }
+    if(populatedCnt >= 3){
+      this.calculateWinner(this.state.squares); 
     }
     //Check if less than 8 of the 9 squares are populated when this method is called
     let populatedMaxCnt = 8;
-    if (populatedCnt < populatedMaxCnt) {
+    if ((populatedCnt < populatedMaxCnt)) {
       this.setState({
         gameInProgress: "In progress",
       });
     } else {
       this.setState({
-        gameInProgress: "Game Over!" 
+        gameInProgress: "Game Over!",
+        clearButtonDisabled: false
       });
     }
   }
@@ -161,12 +166,16 @@ class Board extends Component {
         squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
       ) {
         this.setState({
-          gameInProgress: false,
-          winner: squares[a]
+          winner: "winner is: " + squares[a]
         });
-        return squares[a];
-      }
+      } else { 
+         this.setState({
+          winner: "No winner yet" 
+        });
+
+      } 
     }
+    console.log(this.state.winner); 
     return null;
   }
 
@@ -182,12 +191,13 @@ class Board extends Component {
               this.statusContainer = status;
             }}
           >
-           Game in Progress: {this.state.gameInProgress}
+           <div>Game in Progress: {this.state.gameInProgress}</div>
+           <div>Winner: {this.state.winner}</div>
           </div>
 
           <button
             id="clear"
-            disabled={this.state.gameInProgress}
+            disabled={this.state.clearButtonDisabled}
             onClick={e => this.clearBoard(e)}
           >
             Clear Board
