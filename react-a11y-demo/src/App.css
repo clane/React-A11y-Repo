@@ -1,5 +1,5 @@
 body { color:#000; background-color:#fff; min-height:1000px; } 
-.App { 
+.App p { 
     font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif; 
     letter-spacing: .01rem;
     font-weight: 400;
@@ -8,6 +8,14 @@ body { color:#000; background-color:#fff; min-height:1000px; }
     line-height: 1.58;
     letter-spacing: -.003em;
 } 
+
+header { overflow:hidden; }
+header h1 { width:23%; float:left; }
+
+.App-logo {
+  width:92px;
+  float:left;
+}
 
 *:focus { outline:3px solid blue; } 
 

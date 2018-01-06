@@ -1,11 +1,5 @@
 
-header { overflow:hidden; }
-header h1 { width:23%; float:left; }
 
-.App-logo {
-  width:92px;
-  float:left;
-}
 
 #gameContainer { overflow:hidden; background-color:blanchedalmond; }
 #left,#right { float:left; }
