@@ -58,66 +58,71 @@ class Board extends Component {
 
 
   handleClick(i) {
-    const squares = this.state.squares.slice();
-    if (squares[i]) {
-      alert("Square " + i + " is already set to " + squares[i]);
-    } else {
-      squares[i] = this.state.xIsNext ? "X" : "O";
-    }
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext,
-    });
-    this.setGameStatus();
-    this.statusContainer.focus();
+    if(this.state.gameInProgress){
+	    const squares = this.state.squares.slice();
+	    if (squares[i]) {
+	      alert("Square " + i + " is already set to " + squares[i]);
+	    } else {
+	      squares[i] = this.state.xIsNext ? "X" : "O";
+	    }
+	    this.setState({
+	      squares: squares,
+	      xIsNext: !this.state.xIsNext,
+	    });
+	    this.setGameStatus();
+	    this.statusContainer.focus();
+    } 
     return null; 
   }
 
   handleKeyboard(e) {
-    //right arrow key
-    if (e.keyCode === 39) {
-      this.setState(prevState => {
-        if (prevState.activeD < 9) {
-          return { activeD: prevState.activeD + 1 };
-        } else {
-          return { activeD: 1 };
-        }
-      });
-    }
-    if (e.keyCode === 37) {
-      //left arrow key
-      this.setState(prevState => {
-        if (prevState.activeD > 1) {
-          return { activeD: prevState.activeD - 1 };
-        } else {
-          return { activeD: 9 };
-        }
-      });
-    }
-    if (e.keyCode === 40) {
-      //down arrow key
-      this.setState(prevState => {
-        if (prevState.activeD < 7) {
-          return { activeD: prevState.activeD + 3 };
-        } else {
-          return { activeD: prevState.activeD };
-        }
-      });
-    }
-    if (e.keyCode === 38) {
-      //up arrow key
-      this.setState(prevState => {
-        if (prevState.activeD > 3) {
-          return { activeD: prevState.activeD - 3 };
-        } else {
-          return { activeD: prevState.activeD };
-        }
-      });
-    }
 
-    if (e.keyCode === 13) {
-      //Enter key
-      this.handleClick(this.state.activeD);
+    if(this.state.gameInProgress){
+	    //right arrow key
+	    if (e.keyCode === 39) {
+	      this.setState(prevState => {
+		if (prevState.activeD < 9) {
+		  return { activeD: prevState.activeD + 1 };
+		} else {
+		  return { activeD: 1 };
+		}
+	      });
+	    }
+	    if (e.keyCode === 37) {
+	      //left arrow key
+	      this.setState(prevState => {
+		if (prevState.activeD > 1) {
+		  return { activeD: prevState.activeD - 1 };
+		} else {
+		  return { activeD: 9 };
+		}
+	      });
+	    }
+	    if (e.keyCode === 40) {
+	      //down arrow key
+	      this.setState(prevState => {
+		if (prevState.activeD < 7) {
+		  return { activeD: prevState.activeD + 3 };
+		} else {
+		  return { activeD: prevState.activeD };
+		}
+	      });
+	    }
+	    if (e.keyCode === 38) {
+	      //up arrow key
+	      this.setState(prevState => {
+		if (prevState.activeD > 3) {
+		  return { activeD: prevState.activeD - 3 };
+		} else {
+		  return { activeD: prevState.activeD };
+		}
+	      });
+	    }
+
+	    if (e.keyCode === 13) {
+	      //Enter key
+	      this.handleClick(this.state.activeD);
+	    }
     }
   }
 
