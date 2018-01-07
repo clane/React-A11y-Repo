@@ -26,10 +26,11 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: false,
-      startButtonDisabled: false,
-      focusBoardButtonDisabled: true,
-      winner: null
+      startButtonDisabled: false
     };
+    this.state.squares[0] = null; //needed to deal will index 0
+    this.state.startButtonDisabled = false;
+    this.state.focusBoardButtonDisabled = true;
   }
 
   startGame(e) {
@@ -54,7 +55,8 @@ class Board extends Component {
   focusBoard() {
     this.boardContainer.focus();
   }
-  handleClick = (i) => (e) => {
+
+  handleClick(i) {
     if (this.state.gameInProgress) {
       const squares = this.state.squares.slice();
       if (squares[i]) {
@@ -130,7 +132,7 @@ class Board extends Component {
       <Square
         id={i}
         value={this.state.squares[i]}
-        onClick={this.handleClick(i)}
+        onClick={() => this.handleClick(i)}
         squareLabel={"square number " + i}
         active={active}
       />
@@ -171,35 +173,16 @@ class Board extends Component {
       if (
         squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
       ) {
-        //cant' get setState to work here
-        /*
-        const gameInProgress = false;
-        const startButtonDisabled = false;
-        const focusBoardButtonDisabled = true;
-        const winner = squares[a];
-
-        this.setState({
-          gameInProgress: gameInProgress,
-          startButtonDisabled: startButtonDisabled,
-          focusBoardButtonDisabled: focusBoardButtonDisabled,
-          winner: winner
-        });
-        */
-        
         this.state.startButtonDisabled = false;
         this.state.focusBoardButtonDisabled = true;
         this.state.gameInProgress = false;
-        this.state.winner = squares[a];
-        alert("Winner is: " + squares[a]);
-        return null;
+        return squares[a];
       }
     }
   }
 
   render() {
-
-    const squares = this.state.squares.slice();
-    let winner = this.calculateWinner(squares);
+    let winner = this.calculateWinner(this.state.squares.slice());
     let nextPlayer = this.state.xIsNext ? "X" : "0";
     let status = this.state.gameInProgress ? "in progress" : "game over";
     return (
