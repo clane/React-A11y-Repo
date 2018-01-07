@@ -29,8 +29,8 @@ class Board extends Component {
       startButtonDisabled: null
     };
     this.state.squares[0] = null; //needed to deal will index 0
-    this.state.startButtonDisabled = this.state.gameInProgress;
-    this.state.focusBoardButtonDisabled = this.state.gameInProgress;
+    this.state.startButtonDisabled = false;
+    this.state.focusBoardButtonDisabled = true;
   }
 
   startGame(e) {
@@ -39,6 +39,8 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: true,
+      startButtonDisabled: true,
+      focusBoardButtonDisabled: false 
     });
     this.clearBoard;
     this.boardContainer.focus();
@@ -201,7 +203,7 @@ class Board extends Component {
           <div>
             <button
               id="startButton"
-              disabled={this.state.clearButtonDisabled}
+              disabled={this.state.startButtonDisabled}
               onClick={e => this.startGame(e)}
             >
               Start Game
