@@ -26,7 +26,8 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: false,
-      startButtonDisabled: null
+      startButtonDisabled: false
+ 
     };
     this.state.squares[0] = null; //needed to deal will index 0
     this.state.startButtonDisabled = false;
@@ -52,7 +53,7 @@ class Board extends Component {
     });
   }
 
-  focusBoard(e) {
+  focusBoard() {
     this.boardContainer.focus();
   }
 
@@ -69,7 +70,8 @@ class Board extends Component {
         xIsNext: !this.state.xIsNext
       });
       this.setGameStatus();
-      this.statusContainer.focus();
+      this.focusBoardButton.focus();
+      console.log(document.activeElement);
     }
     return null;
   }
@@ -151,7 +153,8 @@ class Board extends Component {
     if (populatedCnt === populatedMaxCnt) {
       this.setState({
         gameInProgress: false,
-        focusBoardButtonDisabled: true
+        focusBoardButtonDisabled: true,
+        startButtonDisabled: false 
       });
     }
   }
@@ -190,11 +193,9 @@ class Board extends Component {
         <div id="left">
           <h3 id="status">Game Status</h3>
           <div
+            id="statusContainer"
             tabIndex="-1"
             className="status"
-            ref={status => {
-              this.statusContainer = status;
-            }}
           >
             <div>Game Status: {status}</div>
             <div>Next Player: {nextPlayer}</div>
@@ -214,6 +215,10 @@ class Board extends Component {
               id="focusBoardButton"
               disabled={this.state.focusBoardButtonDisabled}
               onClick={e => this.focusBoard(e)}
+              aria-describedby="statusContainer"
+              ref={focusBoardButtonRef => {
+                this.focusBoardButton = focusBoardButtonRef;
+              }}
             >
               Focus board
             </button>
@@ -223,7 +228,6 @@ class Board extends Component {
           <table
             id="squareValuesTable"
             aria-labelledby="squareValuesHeading"
-            aria-describedby="status"
           >
             <thead>
               <tr><th>Square Number</th><th>Value</th></tr>
@@ -245,7 +249,7 @@ class Board extends Component {
         <div id="right">
           <h3 id="boardHeading">Game Board</h3>
           <table
-            tabIndex="-1"
+            tabIndex="0"
             aria-labelledby="boardHeading"
             aria-activedescendant={this.state.activeD}
             role="grid"
