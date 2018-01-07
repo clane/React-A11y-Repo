@@ -147,12 +147,11 @@ class Board extends Component {
         populatedCnt = populatedCnt + 1;
       }
     }
-    //Check if less than 8 of the 9 squares are populated when this method is called
     let populatedMaxCnt = 9;
     if (populatedCnt === populatedMaxCnt) {
       this.setState({
         gameInProgress: false,
-        clearButtonDisabled: false
+        focusBoardButtonDisabled: true
       });
     }
   }
@@ -174,7 +173,8 @@ class Board extends Component {
       if (
         squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
       ) {
-        this.state.clearButtonDisabled = false;
+        this.state.startButtonDisabled = false;
+        this.state.focusBoardButtonDisabled = true;
         this.state.gameInProgress = false;
         return squares[a];
       }
