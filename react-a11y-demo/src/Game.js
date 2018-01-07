@@ -27,7 +27,6 @@ class Board extends Component {
       activeD: 1,
       gameInProgress: false,
       startButtonDisabled: false
- 
     };
     this.state.squares[0] = null; //needed to deal will index 0
     this.state.startButtonDisabled = false;
@@ -41,10 +40,10 @@ class Board extends Component {
       activeD: 1,
       gameInProgress: true,
       startButtonDisabled: true,
-      focusBoardButtonDisabled: false 
+      focusBoardButtonDisabled: false
     });
-    this.clearBoard;
-    this.boardContainer.focus();
+    this.clearBoard();
+    this.focusBoard();
   }
 
   clearBoard() {
@@ -70,8 +69,7 @@ class Board extends Component {
         xIsNext: !this.state.xIsNext
       });
       this.setGameStatus();
-      this.focusBoardButton.focus();
-      console.log(document.activeElement);
+      this.statusContainer.focus();
     }
     return null;
   }
@@ -118,7 +116,6 @@ class Board extends Component {
           }
         });
       }
-
       if (e.keyCode === 13) {
         //Enter key
         this.handleClick(this.state.activeD);
@@ -154,7 +151,7 @@ class Board extends Component {
       this.setState({
         gameInProgress: false,
         focusBoardButtonDisabled: true,
-        startButtonDisabled: false 
+        startButtonDisabled: false
       });
     }
   }
@@ -196,6 +193,9 @@ class Board extends Component {
             id="statusContainer"
             tabIndex="-1"
             className="status"
+            ref={statusRef => {
+              this.statusContainer = statusRef;
+            }}
           >
             <div>Game Status: {status}</div>
             <div>Next Player: {nextPlayer}</div>
@@ -215,20 +215,13 @@ class Board extends Component {
               id="focusBoardButton"
               disabled={this.state.focusBoardButtonDisabled}
               onClick={e => this.focusBoard(e)}
-              aria-describedby="statusContainer"
-              ref={focusBoardButtonRef => {
-                this.focusBoardButton = focusBoardButtonRef;
-              }}
             >
               Focus board
             </button>
           </div>
 
           <h3 id="squareValuesTableHeading">Square Values Table</h3>
-          <table
-            id="squareValuesTable"
-            aria-labelledby="squareValuesHeading"
-          >
+          <table id="squareValuesTable" aria-labelledby="squareValuesHeading">
             <thead>
               <tr><th>Square Number</th><th>Value</th></tr>
             </thead>
