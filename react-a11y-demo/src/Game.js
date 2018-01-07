@@ -197,7 +197,7 @@ class Board extends Component {
               disabled={this.state.startButtonDisabled}
               onClick={e => this.startGame(e)}
             >
-              Start Game
+              Start New Game
             </button>
           </div>
           
