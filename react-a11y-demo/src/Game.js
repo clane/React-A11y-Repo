@@ -176,6 +176,7 @@ class Board extends Component {
         this.state.startButtonDisabled = false;
         this.state.focusBoardButtonDisabled = true;
         this.state.gameInProgress = false;
+        alert("Winner is : " + squares[a]);
         return squares[a];
       }
     }
