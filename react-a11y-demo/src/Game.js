@@ -133,11 +133,11 @@ class Board extends Component {
     let populatedMaxCnt = 8;
     if (populatedCnt < populatedMaxCnt) {
       this.setState({
-        gameInProgress: "In progress"
+        gameInProgress: true 
       });
     } else {
       this.setState({
-        gameInProgress: "Game Over!",
+        gameInProgress: false,
         clearButtonDisabled: false
       });
     }
@@ -159,6 +159,7 @@ class Board extends Component {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         this.state.clearButtonDisabled = false;
+        this.state.gameInProgress = false;
         return squares[a];
       }
     }
@@ -167,6 +168,7 @@ class Board extends Component {
   render() {
     let winner = this.calculateWinner(this.state.squares.slice());
     let nextPlayer = this.state.xIsNext ? "X" : "0";
+    let status = this.state.gameInProgress ? "in progress" : "game over";
     return (
       <div id="gameContainer" aria-label="tic-tac-toe">
         <div id="left">
@@ -178,7 +180,7 @@ class Board extends Component {
               this.statusContainer = status;
             }}
           >
-            <div>Game Status: {this.state.gameInProgress}</div>
+            <div>Game Status: {status}</div>
             <div>Next Player: {nextPlayer}</div>
             <div>Winner: {winner}</div>
           </div>
@@ -216,7 +218,6 @@ class Board extends Component {
 
         <div id="right">
           <h3 id="boardHeading">Game Board</h3>
-
           <table
             tabIndex="0"
             aria-labelledby="boardHeading"
