@@ -25,22 +25,37 @@ class Board extends Component {
       squares: Array(10).fill(null, 1),
       xIsNext: true,
       activeD: 1,
-      gameInProgress: null,
-      winner: null,
-      clearButtonDisabled: true
+      gameInProgress: false,
+      clearButtonDisabled: null, 
+      startButtonDisabled: null
     };
     this.state.squares[0] = null; //needed to deal will index 0
+    this.state.clearButtonDisabled = this.state.gameInProgress;
+    this.state.startButtonDisabled = this.state.gameInProgress;
+    this.state.focusBoardButtonDisabled = this.state.gameInProgress;
   }
 
-  clearBoard(e) {
+  startGame(e) {
     this.setState({
       squares: Array(10).fill(null, 1),
       xIsNext: true,
       activeD: 1,
-      gameInProgress: null,
+      gameInProgress: true,
       clearButtonDisabled: true
     });
+    this.boardContainer.focus();
   }
+
+  clearBoard(e) {
+    this.setState({
+      squares: Array(10).fill(null, 1)
+    });
+  }
+
+  focusBoard(e) {
+    this.boardContainer.focus();
+  }
+
 
   handleClick(i) {
     const squares = this.state.squares.slice();
@@ -131,11 +146,7 @@ class Board extends Component {
     }
     //Check if less than 8 of the 9 squares are populated when this method is called
     let populatedMaxCnt = 8;
-    if (populatedCnt < populatedMaxCnt) {
-      this.setState({
-        gameInProgress: true 
-      });
-    } else {
+    if (populatedCnt === populatedMaxCnt) {
       this.setState({
         gameInProgress: false,
         clearButtonDisabled: false
@@ -184,14 +195,33 @@ class Board extends Component {
             <div>Next Player: {nextPlayer}</div>
             <div>Winner: {winner}</div>
           </div>
-
-          <button
-            id="clear"
-            disabled={this.state.clearButtonDisabled}
-            onClick={e => this.clearBoard(e)}
-          >
-            Clear Board
-          </button>
+          <div>
+		  <button
+		    id="clear"
+		    disabled={this.state.startButtonDisabled}
+		    onClick={e => this.clearBoard(e)}
+		  >
+		    Clear Board
+		  </button>
+          </div>
+          <div>
+		  <button
+		    id="startButton"
+		    disabled={this.state.clearButtonDisabled}
+		    onClick={e => this.startGame(e)}
+		  >
+		    Start Game
+		  </button>
+          </div>
+	  <div>
+		  <button
+		    id="focusBoardButton"
+		    disabled={this.state.focusBoardButtonDisabled}
+		    onClick={e => this.focusBoard(e)}
+		  >
+		    Go back to board
+		  </button>
+          </div>
 
           <h3 id="squareValuesTableHeading">Square Values Table</h3>
           <table
@@ -219,7 +249,7 @@ class Board extends Component {
         <div id="right">
           <h3 id="boardHeading">Game Board</h3>
           <table
-            tabIndex="0"
+            tabIndex="-1"
             aria-labelledby="boardHeading"
             aria-activedescendant={this.state.activeD}
             role="grid"
