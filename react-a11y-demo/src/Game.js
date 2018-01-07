@@ -26,11 +26,8 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: false,
-      startButtonDisabled: false
+      startButtonDisabled: false,
     };
-    this.state.squares[0] = null; //needed to deal will index 0
-    this.state.startButtonDisabled = false;
-    this.state.focusBoardButtonDisabled = true;
   }
 
   startGame(e) {
@@ -40,20 +37,14 @@ class Board extends Component {
       activeD: 1,
       gameInProgress: true,
       startButtonDisabled: true,
-      focusBoardButtonDisabled: false
     });
     this.clearBoard();
-    this.focusBoard();
   }
 
   clearBoard() {
     this.setState({
       squares: Array(10).fill(null, 1)
     });
-  }
-
-  focusBoard() {
-    this.boardContainer.focus();
   }
 
   handleClick(i) {
@@ -150,7 +141,6 @@ class Board extends Component {
     if (populatedCnt === populatedMaxCnt) {
       this.setState({
         gameInProgress: false,
-        focusBoardButtonDisabled: true,
         startButtonDisabled: false
       });
     }
@@ -174,7 +164,6 @@ class Board extends Component {
         squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
       ) {
         this.state.startButtonDisabled = false;
-        this.state.focusBoardButtonDisabled = true;
         this.state.gameInProgress = false;
         alert("Winner is : " + squares[a]);
         return squares[a];
@@ -211,16 +200,7 @@ class Board extends Component {
               Start Game
             </button>
           </div>
-          <div>
-            <button
-              id="focusBoardButton"
-              disabled={this.state.focusBoardButtonDisabled}
-              onClick={e => this.focusBoard(e)}
-            >
-              Focus board
-            </button>
-          </div>
-
+          
           <h3 id="squareValuesTableHeading">Square Values Table</h3>
           <table id="squareValuesTable" aria-labelledby="squareValuesHeading">
             <thead>
