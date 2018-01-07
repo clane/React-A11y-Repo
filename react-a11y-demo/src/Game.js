@@ -26,11 +26,9 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: false,
-      clearButtonDisabled: null, 
       startButtonDisabled: null
     };
     this.state.squares[0] = null; //needed to deal will index 0
-    this.state.clearButtonDisabled = this.state.gameInProgress;
     this.state.startButtonDisabled = this.state.gameInProgress;
     this.state.focusBoardButtonDisabled = this.state.gameInProgress;
   }
@@ -41,12 +39,12 @@ class Board extends Component {
       xIsNext: true,
       activeD: 1,
       gameInProgress: true,
-      clearButtonDisabled: true
     });
+    this.clearBoard;
     this.boardContainer.focus();
   }
 
-  clearBoard(e) {
+  clearBoard() {
     this.setState({
       squares: Array(10).fill(null, 1)
     });
@@ -56,73 +54,71 @@ class Board extends Component {
     this.boardContainer.focus();
   }
 
-
   handleClick(i) {
-    if(this.state.gameInProgress){
-	    const squares = this.state.squares.slice();
-	    if (squares[i]) {
-	      alert("Square " + i + " is already set to " + squares[i]);
-	    } else {
-	      squares[i] = this.state.xIsNext ? "X" : "O";
-	    }
-	    this.setState({
-	      squares: squares,
-	      xIsNext: !this.state.xIsNext,
-	    });
-	    this.setGameStatus();
-	    this.statusContainer.focus();
-    } 
-    return null; 
+    if (this.state.gameInProgress) {
+      const squares = this.state.squares.slice();
+      if (squares[i]) {
+        alert("Square " + i + " is already set to " + squares[i]);
+      } else {
+        squares[i] = this.state.xIsNext ? "X" : "O";
+      }
+      this.setState({
+        squares: squares,
+        xIsNext: !this.state.xIsNext
+      });
+      this.setGameStatus();
+      this.statusContainer.focus();
+    }
+    return null;
   }
 
   handleKeyboard(e) {
+    if (this.state.gameInProgress) {
+      //right arrow key
+      if (e.keyCode === 39) {
+        this.setState(prevState => {
+          if (prevState.activeD < 9) {
+            return { activeD: prevState.activeD + 1 };
+          } else {
+            return { activeD: 1 };
+          }
+        });
+      }
+      if (e.keyCode === 37) {
+        //left arrow key
+        this.setState(prevState => {
+          if (prevState.activeD > 1) {
+            return { activeD: prevState.activeD - 1 };
+          } else {
+            return { activeD: 9 };
+          }
+        });
+      }
+      if (e.keyCode === 40) {
+        //down arrow key
+        this.setState(prevState => {
+          if (prevState.activeD < 7) {
+            return { activeD: prevState.activeD + 3 };
+          } else {
+            return { activeD: prevState.activeD };
+          }
+        });
+      }
+      if (e.keyCode === 38) {
+        //up arrow key
+        this.setState(prevState => {
+          if (prevState.activeD > 3) {
+            return { activeD: prevState.activeD - 3 };
+          } else {
+            return { activeD: prevState.activeD };
+          }
+        });
+      }
 
-    if(this.state.gameInProgress){
-	    //right arrow key
-	    if (e.keyCode === 39) {
-	      this.setState(prevState => {
-		if (prevState.activeD < 9) {
-		  return { activeD: prevState.activeD + 1 };
-		} else {
-		  return { activeD: 1 };
-		}
-	      });
-	    }
-	    if (e.keyCode === 37) {
-	      //left arrow key
-	      this.setState(prevState => {
-		if (prevState.activeD > 1) {
-		  return { activeD: prevState.activeD - 1 };
-		} else {
-		  return { activeD: 9 };
-		}
-	      });
-	    }
-	    if (e.keyCode === 40) {
-	      //down arrow key
-	      this.setState(prevState => {
-		if (prevState.activeD < 7) {
-		  return { activeD: prevState.activeD + 3 };
-		} else {
-		  return { activeD: prevState.activeD };
-		}
-	      });
-	    }
-	    if (e.keyCode === 38) {
-	      //up arrow key
-	      this.setState(prevState => {
-		if (prevState.activeD > 3) {
-		  return { activeD: prevState.activeD - 3 };
-		} else {
-		  return { activeD: prevState.activeD };
-		}
-	      });
-	    }
-
-	    if (e.keyCode === 13) {
-	      //Enter key
-	      this.handleClick(this.state.activeD);
-	    }
+      if (e.keyCode === 13) {
+        //Enter key
+        this.handleClick(this.state.activeD);
+      }
     }
   }
 
@@ -150,7 +146,7 @@ class Board extends Component {
       }
     }
     //Check if less than 8 of the 9 squares are populated when this method is called
-    let populatedMaxCnt = 8;
+    let populatedMaxCnt = 9;
     if (populatedCnt === populatedMaxCnt) {
       this.setState({
         gameInProgress: false,
@@ -173,7 +169,9 @@ class Board extends Component {
 
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      if (
+        squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
+      ) {
         this.state.clearButtonDisabled = false;
         this.state.gameInProgress = false;
         return squares[a];
@@ -201,31 +199,22 @@ class Board extends Component {
             <div>Winner: {winner}</div>
           </div>
           <div>
-		  <button
-		    id="clear"
-		    disabled={this.state.startButtonDisabled}
-		    onClick={e => this.clearBoard(e)}
-		  >
-		    Clear Board
-		  </button>
+            <button
+              id="startButton"
+              disabled={this.state.clearButtonDisabled}
+              onClick={e => this.startGame(e)}
+            >
+              Start Game
+            </button>
           </div>
           <div>
-		  <button
-		    id="startButton"
-		    disabled={this.state.clearButtonDisabled}
-		    onClick={e => this.startGame(e)}
-		  >
-		    Start Game
-		  </button>
-          </div>
-	  <div>
-		  <button
-		    id="focusBoardButton"
-		    disabled={this.state.focusBoardButtonDisabled}
-		    onClick={e => this.focusBoard(e)}
-		  >
-		    Go back to board
-		  </button>
+            <button
+              id="focusBoardButton"
+              disabled={this.state.focusBoardButtonDisabled}
+              onClick={e => this.focusBoard(e)}
+            >
+              Focus board
+            </button>
           </div>
 
           <h3 id="squareValuesTableHeading">Square Values Table</h3>
@@ -301,7 +290,6 @@ class Board extends Component {
 }
 
 export class Game extends Component {
-
   componentDidMount() {
     this.topHeading.focus();
   }
