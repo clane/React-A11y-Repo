@@ -14,7 +14,35 @@ import logo from './logo.svg';
 
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state={
+      skipLinkVisible: false
+    }
+  }
+ 
+  skipLinkFocus(){
+    this.setState({
+      skipLinkVisible: true
+    });
+  } 
+
+  shouldComponentUpdate(prevProps,prevState){
+    console.log(prevState);
+        return true;
+  }
+
   render() {
+
+    let skipLinkClass;
+
+    if(this.state.skipLinkVisible){
+        skipLinkClass = null;
+    } else {
+        skipLinkClass = "offscreenText";
+    }
+
     return (
       <div className="App">
 	<Helmet>
@@ -23,14 +51,14 @@ class App extends Component {
           <title>A11y React Demo</title>
         </Helmet>
 
-        <a id="skipLink" href="#content">Skip to main content</a>
+        <a className={skipLinkClass} onFocus={e => this.skipLinkFocus(e)} id="skipLink" href="#content">Skip to main content</a>
 
         <header className="App-header">
           <img src={logo} className="App-logo" alt="Reacts official logo" />
           <h1 className="App-title">A11y React Demo</h1>
 	</header>
 
-        <a id="skipTarget" name="content">[main content]</a>
+        <a className={skipLinkClass} id="skipTarget" name="content">[main content]</a>
 
         <BrowserRouter>
   	  <div>
