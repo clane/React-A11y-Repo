@@ -152,6 +152,7 @@ class Board extends Component {
       });
       return null;
     }
+    //I think this is stale and that's the problem
     if(populatedCnt >=  3) { 
 		let winner = this.calculateWinner(this.state.squares.slice());
 		if (winner) {
@@ -205,9 +206,7 @@ class Board extends Component {
     console.log('this.state');
     console.log(this.state);
     */
-    
-        return true;
-    
+    return true;
   }
 
   componentDidUpdate(prevProps,prevState){
@@ -218,7 +217,6 @@ class Board extends Component {
     */ 
     console.log('this.state');
     console.log(this.state);
-    //this.setGameStatus();
   }
 
  
