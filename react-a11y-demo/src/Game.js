@@ -66,6 +66,7 @@ class Board extends Component {
         xIsNext: !this.state.xIsNext
       });
       this.setGameStatus();
+      this.setWinner();
       this.statusContainer.focus();
     }
     return null;
@@ -143,7 +144,6 @@ class Board extends Component {
         populatedCnt = populatedCnt + 1;
       }
     }
-    
     let populatedMaxCnt = 9;
     if (populatedCnt === populatedMaxCnt) {
       this.setState({
@@ -152,28 +152,29 @@ class Board extends Component {
       });
       return null;
     }
-    //I think this is stale and that's the problem
-    if(populatedCnt >=  3) { 
-		let winner = this.calculateWinner(this.state.squares.slice());
-		if (winner) {
-		  this.setState({
-			  gameInProgress: false,
-			  startButtonDisabled: false,
-			  winner: winner
-			}, function(){
-				 alert("Winner is : " + winner);
-			} 
-		  );
-		}
-
-	    /*
-		this.state.startButtonDisabled = false;
-		this.state.gameInProgress = false;
-		*/
-
-        return null;
-    } 
   }
+
+  setWinner(){ 
+    //I think this is stale and that's the problem
+	let winner = this.calculateWinner(this.state.squares.slice());
+	if (winner) {
+	  this.setState({
+	    gameInProgress: false,
+	    startButtonDisabled: false,
+	    winner: winner
+	    }, function(){
+		   alert("Winner is : " + winner);
+	    } 
+      );
+	}
+
+    /*
+	this.state.startButtonDisabled = false;
+	this.state.gameInProgress = false;
+	*/
+
+    return null;
+  } 
 
   calculateWinner(squares) {
     const lines = [
@@ -206,7 +207,11 @@ class Board extends Component {
     console.log('this.state');
     console.log(this.state);
     */
-    return true;
+    if(this.state.winner) {
+      return false;
+    } else { 
+        return true;
+    } 
   }
 
   componentDidUpdate(prevProps,prevState){
@@ -217,6 +222,12 @@ class Board extends Component {
     */ 
     console.log('this.state');
     console.log(this.state);
+    let winner = this.calculateWinner(this.state.squares.slice());
+    console.log(winner);
+    if(winner) {
+      this.setWinner(); ;
+    }  
+  
   }
 
  
