@@ -211,7 +211,6 @@ class Board extends Component {
   render() {
     let winner = this.state.winner;
     let nextPlayer = this.state.xIsNext ? "X" : "0";
-    if(!this.state.gameInProgress) { nextPlayer = null; } 
     let status = this.state.gameInProgress ? "in progress" : "game over";
     return (
       <div id="gameContainer" aria-label="tic-tac-toe">
