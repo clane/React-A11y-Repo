@@ -40,6 +40,7 @@ class Board extends Component {
       startButtonDisabled: true,
     });
     this.clearBoard();
+    this.clearWinner();
   }
 
   clearBoard() {
@@ -47,7 +48,11 @@ class Board extends Component {
       squares: Array(10).fill(null, 1)
     });
   }
-
+  clearWinner() {
+    this.setState({
+      winner: null
+    });
+  }
   handleClick(i) {
     if (this.state.gameInProgress) {
       const squares = this.state.squares.slice();
@@ -139,34 +144,34 @@ class Board extends Component {
       }
     }
     
-
     let populatedMaxCnt = 9;
     if (populatedCnt === populatedMaxCnt) {
       this.setState({
         gameInProgress: false,
         startButtonDisabled: false
       });
+      return null;
     }
+    if(populatedCnt >=  3) { 
+		let winner = this.calculateWinner(this.state.squares.slice());
+		if (winner) {
+		  this.setState({
+			  gameInProgress: false,
+			  startButtonDisabled: false,
+			  winner: winner
+			}, function(){
+				 alert("Winner is : " + winner);
+			} 
+		  );
+		}
 
-    let winner = this.calculateWinner(this.state.squares.slice());
-    
-    if (winner) {
-      console.log('have a winner'); 
-      this.setState({
-          gameInProgress: false,
-          startButtonDisabled: false,
-          winner: winner
-        }, function(){
-             alert("Winner is : " + winner);
-        } 
-      );
-    }
+	    /*
+		this.state.startButtonDisabled = false;
+		this.state.gameInProgress = false;
+		*/
 
-	/*
-	this.state.startButtonDisabled = false;
-	this.state.gameInProgress = false;
-	*/
-
+        return null;
+    } 
   }
 
   calculateWinner(squares) {
@@ -194,13 +199,26 @@ class Board extends Component {
 
   shouldComponentUpdate(prevProps,prevState){ 
     console.log('shouldComponentUpdate'); 
+    console.log('prevState');
     console.log(prevState);
-    return true;
+    /*
+    console.log('this.state');
+    console.log(this.state);
+    */
+    
+        return true;
+    
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps,prevState){
     console.log('componentDidUpdate'); 
-    console.log(this.state); 
+    /*
+    console.log('prevState');
+    console.log(prevState);
+    */ 
+    console.log('this.state');
+    console.log(this.state);
+    //this.setGameStatus();
   }
 
  
