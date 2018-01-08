@@ -1,4 +1,6 @@
 body { color:#000; background-color:#fff; min-height:1000px; } 
+
+#skipLink, #skipTarget { display:block; margin:20px 0px; } 
 .App p { 
     font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif; 
     letter-spacing: .01rem;
