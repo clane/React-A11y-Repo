@@ -205,6 +205,9 @@ class Board extends Component {
       this.setWinner(); 
       alert('Winner: ' + winner); 
     }
+    if((this.state.gameInProgress === false) && !winner ){ 
+      alert('Game over no winner'); 
+    }
   }
  
   render() {
