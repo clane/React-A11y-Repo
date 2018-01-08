@@ -145,7 +145,7 @@ class Board extends Component {
       this.setState({
         gameInProgress: false,
         startButtonDisabled: false
-      }, function(){ console.log('callback');} );
+      });
     }
 
     let winner = this.calculateWinner(this.state.squares.slice());
