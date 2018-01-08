@@ -1,7 +1,7 @@
 
 
 
-#gameContainer { overflow:hidden; background-color:blanchedalmond; }
+#gameContainer { overflow:hidden; background-color:blanchedalmond; padding:20px; }
 #left,#right { float:left; }
 #left { padding-left:5%; width:40% }
 #right { width:50%; float:left; }
