@@ -27,6 +27,7 @@ class Board extends Component {
       activeD: 1,
       gameInProgress: false,
       startButtonDisabled: false,
+      winner: null
     };
   }
 
@@ -137,13 +138,35 @@ class Board extends Component {
         populatedCnt = populatedCnt + 1;
       }
     }
+    
+
     let populatedMaxCnt = 9;
     if (populatedCnt === populatedMaxCnt) {
       this.setState({
         gameInProgress: false,
         startButtonDisabled: false
-      });
+      }, function(){ console.log('callback');} );
     }
+
+    let winner = this.calculateWinner(this.state.squares.slice());
+    
+    if (winner) {
+      console.log('have a winner'); 
+      this.setState({
+          gameInProgress: false,
+          startButtonDisabled: false,
+          winner: winner
+        }, function(){
+             alert("Winner is : " + winner);
+        } 
+      );
+    }
+
+	/*
+	this.state.startButtonDisabled = false;
+	this.state.gameInProgress = false;
+	*/
+
   }
 
   calculateWinner(squares) {
@@ -163,16 +186,26 @@ class Board extends Component {
       if (
         squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
       ) {
-        this.state.startButtonDisabled = false;
-        this.state.gameInProgress = false;
-        alert("Winner is : " + squares[a]);
+        
         return squares[a];
       }
     }
   }
 
+  shouldComponentUpdate(prevProps,prevState){ 
+    console.log('shouldComponentUpdate'); 
+    console.log(prevState);
+    return true;
+  }
+
+  componentDidUpdate(){
+    console.log('componentDidUpdate'); 
+    console.log(this.state); 
+  }
+
+ 
   render() {
-    let winner = this.calculateWinner(this.state.squares.slice());
+    let winner = this.state.winner;
     let nextPlayer = this.state.xIsNext ? "X" : "0";
     let status = this.state.gameInProgress ? "in progress" : "game over";
     return (
