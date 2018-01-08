@@ -41,6 +41,7 @@ class Board extends Component {
     });
     this.clearBoard();
     this.clearWinner();
+    this.boardContainer.focus(); 
   }
 
   clearBoard() {
