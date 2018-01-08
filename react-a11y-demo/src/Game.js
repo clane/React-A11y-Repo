@@ -162,17 +162,9 @@ class Board extends Component {
 	    gameInProgress: false,
 	    startButtonDisabled: false,
 	    winner: winner
-	    }, function(){
-		   alert("Winner is : " + winner);
-	    } 
+	    }
       );
 	}
-
-    /*
-	this.state.startButtonDisabled = false;
-	this.state.gameInProgress = false;
-	*/
-
     return null;
   } 
 
@@ -200,13 +192,6 @@ class Board extends Component {
   }
 
   shouldComponentUpdate(prevProps,prevState){ 
-    console.log('shouldComponentUpdate'); 
-    console.log('prevState');
-    console.log(prevState);
-    /*
-    console.log('this.state');
-    console.log(this.state);
-    */
     if(this.state.winner) {
       return false;
     } else { 
@@ -215,21 +200,12 @@ class Board extends Component {
   }
 
   componentDidUpdate(prevProps,prevState){
-    console.log('componentDidUpdate'); 
-    /*
-    console.log('prevState');
-    console.log(prevState);
-    */ 
-    console.log('this.state');
-    console.log(this.state);
     let winner = this.calculateWinner(this.state.squares.slice());
-    console.log(winner);
-    if(winner) {
-      this.setWinner(); ;
-    }  
-  
+    if(winner && !this.state.winner) {
+      this.setWinner(); 
+      alert('Winner: ' + winner); 
+    }
   }
-
  
   render() {
     let winner = this.state.winner;
