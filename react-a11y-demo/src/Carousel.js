@@ -20,20 +20,33 @@ class Carousel extends Component {
     if(currentSlide > 0){
       this.setState({
         currentSlide: currentSlide - 1
-    });
+      });
     }
+    console.log(this.state.currentSlide);
   }
 
   showNextSlide(){
     console.log('in showNextSlide');
     let currentSlide = this.state.currentSlide;
-    if(currentSlide > this.state.slides.length){
+    if(currentSlide < this.state.slides.length){
       this.setState({
         currentSlide: currentSlide + 1
-    });
+      });
     }
+    console.log(this.state.currentSlide);
   }
 
+  shouldComponentUpdate(prevProps,prevState){
+    console.log('in shouldComponentUpdate');
+    console.log(prevState);
+    return true;
+  }
+
+  componentDidUpdate(prevProps,prevState){
+    console.log('in componentDidUpdate');
+    console.log(this.state);
+    console.log(this.state.currentSlide);
+  } 
 
   componentDidMount() {
     this.topHeading.focus();
