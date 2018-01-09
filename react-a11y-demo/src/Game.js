@@ -27,7 +27,8 @@ class Board extends Component {
       activeD: 1,
       gameInProgress: false,
       startButtonDisabled: false,
-      winner: null
+      winner: null,
+      firstGameStarted:false
     };
   }
 
@@ -38,6 +39,7 @@ class Board extends Component {
       activeD: 1,
       gameInProgress: true,
       startButtonDisabled: true,
+      firstGameStarted: true
     });
     this.clearBoard();
     this.clearWinner();
@@ -195,17 +197,23 @@ class Board extends Component {
       return false;
     } else { 
         return true;
-    } 
+    }
+    
+    if(!this.state.firstGameStarted){
+      return false;
+    }
   }
 
   componentDidUpdate(prevProps,prevState){
-    let winner = this.calculateWinner(this.state.squares.slice());
-    if(winner && !this.state.winner) {
-      this.setWinner(); 
-      alert('Winner: ' + winner); 
-    }
-    if((this.state.gameInProgress === false) && !winner ){ 
-      alert('Game over no winner'); 
+    if(this.state.firstGameStarted){
+      let winner = this.calculateWinner(this.state.squares.slice());
+      if(winner && !this.state.winner) {
+        this.setWinner(); 
+	alert('Winner: ' + winner); 
+      }
+      if((this.state.gameInProgress === false) && !winner ){ 
+        alert('Game over no winner');  
+      }
     }
   }
  
@@ -213,7 +221,11 @@ class Board extends Component {
     let winner = this.state.winner;
     let nextPlayer = this.state.xIsNext ? "X" : "0";
     if(!this.state.gameInProgress) { nextPlayer = null; } 
-    let status = this.state.gameInProgress ? "in progress" : "game over";
+    let status = null;
+    if(this.state.firstGameStarted){
+      status = this.state.gameInProgress ? "in progress" : "game over";
+    }
+
     return (
       <div id="gameContainer" aria-label="tic-tac-toe">
         <div id="left">

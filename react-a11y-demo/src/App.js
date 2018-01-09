@@ -26,11 +26,9 @@ class App extends Component {
     this.setState({
       skipLinkVisible: true
     });
-    console.log('in skipLinkFocus');
   } 
 
   shouldComponentUpdate(prevProps,prevState){
-    //console.log(prevState);
     if(prevState.skipLinkVisible && !this.state.skipLinkVisible){
       return true;
     } else {
