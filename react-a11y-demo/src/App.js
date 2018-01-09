@@ -18,7 +18,7 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-      skipLinkVisible: false
+      skipLinkVisible: false 
     }
   }
  
@@ -26,11 +26,16 @@ class App extends Component {
     this.setState({
       skipLinkVisible: true
     });
+    console.log('in skipLinkFocus');
   } 
 
   shouldComponentUpdate(prevProps,prevState){
-    console.log(prevState);
-        return true;
+    //console.log(prevState);
+    if(prevState.skipLinkVisible && !this.state.skipLinkVisible){
+      return true;
+    } else {
+        return false;
+    } 
   }
 
   render() {
