@@ -198,10 +198,6 @@ class Board extends Component {
     } else { 
         return true;
     }
-    
-    if(!this.state.firstGameStarted){
-      return false;
-    }
   }
 
   componentDidUpdate(prevProps,prevState){
