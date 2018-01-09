@@ -3,6 +3,37 @@ import { Helmet } from "react-helmet";
 import "./Carousel.css";
 
 class Carousel extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      slides: Array(3).fill(null),
+      previousSlide: null,
+      currentSlide: 0,
+      nextSlide: null
+    };
+  }
+
+  showPreviousSlide(){
+    console.log('in showPreviousSlide');
+    let currentSlide = this.state.currentSlide;
+    if(currentSlide > 0){
+      this.setState({
+        currentSlide: currentSlide - 1
+    });
+    }
+  }
+
+  showNextSlide(){
+    console.log('in showNextSlide');
+    let currentSlide = this.state.currentSlide;
+    if(currentSlide > this.state.slides.length){
+      this.setState({
+        currentSlide: currentSlide + 1
+    });
+    }
+  }
+
 
   componentDidMount() {
     this.topHeading.focus();
@@ -10,7 +41,7 @@ class Carousel extends Component {
 
   render() {
 
-//https://api.cryptokitties.co/kitties?owner_wallet_address=0x8ae2d55229abe73665ba982c36c7bc8b84200665
+    //https://api.cryptokitties.co/kitties?owner_wallet_address=0x8ae2d55229abe73665ba982c36c7bc8b84200665
 
     return (
       <div className="home-page">
@@ -25,7 +56,8 @@ class Carousel extends Component {
             this.topHeading = componentH2;
           }}
          >
-         Carousel</h2>
+         Carousel
+         </h2>
          <div id="carousel">
            <div id="slidesContainer">           
 		   <div className="slide">
@@ -54,8 +86,8 @@ class Carousel extends Component {
           </div>
 
           <div id="controls">
-            <button>Previous</button>
-            <button>Next</button>
+            <button onClick={() => this.showPreviousSlide()}>Previous</button>
+            <button onClick={() => this.showNextSlide()}>Next</button>
           </div>
 
 
