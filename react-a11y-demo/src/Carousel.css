@@ -21,10 +21,10 @@
   float:left;
   width:90%;
   overflow:hidden; 
-  -webkit-transition: width 1s ease-in;
-  -moz-transition: width 1s ease-in;
-  -o-transition: width 1s ease-in;
-  transition: width 1s ease-in;
+  -webkit-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 1s ease-in-out;
 } 
 
 
