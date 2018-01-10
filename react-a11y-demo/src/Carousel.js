@@ -11,9 +11,25 @@ class Carousel extends Component {
     super(props);
     this.state = {
       slides: [
-       {className:"current", ariaHidden:"false", img:cat1,},
-       {className:"notCurrent", ariaHidden: "true", img:cat2,},
-       {className:"notCurrent", ariaHidden: "true", img:cat3,}
+       { 
+         className:"current",
+         ariaHidden:"false",
+         img:cat1,
+         heading: "Kitten 293931",
+         desc: "Good day! I'm Casper Jumpy. I want to live in a world where people believe the world is flat. In my free time, I can usually be found tantalizing or prank-calling celebrities. This will be an amewsing friendship.",
+       },
+       { 
+         className:"notCurrent",
+         ariaHidden: "true",
+         img:cat2,
+         desc: "",
+       },
+       { 
+         className:"notCurrent",
+         ariaHidden: "true",
+         img:cat3,
+         desc: "",
+      }
       ],
       currentSlideIndex: 0,
     };
@@ -87,12 +103,9 @@ class Carousel extends Component {
          <div id="carousel">
            <div id="slidesContainer" aria-live="polite">           
 		   <div className={this.state.slides[0].className} aria-hidden={this.state.slides[0].ariaHidden}>
-                   <img width="250px" height="250px" src={this.state.slides[0].img} alt="" />
-
-	     <h3>Kitten 293931</h3>
-		     <p>
-		       Good day! I'm Casper Jumpy. I want to live in a world where people believe the world is flat. In my free time, I can usually be found tantalizing or prank-calling celebrities. This will be an amewsing friendship.
-		    </p>
+                     <img width="250px" height="250px" src={this.state.slides[0].img} alt="" />
+	             <h3>{this.state.slides[0].heading}</h3>
+		     <p>{this.state.slides[0].desc}</p>
 		   </div>
 
 		   <div className={this.state.slides[1].className} aria-hidden={this.state.slides[1].ariaHidden}>
