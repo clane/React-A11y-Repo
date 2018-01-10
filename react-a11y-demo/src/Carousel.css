@@ -1,6 +1,6 @@
 
 #slidesContainer div.current {display:block;}
-#slidesContainer div.notCurrent {display:none; } 
+#slidesContainer div.notCurrent { width:0px; } 
 
 #carousel {
   width: 600px;
@@ -14,7 +14,7 @@
   overflow:hidden;
 }
 
-#slidesContainer div { float:left; width:90%; } 
+#slidesContainer div { float:left; width:90%; overflow:hidden; } 
 
 
 #controls { 

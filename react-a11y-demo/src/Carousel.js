@@ -10,27 +10,30 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      slides: [{className:"current"},{className:"notCurrent"},{className:"notCurrent"}],
+      slides: [
+       {className:"current", ariaHidden:"false",},
+       {className:"notCurrent", ariaHidden: "true",},
+       {className:"notCurrent", ariaHidden: "true",}
+      ],
       currentSlideIndex: 0,
-
     };
   }
 
   getCurrentSlide(){
     let currentSlideIndex = this.state.currentSlideIndex;
-    console.log(currentSlideIndex);
     return currentSlideIndex;
   }
   
   showPreviousSlide(){
-    console.log('in showPreviousSlide');
     let currentSlideIndex = this.getCurrentSlide();
     console.log(currentSlideIndex);
     if(currentSlideIndex > 0){
       let updatedSlides = this.state.slides;
       updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].className = "notCurrent";
+      updatedSlides[currentSlideIndex].ariaHidden = "true";
       updatedSlides[currentSlideIndex - 1].className = "current";
+      updatedSlides[currentSlideIndex - 1].ariaHidden = "false";
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex - 1
@@ -39,32 +42,23 @@ class Carousel extends Component {
   }
 
   showNextSlide(){
-    console.log('in showNextSlide');
     let currentSlideIndex = this.getCurrentSlide();
     console.log(currentSlideIndex);
     if(currentSlideIndex < (this.state.slides.length - 1)){
       let updatedSlides = this.state.slides;
       updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].className = "notCurrent";
+      updatedSlides[currentSlideIndex].ariaHidden = "true";
       updatedSlides[currentSlideIndex + 1].className = "current";
+      updatedSlides[currentSlideIndex + 1].ariaHidden = "false";
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
       });
-
+ 
     } 
   }
 
-  shouldComponentUpdate(prevProps,prevState){
-    console.log('in shouldComponentUpdate');
-    console.log(prevState);
-    return true;
-  }
-
-  componentDidUpdate(prevProps,prevState){
-    console.log('in componentDidUpdate');
-    console.log(this.state);
-  } 
 
   componentDidMount() {
     this.topHeading.focus();
@@ -92,7 +86,7 @@ class Carousel extends Component {
          </h2>
          <div id="carousel">
            <div id="slidesContainer">           
-		   <div className={this.state.slides[0].className}>
+		   <div className={this.state.slides[0].className} aria-hidden={this.state.slides[0].ariaHidden}>
                    <img width="250px" height="250px" src={cat1} alt="" />
 
 	     <h3>Kitten 293931</h3>
@@ -101,7 +95,7 @@ class Carousel extends Component {
 		    </p>
 		   </div>
 
-		   <div className={this.state.slides[1].className}>
+		   <div className={this.state.slides[1].className} aria-hidden={this.state.slides[1].ariaHidden}>
                      <img width="250px" height="250px" src={cat2} alt="" />
 		     <h3>Kitten 271631</h3>
 		     <p>
@@ -109,7 +103,7 @@ class Carousel extends Component {
 		    </p>
 		   </div>
 
-		  <div className={this.state.slides[2].className}>
+		  <div className={this.state.slides[2].className} aria-hidden={this.state.slides[2].ariaHidden}>
                      <img width="250px" height="250px" src={cat3} alt="" />
 		     <h3>Kitten 44215</h3>
 		     <p>
