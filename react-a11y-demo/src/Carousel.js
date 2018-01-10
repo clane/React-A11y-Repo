@@ -85,7 +85,7 @@ class Carousel extends Component {
          Carousel
          </h2>
          <div id="carousel">
-           <div id="slidesContainer">           
+           <div id="slidesContainer" aria-live="polite">           
 		   <div className={this.state.slides[0].className} aria-hidden={this.state.slides[0].ariaHidden}>
                    <img width="250px" height="250px" src={cat1} alt="" />
 
