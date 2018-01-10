@@ -5,6 +5,8 @@ import cat1 from  "./293931.svg";
 import cat2 from "./271631.svg";
 import cat3 from "./44215.svg";
 import cat4 from "./288702.svg";
+import cat5 from "./226476.svg";
+import cat6 from "./163514.svg";
 
 class Carousel extends Component {
   
@@ -42,7 +44,25 @@ class Carousel extends Component {
 		 heading:"Kitten 288702",
 		 desc: "What's up! I'm Kitty #288702. I'm a professional Culinary Sanitation Specialist and I love lasagna. When I'm not riding the bus, I'm siring for status! We're so fur-tunate to have found each other!",
 
-	      }
+	      },
+
+              { 
+		 className:"notCurrent",
+		 ariaHidden: "true",
+		 img:cat5,
+		 heading:"Kitten 226476",
+		 desc: "Aloha! I'm Kitty #226476. All you need to know about me is I hate hamburgers with a passion. I was voted biggest teacher's pet in college. I hope you like kitten around as much as I do!",
+
+	      },
+
+              { 
+		 className:"notCurrent",
+		 ariaHidden: "true",
+		 img:cat6,
+		 heading:"Kitten 163514",
+		 desc: "What's up! I'm Wolfgrey. I'm a Ventriloquist by day, and I like siring for status by night. I am 71% wizard, 81% Dispensary Clerk, and otherwise bad at math. Can you make my brilliant dreams come true?",
+
+	      },
 
 
 
@@ -141,6 +161,18 @@ class Carousel extends Component {
                      <img width="250px" height="250px" src={this.state.slides[3].img} alt="" />
 	             <h3>{this.state.slides[3].heading}</h3>
 		     <p>{this.state.slides[3].desc}</p>
+		  </div>
+
+                  <div className={this.state.slides[4].className} aria-hidden={this.state.slides[4].ariaHidden}>
+                     <img width="250px" height="250px" src={this.state.slides[4].img} alt="" />
+	             <h3>{this.state.slides[4].heading}</h3>
+		     <p>{this.state.slides[4].desc}</p>
+		  </div>
+
+                  <div className={this.state.slides[5].className} aria-hidden={this.state.slides[5].ariaHidden}>
+                     <img width="250px" height="250px" src={this.state.slides[5].img} alt="" />
+	             <h3>{this.state.slides[5].heading}</h3>
+		     <p>{this.state.slides[5].desc}</p>
 		  </div>
 
           </div>
