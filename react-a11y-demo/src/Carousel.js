@@ -10,33 +10,40 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      slides: Array(2).fill(null),
-      previousSlide: null,
-      currentSlide: 0,
-      nextSlide: null
+      slideClasses: ["notCurrent","current","notCurrent"],
     };
+    console.log(this.state);
   }
 
+  getCurrentSlide(){
+    let currentSlideIndex;
+    for(var i=0; i < this.state.slideClasses.length; i++){
+      if(this.state.slideClasses[i] === "current"){
+        currentSlideIndex = i;
+      }
+    }
+    return currentSlideIndex;
+  }
+  
   showPreviousSlide(){
     console.log('in showPreviousSlide');
-    let currentSlide = this.state.currentSlide;
-    if(currentSlide > 0){
-      this.setState({
-        currentSlide: currentSlide - 1
-      });
-    }
-    console.log(this.state.currentSlide);
+    let updatedSlideClasses = Array(this.state.slideClasses.length).fill("notCurrent");
+    let currentSlideIndex = this.getCurrenSlide; 
+    updatedSlideClasses[currentSlideIndex - 1] = "current";;
+    this.setState({
+      slideClasses: updatedSlideClasses
+    });
   }
 
   showNextSlide(){
     console.log('in showNextSlide');
-    let currentSlide = this.state.currentSlide;
-    if(currentSlide < this.state.slides.length){
-      this.setState({
-        currentSlide: currentSlide + 1
-      });
-    }
-    console.log(this.state.currentSlide);
+    let updatedSlideClasses = Array(this.state.slideClasses.length).fill("notCurrent");
+    let currentSlideIndex = this.getCurrenSlide; 
+    updatedSlideClasses[currentSlideIndex + 1] = "current";
+    this.setState({
+      slideClasses: updatedSlideClasses
+    });
+
   }
 
   shouldComponentUpdate(prevProps,prevState){
@@ -59,6 +66,7 @@ class Carousel extends Component {
 
     //https://api.cryptokitties.co/kitties?owner_wallet_address=0x8ae2d55229abe73665ba982c36c7bc8b84200665
 
+
     return (
       <div className="home-page">
         <Helmet>
@@ -76,7 +84,7 @@ class Carousel extends Component {
          </h2>
          <div id="carousel">
            <div id="slidesContainer">           
-		   <div className="slide">
+		   <div className={this.state.slideClasses[0]}>
                    <img width="250px" height="250px" src={cat1} alt="" />
 
 	     <h3>Kitten 293931</h3>
@@ -85,7 +93,7 @@ class Carousel extends Component {
 		    </p>
 		   </div>
 
-		   <div className="slide">
+		   <div className={this.state.slideClasses[1]}>
                      <img width="250px" height="250px" src={cat2} alt="" />
 		     <h3>Kitten 271631</h3>
 		     <p>
@@ -93,7 +101,7 @@ class Carousel extends Component {
 		    </p>
 		   </div>
 
-		  <div className="slide">
+		  <div className={this.state.slideClasses[2]}>
                      <img width="250px" height="250px" src={cat3} alt="" />
 		     <h3>Kitten 44215</h3>
 		     <p>

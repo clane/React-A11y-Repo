@@ -1,17 +1,20 @@
 
-
+#slidesContainer div.current {display:block;}
+#slidesContainer div.notCurrent {display:none; } 
 
 #carousel {
-  width: 80%;
+  width: 600px;
   height: 600px;
   border: 5px solid #000;
 }
 
 #slidesContainer {
-  width: 100%;
+  width: 600px;
   height:500px;
   overflow:hidden;
 }
+
+#slidesContainer div { float:left; width:90%; } 
 
 
 #controls { 
