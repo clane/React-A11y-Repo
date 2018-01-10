@@ -4,34 +4,48 @@ import "./Carousel.css";
 import cat1 from  "./293931.svg";
 import cat2 from "./271631.svg";
 import cat3 from "./44215.svg";
+import cat4 from "./288702.svg";
 
 class Carousel extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      slides: [
-       { 
-         className:"current",
-         ariaHidden:"false",
-         img:cat1,
-         heading: "Kitten 293931",
-         desc: "Good day! I'm Casper Jumpy. I want to live in a world where people believe the world is flat. In my free time, I can usually be found tantalizing or prank-calling celebrities. This will be an amewsing friendship.",
-       },
-       { 
-         className:"notCurrent",
-         ariaHidden: "true",
-         heading:"Kitten 271631",
-         img:cat2,
-         desc: "*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?",
-       },
-       { 
-         className:"notCurrent",
-         ariaHidden: "true",
-         img:cat3,
-         heading:"Kitten 44215",
-         desc: "Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason.",
-      }
+      slides:
+       [
+	       { 
+		 className:"current",
+		 ariaHidden:"false",
+		 img:cat1,
+		 heading: "Kitten 293931",
+		 desc: "Good day! I'm Casper Jumpy. I want to live in a world where people believe the world is flat. In my free time, I can usually be found tantalizing or prank-calling celebrities. This will be an amewsing friendship.",
+	       },
+	       { 
+		 className:"notCurrent",
+		 ariaHidden: "true",
+		 heading:"Kitten 271631",
+		 img:cat2,
+		 desc: "*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?",
+	       },
+	       { 
+		 className:"notCurrent",
+		 ariaHidden: "true",
+		 img:cat3,
+		 heading:"Kitten 44215",
+		 desc: "Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason.",
+	      },
+
+              { 
+		 className:"notCurrent",
+		 ariaHidden: "true",
+		 img:cat4,
+		 heading:"Kitten 288702",
+		 desc: "What's up! I'm Kitty #288702. I'm a professional Culinary Sanitation Specialist and I love lasagna. When I'm not riding the bus, I'm siring for status! We're so fur-tunate to have found each other!",
+
+	      }
+
+
+
       ],
       currentSlideIndex: 0,
     };
@@ -84,6 +98,7 @@ class Carousel extends Component {
 
   render() {
 
+    //https://api.cryptokitties.co/kitties/33333
     //https://api.cryptokitties.co/kitties?owner_wallet_address=0x8ae2d55229abe73665ba982c36c7bc8b84200665
 
 
@@ -121,6 +136,13 @@ class Carousel extends Component {
 	             <h3>{this.state.slides[2].heading}</h3>
 		     <p>{this.state.slides[2].desc}</p>
 		  </div>
+
+		  <div className={this.state.slides[3].className} aria-hidden={this.state.slides[3].ariaHidden}>
+                     <img width="250px" height="250px" src={this.state.slides[3].img} alt="" />
+	             <h3>{this.state.slides[3].heading}</h3>
+		     <p>{this.state.slides[3].desc}</p>
+		  </div>
+
           </div>
 
           <div id="controls">
