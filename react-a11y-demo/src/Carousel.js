@@ -29,7 +29,8 @@ class Carousel extends Component {
     if(currentSlideIndex > 0){
       let updatedSlides = this.state.slides;
       updatedSlides = this.state.slides;
-      updatedSlides[currentSlideIndex -1].className = "current";
+      updatedSlides[currentSlideIndex].className = "notCurrent";
+      updatedSlides[currentSlideIndex - 1].className = "current";
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex - 1
@@ -41,10 +42,16 @@ class Carousel extends Component {
     console.log('in showNextSlide');
     let currentSlideIndex = this.getCurrentSlide();
     console.log(currentSlideIndex);
-    if(currentSlideIndex < this.state.slides.length){
+    if(currentSlideIndex < (this.state.slides.length - 1)){
+      let updatedSlides = this.state.slides;
+      updatedSlides = this.state.slides;
+      updatedSlides[currentSlideIndex].className = "notCurrent";
+      updatedSlides[currentSlideIndex + 1].className = "current";
       this.setState({
+        slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
       });
+
     } 
   }
 
