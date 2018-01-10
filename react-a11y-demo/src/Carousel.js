@@ -11,9 +11,9 @@ class Carousel extends Component {
     super(props);
     this.state = {
       slides: [
-       {className:"current", ariaHidden:"false",},
-       {className:"notCurrent", ariaHidden: "true",},
-       {className:"notCurrent", ariaHidden: "true",}
+       {className:"current", ariaHidden:"false", img:cat1,},
+       {className:"notCurrent", ariaHidden: "true", img:cat2,},
+       {className:"notCurrent", ariaHidden: "true", img:cat3,}
       ],
       currentSlideIndex: 0,
     };
@@ -87,7 +87,7 @@ class Carousel extends Component {
          <div id="carousel">
            <div id="slidesContainer" aria-live="polite">           
 		   <div className={this.state.slides[0].className} aria-hidden={this.state.slides[0].ariaHidden}>
-                   <img width="250px" height="250px" src={cat1} alt="" />
+                   <img width="250px" height="250px" src={this.state.slides[0].img} alt="" />
 
 	     <h3>Kitten 293931</h3>
 		     <p>
@@ -96,7 +96,7 @@ class Carousel extends Component {
 		   </div>
 
 		   <div className={this.state.slides[1].className} aria-hidden={this.state.slides[1].ariaHidden}>
-                     <img width="250px" height="250px" src={cat2} alt="" />
+                     <img width="250px" height="250px" src={this.state.slides[1].img} alt="" />
 		     <h3>Kitten 271631</h3>
 		     <p>
 	*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?
@@ -104,7 +104,7 @@ class Carousel extends Component {
 		   </div>
 
 		  <div className={this.state.slides[2].className} aria-hidden={this.state.slides[2].ariaHidden}>
-                     <img width="250px" height="250px" src={cat3} alt="" />
+                     <img width="250px" height="250px" src={this.state.slides[2].img} alt="" />
 		     <h3>Kitten 44215</h3>
 		     <p>
 	Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason.
