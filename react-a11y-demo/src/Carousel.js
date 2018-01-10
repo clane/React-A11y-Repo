@@ -26,13 +26,26 @@ class Carousel extends Component {
     console.log('in showPreviousSlide');
     let currentSlideIndex = this.getCurrentSlide();
     console.log(currentSlideIndex);
-    
+    if(currentSlideIndex > 0){
+      let updatedSlides = this.state.slides;
+      updatedSlides = this.state.slides;
+      updatedSlides[currentSlideIndex -1].className = "current";
+      this.setState({
+        slides: updatedSlides,
+        currentSlideIndex: currentSlideIndex - 1
+      });
+    }    
   }
 
   showNextSlide(){
     console.log('in showNextSlide');
     let currentSlideIndex = this.getCurrentSlide();
     console.log(currentSlideIndex);
+    if(currentSlideIndex < this.state.slides.length){
+      this.setState({
+        currentSlideIndex: currentSlideIndex + 1
+      });
+    } 
   }
 
   shouldComponentUpdate(prevProps,prevState){
