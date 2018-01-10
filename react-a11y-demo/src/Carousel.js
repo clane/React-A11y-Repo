@@ -10,15 +10,15 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      slideClasses: ["notCurrent","current","notCurrent"],
+      slides: [{className:"current"},{className:"notCurrent"},{className:"notCurrent"}],
+
     };
-    console.log(this.state);
   }
 
   getCurrentSlide(){
     let currentSlideIndex;
-    for(var i=0; i < this.state.slideClasses.length; i++){
-      if(this.state.slideClasses[i] === "current"){
+    for(var i=0; i < this.state.slides.length; i++){
+      if(this.state.slides[i] === "current"){
         currentSlideIndex = i;
       }
     }
@@ -27,23 +27,10 @@ class Carousel extends Component {
   
   showPreviousSlide(){
     console.log('in showPreviousSlide');
-    let updatedSlideClasses = Array(this.state.slideClasses.length).fill("notCurrent");
-    let currentSlideIndex = this.getCurrenSlide; 
-    updatedSlideClasses[currentSlideIndex - 1] = "current";;
-    this.setState({
-      slideClasses: updatedSlideClasses
-    });
   }
 
   showNextSlide(){
     console.log('in showNextSlide');
-    let updatedSlideClasses = Array(this.state.slideClasses.length).fill("notCurrent");
-    let currentSlideIndex = this.getCurrenSlide; 
-    updatedSlideClasses[currentSlideIndex + 1] = "current";
-    this.setState({
-      slideClasses: updatedSlideClasses
-    });
-
   }
 
   shouldComponentUpdate(prevProps,prevState){
@@ -55,7 +42,6 @@ class Carousel extends Component {
   componentDidUpdate(prevProps,prevState){
     console.log('in componentDidUpdate');
     console.log(this.state);
-    console.log(this.state.currentSlide);
   } 
 
   componentDidMount() {
@@ -84,7 +70,7 @@ class Carousel extends Component {
          </h2>
          <div id="carousel">
            <div id="slidesContainer">           
-		   <div className={this.state.slideClasses[0]}>
+		   <div className={this.state.slides[0]}>
                    <img width="250px" height="250px" src={cat1} alt="" />
 
 	     <h3>Kitten 293931</h3>
@@ -93,7 +79,7 @@ class Carousel extends Component {
 		    </p>
 		   </div>
 
-		   <div className={this.state.slideClasses[1]}>
+		   <div className={this.state.slides[1]}>
                      <img width="250px" height="250px" src={cat2} alt="" />
 		     <h3>Kitten 271631</h3>
 		     <p>
@@ -101,7 +87,7 @@ class Carousel extends Component {
 		    </p>
 		   </div>
 
-		  <div className={this.state.slideClasses[2]}>
+		  <div className={this.state.slides[2]}>
                      <img width="250px" height="250px" src={cat3} alt="" />
 		     <h3>Kitten 44215</h3>
 		     <p>
