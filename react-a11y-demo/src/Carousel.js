@@ -21,14 +21,16 @@ class Carousel extends Component {
        { 
          className:"notCurrent",
          ariaHidden: "true",
+         heading:"Kitten 271631",
          img:cat2,
-         desc: "",
+         desc: "*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?",
        },
        { 
          className:"notCurrent",
          ariaHidden: "true",
          img:cat3,
-         desc: "",
+         heading:"Kitten 44215",
+         desc: "Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason.",
       }
       ],
       currentSlideIndex: 0,
@@ -110,18 +112,14 @@ class Carousel extends Component {
 
 		   <div className={this.state.slides[1].className} aria-hidden={this.state.slides[1].ariaHidden}>
                      <img width="250px" height="250px" src={this.state.slides[1].img} alt="" />
-		     <h3>Kitten 271631</h3>
-		     <p>
-	*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?
-		    </p>
+	             <h3>{this.state.slides[1].heading}</h3>
+		     <p>{this.state.slides[1].desc}</p>
 		   </div>
 
 		  <div className={this.state.slides[2].className} aria-hidden={this.state.slides[2].ariaHidden}>
                      <img width="250px" height="250px" src={this.state.slides[2].img} alt="" />
-		     <h3>Kitten 44215</h3>
-		     <p>
-	Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason.
-		    </p>
+	             <h3>{this.state.slides[2].heading}</h3>
+		     <p>{this.state.slides[2].desc}</p>
 		  </div>
           </div>
 
