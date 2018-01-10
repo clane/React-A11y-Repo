@@ -13,7 +13,15 @@
   overflow:hidden;
 }
 
-#slidesContainer div { float:left; width:90%; overflow:hidden; } 
+#slidesContainer div { 
+  float:left;
+  width:90%;
+  overflow:hidden; 
+  -webkit-transition: width 1s ease-in;
+  -moz-transition: width 1s ease-in;
+  -o-transition: width 1s ease-in;
+  transition: width 1s ease-in;
+} 
 
 
 #controls { 
