@@ -70,7 +70,7 @@ class Carousel extends Component {
          </h2>
          <div id="carousel">
            <div id="slidesContainer">           
-		   <div className={this.state.slides[0]}>
+		   <div className={this.state.slides[0].className}>
                    <img width="250px" height="250px" src={cat1} alt="" />
 
 	     <h3>Kitten 293931</h3>
@@ -79,7 +79,7 @@ class Carousel extends Component {
 		    </p>
 		   </div>
 
-		   <div className={this.state.slides[1]}>
+		   <div className={this.state.slides[1].className}>
                      <img width="250px" height="250px" src={cat2} alt="" />
 		     <h3>Kitten 271631</h3>
 		     <p>
@@ -87,7 +87,7 @@ class Carousel extends Component {
 		    </p>
 		   </div>
 
-		  <div className={this.state.slides[2]}>
+		  <div className={this.state.slides[2].className}>
                      <img width="250px" height="250px" src={cat3} alt="" />
 		     <h3>Kitten 44215</h3>
 		     <p>
