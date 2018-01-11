@@ -77,6 +77,7 @@ class Carousel extends Component {
 
       ],
       currentSlideIndex: 0,
+      liveRegionEntries: []
     };
   }
 
@@ -87,7 +88,6 @@ class Carousel extends Component {
   
   showPreviousSlide(){
     let currentSlideIndex = this.getCurrentSlide();
-    console.log(currentSlideIndex);
     if(currentSlideIndex > 0){
       let updatedSlides = this.state.slides;
       updatedSlides = this.state.slides;
@@ -104,7 +104,6 @@ class Carousel extends Component {
 
   showNextSlide(){
     let currentSlideIndex = this.getCurrentSlide();
-    console.log(currentSlideIndex);
     if(currentSlideIndex < (this.state.slides.length - 1)){
       let updatedSlides = this.state.slides;
       updatedSlides = this.state.slides;
@@ -116,9 +115,20 @@ class Carousel extends Component {
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
       });
+    this.updateLiveRegion();
  
     } 
   }
+
+  updateLiveRegion(){
+    let updatedLiveRegionEntries = this.state.liveRegionEntries;
+    let newEntry= this.state.slides[this.state.currentSlideIndex].heading + " " + this.state.slides[this.state.currentSlideIndex].desc; 
+    updatedLiveRegionEntries.push(newEntry);   
+    this.setState({
+      liveRegionEntries: updatedLiveRegionEntries
+    });
+  }
+
 
 
   componentDidMount() {
@@ -146,21 +156,24 @@ class Carousel extends Component {
          Carousel
          </h2>
          <div id="carousel">
-           <div id="slidesContainer" aria-live="polite">  
+           <div id="slidesContainer">  
              {this.state.slides.map((slide, index) => (
-             <div key={index} className={slide.className}>
-               <img width="300px" height="300px" src={slide.img} alt="" />
-               <h3>{slide.heading}</h3>
-               <p>{slide.desc}</p>
-             </div>
-            ))}
-         </div>
+               <div key={index} className={slide.className}>
+                 <img width="300px" height="300px" src={slide.img} alt="" />
+                 <h3>{slide.heading}</h3>
+                 <p>{slide.desc}</p>
+               </div>
+             ))}
+           </div> 
 
           <div id="controls">
             <button onClick={() => this.showPreviousSlide()}>Previous</button>
             <button onClick={() => this.showNextSlide()}>Next</button>
           </div>
-
+          
+          <div aria-live="assertive">
+            {this.state.liveRegionEntries}
+          </div>
 
          </div>
        </div>
