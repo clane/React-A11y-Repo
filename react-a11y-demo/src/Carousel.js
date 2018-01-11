@@ -120,8 +120,7 @@ class Carousel extends Component {
 
     //https://api.cryptokitties.co/kitties/33333
     //https://api.cryptokitties.co/kitties?owner_wallet_address=0x8ae2d55229abe73665ba982c36c7bc8b84200665
-
-
+       
     return (
       <div className="home-page">
         <Helmet>
@@ -138,44 +137,15 @@ class Carousel extends Component {
          Carousel
          </h2>
          <div id="carousel">
-           <div id="slidesContainer" aria-live="polite">           
-		   <div className={this.state.slides[0].className} aria-hidden={this.state.slides[0].ariaHidden}>
-                     <img width="250px" height="250px" src={this.state.slides[0].img} alt="" />
-	             <h3>{this.state.slides[0].heading}</h3>
-		     <p>{this.state.slides[0].desc}</p>
-		   </div>
-
-		   <div className={this.state.slides[1].className} aria-hidden={this.state.slides[1].ariaHidden}>
-                     <img width="250px" height="250px" src={this.state.slides[1].img} alt="" />
-	             <h3>{this.state.slides[1].heading}</h3>
-		     <p>{this.state.slides[1].desc}</p>
-		   </div>
-
-		  <div className={this.state.slides[2].className} aria-hidden={this.state.slides[2].ariaHidden}>
-                     <img width="250px" height="250px" src={this.state.slides[2].img} alt="" />
-	             <h3>{this.state.slides[2].heading}</h3>
-		     <p>{this.state.slides[2].desc}</p>
-		  </div>
-
-		  <div className={this.state.slides[3].className} aria-hidden={this.state.slides[3].ariaHidden}>
-                     <img width="250px" height="250px" src={this.state.slides[3].img} alt="" />
-	             <h3>{this.state.slides[3].heading}</h3>
-		     <p>{this.state.slides[3].desc}</p>
-		  </div>
-
-                  <div className={this.state.slides[4].className} aria-hidden={this.state.slides[4].ariaHidden}>
-                     <img width="250px" height="250px" src={this.state.slides[4].img} alt="" />
-	             <h3>{this.state.slides[4].heading}</h3>
-		     <p>{this.state.slides[4].desc}</p>
-		  </div>
-
-                  <div className={this.state.slides[5].className} aria-hidden={this.state.slides[5].ariaHidden}>
-                     <img width="250px" height="250px" src={this.state.slides[5].img} alt="" />
-	             <h3>{this.state.slides[5].heading}</h3>
-		     <p>{this.state.slides[5].desc}</p>
-		  </div>
-
-          </div>
+           <div id="slidesContainer" aria-live="polite">  
+             {this.state.slides.map((slide, index) => (
+             <div className={slide.className}>
+               <img width="250px" height="250px" src={slide.img} alt="" />
+               <h3>{slide.heading}</h3>
+               <p>{slide.desc}</p>
+             </div>
+            ))}
+         </div>
 
           <div id="controls">
             <button onClick={() => this.showPreviousSlide()}>Previous</button>
