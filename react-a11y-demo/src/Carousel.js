@@ -123,20 +123,18 @@ class Carousel extends Component {
     });
   }
 
-  componentDidMount() {
-    this.topHeading.focus();
-    console.log(this.state.liveRegionEntries);
-    if(this.state.liveRegionEntries.length === 0){
-      this.updateLiveRegion();
-    } 
-  }
 
   shouldComponentUpdate(prevProps,prevState){
-    //console.log(prevState);
+    console.log('in shouldComponentUpdate'); 
+    console.log(prevState.currentSlideIndex);
     return true;
   } 
   componentDidUpdate() {
-    //console.log(this.state.liveRegionEntries);
+    console.log('in componentDidUpdate');
+    console.log(this.state.currentSlideIndex);
+  }
+ 
+  componentDidMount(){
   }
 
 
@@ -175,9 +173,7 @@ class Carousel extends Component {
           <button onClick={() => this.showNextSlide()}>Next</button>
         </div>
 
-        <div aria-live="assertive">
-
-          {this.state.liveRegionEntries}
+        <div aria-live="polite">
           {this.state.liveRegionEntries.map((entry, index) => (
             <div key={index}>
               <p>{entry}</p>
