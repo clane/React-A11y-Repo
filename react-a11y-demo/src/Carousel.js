@@ -161,7 +161,14 @@ class Carousel extends Component {
         </div>
 
         <div aria-live="assertive">
+
           {this.state.liveRegionEntries}
+          {this.state.liveRegionEntries.map((entry, index) => (
+            <div key={index}>
+              <p>{entry}</p>
+            </div>
+          ))}
+
         </div>
 
       </div>
