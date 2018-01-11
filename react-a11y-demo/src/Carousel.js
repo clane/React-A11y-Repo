@@ -73,6 +73,7 @@ class Carousel extends Component {
     };
   }
 
+
   getCurrentSlide() {
     let currentSlideIndex = this.state.currentSlideIndex;
     return currentSlideIndex;
@@ -124,7 +125,21 @@ class Carousel extends Component {
 
   componentDidMount() {
     this.topHeading.focus();
+    console.log(this.state.liveRegionEntries);
+    if(this.state.liveRegionEntries.length === 0){
+      this.updateLiveRegion();
+    } 
   }
+
+  shouldComponentUpdate(prevProps,prevState){
+    //console.log(prevState);
+    return true;
+  } 
+  componentDidUpdate() {
+    //console.log(this.state.liveRegionEntries);
+  }
+
+
 
   render() {
     //https://api.cryptokitties.co/kitties/33333
