@@ -140,7 +140,7 @@ class Carousel extends Component {
            <div id="slidesContainer" aria-live="polite">  
              {this.state.slides.map((slide, index) => (
              <div key={index} className={slide.className}>
-               <img width="250px" height="250px" src={slide.img} alt="" />
+               <img width="300px" height="300px" src={slide.img} alt="" />
                <h3>{slide.heading}</h3>
                <p>{slide.desc}</p>
              </div>
