@@ -7,6 +7,7 @@ import cat3 from "./44215.svg";
 import cat4 from "./288702.svg";
 import cat5 from "./226476.svg";
 import cat6 from "./163514.svg";
+import cat7 from "./273163.svg";
 
 class Carousel extends Component {
   
@@ -64,6 +65,14 @@ class Carousel extends Component {
 
 	      },
 
+              { 
+		 className:"notCurrent",
+		 ariaHidden: "true",
+		 img:cat7,
+		 heading:"Kitten 273163",
+		 desc: "*waves*! I'm Kitty #273163. I want to live in a world where people believe that one day cats will rule this planet. It wasn't heavily publicized, but I once had a brief relationship with Puss in Boots. We can be friends, but keep the ultra purrsonal stuff to yourself, please.",
+
+	      },
 
 
       ],
