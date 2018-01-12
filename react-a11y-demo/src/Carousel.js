@@ -109,7 +109,13 @@ class Carousel extends Component {
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
       });
-      this.updateLiveRegion();
+      let indexDifference = this.state.currentLiveRegionIndex - this.state.currentSlideIndex;
+      console.log('in showNextSlide');
+      console.log(this.state.currentSlideIndex); 
+      console.log(this.state.currentLiveRegionIndex); 
+      if(indexDifference === 1) {
+        this.updateLiveRegion();
+      } 
     }
   }
 
