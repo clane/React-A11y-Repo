@@ -29,16 +29,22 @@
   margin-left:-74px;
 }
 
+#slidesContainer div p{ 
+  width:97%;
+}
+
 #controls { 
   width: 50%;
   margin:20px auto;
 }
 
 #controls  button.control {
+   width:35%;
    margin-right:20px;
-   margin-botton:20px;
-   font-size:6rem;
+   margin-bottom:20px;
+   font-size:4rem;
    border:none;
+   background-color:yellow;
 } 
 
 .slide { 
