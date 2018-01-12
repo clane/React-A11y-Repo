@@ -16,21 +16,18 @@ class Carousel extends Component {
       slides: [
         {
           className: "current",
-          ariaHidden: "false",
           img: cat1,
           heading: "Kitten 293931",
           desc: "Good day! I'm Casper Jumpy. I want to live in a world where people believe the world is flat. In my free time, I can usually be found tantalizing or prank-calling celebrities. This will be an amewsing friendship."
         },
         {
           className: "notCurrent",
-          ariaHidden: "true",
           heading: "Kitten 271631",
           img: cat2,
           desc: "*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?"
         },
         {
           className: "notCurrent",
-          ariaHidden: "true",
           img: cat3,
           heading: "Kitten 44215",
           desc: "Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason."
@@ -38,7 +35,6 @@ class Carousel extends Component {
 
         {
           className: "notCurrent",
-          ariaHidden: "true",
           img: cat4,
           heading: "Kitten 288702",
           desc: "What's up! I'm Kitty #288702. I'm a professional Culinary Sanitation Specialist and I love lasagna. When I'm not riding the bus, I'm siring for status! We're so fur-tunate to have found each other!"
@@ -46,7 +42,6 @@ class Carousel extends Component {
 
         {
           className: "notCurrent",
-          ariaHidden: "true",
           img: cat5,
           heading: "Kitten 226476",
           desc: "Aloha! I'm Kitty #226476. All you need to know about me is I hate hamburgers with a passion. I was voted biggest teacher's pet in college. I hope you like kitten around as much as I do!"
@@ -54,7 +49,6 @@ class Carousel extends Component {
 
         {
           className: "notCurrent",
-          ariaHidden: "true",
           img: cat6,
           heading: "Kitten 163514",
           desc: "What's up! I'm Wolfgrey. I'm a Ventriloquist by day, and I like siring for status by night. I am 71% wizard, 81% Dispensary Clerk, and otherwise bad at math. Can you make my brilliant dreams come true?"
@@ -62,7 +56,6 @@ class Carousel extends Component {
 
         {
           className: "notCurrent",
-          ariaHidden: "true",
           img: cat7,
           heading: "Kitten 273163",
           desc: "*waves*! I'm Kitty #273163. I want to live in a world where people believe that one day cats will rule this planet. It wasn't heavily publicized, but I once had a brief relationship with Puss in Boots. We can be friends, but keep the ultra purrsonal stuff to yourself, please."
@@ -86,7 +79,6 @@ class Carousel extends Component {
       let updatedSlides = this.state.slides;
       updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].className = "notCurrent";
-      updatedSlides[currentSlideIndex].ariaHidden = "true";
       updatedSlides[currentSlideIndex - 1].className = "current";
       updatedSlides[currentSlideIndex - 1].ariaHidden = "false";
       this.setState({
@@ -102,7 +94,6 @@ class Carousel extends Component {
       let updatedSlides = this.state.slides;
       updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].className = "notCurrent";
-      updatedSlides[currentSlideIndex].ariaHidden = "true";
       updatedSlides[currentSlideIndex + 1].className = "current";
       updatedSlides[currentSlideIndex + 1].ariaHidden = "false";
       this.setState({
@@ -110,9 +101,6 @@ class Carousel extends Component {
         currentSlideIndex: currentSlideIndex + 1
       });
       let indexDifference = this.state.currentLiveRegionIndex - this.state.currentSlideIndex;
-      console.log('in showNextSlide');
-      console.log(this.state.currentSlideIndex); 
-      console.log(this.state.currentLiveRegionIndex); 
       if(indexDifference === 1) {
         this.updateLiveRegion();
       } 
@@ -144,22 +132,9 @@ class Carousel extends Component {
     });
   }
 
-
-  shouldComponentUpdate(prevProps,prevState){
-    console.log('in shouldComponentUpdate'); 
-    console.log(prevState.currentSlideIndex);
-    return true;
-  } 
-  componentDidUpdate() {
-    console.log('in componentDidUpdate');
-    console.log(this.state.currentSlideIndex);
-  }
- 
   componentDidMount(){
     this.initLiveRegion();
   }
-
-
 
   render() {
     //https://api.cryptokitties.co/kitties/33333
@@ -180,30 +155,31 @@ class Carousel extends Component {
         >
           Carousel
         </h2>
-        <div id="slidesContainer">
-          {this.state.slides.map((slide, index) => (
-            <div key={index} className={slide.className}>
-              <img width="300px" height="300px" src={slide.img} alt="" />
-              <h3>{slide.heading}</h3>
-              <p>{slide.desc}</p>
-            </div>
-          ))}
+        <div id="carousel">
+		<div id="slidesContainer" aria-hidden="true">
+		  {this.state.slides.map((slide, index) => (
+		    <div key={index} className={slide.className}>
+		      <img width="300px" height="300px" src={slide.img} alt="" />
+		      <h3>{slide.heading}</h3>
+		      <p>{slide.desc}</p>
+		    </div>
+		  ))}
+		</div>
+
+		<div aria-live="polite" className="offscreenText">
+		  {this.state.liveRegionEntries.map((entry, index) => (
+		    <div key={index}>
+		      <p>{entry}</p>
+		    </div>
+		  ))}
+		</div>
+
+		<div id="controls">
+		  <button className="control" aria-label="previous slide" onClick={() => this.showPreviousSlide()}>&#8592;</button>
+		  <button className="control" aria-label="next slide" onClick={() => this.showNextSlide()}>&#8594;</button>
+		</div>
         </div>
-
-        <div id="controls">
-          <button onClick={() => this.showPreviousSlide()}>Previous</button>
-          <button onClick={() => this.showNextSlide()}>Next</button>
-        </div>
-
-        <div aria-live="polite">
-          {this.state.liveRegionEntries.map((entry, index) => (
-            <div key={index}>
-              <p>{entry}</p>
-            </div>
-          ))}
-
-        </div>
-
+        
       </div>
     );
   }
