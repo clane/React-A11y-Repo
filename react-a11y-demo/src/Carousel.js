@@ -69,7 +69,8 @@ class Carousel extends Component {
         }
       ],
       currentSlideIndex: 0,
-      liveRegionEntries: []
+      liveRegionEntries: [],
+      currentLiveRegionIndex: 1 
     };
   }
 
@@ -112,14 +113,28 @@ class Carousel extends Component {
     }
   }
 
-  updateLiveRegion() {
+  initLiveRegion() {
     let updatedLiveRegionEntries = this.state.liveRegionEntries;
-    let newEntry = this.state.slides[this.state.currentSlideIndex].heading +
+    let index = 0;
+    let newEntry = this.state.slides[index].heading +
       " " +
-      this.state.slides[this.state.currentSlideIndex].desc;
+      this.state.slides[index].desc;
     updatedLiveRegionEntries.push(newEntry);
     this.setState({
-      liveRegionEntries: updatedLiveRegionEntries
+      liveRegionEntries: updatedLiveRegionEntries,
+    });
+  }
+
+  updateLiveRegion() {
+    let updatedLiveRegionEntries = this.state.liveRegionEntries;
+    let index = this.state.currentLiveRegionIndex;
+    let newEntry = this.state.slides[index].heading +
+      " " +
+      this.state.slides[index].desc;
+    updatedLiveRegionEntries.push(newEntry);
+    this.setState({
+      liveRegionEntries: updatedLiveRegionEntries,
+      currentLiveRegionIndex: index + 1
     });
   }
 
@@ -135,6 +150,7 @@ class Carousel extends Component {
   }
  
   componentDidMount(){
+    this.initLiveRegion();
   }
 
 
