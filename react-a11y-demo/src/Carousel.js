@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
 import "./Carousel.css";
-import cat1 from "./293931.svg";
-import cat2 from "./271631.svg";
-import cat3 from "./44215.svg";
-import cat4 from "./288702.svg";
-import cat5 from "./226476.svg";
-import cat6 from "./163514.svg";
-import cat7 from "./273163.svg";
+import cat1 from "./catImages/293931.svg";
+import cat2 from "./catImages/271631.svg";
+import cat3 from "./catImages/44215.svg";
+import cat4 from "./catImages/288702.svg";
+import cat5 from "./catImages/226476.svg";
+import cat6 from "./catImages/163514.svg";
+import cat7 from "./catImages/273163.svg";
 
 class Carousel extends Component {
   constructor(props) {
