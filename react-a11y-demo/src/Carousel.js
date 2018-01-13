@@ -63,10 +63,9 @@ class Carousel extends Component {
       ],
       currentSlideIndex: 0,
       liveRegionEntries: [],
-      currentLiveRegionIndex: 1 
+      currentLiveRegionIndex: 1
     };
   }
-
 
   getCurrentSlide() {
     let currentSlideIndex = this.state.currentSlideIndex;
@@ -98,10 +97,11 @@ class Carousel extends Component {
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
       });
-      let indexDifference = this.state.currentLiveRegionIndex - this.state.currentSlideIndex;
-      if(indexDifference === 1) {
+      let indexDifference = this.state.currentLiveRegionIndex -
+        this.state.currentSlideIndex;
+      if (indexDifference === 1) {
         this.updateLiveRegion();
-      } 
+      }
     }
   }
 
@@ -113,7 +113,7 @@ class Carousel extends Component {
       this.state.slides[index].desc;
     updatedLiveRegionEntries.push(newEntry);
     this.setState({
-      liveRegionEntries: updatedLiveRegionEntries,
+      liveRegionEntries: updatedLiveRegionEntries
     });
   }
 
@@ -130,7 +130,7 @@ class Carousel extends Component {
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.initLiveRegion();
   }
 
@@ -154,30 +154,42 @@ class Carousel extends Component {
           Carousel
         </h2>
         <div id="carousel">
-		<div id="slidesContainer" aria-hidden="true">
-		  {this.state.slides.map((slide, index) => (
-		    <div key={index} className={slide.className}>
-		      <img width="300px" height="300px" src={slide.img} alt="" />
-		      <h3>{slide.heading}</h3>
-		      <p>{slide.desc}</p>
-		    </div>
-		  ))}
-		</div>
+          <div id="slidesContainer" aria-hidden="true">
+            {this.state.slides.map((slide, index) => (
+              <div key={index} className={slide.className}>
+                <img width="300px" height="300px" src={slide.img} alt="" />
+                <h3>{slide.heading}</h3>
+                <p>{slide.desc}</p>
+              </div>
+            ))}
+          </div>
 
-		<div aria-live="polite" className="offscreenText">
-		  {this.state.liveRegionEntries.map((entry, index) => (
-		    <div key={index}>
-		      <p>{entry}</p>
-		    </div>
-		  ))}
-		</div>
+          <div aria-live="polite" className="offscreenText">
+            {this.state.liveRegionEntries.map((entry, index) => (
+              <div key={index}>
+                <p>{entry}</p>
+              </div>
+            ))}
+          </div>
 
-		<div id="controls">
-		  <button className="control" aria-label="previous slide" onClick={() => this.showPreviousSlide()}>&#8592;</button>
-		  <button className="control" aria-label="next slide" onClick={() => this.showNextSlide()}>&#8594;</button>
-		</div>
+          <div id="controls">
+            <button
+              className="control"
+              aria-label="previous slide"
+              onClick={() => this.showPreviousSlide()}
+            >
+              ←
+            </button>
+            <button
+              className="control"
+              aria-label="next slide"
+              onClick={() => this.showNextSlide()}
+            >
+              →
+            </button>
+          </div>
         </div>
-        
+
       </div>
     );
   }
