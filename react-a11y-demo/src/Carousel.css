@@ -1,5 +1,5 @@
 
-#slidesContainer div.current {display:block;opacity:1;}
+#slidesContainer div.current { opacity:1;}
 #slidesContainer div.notCurrent { width:0px; opacity:0; } 
 
 #carousel {
