@@ -162,8 +162,6 @@ class Carousel extends Component {
   }
  
   render() {
-    //https://api.cryptokitties.co/kitties/33333
-    //https://api.cryptokitties.co/kitties?owner_wallet_address=0x8ae2d55229abe73665ba982c36c7bc8b84200665
    
     let prevButtonDisabled = this.state.prevButtonDisabled;
     let nextButtonDisabled = this.state.nextButtonDisabled;
@@ -217,11 +215,10 @@ class Carousel extends Component {
               onClick={() => this.showNextSlide()}
               disabled={nextButtonDisabled}
             >
-              →
+              &#8594;
             </button>
           </div>
         </div>
-
       </div>
     );
   }
