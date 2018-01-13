@@ -75,17 +75,17 @@ class Carousel extends Component {
   }
 
   setButtonStates(){
-    let currentSlideIndex = this.getCurrentSlide();
-    if(currentSlideIndex === 0){
+    let currentSlideIndex = this.getCurrentSlide() + 1;
+    console.log(currentSlideIndex);
+    if(currentSlideIndex < 1){
       this.setState({
         prevButtonDisabled: true,
       });
-    } else {
+    } else { 
         this.setState({
           prevButtonDisabled: false,
         });
     }  
-
     if(currentSlideIndex === (this.state.slides.length - 1)){
       this.setState({
         nextButtonDisabled: true,
