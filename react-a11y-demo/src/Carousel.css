@@ -47,6 +47,8 @@
    background-color:yellow;
 } 
 
+#controls button.control[disabled] { opacity:0.5; } 
+
 .slide { 
   padding:20px; 
   width:90%;

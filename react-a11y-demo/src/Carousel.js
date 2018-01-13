@@ -63,7 +63,9 @@ class Carousel extends Component {
       ],
       currentSlideIndex: 0,
       liveRegionEntries: [],
-      currentLiveRegionIndex: 1
+      currentLiveRegionIndex: 1,
+      prevButtonDisabled: true,
+      nextButtonDisabled: false,
     };
   }
 
@@ -71,6 +73,31 @@ class Carousel extends Component {
     let currentSlideIndex = this.state.currentSlideIndex;
     return currentSlideIndex;
   }
+
+  setButtonStates(){
+    let currentSlideIndex = this.getCurrentSlide();
+    if(currentSlideIndex === 0){
+      this.setState({
+        prevButtonDisabled: true,
+      });
+    } else {
+        this.setState({
+          prevButtonDisabled: false,
+        });
+    }  
+
+    if(currentSlideIndex === (this.state.slides.length - 1)){
+      this.setState({
+        nextButtonDisabled: true,
+      });
+    } else {
+        this.setState({
+          nextButtonDisabled: false,
+      });
+
+    }  
+
+  } 
 
   showPreviousSlide() {
     let currentSlideIndex = this.getCurrentSlide();
@@ -84,6 +111,7 @@ class Carousel extends Component {
         currentSlideIndex: currentSlideIndex - 1
       });
     }
+    this.setButtonStates();
   }
 
   showNextSlide() {
@@ -103,6 +131,7 @@ class Carousel extends Component {
         this.updateLiveRegion();
       }
     }
+    this.setButtonStates();
   }
 
   initLiveRegion() {
@@ -137,6 +166,9 @@ class Carousel extends Component {
   render() {
     //https://api.cryptokitties.co/kitties/33333
     //https://api.cryptokitties.co/kitties?owner_wallet_address=0x8ae2d55229abe73665ba982c36c7bc8b84200665
+   
+    let prevButtonDisabled = this.state.prevButtonDisabled;
+    let nextButtonDisabled = this.state.nextButtonDisabled;
 
     return (
       <div className="home-page">
@@ -177,13 +209,15 @@ class Carousel extends Component {
               className="control"
               aria-label="previous slide"
               onClick={() => this.showPreviousSlide()}
+              disabled={prevButtonDisabled}
             >
-              ←
+              &#8592;  
             </button>
             <button
               className="control"
               aria-label="next slide"
               onClick={() => this.showNextSlide()}
+              disabled={nextButtonDisabled}
             >
               →
             </button>
