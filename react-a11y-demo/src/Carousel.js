@@ -76,7 +76,7 @@ class Carousel extends Component {
 
   setButtonStates(){
     let currentSlideIndex = this.getCurrentSlide();
-    console.log(currentSlideIndex);
+    //console.log(currentSlideIndex);
     if(currentSlideIndex < 1){
       this.setState({
         prevButtonDisabled: true,
@@ -162,6 +162,16 @@ class Carousel extends Component {
   componentDidMount() {
     this.initLiveRegion();
   }
+ 
+  shouldComponentUpdate(prevProps,prevState){
+    console.log(prevState.currentSlideIndex);
+    console.log(this.state.currentSlideIndex);
+    return true;
+  } 
+ 
+  componentDidUpdate(prevprops,prevstate){
+    //this.setButtonStates();
+  } 
 
   render() {
     //https://api.cryptokitties.co/kitties/33333
