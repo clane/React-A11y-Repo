@@ -80,7 +80,6 @@ class Carousel extends Component {
       updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].className = "notCurrent";
       updatedSlides[currentSlideIndex - 1].className = "current";
-      updatedSlides[currentSlideIndex - 1].ariaHidden = "false";
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex - 1
@@ -95,7 +94,6 @@ class Carousel extends Component {
       updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].className = "notCurrent";
       updatedSlides[currentSlideIndex + 1].className = "current";
-      updatedSlides[currentSlideIndex + 1].ariaHidden = "false";
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
