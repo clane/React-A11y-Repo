@@ -74,9 +74,7 @@ class Carousel extends Component {
     return currentSlideIndex;
   }
 
-  setButtonStates(){
-    let currentSlideIndex = this.getCurrentSlide();
-    //console.log(currentSlideIndex);
+  setButtonStates(currentSlideIndex){
     if(currentSlideIndex < 1){
       this.setState({
         prevButtonDisabled: true,
@@ -110,8 +108,8 @@ class Carousel extends Component {
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex - 1
       });
+      this.setButtonStates(currentSlideIndex - 1); 
     }
-    this.setButtonStates();
   }
 
   showNextSlide() {
@@ -130,8 +128,8 @@ class Carousel extends Component {
       if (indexDifference === 1) {
         this.updateLiveRegion();
       }
+      this.setButtonStates(currentSlideIndex + 1); 
     }
-    this.setButtonStates();
   }
 
   initLiveRegion() {
@@ -163,16 +161,6 @@ class Carousel extends Component {
     this.initLiveRegion();
   }
  
-  shouldComponentUpdate(prevProps,prevState){
-    console.log(prevState.currentSlideIndex);
-    console.log(this.state.currentSlideIndex);
-    return true;
-  } 
- 
-  componentDidUpdate(prevprops,prevstate){
-    //this.setButtonStates();
-  } 
-
   render() {
     //https://api.cryptokitties.co/kitties/33333
     //https://api.cryptokitties.co/kitties?owner_wallet_address=0x8ae2d55229abe73665ba982c36c7bc8b84200665
