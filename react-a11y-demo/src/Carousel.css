@@ -17,6 +17,7 @@
 }
 
 #slidesContainer div { 
+  float:right;
   width:100%;
   -webkit-transition: width 1s ease-in-out;
   -moz-transition: width 1s ease-in-out;

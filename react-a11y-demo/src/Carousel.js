@@ -66,7 +66,6 @@ class Carousel extends Component {
       currentLiveRegionIndex: 1,
       prevButtonDisabled: true,
       nextButtonDisabled: false,
-      floatDirection: "right",
     };
   }
 
@@ -107,8 +106,7 @@ class Carousel extends Component {
       updatedSlides[currentSlideIndex - 1].className = "current";
       this.setState({
         slides: updatedSlides,
-        currentSlideIndex: currentSlideIndex - 1,
-        floatDirection: "right",
+        currentSlideIndex: currentSlideIndex - 1
       });
       this.setButtonStates(currentSlideIndex - 1); 
     }
@@ -123,8 +121,7 @@ class Carousel extends Component {
       updatedSlides[currentSlideIndex + 1].className = "current";
       this.setState({
         slides: updatedSlides,
-        currentSlideIndex: currentSlideIndex + 1,
-        floatDirection: "left",
+        currentSlideIndex: currentSlideIndex + 1
       });
       let indexDifference = this.state.currentLiveRegionIndex -
         this.state.currentSlideIndex;
@@ -170,13 +167,6 @@ class Carousel extends Component {
    
     let prevButtonDisabled = this.state.prevButtonDisabled;
     let nextButtonDisabled = this.state.nextButtonDisabled;
-   
-    let slideStyle = {
-      float: this.state.floatDirection,
-    };
-
-
-
 
     return (
       <div className="home-page">
@@ -196,7 +186,7 @@ class Carousel extends Component {
         <div id="carousel">
           <div id="slidesContainer" aria-hidden="true">
             {this.state.slides.map((slide, index) => (
-              <div key={index} className={slide.className} style={slideStyle}>
+              <div key={index} className={slide.className}>
                 <img width="300px" height="300px" src={slide.img} alt="" />
                 <h3>{slide.heading}</h3>
                 <p>{slide.desc}</p>
