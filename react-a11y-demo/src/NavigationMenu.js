@@ -14,31 +14,31 @@ class NavigationMenu extends Component {
           activeDescendant: "placeholder",
           ariaExpanded: "false",
           choices: [
-            { id:"cat1choice1", name:"choice 1" },
-            { id:"cat1choice2", name:"choice 2" },
-            { id:"cat1choice3", name:"choice 3" },
-            { id:"cat1choice4", name:"choice 4" },
-            { id:"cat1choice5", name:"choice 5" },
-            { id:"cat1choice6", name:"choice 6" },
-            { id:"cat1choice7", name:"choice 7" },
-            { id:"cat1choice8", name:"choice 8" },
-            { id:"cat1choice9", name:"choice 9" },
-            { id:"cat1choice10", name:"choice 10" },
+            { id: "cat1choice1", name: "choice 1" },
+            { id: "cat1choice2", name: "choice 2" },
+            { id: "cat1choice3", name: "choice 3" },
+            { id: "cat1choice4", name: "choice 4" },
+            { id: "cat1choice5", name: "choice 5" },
+            { id: "cat1choice6", name: "choice 6" },
+            { id: "cat1choice7", name: "choice 7" },
+            { id: "cat1choice8", name: "choice 8" },
+            { id: "cat1choice9", name: "choice 9" },
+            { id: "cat1choice10", name: "choice 10" }
           ]
         }
       ]
     };
   }
 
-  toggleMenu(index){
+  toggleMenu(index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    if(updatedCategories[index].ariaExpanded === "false"){
+    if (updatedCategories[index].ariaExpanded === "false") {
       updatedCategories[index].ariaExpanded = "true";
       this.expandedMenu.focus();
     } else {
-        updatedCategories[index].ariaExpanded = "false";
-    } 
+      updatedCategories[index].ariaExpanded = "false";
+    }
     this.setState({
       Categories: updatedCategories
     });
@@ -65,13 +65,14 @@ class NavigationMenu extends Component {
         <div role="navigation" aria-label="navigation menu of course">
           <div id="menubar1" role="menubar" aria-label="navigation menu bar">
             {this.state.Categories.map((category, index) => (
-              <div key={index} >
+              <div>
                 <div
-                   role="button"
-                   tabIndex="-1"
-                   onClick={() => this.toggleMenu(index)}
-                   aria-haspopup="true"
-                   aria-expanded={category.ariaExpanded}
+                  key={index}
+                  role="button"
+                  tabIndex="-1"
+                  onClick={() => this.toggleMenu(index)}
+                  aria-haspopup="true"
+                  aria-expanded={category.ariaExpanded}
                 >
                   {category.buttonLabel}
                 </div>
@@ -83,13 +84,15 @@ class NavigationMenu extends Component {
                   ref={r => {
                     this.expandedMenu = r;
                   }}
-
                 >
                   {category.choices.map((choice, index) => (
-                    <div key={index} role="none">
-                      <a id={choice.id} role="menuitem" href="#">
-                        {choice.name}
-                      </a>
+                    <div
+                      key={index}
+                      tabIndex="-1"
+                      id={choice.id}
+                      role="menuitem"
+                    >
+                      {choice.name}
                     </div>
                   ))}
                 </div>
