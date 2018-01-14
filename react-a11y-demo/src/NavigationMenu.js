@@ -62,9 +62,9 @@ class NavigationMenu extends Component {
           Navigation Menu
         </h2>
         <div role="navigation" aria-label="navigation menu of course">
-          <ul id="menubar1" role="menubar" aria-label="navigation menu bar">
+          <div id="menubar1" role="menubar" aria-label="navigation menu bar">
             {this.state.Categories.map((category, index) => (
-              <li key={index} >
+              <div key={index} >
                 <button
                    onClick={() => this.toggleMenu(index)}
                    aria-haspopup="true"
@@ -72,22 +72,22 @@ class NavigationMenu extends Component {
                 >
                   {category.buttonLabel}
                 </button>
-                <ul
+                <div
                   role="menu"
                   aria-label={category.menuLabel}
                   aria-activedescendant={category.activeDescendant}
                 >
                   {category.choices.map((choice, index) => (
-                    <li key={index} role="none">
+                    <div key={index} role="none">
                       <a id={choice.id} role="menuitem" href="#">
                         {choice.name}
                       </a>
-                    </li>
+                    </div>
                   ))}
-                </ul>
-              </li>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     );

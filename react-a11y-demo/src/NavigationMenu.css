@@ -6,7 +6,7 @@ ul[role="menubar"] ul[role="menu"] li {
   width: 10em;
 }
 
-button[aria-expanded="false"] + ul {
+button[aria-expanded="false"] + div[role="menu"] {
   display:none;
 } 
 
