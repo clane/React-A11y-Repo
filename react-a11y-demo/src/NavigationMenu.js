@@ -35,7 +35,6 @@ class NavigationMenu extends Component {
     updatedCategories = this.state.Categories;
     if (updatedCategories[index].ariaExpanded === "false") {
       updatedCategories[index].ariaExpanded = "true";
-      this.expandedMenu.focus();
     } else {
       updatedCategories[index].ariaExpanded = "false";
     }
@@ -43,6 +42,10 @@ class NavigationMenu extends Component {
       Categories: updatedCategories
     });
   }
+
+  componentDidUpdate(){
+    this.expandedMenu.focus();
+  } 
 
   render() {
     //https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html
@@ -65,9 +68,8 @@ class NavigationMenu extends Component {
         <div role="navigation" aria-label="navigation menu of course">
           <div id="menubar1" role="menubar" aria-label="navigation menu bar">
             {this.state.Categories.map((category, index) => (
-              <div>
+              <div key={index}>
                 <button
-                  key={index}
                   onClick={() => this.toggleMenu(index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
@@ -76,7 +78,7 @@ class NavigationMenu extends Component {
                 </button>
                 <div
                   role="menu"
-                  tabIndex="-1"
+                  tabIndex="0"
                   aria-label={category.menuLabel}
                   aria-activedescendant={category.activeDescendant}
                   ref={r => {
