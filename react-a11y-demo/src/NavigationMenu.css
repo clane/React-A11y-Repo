@@ -1,12 +1,12 @@
 
 
 
-ul[role="menubar"] ul[role="menu"] li {
+[role="menubar"] ul[role="menu"] {
   display: block;
   width: 10em;
 }
 
-button[aria-expanded="false"] + div[role="menu"] {
+[aria-expanded="false"] + [role="menu"] {
   display:none;
 } 
 
