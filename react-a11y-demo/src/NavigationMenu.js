@@ -66,16 +66,14 @@ class NavigationMenu extends Component {
           <div id="menubar1" role="menubar" aria-label="navigation menu bar">
             {this.state.Categories.map((category, index) => (
               <div>
-                <div
+                <button
                   key={index}
-                  role="button"
-                  tabIndex="-1"
                   onClick={() => this.toggleMenu(index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
                 >
                   {category.buttonLabel}
-                </div>
+                </button>
                 <div
                   role="menu"
                   tabIndex="-1"
