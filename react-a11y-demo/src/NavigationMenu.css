@@ -1,3 +1,17 @@
+
+
+
+ul[role="menubar"] ul[role="menu"] li {
+  display: block;
+  width: 10em;
+}
+
+button[aria-expanded="false"] + ul {
+  display:none;
+} 
+
+/*
+
 ul[role="menubar"] {
   margin: 10px;
   padding: 10px;
@@ -60,12 +74,12 @@ ul[role="menubar"] ul[role="menu"] {
 }
 
 
-ul[role="menubar"] ul[role="menu"] li a {
-  display: block;
-  width: 10em;
-}
+
 
 ul[role="menubar"] ul[role="menu"] a[aria-haspopup="true"]:after {
   content: url('');
   padding-right: 2em;
 }
+
+
+*/
