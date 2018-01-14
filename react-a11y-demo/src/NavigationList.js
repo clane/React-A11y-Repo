@@ -9,6 +9,7 @@ class NavigationList extends Component {
           <li><Link to="HomePage">Home Page</Link></li>
           <li><Link to="Game">Game</Link></li>
           <li><Link to="Carousel">Carousel</Link></li>
+          <li><Link to="NavigationMenu">Navigation Menu</Link></li>
         </ul>
       </div>
     );

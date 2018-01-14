@@ -11,6 +11,7 @@ import NavigationList from './NavigationList.js';
 import HomePage from './HomePage.js';
 import Game from './Game.js';
 import Carousel from './Carousel.js';
+import NavigationMenu from './NavigationMenu.js';
 import logo from './logo.svg';
 
 
@@ -71,6 +72,7 @@ class App extends Component {
               <Route path="/HomePage" component={HomePage} />
               <Route path="/Game" component={Game} />
               <Route path="/Carousel" component={Carousel} />
+              <Route path="/NavigationMenu" component={NavigationMenu} />
 	      <Redirect from="/" to="/HomePage"/>
             </Switch>
           </div>
