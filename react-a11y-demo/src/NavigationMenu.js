@@ -35,6 +35,7 @@ class NavigationMenu extends Component {
     updatedCategories = this.state.Categories;
     if(updatedCategories[index].ariaExpanded === "false"){
       updatedCategories[index].ariaExpanded = "true";
+      this.expandedMenu.focus();
     } else {
         updatedCategories[index].ariaExpanded = "false";
     } 
@@ -65,17 +66,24 @@ class NavigationMenu extends Component {
           <div id="menubar1" role="menubar" aria-label="navigation menu bar">
             {this.state.Categories.map((category, index) => (
               <div key={index} >
-                <button
+                <div
+                   role="button"
+                   tabIndex="-1"
                    onClick={() => this.toggleMenu(index)}
                    aria-haspopup="true"
                    aria-expanded={category.ariaExpanded}
                 >
                   {category.buttonLabel}
-                </button>
+                </div>
                 <div
                   role="menu"
+                  tabIndex="-1"
                   aria-label={category.menuLabel}
                   aria-activedescendant={category.activeDescendant}
+                  ref={r => {
+                    this.expandedMenu = r;
+                  }}
+
                 >
                   {category.choices.map((choice, index) => (
                     <div key={index} role="none">
