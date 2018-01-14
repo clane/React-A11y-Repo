@@ -7,17 +7,21 @@ class NavigationMenu extends Component {
     super(props);
 
     this.state = {
-      topItems: [
-        { 
-          label: "main 1",
-          subItems: [],
+      Categories: [
+        {
+          buttonLabel: "Category 1",
+          menuLabel: "Category 1 menu",
+          activeDescendant: "placeholder",
+          choices: [
+           {name:"Choice 1"},
+           {name:"Choice 2"},
+           {name:"Choice 3"},
+           {name:"Choice 4"},
+          ]
         },
       ]
-    }
-
-
-
-  }  
+    };
+  }
   render() {
     //https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html
 
@@ -34,26 +38,33 @@ class NavigationMenu extends Component {
             this.topHeading = componentH2;
           }}
         >
-        Navigation Menu 
+          Navigation Menu
         </h2>
-        <div id="navigationMenu">
-		  <nav aria-label="Mythical University">
-			<ul id="menubar1" role="menubar" aria-label="Mythical University">
-			  <li>
-				<a role="menuitem" aria-haspopup="true" aria-expanded="false" href="#" tabindex="0">About</a>
-				<ul role="menu" aria-label="About">
-				  <li role="none">
-					<a role="menuitem" href="mb-about.html#overview" tabindex="-1">Overview</a>
-				  </li>
-				  <li role="none">
-					<a role="menuitem" href="mb-about.html#admin" tabindex="-1">Administration</a>
-				  </li>
-				</ul>
-			  </li>
+        <div role="navigation" aria-label="navigation menu of course">
+          <ul id="menubar1" role="menubar" aria-label="navigation menu bar">
+            {this.state.Categories.map((category, index) => (
+              <li key={index}>
+                <button>{category.buttonLabel}</button>
+                <ul role="menu"
+                  aria-label={category.menuLabel}
+                  aria-activedescendant={category.activeDescendant}
+                >
+                  {category.choices.map((choice, index) => (
+                  <li role="none">
+                    <a role="menuitem"
+                       id={index}
+                       href="#"
+                    >
+                      {choice.name} 
+                    </a>
+                  </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
           </ul>
-        </nav>
+        </div>
       </div>
-    </div>
     );
   }
 }
