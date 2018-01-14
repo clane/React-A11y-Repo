@@ -13,12 +13,12 @@ class NavigationMenu extends Component {
           menuLabel: "Category 1 menu",
           activeDescendant: "placeholder",
           choices: [
-           {name:"Choice 1"},
-           {name:"Choice 2"},
-           {name:"Choice 3"},
-           {name:"Choice 4"},
+            { name: "Choice 1" },
+            { name: "Choice 2" },
+            { name: "Choice 3" },
+            { name: "Choice 4" }
           ]
-        },
+        }
       ]
     };
   }
@@ -45,19 +45,17 @@ class NavigationMenu extends Component {
             {this.state.Categories.map((category, index) => (
               <li key={index}>
                 <button>{category.buttonLabel}</button>
-                <ul role="menu"
+                <ul
+                  role="menu"
                   aria-label={category.menuLabel}
                   aria-activedescendant={category.activeDescendant}
                 >
                   {category.choices.map((choice, index) => (
-                  <li role="none">
-                    <a role="menuitem"
-                       id={index}
-                       href="#"
-                    >
-                      {choice.name} 
-                    </a>
-                  </li>
+                    <li key={index} role="none">
+                      <a role="menuitem" id={index} href="#">
+                        {choice.name}
+                      </a>
+                    </li>
                   ))}
                 </ul>
               </li>
