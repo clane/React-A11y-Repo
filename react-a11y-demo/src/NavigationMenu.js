@@ -64,6 +64,11 @@ class NavigationMenu extends Component {
     });
   }
 
+  handleKeyboardForMenubar(e,index){
+
+  }
+
+
   handleKeyboardForChoices(e, index) {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
@@ -131,6 +136,7 @@ class NavigationMenu extends Component {
             tabIndex="0"
             role="menubar"
             aria-label="navigation menu bar"
+            onKeyDown={e => this.handleKeyboardForMenubar(e)}
           >
             {this.state.Categories.map((category, index) => (
               <div key={index}>
