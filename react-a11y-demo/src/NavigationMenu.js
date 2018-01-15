@@ -60,7 +60,11 @@ class NavigationMenu extends Component {
           index
         ].activeDescIndexChoices + 1;
         updatedCategories[index].choices[
-        updatedCategories[index].activeDescIndexChoices].dataActive = "true";
+          updatedCategories[index].activeDescIndexChoices
+        ].dataActive = "true";
+      } else {
+        updatedCategories[index].activeDescIndexChoices = 0;
+        updatedCategories[index].choices[0].dataActive = "true";
       }
     }
 
@@ -71,7 +75,11 @@ class NavigationMenu extends Component {
           index
         ].activeDescIndexChoices - 1;
         updatedCategories[index].choices[
-        updatedCategories[index].activeDescIndexChoices].dataActive = "true";
+          updatedCategories[index].activeDescIndexChoices
+        ].dataActive = "true";
+      } else {
+        updatedCategories[index].activeDescIndexChoices = max;
+        updatedCategories[index].choices[max].dataActive = "true";
       }
     }
 
