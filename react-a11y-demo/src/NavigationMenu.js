@@ -44,18 +44,21 @@ class NavigationMenu extends Component {
   }
 
   handleKeyboardForChoices(e, index) {
-    let updatedCategories = [];
-    let a = document.getElementById('skipTarget'); 
-    a.focus();
+    var updatedCategories = [];
     updatedCategories = this.state.Categories;
-
+    var max = updatedCategories[index].choices.length - 1;
+     
     if (e.keyCode === 40) {
-      //down arrow 
+      //down arrow
       console.log("down arrow");
-      updatedCategories[index].activeDescIndexChoices = this.state.Categories[index].activeDescIndexChoices + 1;
-      this.setState({
-        Categories: updatedCategories
-      });
+      if (this.state.Categories[index].activeDescIndexChoices < max) {
+        updatedCategories[index].activeDescIndexChoices = this.state.Categories[
+          index
+        ].activeDescIndexChoices + 1;
+        this.setState({
+          Categories: updatedCategories
+        });
+      }
     }
 
     if (e.keyCode === 38) {
@@ -85,7 +88,12 @@ class NavigationMenu extends Component {
           Navigation Menu
         </h2>
         <div role="navigation" aria-label="navigation menu of course">
-          <div id="menubar" tabIndex="0" role="menubar" aria-label="navigation menu bar">
+          <div
+            id="menubar"
+            tabIndex="0"
+            role="menubar"
+            aria-label="navigation menu bar"
+          >
             {this.state.Categories.map((category, index) => (
               <div key={index}>
                 <button
