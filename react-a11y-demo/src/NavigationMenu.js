@@ -43,12 +43,16 @@ class NavigationMenu extends Component {
   }
 
   handleKeyboardForChoices(e, index) {
-    console.log(index);
+    let updatedCategories = [];
+    updatedCategories = this.state.Categories;
 
     if (e.keyCode === 40) {
-      //down arrow key
+      //down arrow 
       console.log("down arrow");
-      console.log(this.state);
+      updatedCategories[index].activeDescIndex = this.state.Categories[index].activeDescIndex + 1;
+      this.setState({
+        Categories: updatedCategories
+      });
     }
 
     if (e.keyCode === 38) {
