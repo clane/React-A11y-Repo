@@ -54,13 +54,15 @@ class NavigationMenu extends Component {
         updatedCategories[index].activeDescIndexChoices = this.state.Categories[
           index
         ].activeDescIndexChoices + 1;
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices + 1].dataActive = "true";
         updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "true";
         this.setState({
           Categories: updatedCategories
         });
       } else {
         updatedCategories[index].activeDescIndexChoices = 0;
-        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "true";
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "false";
+        updatedCategories[index].choices[0].dataActive = "true";
         this.setState({
           Categories: updatedCategories
         });
@@ -73,13 +75,15 @@ class NavigationMenu extends Component {
         updatedCategories[index].activeDescIndexChoices = this.state.Categories[
           index
         ].activeDescIndexChoices - 1;
-        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "true";
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices - 1].dataActive = "true";
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "false";
         this.setState({
           Categories: updatedCategories
         });
       } else {
         updatedCategories[index].activeDescIndexChoices = max;
-        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "true";
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "false";
+        updatedCategories[index].choices[max].dataActive = "true";
         this.setState({
           Categories: updatedCategories
         });
