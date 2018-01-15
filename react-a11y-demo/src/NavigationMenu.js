@@ -5,7 +5,6 @@ import "./NavigationMenu.css";
 class NavigationMenu extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       Categories: [
         {
@@ -30,8 +29,7 @@ class NavigationMenu extends Component {
     };
   }
 
-  toggleMenu(e,index) {
-    console.log(index);
+  toggleMenu(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
     if (updatedCategories[index].ariaExpanded === "false") {
@@ -44,30 +42,26 @@ class NavigationMenu extends Component {
     });
   }
 
-  handleKeyboardForChoices(e,index) {
-
+  handleKeyboardForChoices(e, index) {
     console.log(index);
 
-    if(e.keyCode === 40){
+    if (e.keyCode === 40) {
       //down arrow key
-      console.log('down arrow');
+      console.log("down arrow");
       console.log(this.state);
     }
 
-    if(e.keyCode === 38){
+    if (e.keyCode === 38) {
       //up arrow key
-      console.log('up arrow');
+      console.log("up arrow");
     }
+  }
 
-  } 
-
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.expandedMenu.focus();
-  } 
+  }
 
   render() {
-    //https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html
-
     return (
       <div className="navigation-menu">
         <Helmet>
@@ -88,7 +82,7 @@ class NavigationMenu extends Component {
             {this.state.Categories.map((category, index) => (
               <div key={index}>
                 <button
-                  onClick={e => this.toggleMenu(e,index)}
+                  onClick={e => this.toggleMenu(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
                 >
@@ -98,8 +92,10 @@ class NavigationMenu extends Component {
                   role="menu"
                   tabIndex="0"
                   aria-label={category.menuLabel}
-                  aria-activedescendant={category.choices[category.activeDescIndex].id}
-                  onKeyDown={e => this.handleKeyboardForChoices(e,index)}
+                  aria-activedescendant={
+                    category.choices[category.activeDescIndex].id
+                  }
+                  onKeyDown={e => this.handleKeyboardForChoices(e, index)}
                   ref={r => {
                     this.expandedMenu = r;
                   }}
