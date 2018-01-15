@@ -47,7 +47,7 @@ class NavigationMenu extends Component {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
     var max = updatedCategories[index].choices.length - 1;
-     
+
     if (e.keyCode === 40) {
       //down arrow
       console.log("down arrow");
@@ -55,6 +55,11 @@ class NavigationMenu extends Component {
         updatedCategories[index].activeDescIndexChoices = this.state.Categories[
           index
         ].activeDescIndexChoices + 1;
+        this.setState({
+          Categories: updatedCategories
+        });
+      } else {
+        updatedCategories[index].activeDescIndexChoices = 0;
         this.setState({
           Categories: updatedCategories
         });
@@ -71,8 +76,12 @@ class NavigationMenu extends Component {
         this.setState({
           Categories: updatedCategories
         });
+      } else {
+        updatedCategories[index].activeDescIndexChoices = max;
+        this.setState({
+          Categories: updatedCategories
+        });
       }
-
     }
   }
 
