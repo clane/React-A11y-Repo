@@ -9,7 +9,7 @@ class NavigationMenu extends Component {
       activeDescMenubar: "categoryButton1",
       Categories: [
         {
-          id: "categoryButton1", 
+          id: "categoryButton1",
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
           activeDescIndexChoices: 0,
@@ -28,10 +28,9 @@ class NavigationMenu extends Component {
             { id: "cat1choice9", name: "choice 9", dataActive: "false" },
             { id: "cat1choice10", name: "choice 10", dataActive: "false" }
           ]
-        }
-      ,
+        },
         {
-          id: "categoryButton2", 
+          id: "categoryButton2",
           buttonLabel: "Category 2",
           menuLabel: "Category 2 menu",
           activeDescIndexChoices: 0,
@@ -49,9 +48,7 @@ class NavigationMenu extends Component {
             { id: "cat2choice10", name: "choice 10", dataActive: "false" }
           ]
         }
-
-
-       ]
+      ]
     };
   }
 
@@ -68,10 +65,7 @@ class NavigationMenu extends Component {
     });
   }
 
-  handleKeyboardForMenubar(e,index){
-
-  }
-
+  handleKeyboardForMenubar(e, index) {}
 
   handleKeyboardForChoices(e, index) {
     var updatedCategories = [];
