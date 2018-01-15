@@ -46,6 +46,7 @@ class NavigationMenu extends Component {
   handleKeyboardForChoices(e, index) {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
+
     for (let i = 0; i < updatedCategories[index].choices.length; i++) {
       updatedCategories[index].choices[i].dataActive = "false";
     }
@@ -60,9 +61,6 @@ class NavigationMenu extends Component {
         ].activeDescIndexChoices + 1;
         updatedCategories[index].choices[
         updatedCategories[index].activeDescIndexChoices].dataActive = "true";
-        this.setState({
-          Categories: updatedCategories
-        });
       }
     }
 
@@ -73,12 +71,13 @@ class NavigationMenu extends Component {
           index
         ].activeDescIndexChoices - 1;
         updatedCategories[index].choices[
-          updatedCategories[index].activeDescIndexChoices].dataActive = "true";
-        this.setState({
-          Categories: updatedCategories
-        });
+        updatedCategories[index].activeDescIndexChoices].dataActive = "true";
       }
     }
+
+    this.setState({
+      Categories: updatedCategories
+    });
   }
 
   componentDidUpdate() {
