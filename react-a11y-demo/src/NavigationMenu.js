@@ -11,7 +11,7 @@ class NavigationMenu extends Component {
         {
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
-          activeDescendant: "placeholder",
+          activeDescIndex: 0,
           ariaExpanded: "false",
           choices: [
             { id: "cat1choice1", name: "choice 1" },
@@ -30,7 +30,8 @@ class NavigationMenu extends Component {
     };
   }
 
-  toggleMenu(index) {
+  toggleMenu(e,index) {
+    console.log(index);
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
     if (updatedCategories[index].ariaExpanded === "false") {
@@ -42,6 +43,23 @@ class NavigationMenu extends Component {
       Categories: updatedCategories
     });
   }
+
+  handleKeyboardForChoices(e,index) {
+
+    console.log(index);
+
+    if(e.keyCode === 40){
+      //down arrow key
+      console.log('down arrow');
+      console.log(this.state);
+    }
+
+    if(e.keyCode === 38){
+      //up arrow key
+      console.log('up arrow');
+    }
+
+  } 
 
   componentDidUpdate(){
     this.expandedMenu.focus();
@@ -70,7 +88,7 @@ class NavigationMenu extends Component {
             {this.state.Categories.map((category, index) => (
               <div key={index}>
                 <button
-                  onClick={() => this.toggleMenu(index)}
+                  onClick={e => this.toggleMenu(e,index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
                 >
@@ -80,7 +98,8 @@ class NavigationMenu extends Component {
                   role="menu"
                   tabIndex="0"
                   aria-label={category.menuLabel}
-                  aria-activedescendant={category.activeDescendant}
+                  aria-activedescendant={category.choices[category.activeDescIndex].id}
+                  onKeyDown={e => this.handleKeyboardForChoices(e,index)}
                   ref={r => {
                     this.expandedMenu = r;
                   }}
@@ -91,6 +110,7 @@ class NavigationMenu extends Component {
                       tabIndex="-1"
                       id={choice.id}
                       role="menuitem"
+                      data-active="false"
                     >
                       {choice.name}
                     </div>
