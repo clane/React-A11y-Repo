@@ -1,5 +1,9 @@
 
 
+[data-active='false'] { }
+
+[data-active='true'] {outline: 5px dotted #000; } 
+
 
 [role="menubar"] [role="menu"]  {
   display: block;

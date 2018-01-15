@@ -14,16 +14,16 @@ class NavigationMenu extends Component {
           activeDescIndexChoices: 0,
           ariaExpanded: "false",
           choices: [
-            { id: "cat1choice1", name: "choice 1" },
-            { id: "cat1choice2", name: "choice 2" },
-            { id: "cat1choice3", name: "choice 3" },
-            { id: "cat1choice4", name: "choice 4" },
-            { id: "cat1choice5", name: "choice 5" },
-            { id: "cat1choice6", name: "choice 6" },
-            { id: "cat1choice7", name: "choice 7" },
-            { id: "cat1choice8", name: "choice 8" },
-            { id: "cat1choice9", name: "choice 9" },
-            { id: "cat1choice10", name: "choice 10" }
+            { id: "cat1choice1", name: "choice 1", dataActive: "false"},
+            { id: "cat1choice2", name: "choice 2",  dataActive: "false"},
+            { id: "cat1choice3", name: "choice 3",  dataActive: "false"},
+            { id: "cat1choice4", name: "choice 4",  dataActive: "false"},
+            { id: "cat1choice5", name: "choice 5",  dataActive: "false"},
+            { id: "cat1choice6", name: "choice 6",  dataActive: "false"},
+            { id: "cat1choice7", name: "choice 7",  dataActive: "false"},
+            { id: "cat1choice8", name: "choice 8",  dataActive: "false"},
+            { id: "cat1choice9", name: "choice 9",  dataActive: "false"},
+            { id: "cat1choice10", name: "choice 10",dataActive: "false"}
           ]
         }
       ]
@@ -138,7 +138,8 @@ class NavigationMenu extends Component {
                       key={index}
                       id={choice.id}
                       role="menuitem"
-                      data-active="false"
+                      data-active={choice.dataActive}
+
                     >
                       {choice.name}
                     </div>
