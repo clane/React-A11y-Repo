@@ -1,7 +1,7 @@
 
 
-[role="menubar"]  { overflow:hidden; } 
-[role="menubar"] div  { width:20%; float:left; } 
+[role="menubar"]  { overflow:hidden; width:80%; margin:auto; } 
+[role="menubar"] div  { width:30%; float:left; } 
 
 [role="menu"] div[role="menuitem"] { float:none; } 
 
