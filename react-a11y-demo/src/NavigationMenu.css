@@ -1,5 +1,10 @@
 
 
+[role="menubar"]  { overflow:hidden; } 
+[role="menubar"] div  { width:20%; float:left; } 
+
+[role="menu"] div[role="menuitem"] { float:none; } 
+
 [data-active='false'] { }
 
 [data-active='true'] {outline: 5px dotted #000; } 

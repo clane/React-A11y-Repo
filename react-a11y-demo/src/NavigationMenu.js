@@ -26,7 +26,28 @@ class NavigationMenu extends Component {
             { id: "cat1choice10", name: "choice 10", dataActive: "false" }
           ]
         }
-      ]
+      ,
+        {
+          buttonLabel: "Category 2",
+          menuLabel: "Category 2 menu",
+          activeDescIndexChoices: 0,
+          ariaExpanded: "false",
+          choices: [
+            { id: "cat2choice1", name: "choice 1", dataActive: "false" },
+            { id: "cat2choice2", name: "choice 2", dataActive: "false" },
+            { id: "cat2choice3", name: "choice 3", dataActive: "false" },
+            { id: "cat2choice4", name: "choice 4", dataActive: "false" },
+            { id: "cat2choice5", name: "choice 5", dataActive: "false" },
+            { id: "cat2choice6", name: "choice 6", dataActive: "false" },
+            { id: "cat2choice7", name: "choice 7", dataActive: "false" },
+            { id: "cat2choice8", name: "choice 8", dataActive: "false" },
+            { id: "cat2choice9", name: "choice 9", dataActive: "false" },
+            { id: "cat2choice10", name: "choice 10", dataActive: "false" }
+          ]
+        }
+
+
+       ]
     };
   }
 
@@ -88,10 +109,6 @@ class NavigationMenu extends Component {
     });
   }
 
-  componentDidUpdate() {
-    this.expandedMenu.focus();
-  }
-
   render() {
     return (
       <div className="navigation-menu">
@@ -132,9 +149,6 @@ class NavigationMenu extends Component {
                     category.choices[category.activeDescIndexChoices].id
                   }
                   onKeyDown={e => this.handleKeyboardForChoices(e, index)}
-                  ref={r => {
-                    this.expandedMenu = r;
-                  }}
                 >
                   {category.choices.map((choice, index) => (
                     <div
