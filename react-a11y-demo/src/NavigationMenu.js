@@ -54,15 +54,19 @@ class NavigationMenu extends Component {
         updatedCategories[index].activeDescIndexChoices = this.state.Categories[
           index
         ].activeDescIndexChoices + 1;
+        for(var i = 0; i < updatedCategories[index].choices.length; i++){
+          updatedCategories[index].choices[i].dataActive = "false";
+        }
         updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices + 1].dataActive = "true";
-        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "false";
         this.setState({
           Categories: updatedCategories
         });
       } else {
         updatedCategories[index].activeDescIndexChoices = 0;
+        for(let i = 0; i < updatedCategories[index].choices.length; i++){
+          updatedCategories[index].choices[i].dataActive = "false";
+        }
         updatedCategories[index].choices[0].dataActive = "true";
-        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "false";
         this.setState({
           Categories: updatedCategories
         });
@@ -75,15 +79,19 @@ class NavigationMenu extends Component {
         updatedCategories[index].activeDescIndexChoices = this.state.Categories[
           index
         ].activeDescIndexChoices - 1;
+        for(let i = 0; i < updatedCategories[index].choices.length; i++){
+          updatedCategories[index].choices[i].dataActive = "false";
+        }
         updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices - 1].dataActive = "true";
-        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "false";
         this.setState({
           Categories: updatedCategories
         });
       } else {
         updatedCategories[index].activeDescIndexChoices = max;
+        for(let i = 0; i < updatedCategories[index].choices.length; i++){
+          updatedCategories[index].choices[i].dataActive = "false";
+        }
         updatedCategories[index].choices[max].dataActive = "true";
-        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "false";
         this.setState({
           Categories: updatedCategories
         });
