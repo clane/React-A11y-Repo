@@ -6,13 +6,16 @@ class NavigationMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeDescIndexMenubar: 0,
+      activeDescMenubar: "categoryButton1",
       Categories: [
         {
+          id: "categoryButton1", 
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
           activeDescIndexChoices: 0,
+          activeDescIndexMenubar: 0,
           ariaExpanded: "false",
+          dataActive: "false",
           choices: [
             { id: "cat1choice1", name: "choice 1", dataActive: "false" },
             { id: "cat1choice2", name: "choice 2", dataActive: "false" },
@@ -28,6 +31,7 @@ class NavigationMenu extends Component {
         }
       ,
         {
+          id: "categoryButton2", 
           buttonLabel: "Category 2",
           menuLabel: "Category 2 menu",
           activeDescIndexChoices: 0,
@@ -137,10 +141,13 @@ class NavigationMenu extends Component {
             role="menubar"
             aria-label="navigation menu bar"
             onKeyDown={e => this.handleKeyboardForMenubar(e)}
+            aria-activedescendant={this.state.activeDescMenubar}
           >
             {this.state.Categories.map((category, index) => (
               <div key={index}>
                 <button
+                  id={category.id}
+                  tabIndex="-1"
                   onClick={e => this.toggleMenu(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
