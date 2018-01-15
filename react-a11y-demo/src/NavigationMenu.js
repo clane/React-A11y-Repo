@@ -54,11 +54,13 @@ class NavigationMenu extends Component {
         updatedCategories[index].activeDescIndexChoices = this.state.Categories[
           index
         ].activeDescIndexChoices + 1;
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "true";
         this.setState({
           Categories: updatedCategories
         });
       } else {
         updatedCategories[index].activeDescIndexChoices = 0;
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "true";
         this.setState({
           Categories: updatedCategories
         });
@@ -71,11 +73,13 @@ class NavigationMenu extends Component {
         updatedCategories[index].activeDescIndexChoices = this.state.Categories[
           index
         ].activeDescIndexChoices - 1;
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "true";
         this.setState({
           Categories: updatedCategories
         });
       } else {
         updatedCategories[index].activeDescIndexChoices = max;
+        updatedCategories[index].choices[updatedCategories[index].activeDescIndexChoices].dataActive = "true";
         this.setState({
           Categories: updatedCategories
         });
