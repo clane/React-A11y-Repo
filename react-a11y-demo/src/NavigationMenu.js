@@ -64,6 +64,15 @@ class NavigationMenu extends Component {
     if (e.keyCode === 38) {
       //up arrow key
       console.log("up arrow");
+      if (this.state.Categories[index].activeDescIndexChoices > 0) {
+        updatedCategories[index].activeDescIndexChoices = this.state.Categories[
+          index
+        ].activeDescIndexChoices - 1;
+        this.setState({
+          Categories: updatedCategories
+        });
+      }
+
     }
   }
 
