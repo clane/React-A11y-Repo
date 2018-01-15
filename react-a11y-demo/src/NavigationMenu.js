@@ -6,11 +6,12 @@ class NavigationMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      activeDescIndexMenubar: 0,
       Categories: [
         {
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
-          activeDescIndex: 0,
+          activeDescIndexChoices: 0,
           ariaExpanded: "false",
           choices: [
             { id: "cat1choice1", name: "choice 1" },
@@ -44,12 +45,14 @@ class NavigationMenu extends Component {
 
   handleKeyboardForChoices(e, index) {
     let updatedCategories = [];
+    let a = document.getElementById('skipTarget'); 
+    a.focus();
     updatedCategories = this.state.Categories;
 
     if (e.keyCode === 40) {
       //down arrow 
       console.log("down arrow");
-      updatedCategories[index].activeDescIndex = this.state.Categories[index].activeDescIndex + 1;
+      updatedCategories[index].activeDescIndexChoices = this.state.Categories[index].activeDescIndexChoices + 1;
       this.setState({
         Categories: updatedCategories
       });
@@ -82,7 +85,7 @@ class NavigationMenu extends Component {
           Navigation Menu
         </h2>
         <div role="navigation" aria-label="navigation menu of course">
-          <div id="menubar1" role="menubar" aria-label="navigation menu bar">
+          <div id="menubar" tabIndex="0" role="menubar" aria-label="navigation menu bar">
             {this.state.Categories.map((category, index) => (
               <div key={index}>
                 <button
@@ -97,7 +100,7 @@ class NavigationMenu extends Component {
                   tabIndex="0"
                   aria-label={category.menuLabel}
                   aria-activedescendant={
-                    category.choices[category.activeDescIndex].id
+                    category.choices[category.activeDescIndexChoices].id
                   }
                   onKeyDown={e => this.handleKeyboardForChoices(e, index)}
                   ref={r => {
@@ -107,7 +110,6 @@ class NavigationMenu extends Component {
                   {category.choices.map((choice, index) => (
                     <div
                       key={index}
-                      tabIndex="-1"
                       id={choice.id}
                       role="menuitem"
                       data-active="false"
