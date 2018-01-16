@@ -14,6 +14,7 @@ import Carousel from './Carousel.js';
 import NavigationMenu from './NavigationMenu.js';
 import logo from './logo.svg';
 import RefsTest from './RefsTest.js';
+import SimpleNav from './SimpleNav.js';
 
 class App extends Component {
 
@@ -74,6 +75,7 @@ class App extends Component {
               <Route path="/Carousel" component={Carousel} />
               <Route path="/NavigationMenu" component={NavigationMenu} />
               <Route path="/RefsTest" component={RefsTest} />
+              <Route path="/SimpleNav" component={SimpleNav} />
 	      <Redirect from="/" to="/HomePage"/>
             </Switch>
           </div>

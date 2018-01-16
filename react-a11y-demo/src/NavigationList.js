@@ -11,6 +11,7 @@ class NavigationList extends Component {
           <li><Link to="Carousel">Carousel</Link></li>
           <li><Link to="NavigationMenu">Navigation Menu</Link></li>
           <li><Link to="RefsTest">RefsTest</Link></li>
+          <li><Link to="SimpleNav">SimpleNav</Link></li>
         </ul>
       </div>
     );
