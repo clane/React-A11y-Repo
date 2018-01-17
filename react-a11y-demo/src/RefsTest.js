@@ -7,7 +7,7 @@ class RefsTest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      links: [{href: 1}, {href:2}, {href:3}],
+      links: [{href:"foo.html"}],
     }
 
   }
@@ -18,7 +18,13 @@ render() {
 
     return (
       <div className="Refs-Test">
+        {this.state.links.map((link, index) => (
+          <div key={index}>
+            <a>{link.href}</a>
+          </div>
+        ))}
       </div>
+
     );
   }
 
