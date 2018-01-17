@@ -1,28 +1,26 @@
 import React, { Component } from "react";
-import { Helmet } from "react-helmet";
-
+import './App.css';
 
 class RefsTest extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      links: [{href:"foo.html"}],
-    }
-
+    console.log(props);
   }
 
+componentDidMount(){
+console.log('mounted');
+console.log(this.node);
+this.node.focus();
+
+} 
 
 render() {
   //http://www.mattzabriskie.com/blog/react-referencing-dynamic-childrenhttp://www.mattzabriskie.com/blog/react-referencing-dynamic-children
 
     return (
-      <div className="Refs-Test">
-        {this.state.links.map((link, index) => (
-          <div key={index}>
-            <a>{link.href}</a>
-          </div>
-        ))}
+      <div tabIndex="-1" ref={node => {this.node = node;}} >
+        foo
       </div>
 
     );
