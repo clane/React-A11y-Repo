@@ -8,6 +8,7 @@ class NavigationMenu extends Component {
     this.menuRefs = [];
     this.state = {
       activeDescMenubar: "categoryButton1",
+      activeMenuIndex: null,
       Categories: [
         {
           id: "categoryButton1",
@@ -62,7 +63,8 @@ class NavigationMenu extends Component {
       updatedCategories[index].ariaExpanded = "false";
     }
     this.setState({
-      Categories: updatedCategories
+      Categories: updatedCategories,
+      activeMenuIndex: index,
     });
   }
 
@@ -114,7 +116,7 @@ class NavigationMenu extends Component {
   }
 
    componentDidUpdate(){
-     this.menuRefs[0].focus();
+     this.menuRefs[this.state.activeMenuIndex].focus();
    } 
 
   render() {
