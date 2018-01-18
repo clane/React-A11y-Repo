@@ -57,16 +57,18 @@ class NavigationMenu extends Component {
   toggleMenu(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    if (updatedCategories[index].ariaExpanded === "false") {
-      updatedCategories[index].ariaExpanded = "true";
-    } else {
-      updatedCategories[index].ariaExpanded = "false";
+    //close all menus
+    for(let i = 0; i < updatedCategories.length; i++){
+      updatedCategories[i].ariaExpanded = "false";
     }
+    //open the menu the use just clicked on
+    updatedCategories[index].ariaExpanded = "true";
     this.setState({
       Categories: updatedCategories,
-      activeMenuIndex: index,
+      activeMenuIndex: index
     });
   }
+
 
   handleKeyboardForMenubar(e, index) {}
 
@@ -115,9 +117,9 @@ class NavigationMenu extends Component {
     });
   }
 
-   componentDidUpdate(){
-     this.menuRefs[this.state.activeMenuIndex].focus();
-   } 
+  componentDidUpdate() {
+    this.menuRefs[this.state.activeMenuIndex].focus();
+  }
 
   render() {
     return (
@@ -152,7 +154,6 @@ class NavigationMenu extends Component {
                   onClick={e => this.toggleMenu(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
-                  
                 >
                   {category.buttonLabel}
                 </button>
@@ -167,7 +168,6 @@ class NavigationMenu extends Component {
                   ref={menuRef => {
                     this.menuRefs[index] = menuRef;
                   }}
-
                 >
                   {category.choices.map((choice, index) => (
                     <div
