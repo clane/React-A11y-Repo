@@ -5,6 +5,7 @@ import "./NavigationMenu.css";
 class NavigationMenu extends Component {
   constructor(props) {
     super(props);
+    this.menuRefs = [];
     this.state = {
       activeDescMenubar: "categoryButton1",
       Categories: [
@@ -112,6 +113,10 @@ class NavigationMenu extends Component {
     });
   }
 
+   componentDidUpdate(){
+     this.menuRefs[0].focus();
+   } 
+
   render() {
     return (
       <div className="navigation-menu">
@@ -145,6 +150,7 @@ class NavigationMenu extends Component {
                   onClick={e => this.toggleMenu(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
+                  
                 >
                   {category.buttonLabel}
                 </button>
@@ -156,6 +162,10 @@ class NavigationMenu extends Component {
                     category.choices[category.activeDescIndexChoices].id
                   }
                   onKeyDown={e => this.handleKeyboardForChoices(e, index)}
+                  ref={menuRef => {
+                    this.menuRefs[index] = menuRef;
+                  }}
+
                 >
                   {category.choices.map((choice, index) => (
                     <div
