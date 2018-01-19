@@ -1,7 +1,6 @@
 
-#slidesContainer div.current { width:700px; opacity:1;}
-#slidesContainer div.notCurrent { width:1px; opacity:0; left:-700px; } 
-
+#slidesContainer div.current { opacity:1;}
+#slidesContainer div.notCurrent { width:0px; opacity:0; } 
 
 #carousel {
   width: 100%;
@@ -18,8 +17,12 @@
 }
 
 #slidesContainer div { 
+  float:right;
   width:100%;
-  position:absolute;
+  -webkit-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 1s ease-in-out;
 } 
 
 #slidesContainer div img{ 
@@ -27,6 +30,7 @@
 }
 
 #slidesContainer div p{ 
+  width:97%;
 }
 
 #controls { 
