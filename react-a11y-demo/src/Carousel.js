@@ -117,7 +117,7 @@ class Carousel extends Component {
     if (currentSlideIndex < this.state.slides.length - 1) {
       let updatedSlides = this.state.slides;
       updatedSlides = this.state.slides;
-      updatedSlides[currentSlideIndex].className = "notCurrentFromNext";
+      updatedSlides[currentSlideIndex].className = "notCurrent";
       updatedSlides[currentSlideIndex + 1].className = "current";
       this.setState({
         slides: updatedSlides,

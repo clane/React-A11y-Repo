@@ -1,7 +1,6 @@
 
 #slidesContainer div.current { width:700px; opacity:1;}
 #slidesContainer div.notCurrent { width:1px; opacity:0; left:-700px; } 
-#slidesContainer div.notCurrentFromNext { width:1px; opacity:0; left:700px; } 
 
 
 #carousel {
