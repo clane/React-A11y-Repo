@@ -94,7 +94,11 @@ class Slideshow extends Component {
     if (currentSlideIndex < this.state.slides.length - 1) {
       let updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].translateLeft = -this.slideWidth;
-      updatedSlides[currentSlideIndex + 1].translateLeft = this.slideWidth;
+      if(currentSlideIndex === this.state.slides.length - 2){
+        updatedSlides[currentSlideIndex + 1].translateLeft = 0;
+      } else {
+        updatedSlides[currentSlideIndex + 1].translateLeft = this.slideWidth;
+      }
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
