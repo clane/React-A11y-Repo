@@ -35,14 +35,14 @@ class Slideshow extends Component {
           img: cat2,
           heading: "Kitten 271631",
           desc: "*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?",
-          translateLeft: 600,
+          translateLeft: 0,
         },
         {
           id: "slide3", 
           img: cat3,
           heading: "Kitten 44215",
           desc: "Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason.",
-          translateLeft: 600,
+          translateLeft: 0,
         },
 
       ],
@@ -93,8 +93,6 @@ class Slideshow extends Component {
     let currentSlideIndex = this.getCurrentSlide();
     if (currentSlideIndex < this.state.slides.length - 1) {
       let updatedSlides = this.state.slides;
-      updatedSlides[currentSlideIndex].translateLeft = -this.slideWidth;
-      updatedSlides[currentSlideIndex + 1].translateLeft = 0;
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
