@@ -15,40 +15,47 @@ class Slideshow extends Component {
       slides: [
         {
           img: cat1,
+          styleRule: { width: 600, float:"left", },
           heading: "Kitten 293931",
           desc: "Good day! I'm Casper Jumpy. I want to live in a world where people believe the world is flat. In my free time, I can usually be found tantalizing or prank-calling celebrities. This will be an amewsing friendship."
         },
         {
           img: cat2,
+          styleRule: { width: 600, float:"left", },
           heading: "Kitten 271631",
           desc: "*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?"
         },
         {
           img: cat3,
+          styleRule: { width: 600, float:"left", },
           heading: "Kitten 44215",
           desc: "Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason."
         },
 
         {
           img: cat4,
+          styleRule: { width: 600, float:"left", },
           heading: "Kitten 288702",
           desc: "What's up! I'm Kitty #288702. I'm a professional Culinary Sanitation Specialist and I love lasagna. When I'm not riding the bus, I'm siring for status! We're so fur-tunate to have found each other!"
         },
 
         {
           img: cat5,
+          styleRule: { width: 600, float:"left", },
           heading: "Kitten 226476",
           desc: "Aloha! I'm Kitty #226476. All you need to know about me is I hate hamburgers with a passion. I was voted biggest teacher's pet in college. I hope you like kitten around as much as I do!"
         },
 
         {
           img: cat6,
+          styleRule: { width: 600, float:"left", },
           heading: "Kitten 163514",
           desc: "What's up! I'm Wolfgrey. I'm a Ventriloquist by day, and I like siring for status by night. I am 71% wizard, 81% Dispensary Clerk, and otherwise bad at math. Can you make my brilliant dreams come true?"
         },
 
         {
           img: cat7,
+          styleRule: { width: 600, float:"left", },
           heading: "Kitten 273163",
           desc: "*waves*! I'm Kitty #273163. I want to live in a world where people believe that one day cats will rule this planet. It wasn't heavily publicized, but I once had a brief relationship with Puss in Boots. We can be friends, but keep the ultra purrsonal stuff to yourself, please."
         }
@@ -150,12 +157,27 @@ class Slideshow extends Component {
   }
  
   render() {
+
+    let slideShowWrapper = { 
+      width: 600,
+      position: "relative",
+      overflow: "hidden",
+    } 
+
+    let slideContainerStyle = {
+      width: 4200,
+      position: "relative",
+      overflow: "hidden",
+      border: 2,
+      border: "solid #000",
+    }
+ 
    
     let prevButtonDisabled = this.state.prevButtonDisabled;
     let nextButtonDisabled = this.state.nextButtonDisabled;
 
     return (
-      <div className="Slide-show">
+      <div>
         <Helmet>
           <html lang="en" />
           <meta charSet="utf-8" />
@@ -169,15 +191,18 @@ class Slideshow extends Component {
         >
           Carousel
         </h2>
-          <div id="" aria-hidden="true">
+
+        <div style={slideShowWrapper}>
+          <div style={slideContainerStyle} aria-hidden="true">
             {this.state.slides.map((slide, index) => (
-              <div key={index} style={slide.style}>
+              <div style={slide.styleRule} key={index}>
                 <img width="300px" height="300px" src={slide.img} alt="" />
                 <h3>{slide.heading}</h3>
                 <p>{slide.desc}</p>
               </div>
             ))}
           </div>
+        </div>
 
           <div aria-live="polite" className="offscreenText">
             {this.state.liveRegionEntries.map((entry, index) => (
