@@ -169,7 +169,6 @@ class Slideshow extends Component {
         >
           Carousel
         </h2>
-        <div id="">
           <div id="" aria-hidden="true">
             {this.state.slides.map((slide, index) => (
               <div key={index} style={slide.style}>
@@ -206,7 +205,6 @@ class Slideshow extends Component {
               &#8594;
             </button>
           </div>
-        </div>
       </div>
     );
   }
