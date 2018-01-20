@@ -206,7 +206,7 @@ class Slideshow extends Component {
         <Helmet>
           <html lang="en" />
           <meta charSet="utf-8" />
-          <title>Home</title>
+          <title>Slide Show</title>
         </Helmet>
         <h2
           tabIndex="-1"
