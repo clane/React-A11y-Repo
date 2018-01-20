@@ -8,7 +8,7 @@ import cat5 from "./catImages/226476.svg";
 import cat6 from "./catImages/163514.svg";
 import cat7 from "./catImages/273163.svg";
 
-class Carousel_2 extends Component {
+class Slideshow extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -155,7 +155,7 @@ class Carousel_2 extends Component {
     let nextButtonDisabled = this.state.nextButtonDisabled;
 
     return (
-      <div className="home-page">
+      <div className="Slide-show">
         <Helmet>
           <html lang="en" />
           <meta charSet="utf-8" />
@@ -212,4 +212,4 @@ class Carousel_2 extends Component {
   }
 }
 
-export default Carousel_2;
+export default Slideshow;
