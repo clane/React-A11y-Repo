@@ -81,7 +81,11 @@ class Slideshow extends Component {
     if (currentSlideIndex > 0) {
       let updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].translateLeft = -this.slideWidth;
-      updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth;
+      if(currentSlideIndex === 1){
+        updatedSlides[currentSlideIndex - 1].translateLeft = 0;
+      } else {
+          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth;
+      }
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex - 1
@@ -192,7 +196,7 @@ class Slideshow extends Component {
             this.topHeading = componentH2;
           }}
         >
-          Carousel
+         Slide Show 
         </h2>
 
         <div style={slideShowWrapper}>
