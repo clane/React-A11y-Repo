@@ -15,7 +15,6 @@ class Slideshow extends Component {
     this.slideWidth =  600;
     this.slidePosition =  "absolute";
     this.slideFloatDirection = "left";
-    this.slideLeftPosition = 0;
     this.transitionDuration = "300ms";
     this.state = {
       slides: [
@@ -175,18 +174,27 @@ class Slideshow extends Component {
       height: 900,
       position: "relative",
       overflow: "hidden",
-      border: 2,
-      border: "solid #000",
+      border: "2px solid #000",
     }
 
     let slideStyles = [];
-    slideStyles[0] = {
-      position:this.slidePosition,
-      float:this.slideFloatDirection,
-      width:this.slideWidth,
-      left:this.slideLeftPosition,
-      "transition-duration":this.transitionDuration,
-      transform:"translate(this.state.slides[0].translateSideways, 0px)"
+
+    for(let i = 0; i < this.state.slides.length; i++){
+
+      let leftPosition = 0;
+
+      let style  = {
+        position:this.slidePosition,
+        float:this.slideFloatDirection,
+        width:this.slideWidth,
+        left:leftPosition,
+        transitionDuration:this.transitionDuration,
+      }
+      
+      slideStyles.push(style);
+      leftPosition = leftPosition - this.slideWidth;
+      console.log(leftPosition);
+
     }
  
    
