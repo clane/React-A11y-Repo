@@ -11,7 +11,7 @@ import cat7 from "./catImages/273163.svg";
 class Slideshow extends Component {
   constructor(props) {
     super(props);
-    this.slideWidth =  300;
+    this.slideWidth =  100;
     this.slideShowWidth =  this.slideWidth;
     this.slidePosition =  "absolute";
     this.slideFloatDirection = "left";
@@ -29,6 +29,7 @@ class Slideshow extends Component {
           heading: "Kitten 293931",
           desc: "Good day! I'm Casper Jumpy. I want to live in a world where people believe the world is flat. In my free time, I can usually be found tantalizing or prank-calling celebrities. This will be an amewsing friendship.",
           translateLeft: 0,
+          leftPosition:0,
         },
         {
           id: "slide2", 
@@ -48,28 +49,31 @@ class Slideshow extends Component {
           id: "slide4", 
           img: cat4,
           heading: "Kitten 288702",
-          desc: "What's up! I'm Kitty #288702. I'm a professional Culinary Sanitation Specialist and I love lasagna. When I'm not riding the bus, I'm siring for status! We're so fur-tunate to have found each other!"
+          desc: "What's up! I'm Kitty #288702. I'm a professional Culinary Sanitation Specialist and I love lasagna. When I'm not riding the bus, I'm siring for status! We're so fur-tunate to have found each other!",
+          translateLeft: 0,
         },
 
         {
           id: "slide5", 
           img: cat5,
           heading: "Kitten 226476",
-          desc: "Aloha! I'm Kitty #226476. All you need to know about me is I hate hamburgers with a passion. I was voted biggest teacher's pet in college. I hope you like kitten around as much as I do!"
+          desc: "Aloha! I'm Kitty #226476. All you need to know about me is I hate hamburgers with a passion. I was voted biggest teacher's pet in college. I hope you like kitten around as much as I do!",
+          translateLeft: 0,
         },
 
         {
-          id: "slide6", 
           img: cat6,
           heading: "Kitten 163514",
-          desc: "What's up! I'm Wolfgrey. I'm a Ventriloquist by day, and I like siring for status by night. I am 71% wizard, 81% Dispensary Clerk, and otherwise bad at math. Can you make my brilliant dreams come true?"
+          desc: "What's up! I'm Wolfgrey. I'm a Ventriloquist by day, and I like siring for status by night. I am 71% wizard, 81% Dispensary Clerk, and otherwise bad at math. Can you make my brilliant dreams come true?",
+          translateLeft: 0,
         },
 
         {
           id: "slide7", 
           img: cat7,
           heading: "Kitten 273163",
-          desc: "*waves*! I'm Kitty #273163. I want to live in a world where people believe that one day cats will rule this planet. It wasn't heavily publicized, but I once had a brief relationship with Puss in Boots. We can be friends, but keep the ultra purrsonal stuff to yourself, please."
+          desc: "*waves*! I'm Kitty #273163. I want to live in a world where people believe that one day cats will rule this planet. It wasn't heavily publicized, but I once had a brief relationship with Puss in Boots. We can be friends, but keep the ultra purrsonal stuff to yourself, please.",
+          translateLeft: 0,
         }
       ],
      };
