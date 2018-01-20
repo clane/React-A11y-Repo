@@ -149,7 +149,7 @@ class Slideshow extends Component {
 
     let slideContainerStyle = {
       width: slideContainerWidth,
-      height: 900,
+      height: 550,
       position: "relative",
       overflow: "hidden",
       border: "2px solid #000",
