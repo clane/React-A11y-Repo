@@ -183,7 +183,7 @@ class Slideshow extends Component {
     let leftPosition = 0;
 
     for(let i = 0; i < this.state.slides.length; i++){
-      let transformString = "translate(600px, 0px)";
+      let transformString = "translate(" + this.state.slides[i].translateLeft + "px, 0px)";
       let style  = {
         position:this.slidePosition,
         float:this.slideFloatDirection,
