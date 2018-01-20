@@ -11,6 +11,7 @@ import NavigationList from './NavigationList.js';
 import HomePage from './HomePage.js';
 import Game from './Game.js';
 import Carousel from './Carousel.js';
+import Carousel_2 from './Carousel_2.js';
 import NavigationMenu from './NavigationMenu.js';
 import logo from './logo.svg';
 import RefsTest from './RefsTest.js';
@@ -73,6 +74,7 @@ class App extends Component {
               <Route path="/HomePage" component={HomePage} />
               <Route path="/Game" component={Game} />
               <Route path="/Carousel" component={Carousel} />
+              <Route path="/Carousel_2" component={Carousel_2} />
               <Route path="/NavigationMenu" component={NavigationMenu} />
               <Route path="/RefsTest" component={RefsTest} />
               <Route path="/SimpleNav" component={SimpleNav} />

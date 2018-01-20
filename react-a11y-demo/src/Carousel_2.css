@@ -1,0 +1,31 @@
+#carousel {
+  width: 600px;
+  margin:auto;
+  background-color:aquamarine;
+  position:relative;
+  overflow:hidden;
+}
+
+#slidesContainer {
+  width: 4200px;
+  height:500px;
+}
+
+#controls { 
+  width: 50%;
+  margin:20px auto;
+}
+
+#controls  button.control {
+   width:35%;
+   margin-right:20px;
+   margin-bottom:20px;
+   font-size:4rem;
+   border:none;
+   background-color:yellow;
+} 
+
+#controls button.control[disabled] { opacity:0.5; } 
+
+
+
