@@ -11,8 +11,8 @@ import cat7 from "./catImages/273163.svg";
 class Slideshow extends Component {
   constructor(props) {
     super(props);
-    this.slideShowWidth =  600;
-    this.slideWidth =  600;
+    this.slideWidth =  300;
+    this.slideShowWidth =  this.slideWidth;
     this.slidePosition =  "absolute";
     this.slideFloatDirection = "left";
     this.transitionDuration = "1500ms";
