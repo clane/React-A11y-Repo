@@ -169,8 +169,8 @@ class Slideshow extends Component {
         >
           Carousel
         </h2>
-        <div id="carousel">
-          <div id="slidesContainer" aria-hidden="true">
+        <div id="">
+          <div id="" aria-hidden="true">
             {this.state.slides.map((slide, index) => (
               <div key={index} style={slide.style}>
                 <img width="300px" height="300px" src={slide.img} alt="" />
