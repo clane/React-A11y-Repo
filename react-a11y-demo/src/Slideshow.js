@@ -11,7 +11,7 @@ import cat7 from "./catImages/273163.svg";
 class Slideshow extends Component {
   constructor(props) {
     super(props);
-    this.slideWidth =  500;
+    this.slideWidth =  800;
     this.slideShowWidth =  this.slideWidth;
     this.slidePosition =  "absolute";
     this.slideFloatDirection = "left";
@@ -195,7 +195,8 @@ class Slideshow extends Component {
       height: 550,
       position: "relative",
       overflow: "hidden",
-      border: "2px solid #000",
+      backgroundColor:"#006BA6",
+      color:"#fff",
     }
 
     let slideStyles = [];
@@ -207,10 +208,11 @@ class Slideshow extends Component {
       let style  = {
         position:this.slidePosition,
         float:this.slideFloatDirection,
-        width:this.slideWidth,
+        width:this.slideWidth - 30,
         left:leftPosition,
         transitionDuration:this.transitionDuration,
-        transform: transformString 
+        transform: transformString,
+        padding: 20,
       }
       
       slideStyles.push(style);
