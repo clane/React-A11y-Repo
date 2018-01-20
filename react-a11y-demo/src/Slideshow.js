@@ -17,6 +17,11 @@ class Slideshow extends Component {
     this.slideFloatDirection = "left";
     this.transitionDuration = "300ms";
     this.state = {
+      currentSlideIndex: 0,
+      liveRegionEntries: [],
+      currentLiveRegionIndex: 1,
+      prevButtonDisabled: true,
+      nextButtonDisabled: false,
       slides: [
         { 
           img: cat1,
@@ -65,12 +70,7 @@ class Slideshow extends Component {
           translateLeft: -300,
         }
       ],
-      currentSlideIndex: 0,
-      liveRegionEntries: [],
-      currentLiveRegionIndex: 1,
-      prevButtonDisabled: true,
-      nextButtonDisabled: false,
-    };
+     };
   }
 
   getCurrentSlide() {
@@ -117,7 +117,8 @@ class Slideshow extends Component {
     let currentSlideIndex = this.getCurrentSlide();
     if (currentSlideIndex < this.state.slides.length - 1) {
       let updatedSlides = this.state.slides;
-      updatedSlides = this.state.slides;
+      updatedSlides[currentSlideIndex].translateLeft = -this.slideWidth;
+      updatedSlides[currentSlideIndex + 1].translateLeft = 0;
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
