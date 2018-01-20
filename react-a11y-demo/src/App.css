@@ -19,7 +19,7 @@ header h1 { width:23%; float:left; }
   float:left;
 }
 
-*:focus { outline:3px solid blue; } 
+*:focus { outline:5px dotted blue; } 
 
 #root { width:960px; margin:auto; } 
 
