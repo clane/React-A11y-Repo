@@ -15,7 +15,7 @@ class Slideshow extends Component {
     this.slideWidth =  600;
     this.slidePosition =  "absolute";
     this.slideFloatDirection = "left";
-    this.transitionDuration = "300ms";
+    this.transitionDuration = "1500ms";
     this.state = {
       currentSlideIndex: 0,
       liveRegionEntries: [],
@@ -94,11 +94,7 @@ class Slideshow extends Component {
     if (currentSlideIndex < this.state.slides.length - 1) {
       let updatedSlides = this.state.slides;
       updatedSlides[currentSlideIndex].translateLeft = -this.slideWidth;
-      if(currentSlideIndex === this.state.slides.length - 2){
-        updatedSlides[currentSlideIndex + 1].translateLeft = 0;
-      } else {
-        updatedSlides[currentSlideIndex + 1].translateLeft = this.slideWidth;
-      }
+      updatedSlides[currentSlideIndex + 1].translateLeft = this.slideWidth * (currentSlideIndex + 1);
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex + 1
