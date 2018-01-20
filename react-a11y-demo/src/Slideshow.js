@@ -179,10 +179,9 @@ class Slideshow extends Component {
 
     let slideStyles = [];
 
+    let leftPosition = 0;
+
     for(let i = 0; i < this.state.slides.length; i++){
-
-      let leftPosition = 0;
-
       let style  = {
         position:this.slidePosition,
         float:this.slideFloatDirection,
@@ -194,7 +193,6 @@ class Slideshow extends Component {
       slideStyles.push(style);
       leftPosition = leftPosition - this.slideWidth;
       console.log(leftPosition);
-
     }
  
    
