@@ -188,11 +188,11 @@ class Slideshow extends Component {
         width:this.slideWidth,
         left:leftPosition,
         transitionDuration:this.transitionDuration,
+        transform: "translate(0px, 0px)"
       }
       
       slideStyles.push(style);
       leftPosition = leftPosition - this.slideWidth;
-      console.log(leftPosition);
     }
  
    
