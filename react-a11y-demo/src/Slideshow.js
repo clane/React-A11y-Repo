@@ -115,34 +115,9 @@ class Slideshow extends Component {
         updatedSlides[currentSlideIndex - 1].translateLeft = 0;
       } 
 
-      if(currentSlideIndex === 2){
-          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth;
-          console.log(currentSlideIndex);
+      if(currentSlideIndex > 1){
+          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * (currentSlideIndex - 1);
       } 
-
-      if(currentSlideIndex === 3){
-        updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 2;
-          console.log(currentSlideIndex);
-      }
-
-     if(currentSlideIndex === 4){
-        updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 3;
-          console.log(currentSlideIndex);
-      }
-     if(currentSlideIndex === 5){
-          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 4;
-          console.log(currentSlideIndex);
-      }
-     if(currentSlideIndex === 6){
-          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 5;
-          console.log(currentSlideIndex);
-      }
-     if(currentSlideIndex === 7){
-          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 6;
-          console.log(currentSlideIndex);
-      }
-
-
 
       this.setState({
         slides: updatedSlides,
