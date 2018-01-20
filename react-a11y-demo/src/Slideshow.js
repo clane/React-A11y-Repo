@@ -11,7 +11,7 @@ import cat7 from "./catImages/273163.svg";
 class Slideshow extends Component {
   constructor(props) {
     super(props);
-    this.slideWidth =  100;
+    this.slideWidth =  500;
     this.slideShowWidth =  this.slideWidth;
     this.slidePosition =  "absolute";
     this.slideFloatDirection = "left";
@@ -113,9 +113,37 @@ class Slideshow extends Component {
       updatedSlides[currentSlideIndex].translateLeft = -this.slideWidth;
       if(currentSlideIndex === 1){
         updatedSlides[currentSlideIndex - 1].translateLeft = 0;
-      } else {
+      } 
+
+      if(currentSlideIndex === 2){
           updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth;
+          console.log(currentSlideIndex);
+      } 
+
+      if(currentSlideIndex === 3){
+        updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 2;
+          console.log(currentSlideIndex);
       }
+
+     if(currentSlideIndex === 4){
+        updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 3;
+          console.log(currentSlideIndex);
+      }
+     if(currentSlideIndex === 5){
+          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 4;
+          console.log(currentSlideIndex);
+      }
+     if(currentSlideIndex === 6){
+          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 5;
+          console.log(currentSlideIndex);
+      }
+     if(currentSlideIndex === 7){
+          updatedSlides[currentSlideIndex - 1].translateLeft = this.slideWidth * 6;
+          console.log(currentSlideIndex);
+      }
+
+
+
       this.setState({
         slides: updatedSlides,
         currentSlideIndex: currentSlideIndex - 1
