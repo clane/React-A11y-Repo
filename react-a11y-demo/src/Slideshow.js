@@ -21,28 +21,33 @@ class Slideshow extends Component {
       slides: [
         { 
           img: cat1,
+          translateSideways: "0px",
           heading: "Kitten 293931",
           desc: "Good day! I'm Casper Jumpy. I want to live in a world where people believe the world is flat. In my free time, I can usually be found tantalizing or prank-calling celebrities. This will be an amewsing friendship."
         },
         {
           img: cat2,
+          translateSideways: 0,
           heading: "Kitten 271631",
           desc: "*waves*! I'm Kitty #271631. I want to live in a world where people believe that one day cats will rule this planet. I would give it all up to star in a soap opera. Will you be the marmalade to my ranch dressing?"
         },
         {
           img: cat3,
+          translateSideways: 0,
           heading: "Kitten 44215",
           desc: "Sup playa! Bubba Kush here. I'm here to enjoy spinning sick beats and tricking babies. I'm convinced that that one day cats will rule this planet. One day I'll prove it. I can't wait to wake you up at 4am for seemingly no reason."
         },
 
         {
           img: cat4,
+          translateSideways: 0,
           heading: "Kitten 288702",
           desc: "What's up! I'm Kitty #288702. I'm a professional Culinary Sanitation Specialist and I love lasagna. When I'm not riding the bus, I'm siring for status! We're so fur-tunate to have found each other!"
         },
 
         {
           img: cat5,
+          translateSideways: 0,
           heading: "Kitten 226476",
           desc: "Aloha! I'm Kitty #226476. All you need to know about me is I hate hamburgers with a passion. I was voted biggest teacher's pet in college. I hope you like kitten around as much as I do!"
         },
@@ -55,6 +60,7 @@ class Slideshow extends Component {
 
         {
           img: cat7,
+          translateSideways: 0,
           heading: "Kitten 273163",
           desc: "*waves*! I'm Kitty #273163. I want to live in a world where people believe that one day cats will rule this planet. It wasn't heavily publicized, but I once had a brief relationship with Puss in Boots. We can be friends, but keep the ultra purrsonal stuff to yourself, please."
         }
@@ -165,7 +171,7 @@ class Slideshow extends Component {
     } 
 
     let slideContainerStyle = {
-      width: 4200,
+      width: slideContainerWidth,
       height: 900,
       position: "relative",
       overflow: "hidden",
@@ -180,7 +186,7 @@ class Slideshow extends Component {
       width:this.slideWidth,
       left:this.slideLeftPosition,
       "transition-duration":this.transitionDuration,
-      transform:"translate(-300px, 0px)"
+      transform:"translate(this.state.slides[0].translateSideways, 0px)"
     }
  
    
