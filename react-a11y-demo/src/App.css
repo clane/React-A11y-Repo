@@ -26,11 +26,11 @@ header h1 { width:53%; float:left; }
 
 
 h1 { width:40%; } 
+
 .App-header {
   background-color: #222;
-  height: 60px;
-  padding: 20px;
   color: white;
+  
 }
 
 h2 { width:40%; } 
