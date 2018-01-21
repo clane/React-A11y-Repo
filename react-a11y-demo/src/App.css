@@ -13,7 +13,7 @@ header { margin-top:20px; }
 } 
 
 header { overflow:hidden; }
-header h1 { width:23%; float:left; }
+header h1 { width:53%; float:left; }
 
 .App-logo {
   width:92px;
@@ -36,7 +36,9 @@ h1 { width:40%; }
 h2 { width:40%; } 
 
 .App-title {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
+  position:relative;
+  top:-30px;
 }
 
 
