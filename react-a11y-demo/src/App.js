@@ -31,6 +31,10 @@ class App extends Component {
     });
   } 
 
+  skipLinkClick(){
+    this.skipTarget.focus();
+  } 
+
   shouldComponentUpdate(prevProps,prevState){
     if(prevState.skipLinkVisible && !this.state.skipLinkVisible){
       return true;
@@ -57,14 +61,14 @@ class App extends Component {
           <title>A11y React Demo</title>
         </Helmet>
 
-        <a className={skipLinkClass} onFocus={e => this.skipLinkFocus(e)} id="skipLink" href="#content">Skip to main content</a>
+        <a id="skipLink" className={skipLinkClass} onFocus={e => this.skipLinkFocus(e)} onClick={e => this.skipLinkClick(e)} href="#content">Skip to main content</a>
 
         <header className="App-header">
           <img src={logo} className="App-logo" alt="Reacts official logo" />
           <h1 className="App-title">A11y React Demo</h1>
 	</header>
 
-        <a className={skipLinkClass} id="skipTarget" name="content">[main content]</a>
+        <div id="skipTarget" tabIndex="-1" ref={(node) => {this.skipTarget = node;}} className={skipLinkClass}>[main content]</div>
 
         <BrowserRouter>
   	  <div>
