@@ -266,6 +266,16 @@ class Board extends Component {
       status = this.state.gameInProgress ? "in progress" : "game over";
     }
 
+
+    let boardContainerStyle;
+    if(this.state.gameInProgress){
+      boardContainerStyle = {opacity: 1};
+    } else {
+        boardContainerStyle = {opacity: 0.3};
+    } 
+
+
+
     return (
       <div id="gameContainer" aria-label="tic-tac-toe">
         <div id="left">
@@ -324,6 +334,7 @@ class Board extends Component {
             }}
             onKeyDown={e => this.handleKeyboard(e)}
             aria-describedby="status"
+            style={boardContainerStyle} 
           >
             <thead>
               <tr>
