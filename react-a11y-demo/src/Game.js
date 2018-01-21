@@ -22,50 +22,48 @@ class Board extends Component {
   constructor(props) {
     super(props);
 
-if (!Array.prototype.fill) {
-  Object.defineProperty(Array.prototype, 'fill', {
-    value: function(value) {
+    if (!Array.prototype.fill) {
+      Object.defineProperty(Array.prototype, "fill", {
+        value: function(value) {
+          // Steps 1-2.
+          if (this == null) {
+            throw new TypeError("this is null or not defined");
+          }
 
-      // Steps 1-2.
-      if (this == null) {
-        throw new TypeError('this is null or not defined');
-      }
+          var O = Object(this);
 
-      var O = Object(this);
+          // Steps 3-5.
+          var len = O.length >>> 0;
 
-      // Steps 3-5.
-      var len = O.length >>> 0;
+          // Steps 6-7.
+          var start = arguments[1];
+          var relativeStart = start >> 0;
 
-      // Steps 6-7.
-      var start = arguments[1];
-      var relativeStart = start >> 0;
+          // Step 8.
+          var k = relativeStart < 0
+            ? Math.max(len + relativeStart, 0)
+            : Math.min(relativeStart, len);
 
-      // Step 8.
-      var k = relativeStart < 0 ?
-        Math.max(len + relativeStart, 0) :
-        Math.min(relativeStart, len);
+          // Steps 9-10.
+          var end = arguments[2];
+          var relativeEnd = end === undefined ? len : end >> 0;
 
-      // Steps 9-10.
-      var end = arguments[2];
-      var relativeEnd = end === undefined ?
-        len : end >> 0;
+          // Step 11.
+          var final = relativeEnd < 0
+            ? Math.max(len + relativeEnd, 0)
+            : Math.min(relativeEnd, len);
 
-      // Step 11.
-      var final = relativeEnd < 0 ?
-        Math.max(len + relativeEnd, 0) :
-        Math.min(relativeEnd, len);
+          // Step 12.
+          while (k < final) {
+            O[k] = value;
+            k++;
+          }
 
-      // Step 12.
-      while (k < final) {
-        O[k] = value;
-        k++;
-      }
-
-      // Step 13.
-      return O;
+          // Step 13.
+          return O;
+        }
+      });
     }
-  });
-}
     this.state = {
       squares: Array(10).fill(null, 1),
       xIsNext: true,
@@ -73,7 +71,7 @@ if (!Array.prototype.fill) {
       gameInProgress: false,
       startButtonDisabled: false,
       winner: null,
-      firstGameStarted:false
+      firstGameStarted: false
     };
   }
 
@@ -88,7 +86,7 @@ if (!Array.prototype.fill) {
     });
     this.clearBoard();
     this.clearWinner();
-    this.boardContainer.focus(); 
+    this.boardContainer.focus();
   }
 
   clearBoard() {
@@ -202,9 +200,9 @@ if (!Array.prototype.fill) {
     }
   }
 
-  setWinner(){ 
+  setWinner() {
     let winner = this.calculateWinner(this.state.squares.slice());
-    if (winner) { 
+    if (winner) {
       this.setState({
         gameInProgress: false,
         startButtonDisabled: false,
@@ -212,7 +210,7 @@ if (!Array.prototype.fill) {
       });
     }
     return null;
-  } 
+  }
 
   calculateWinner(squares) {
     const lines = [
@@ -231,39 +229,40 @@ if (!Array.prototype.fill) {
       if (
         squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
       ) {
-        
         return squares[a];
       }
     }
   }
 
-  shouldComponentUpdate(prevProps,prevState){ 
-    if(this.state.winner) {
+  shouldComponentUpdate(prevProps, prevState) {
+    if (this.state.winner) {
       return false;
-    } else { 
-        return true;
+    } else {
+      return true;
     }
   }
 
-  componentDidUpdate(prevProps,prevState){
-    if(this.state.firstGameStarted){
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.firstGameStarted) {
       let winner = this.calculateWinner(this.state.squares.slice());
-      if(winner && !this.state.winner) {
-        this.setWinner(); 
-	alert('Winner: ' + winner); 
+      if (winner && !this.state.winner) {
+        this.setWinner();
+        alert("Winner: " + winner);
       }
-      if((this.state.gameInProgress === false) && !winner ){ 
-        alert('Game over no winner');  
+      if (this.state.gameInProgress === false && !winner) {
+        alert("Game over no winner");
       }
     }
   }
- 
+
   render() {
     let winner = this.state.winner;
     let nextPlayer = this.state.xIsNext ? "X" : "0";
-    if(!this.state.gameInProgress) { nextPlayer = null; } 
+    if (!this.state.gameInProgress) {
+      nextPlayer = null;
+    }
     let status = null;
-    if(this.state.firstGameStarted){
+    if (this.state.firstGameStarted) {
       status = this.state.gameInProgress ? "in progress" : "game over";
     }
 
@@ -292,7 +291,7 @@ if (!Array.prototype.fill) {
               Start New Game
             </button>
           </div>
-          
+
           <h3 id="squareValuesTableHeading">Square Values Table</h3>
           <table id="squareValuesTable" aria-labelledby="squareValuesHeading">
             <thead>
