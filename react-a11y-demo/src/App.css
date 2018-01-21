@@ -32,6 +32,8 @@ body { color:#000; background-color:#fff; min-height:1000px; }
 }
 .App-title {
   font-size: 2.5rem;
+  margin:0;
+  padding:0;
 }
 /* end header styles */
 
