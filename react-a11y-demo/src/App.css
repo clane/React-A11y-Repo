@@ -25,6 +25,7 @@ body { color:#000; background-color:#fff; min-height:1000px; }
   background-color: #222;
   color: white;
   overflow:hidden;
+  height:65px;
 }
 .App-logo {
   width:92px;
