@@ -181,6 +181,7 @@ class Slideshow extends Component {
   }
 
   componentDidMount() {
+    this.topHeading.focus();
     this.initLiveRegion();
   }
 
@@ -269,6 +270,9 @@ class Slideshow extends Component {
 
     let prevButtonDisabled = this.state.prevButtonDisabled;
     let nextButtonDisabled = this.state.nextButtonDisabled;
+
+    
+
 
     return (
       <div>
