@@ -256,6 +256,7 @@ class Board extends Component {
   }
 
   render() {
+
     let winner = this.state.winner;
     let nextPlayer = this.state.xIsNext ? "X" : "0";
     if (!this.state.gameInProgress) {
@@ -272,6 +273,13 @@ class Board extends Component {
       boardContainerStyle = {opacity: 1};
     } else {
         boardContainerStyle = {opacity: 0.3};
+    } 
+
+    let startButtonStyle;
+    if(this.state.gameInProgress){
+      startButtonStyle = {opacity: 0.3};
+    } else {
+        startButtonStyle = {opacity: 1};
     } 
 
 
@@ -297,6 +305,7 @@ class Board extends Component {
               id="startButton"
               disabled={this.state.startButtonDisabled}
               onClick={e => this.startGame(e)}
+              style={startButtonStyle}
             >
               Start New Game
             </button>
