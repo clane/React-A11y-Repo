@@ -1,4 +1,5 @@
 body { color:#000; background-color:#fff; min-height:1000px; } 
+body:focus { outline:none; } 
 header { margin-top:20px; } 
 #skipLink, #skipTarget { display:block; margin:20px 0px; } 
 .App { 
