@@ -7,7 +7,7 @@ class NavigationList extends Component {
       <div className="Navigation-List">
         <ul role="navigation">
           <li><Link to="HomePage">Home Page</Link></li>
-          <li><Link to="Game">Game</Link></li>
+          <li><Link to="Game">Tic-Tac-Toe</Link></li>
           <li><Link to="Slideshow">Slideshow</Link></li>
         </ul>
       </div>

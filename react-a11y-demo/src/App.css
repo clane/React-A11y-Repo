@@ -1,5 +1,5 @@
 body { color:#000; background-color:#fff; min-height:1000px; } 
-
+header { margin-top:20px; } 
 #skipLink, #skipTarget { display:block; margin:20px 0px; } 
 .App p { 
     font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif; 
@@ -23,8 +23,6 @@ header h1 { width:23%; float:left; }
 
 #root { width:960px; margin:auto; } 
 
-.App {
-}
 
 h1 { width:30%; } 
 .App-header {
@@ -46,9 +44,8 @@ h2 { width:30%; }
   font-size: large;
 }
 
-[role="navigation"]  {  } 
 [role="navigation"]  li { width:25%; display:inline-block; list-style-type:none;  } 
-
+[role="navigation"] li a { background-color:yellow; padding:10px; text-decoration:none; color:#000; font-size:1.5rem; display:inline-block; width:200px; text-align:center;  } 
 
 
 .offscreenText {
