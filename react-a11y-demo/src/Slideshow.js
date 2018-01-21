@@ -7,6 +7,8 @@ import cat4 from "./catImages/288702.svg";
 import cat5 from "./catImages/226476.svg";
 import cat6 from "./catImages/163514.svg";
 import cat7 from "./catImages/273163.svg";
+import leftArrow  from "./slideControls/left_arrow.svg";
+import rightArrow from "./slideControls/right_arrow.svg";
 
 class Slideshow extends Component {
   constructor(props) {
@@ -266,7 +268,7 @@ class Slideshow extends Component {
               onClick={() => this.showPreviousSlide()}
               disabled={prevButtonDisabled}
             >
-              &#8592;  
+              <img src={leftArrow}/>
             </button>
             <button
               className="control"
@@ -274,7 +276,8 @@ class Slideshow extends Component {
               onClick={() => this.showNextSlide()}
               disabled={nextButtonDisabled}
             >
-              &#8594;
+              
+              <img src={rightArrow}/>
             </button>
           </div>
       </div>
