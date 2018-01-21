@@ -304,7 +304,7 @@ class Slideshow extends Component {
               onClick={() => this.showPreviousSlide()}
               disabled={prevButtonDisabled}
             >
-              <img src={leftArrow} />
+              <img src={leftArrow} alt="previous slide"/>
             </button>
             <button
               style={rightButtonStyle}
@@ -313,7 +313,7 @@ class Slideshow extends Component {
               disabled={nextButtonDisabled}
             >
 
-              <img src={rightArrow} />
+              <img src={rightArrow} alt="next slide" />
             </button>
           </div>
 
