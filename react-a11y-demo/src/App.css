@@ -1,7 +1,12 @@
-body { color:#000; background-color:#fff; min-height:1000px; } 
+
+/* begin focus styles */
+*:focus { outline:5px dotted blue; } 
 body:focus { outline:none; } 
-header { margin-top:20px; } 
-#skipLink, #skipTarget { display:block; margin:20px 0px; } 
+/* end  focus styles */
+
+/* begin page level styles */
+body { color:#000; background-color:#fff; min-height:1000px; } 
+#root { width:960px; margin:auto; } 
 .App { 
     font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif; 
     letter-spacing: .01rem;
@@ -10,44 +15,31 @@ header { margin-top:20px; }
     font-size: 1.5rem;
     line-height: 1.58;
     letter-spacing: -.003em;
-} 
+}
+/* end  page level styles */
 
-header { overflow:hidden; }
-header h1 { width:53%; float:left; }
+#skipLink, #skipTarget { display:block; margin:20px 0px; } 
 
+/* begin header styles */
+.App-header {
+  background-color: #222;
+  color: white;
+}
 .App-logo {
   width:92px;
   float:left;
 }
-
-*:focus { outline:5px dotted blue; } 
-
-#root { width:960px; margin:auto; } 
-
-
-h1 { width:40%; } 
-
-.App-header {
-  background-color: #222;
-  color: white;
-  
-}
-
-h2 { width:40%; } 
-
 .App-title {
   font-size: 2.5rem;
 }
+/* end header styles */
 
+h2 { width:40%; } 
 
-
-.App-intro {
-  font-size: large;
-}
-
+/* begin routing link styles */
 [role="navigation"]  li { width:25%; display:inline-block; list-style-type:none;  } 
 [role="navigation"] li a { background-color:yellow; padding:10px; text-decoration:none; color:#000; font-size:1.5rem; display:inline-block; width:200px; text-align:center;  } 
-
+/* end routing link styles */
 
 .offscreenText {
 position: absolute;
