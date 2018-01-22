@@ -1,6 +1,6 @@
 #gameContainer { overflow:hidden; background-color:#006BA6; color:#fff; padding:20px; }
 #gameContainer [role="grid"] td { color:#000;  }
-#gameContainer #startButton { width:250px; height:60px; color:#000; background-color:yellow; font-size:2rem;  }
+#gameContainer #startButton { width:80%; height:80px; color:#000; background-color:yellow; font-size:2rem; font-weight:700;  }
 #gameContainer *:focus { outline:5px dotted #fff;  }
 #left,#right { float:left; }
 #left { padding-left:5%; width:40% }
