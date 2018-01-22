@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+
+
 
 class NavigationList extends Component {
   render() {
@@ -9,6 +12,7 @@ class NavigationList extends Component {
           <li><Link to="HomePage">Home</Link></li>
           <li><Link to="Game">Tic-Tac-Toe</Link></li>
           <li><Link to="Slideshow">Slideshow</Link></li>
+          <li><Link to="Navigation Menu">Navigation Menu</Link></li>
         </ul>
       </div>
     );
