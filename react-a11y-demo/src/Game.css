@@ -45,12 +45,12 @@ ol, ul {
   font-size: 114px;
   font-weight: bold;
   line-height: -1px;
-  height: 134px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 134px;
+  height: 156px;
+  width: 156px;
 }
 
 .game-info {
