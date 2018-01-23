@@ -121,7 +121,7 @@ class NavigationMenu extends Component {
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.topHeading.focus();
   }
 
@@ -131,22 +131,25 @@ class NavigationMenu extends Component {
 
   render() {
     return (
-      <div className="navigation-menu">
-        <Helmet>
-          <html lang="en" />
-          <meta charSet="utf-8" />
-          <title>Navigation Menu</title>
-        </Helmet>
-        <h2
-          tabIndex="-1"
-          ref={componentH2 => {
-            this.topHeading = componentH2;
-          }}
-        >
-          Navigation Menu
-        </h2>
-        <div role="navigation" aria-label="navigation menu of course">
-          <div>
+      //BEGIN ROOT
+      (
+        <div className="navigation-menu">
+          <Helmet>
+            <html lang="en" />
+            <meta charSet="utf-8" />
+            <title>Navigation Menu</title>
+          </Helmet>
+          <h2
+            tabIndex="-1"
+            ref={componentH2 => {
+              this.topHeading = componentH2;
+            }}
+          >
+            Navigation Menu
+          </h2>
+          {/* BEGIN NAVIGATION REGION */}
+          <div role="navigation" aria-label="navigation menu of course">
+            {/* BEGIN MENUBAR */}
             <div
               id="menubar"
               tabIndex="0"
@@ -169,6 +172,14 @@ class NavigationMenu extends Component {
                   >
                     {category.buttonLabel}
                   </button>
+                </div>
+              ))}
+            </div>
+            {/* END MENUBAR */}
+            {/* BEGIN MENUS */}
+            <div id="menusContainer">
+              {this.state.Categories.map((category, index) => (
+                <div class="individualMenu" key={index}>
                   <div
                     role="menu"
                     tabIndex="0"
@@ -195,9 +206,12 @@ class NavigationMenu extends Component {
                 </div>
               ))}
             </div>
+            {/* END MENUS */}
           </div>
+          {/* END NAVIGATION REGION */}
         </div>
-      </div>
+      )
+      //END ROOT
     );
   }
 }

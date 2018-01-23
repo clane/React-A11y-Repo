@@ -1,6 +1,7 @@
 
-.navigation-menu [role="menubar"] { overflow:hidden; width:80%; height:700px; margin:auto; } 
-.navigation-menu [role="menubar"] div  { width:30%; float:left; } 
+.navigation-menu [role="menubar"] { overflow:hidden; width:80%; height:50px; margin:auto; background-color:#ccc; } 
+.navigation-menu #menusContainer { width:90%; overflow:hidden; }
+.navigation-menu .individualMenu  { width:30%; float:left; }
 .navigation-menu [role="menu"] div[role="menuitem"] { float:none; } 
 .navigation-menu [data-active='false'] { }
 .navigation-menu [data-active='true'] {outline: 5px dotted #000; } 
