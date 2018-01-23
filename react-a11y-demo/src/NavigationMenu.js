@@ -59,7 +59,7 @@ class NavigationMenu extends Component {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
     //close all menus
-    for(let i = 0; i < updatedCategories.length; i++){
+    for (let i = 0; i < updatedCategories.length; i++) {
       updatedCategories[i].ariaExpanded = "false";
     }
     //open the menu the use just clicked on
@@ -70,12 +70,10 @@ class NavigationMenu extends Component {
     });
   }
 
-
   handleKeyboardForMenubar(e, index) {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
-    console.log('in handleKeyboardForMenubar');
-
+    console.log("in handleKeyboardForMenubar");
   }
 
   handleKeyboardForChoices(e, index) {
@@ -123,6 +121,10 @@ class NavigationMenu extends Component {
     });
   }
 
+  componentDidMount(){
+    this.topHeading.focus();
+  }
+
   componentDidUpdate() {
     this.menuRefs[this.state.activeMenuIndex].focus();
   }
@@ -144,54 +146,55 @@ class NavigationMenu extends Component {
           Navigation Menu
         </h2>
         <div role="navigation" aria-label="navigation menu of course">
-          <div
-            id="menubar"
-            tabIndex="0"
-            role="menubar"
-            aria-label="navigation menu bar"
-            onKeyDown={e => this.handleKeyboardForMenubar(e)}
-            aria-activedescendant={this.state.activeDescMenubar}
-          >
-            {this.state.Categories.map((category, index) => (
-              <div key={index}>
-                <button
-                  id={category.id}
-                  tabIndex="-1"
-                  onClick={e => this.toggleMenu(e, index)}
-                  aria-haspopup="true"
-                  aria-expanded={category.ariaExpanded}
-                  ref={categoryRef => {
-                    this.categoryRefs[index] = categoryRef;
-                  }}
-
-                >
-                  {category.buttonLabel}
-                </button>
-                <div
-                  role="menu"
-                  tabIndex="0"
-                  aria-label={category.menuLabel}
-                  aria-activedescendant={
-                    category.choices[category.activeDescIndexChoices].id
-                  }
-                  onKeyDown={e => this.handleKeyboardForChoices(e, index)}
-                  ref={menuRef => {
-                    this.menuRefs[index] = menuRef;
-                  }}
-                >
-                  {category.choices.map((choice, index) => (
-                    <div
-                      key={index}
-                      id={choice.id}
-                      role="menuitem"
-                      data-active={choice.dataActive}
-                    >
-                      {choice.name}
-                    </div>
-                  ))}
+          <div>
+            <div
+              id="menubar"
+              tabIndex="0"
+              role="menubar"
+              aria-label="navigation menu bar"
+              onKeyDown={e => this.handleKeyboardForMenubar(e)}
+              aria-activedescendant={this.state.activeDescMenubar}
+            >
+              {this.state.Categories.map((category, index) => (
+                <div key={index}>
+                  <button
+                    id={category.id}
+                    tabIndex="-1"
+                    onClick={e => this.toggleMenu(e, index)}
+                    aria-haspopup="true"
+                    aria-expanded={category.ariaExpanded}
+                    ref={categoryRef => {
+                      this.categoryRefs[index] = categoryRef;
+                    }}
+                  >
+                    {category.buttonLabel}
+                  </button>
+                  <div
+                    role="menu"
+                    tabIndex="0"
+                    aria-label={category.menuLabel}
+                    aria-activedescendant={
+                      category.choices[category.activeDescIndexChoices].id
+                    }
+                    onKeyDown={e => this.handleKeyboardForChoices(e, index)}
+                    ref={menuRef => {
+                      this.menuRefs[index] = menuRef;
+                    }}
+                  >
+                    {category.choices.map((choice, index) => (
+                      <div
+                        key={index}
+                        id={choice.id}
+                        role="menuitem"
+                        data-active={choice.dataActive}
+                      >
+                        {choice.name}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
