@@ -296,7 +296,7 @@ class Board extends Component {
               this.statusContainer = statusRef;
             }}
           >
-            <div>Game Status: {status}</div>
+            <div>Status: {status}</div>
             <div>Next Player: {nextPlayer}</div>
             <div>Winner: {winner}</div>
           </div>
