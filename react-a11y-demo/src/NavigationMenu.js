@@ -6,6 +6,7 @@ class NavigationMenu extends Component {
   constructor(props) {
     super(props);
     this.menuRefs = [];
+    this.categoryRefs = [];
     this.state = {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: null,
@@ -154,6 +155,10 @@ class NavigationMenu extends Component {
                   onClick={e => this.toggleMenu(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
+                  ref={categoryRef => {
+                    this.categoryRefs[index] = categoryRef;
+                  }}
+
                 >
                   {category.buttonLabel}
                 </button>
