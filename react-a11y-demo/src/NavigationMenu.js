@@ -191,6 +191,8 @@ class NavigationMenu extends Component {
                     ref={menuRef => {
                       this.menuRefs[index] = menuRef;
                     }}
+                    data-aria-expanded={category.ariaExpanded}
+                    
                   >
                     {category.choices.map((choice, index) => (
                       <div

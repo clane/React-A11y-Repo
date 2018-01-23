@@ -10,7 +10,7 @@
   display: block;
   width: 10em;
 }
-.navigation-menu [aria-expanded="false"] + [role="menu"] {
+[data-aria-expanded="false"]  {
   display:none;
 } 
 
