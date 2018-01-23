@@ -1,5 +1,6 @@
 
-.navigation-menu [role="menubar"] { overflow:hidden; width:80%; height:50px; margin:auto; background-color:#ccc; } 
+.navigation-menu [role="menubar"] { overflow:hidden; width:90%; height:50px; background-color:#ccc; } 
+.navigation-menu .menuBarButtons  { width:30%; float:left; }
 .navigation-menu #menusContainer { width:90%; overflow:hidden; }
 .navigation-menu .individualMenu  { width:30%; float:left; }
 .navigation-menu [role="menu"] div[role="menuitem"] { float:none; } 

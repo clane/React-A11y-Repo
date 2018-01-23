@@ -159,7 +159,7 @@ class NavigationMenu extends Component {
               aria-activedescendant={this.state.activeDescMenubar}
             >
               {this.state.Categories.map((category, index) => (
-                <div key={index}>
+                <div class="menuBarButtons"  key={index}>
                   <button
                     id={category.id}
                     tabIndex="-1"
