@@ -9,7 +9,7 @@ class NavigationMenu extends Component {
     this.categoryRefs = [];
     this.state = {
       activeDescMenubar: "categoryButton1",
-      activeMenuIndex: null,
+      activeMenuIndex: 0,
       Categories: [
         {
           id: "categoryButton1",
@@ -71,7 +71,12 @@ class NavigationMenu extends Component {
   }
 
 
-  handleKeyboardForMenubar(e, index) {}
+  handleKeyboardForMenubar(e, index) {
+    var updatedCategories = [];
+    updatedCategories = this.state.Categories;
+    console.log('in handleKeyboardForMenubar');
+
+  }
 
   handleKeyboardForChoices(e, index) {
     var updatedCategories = [];
@@ -123,6 +128,7 @@ class NavigationMenu extends Component {
   }
 
   render() {
+    let menuBarStyle = { height:50, backgroundColor:"#ccc", };
     return (
       <div className="navigation-menu">
         <Helmet>
@@ -146,6 +152,7 @@ class NavigationMenu extends Component {
             aria-label="navigation menu bar"
             onKeyDown={e => this.handleKeyboardForMenubar(e)}
             aria-activedescendant={this.state.activeDescMenubar}
+            style={menuBarStyle} 
           >
             {this.state.Categories.map((category, index) => (
               <div key={index}>
