@@ -7,14 +7,14 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom'
-import NavigationList from './NavigationList.js';
-import HomePage from './HomePage.js';
-import Game from './Game.js';
-import Slideshow from './Slideshow.js';
-import NavigationMenu from './NavigationMenu.js';
+import NavigationList from './NavigationList.jsx';
+import HomePage from './HomePage.jsx';
+import Game from './Game.jsx';
+import Slideshow from './Slideshow.jsx';
+import NavigationMenu from './NavigationMenu.jsx';
 import logo from './logo.svg';
-import RefsTest from './RefsTest.js';
-import SimpleNav from './SimpleNav.js';
+import RefsTest from './RefsTest.jsx';
+import SimpleNav from './SimpleNav.jsx';
 
 class App extends Component {
 
