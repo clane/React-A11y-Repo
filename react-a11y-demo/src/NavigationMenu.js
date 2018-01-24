@@ -17,7 +17,7 @@ class NavigationMenu extends Component {
           menuLabel: "Category 1 menu",
           activeDescIndexChoices: 0,
           activeDescIndexMenubar: 0,
-          ariaExpanded: "false",
+          ariaExpanded: false,
           dataActive: "false",
           choices: [
             { id: "cat1choice1", name: "choice 1", dataActive: "false" },
@@ -37,18 +37,18 @@ class NavigationMenu extends Component {
           buttonLabel: "Category 2",
           menuLabel: "Category 2 menu",
           activeDescIndexChoices: 0,
-          ariaExpanded: "false",
+          ariaExpanded: false,
           choices: [
-            { id: "cat2choice1", name: "choice 1", dataActive: "false" },
-            { id: "cat2choice2", name: "choice 2", dataActive: "false" },
-            { id: "cat2choice3", name: "choice 3", dataActive: "false" },
-            { id: "cat2choice4", name: "choice 4", dataActive: "false" },
-            { id: "cat2choice5", name: "choice 5", dataActive: "false" },
-            { id: "cat2choice6", name: "choice 6", dataActive: "false" },
-            { id: "cat2choice7", name: "choice 7", dataActive: "false" },
-            { id: "cat2choice8", name: "choice 8", dataActive: "false" },
-            { id: "cat2choice9", name: "choice 9", dataActive: "false" },
-            { id: "cat2choice10", name: "choice 10", dataActive: "false" }
+            { id: "cat2choice1", name: "choice 11", dataActive: "false" },
+            { id: "cat2choice2", name: "choice 12", dataActive: "false" },
+            { id: "cat2choice3", name: "choice 13", dataActive: "false" },
+            { id: "cat2choice4", name: "choice 14", dataActive: "false" },
+            { id: "cat2choice5", name: "choice 15", dataActive: "false" },
+            { id: "cat2choice6", name: "choice 16", dataActive: "false" },
+            { id: "cat2choice7", name: "choice 17", dataActive: "false" },
+            { id: "cat2choice8", name: "choice 18", dataActive: "false" },
+            { id: "cat2choice9", name: "choice 19", dataActive: "false" },
+            { id: "cat2choice10", name: "choice 20", dataActive: "false" }
           ]
         }
       ]
@@ -159,52 +159,50 @@ class NavigationMenu extends Component {
               aria-activedescendant={this.state.activeDescMenubar}
             >
               {this.state.Categories.map((category, index) => (
-                <div class="menuBarButtons"  key={index}>
-                  <button
-                    id={category.id}
-                    tabIndex="-1"
-                    onClick={e => this.toggleMenu(e, index)}
-                    aria-haspopup="true"
-                    aria-expanded={category.ariaExpanded}
-                    ref={categoryRef => {
-                      this.categoryRefs[index] = categoryRef;
-                    }}
-                  >
-                    {category.buttonLabel}
-                  </button>
-                </div>
+                <button
+                  key={index}
+                  id={category.id}
+                  tabIndex="-1"
+                  onClick={e => this.toggleMenu(e, index)}
+                  aria-haspopup="true"
+                  aria-expanded={category.ariaExpanded}
+                  ref={categoryRef => {
+                    this.categoryRefs[index] = categoryRef;
+                  }}
+                >
+                  {category.buttonLabel}
+                </button>
               ))}
             </div>
             {/* END MENUBAR */}
             {/* BEGIN MENUS */}
             <div id="menusContainer">
               {this.state.Categories.map((category, index) => (
-                <div class="individualMenu" key={index}>
-                  <div
-                    role="menu"
-                    tabIndex="0"
-                    aria-label={category.menuLabel}
-                    aria-activedescendant={
-                      category.choices[category.activeDescIndexChoices].id
-                    }
-                    onKeyDown={e => this.handleKeyboardForChoices(e, index)}
-                    ref={menuRef => {
-                      this.menuRefs[index] = menuRef;
-                    }}
-                    data-aria-expanded={category.ariaExpanded}
-                    
-                  >
-                    {category.choices.map((choice, index) => (
-                      <div
-                        key={index}
-                        id={choice.id}
-                        role="menuitem"
-                        data-active={choice.dataActive}
-                      >
-                        {choice.name}
-                      </div>
-                    ))}
-                  </div>
+                <div
+                  key={index}
+                  role="menu"
+                  tabIndex="0"
+                  aria-label={category.menuLabel}
+                  aria-activedescendant={
+                    category.choices[category.activeDescIndexChoices].id
+                  }
+                  onKeyDown={e => this.handleKeyboardForChoices(e, index)}
+                  ref={menuRef => {
+                    this.menuRefs[index] = menuRef;
+                  }}
+                  data-aria-expanded={category.ariaExpanded}
+                  aria-hidden={!category.ariaExpanded} 
+                >
+                  {category.choices.map((choice, index) => (
+                    <div
+                      key={index}
+                      id={choice.id}
+                      role="menuitem"
+                      data-active={choice.dataActive}
+                    >
+                      {choice.name}
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

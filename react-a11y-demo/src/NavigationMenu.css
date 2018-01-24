@@ -1,17 +1,21 @@
 
 .navigation-menu [role="menubar"] { overflow:hidden; width:90%; height:50px; background-color:#ccc; } 
-.navigation-menu .menuBarButtons  { width:30%; float:left; }
+.navigation-menu [role="menubar"] button { width:20%; float:left; }
+.navigation-menu [role="menubar"] button:first-of-type { margin-left:0; }
+.navigation-menu [role="menubar"] button:last-of-type { margin-right:0; }
+.navigation-menu [role="menubar"] button { width:20%; float:left; margin-left:20px; }
 .navigation-menu #menusContainer { width:90%; overflow:hidden; }
 .navigation-menu .individualMenu  { width:30%; float:left; }
 .navigation-menu [role="menu"] div[role="menuitem"] { float:none; } 
 .navigation-menu [data-active='false'] { }
 .navigation-menu [data-active='true'] {outline: 5px dotted #000; } 
-.navigation-menu [role="menubar"] [role="menu"]  {
+.navigation-menu [role="menu"]  {
   display: block;
-  width: 10em;
+  width: 20%;
+  float:left;
 }
-[data-aria-expanded="false"]  {
-  display:none;
+.navigation-menu [role="menu"][data-aria-expanded="false"]  {
+  opacity:0;  
 } 
 
 
