@@ -10,15 +10,16 @@ class NavigationMenu extends Component {
     this.state = {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0,
+      activeDescIndexCategories: 0,
+      categoriesActiveDescendant: false,
       Categories: [
         {
           id: "categoryButton1",
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
           activeDescIndexChoices: 0,
-          activeDescIndexMenubar: 0,
-          ariaExpanded: false,
           choicesActiveDescendant: false,
+          ariaExpanded: false,
           ariaHidden: true,
           choices: [
             { id: "cat1choice1", name: "choice 1", choicesActiveDescendant: "false" },
@@ -80,12 +81,19 @@ class NavigationMenu extends Component {
     });
   }
 
-  handleKeyboardForMenubar(e, index) {
-    var updatedCategories = [];
-    updatedCategories = this.state.Categories;
+  handleKeyboardForMenubar(e) {
+    var updatedState = [];
+    updatedState = this.state;
     console.log("in handleKeyboardForMenubar");
+    updatedState.categoriesActiveDescendant = "false";
+    
+    var max = updatedState.Categories.length - 1;
+
     //left arrow key
     if (e.keyCode === 37) {
+    //categoriesActiveDescendant
+    //activeDescIndexCategories
+
     }
     //right arrow key
     if (e.keyCode === 39) {
@@ -185,6 +193,7 @@ class NavigationMenu extends Component {
                   ref={categoryRef => {
                     this.categoryRefs[index] = categoryRef;
                   }}
+                  data-active={category.categoriesActiveDescendant}
                 >
                   {category.buttonLabel}
                 </button>
