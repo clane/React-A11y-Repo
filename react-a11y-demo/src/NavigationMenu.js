@@ -91,12 +91,23 @@ class NavigationMenu extends Component {
 
     //left arrow key
     if (e.keyCode === 37) {
-    //categoriesActiveDescendant
-    //activeDescIndexCategories
+      //categoriesActiveDescendant
+      //activeDescIndexCategories
+      console.log('left arrow key');
+      if (this.state.activeDescIndexCategories < max) {
+        updatedState.activeDescIndexCategories = this.state.activeDescIndexCategories - 1;
+        updatedState.categoriesActiveDescendant = true;
+      } 
+
 
     }
     //right arrow key
     if (e.keyCode === 39) {
+      console.log('left right key');
+      if (this.state.activeDescIndexCategories < max) {
+        updatedState.activeDescIndexCategories = this.state.activeDescIndexCategories + 1;
+        updatedState.categoriesActiveDescendant = true;
+      } 
     }  
   }
 
