@@ -82,12 +82,11 @@ class NavigationMenu extends Component {
   }
 
   handleKeyboardForMenubar(e) {
-    var updatedState = [];
-    updatedState = this.state;
     console.log("in handleKeyboardForMenubar");
-    updatedState.categoriesActiveDescendant = "false";
-    
-    var max = updatedState.Categories.length - 1;
+    let updatedCategoriesActiveDescendant;
+    let updatedActiveDescIndexCategories;
+
+    var max = this.state.Categories.length - 1;
 
     //left arrow key
     if (e.keyCode === 37) {
@@ -95,8 +94,8 @@ class NavigationMenu extends Component {
       //activeDescIndexCategories
       console.log('left arrow key');
       if (this.state.activeDescIndexCategories < max) {
-        updatedState.activeDescIndexCategories = this.state.activeDescIndexCategories - 1;
-        updatedState.categoriesActiveDescendant = true;
+        updatedActiveDescIndexCategories = this.state.activeDescIndexCategories - 1;
+        updatedCategoriesActiveDescendant = true;
       } 
 
 
@@ -105,10 +104,12 @@ class NavigationMenu extends Component {
     if (e.keyCode === 39) {
       console.log('left right key');
       if (this.state.activeDescIndexCategories < max) {
-        updatedState.activeDescIndexCategories = this.state.activeDescIndexCategories + 1;
-        updatedState.categoriesActiveDescendant = true;
       } 
     }  
+    this.setState({
+      categoriesActiveDescendant: updatedCategoriesActiveDescendant,
+      activeDescIndexCategories: updatedActiveDescIndexCategories
+    });
   }
 
   handleKeyboardForChoices(e, index) {
