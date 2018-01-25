@@ -19,7 +19,7 @@ class NavigationMenu extends Component {
           activeDescIndexMenubar: 0,
           ariaExpanded: false,
           dataActive: false,
-          dataAriaHidden: true,
+          ariaHidden: true,
           choices: [
             { id: "cat1choice1", name: "choice 1", dataActive: "false" },
             { id: "cat1choice2", name: "choice 2", dataActive: "false" },
@@ -40,7 +40,7 @@ class NavigationMenu extends Component {
           activeDescIndexChoices: 0,
           ariaExpanded: false,
           dataActive: false,
-          dataAriaHidden: true,
+          ariaHidden: true,
           choices: [
             { id: "cat2choice1", name: "choice 11", dataActive: "false" },
             { id: "cat2choice2", name: "choice 12", dataActive: "false" },
@@ -61,11 +61,12 @@ class NavigationMenu extends Component {
   toggleMenu(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    console.log(updatedCategories[index].ariaExpanded);
     if(this.state.Categories[index].ariaExpanded === false){
       updatedCategories[index].ariaExpanded = true;
+      updatedCategories[index].ariaHidden = false;
     } else { 
       updatedCategories[index].ariaExpanded = false;
+      updatedCategories[index].ariaHidden = true;
     }
     //close all other menus
     for (let i = 0; i < updatedCategories.length; i++) {
@@ -77,7 +78,6 @@ class NavigationMenu extends Component {
       Categories: updatedCategories,
       activeMenuIndex: index
     });
-    console.log(this.state.Categories[index].ariaExpanded);
   }
 
   handleKeyboardForMenubar(e, index) {
@@ -201,7 +201,7 @@ class NavigationMenu extends Component {
                     this.menuRefs[index] = menuRef;
                   }}
                   data-aria-expanded={category.ariaExpanded}
-                  aria-hidden={category.dataAriaHidden} 
+                  aria-hidden={category.ariaHidden} 
                 >
                   {category.choices.map((choice, index) => (
                     <div
