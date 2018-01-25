@@ -10,14 +10,13 @@ class NavigationMenu extends Component {
     this.state = {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0,
-      activeDescIndexCategories: 0,
-      categoriesActiveDescendant: false,
       Categories: [
         {
           id: "categoryButton1",
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
           activeDescIndexChoices: 0,
+          activeDescIndexCategories: 0,
           categoriesActiveDescendant: false,
           ariaExpanded: false,
           ariaHidden: true,
@@ -81,37 +80,29 @@ class NavigationMenu extends Component {
     });
   }
 
-  handleKeyboardForMenubar(e) {
+  handleKeyboardForMenubar(e,index) {
+    var updatedCategories = [];
+    updatedCategories = this.state.Categories;
+
     console.log("in handleKeyboardForMenubar");
-    let updatedCategoriesActiveDescendant;
-    let updatedActiveDescIndexCategories;
 
     var max = this.state.Categories.length - 1;
 
     //left arrow key
     if (e.keyCode === 37) {
-      //categoriesActiveDescendant
-      //activeDescIndexCategories
       console.log('left arrow key');
-      if (this.state.activeDescIndexCategories < max) {
-        updatedActiveDescIndexCategories = this.state.activeDescIndexCategories - 1;
-        updatedCategoriesActiveDescendant = true;
-      } 
-
-
     }
+
     //right arrow key
     if (e.keyCode === 39) {
       console.log('right arrow key');
       if (this.state.activeDescIndexCategories < max) {
-        updatedActiveDescIndexCategories = this.state.activeDescIndexCategories + 1;
-        updatedCategoriesActiveDescendant = true;
-
+        updatedCategories[index].activeDescIndexCategories = this.state.activeDescIndexCategories + 1;
+        updatedCategories[index].categoriesActiveDescendant = true;
       } 
     }  
     this.setState({
-      categoriesActiveDescendant: updatedCategoriesActiveDescendant,
-      activeDescIndexCategories: updatedActiveDescIndexCategories
+      Categories: updatedCategories
     });
   }
 
