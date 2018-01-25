@@ -39,6 +39,7 @@ class NavigationMenu extends Component {
           menuLabel: "Category 2 menu",
           activeDescIndexChoices: 0,
           ariaExpanded: false,
+          dataAriaHidden: "true",
           choices: [
             { id: "cat2choice1", name: "choice 11", dataActive: "false" },
             { id: "cat2choice2", name: "choice 12", dataActive: "false" },
