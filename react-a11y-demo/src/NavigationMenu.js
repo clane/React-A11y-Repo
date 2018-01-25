@@ -19,6 +19,7 @@ class NavigationMenu extends Component {
           activeDescIndexMenubar: 0,
           ariaExpanded: false,
           dataActive: "false",
+          dataAriaHidden: "true",
           choices: [
             { id: "cat1choice1", name: "choice 1", dataActive: "false" },
             { id: "cat1choice2", name: "choice 2", dataActive: "false" },
@@ -58,9 +59,11 @@ class NavigationMenu extends Component {
   toggleMenu(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    //close all menus
+    //close all other menus
     for (let i = 0; i < updatedCategories.length; i++) {
-      updatedCategories[i].ariaExpanded = "false";
+      if(i !== index){
+        updatedCategories[i].ariaExpanded = "false";
+      } 
     }
     //open the menu the use just clicked on
     updatedCategories[index].ariaExpanded = "true";
@@ -111,8 +114,8 @@ class NavigationMenu extends Component {
           updatedCategories[index].activeDescIndexChoices
         ].dataActive = "true";
       } else {
-        updatedCategories[index].activeDescIndexChoices = max;
-        updatedCategories[index].choices[max].dataActive = "true";
+          updatedCategories[index].activeDescIndexChoices = max;
+          updatedCategories[index].choices[max].dataActive = "true";
       }
     }
 
@@ -191,7 +194,7 @@ class NavigationMenu extends Component {
                     this.menuRefs[index] = menuRef;
                   }}
                   data-aria-expanded={category.ariaExpanded}
-                  aria-hidden={!category.ariaExpanded} 
+                  aria-hidden={category.dataAriaHidden} 
                 >
                   {category.choices.map((choice, index) => (
                     <div
