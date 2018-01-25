@@ -18,19 +18,19 @@ class NavigationMenu extends Component {
           activeDescIndexChoices: 0,
           activeDescIndexMenubar: 0,
           ariaExpanded: false,
-          dataActive: false,
+          choicesActiveDescendant: false,
           ariaHidden: true,
           choices: [
-            { id: "cat1choice1", name: "choice 1", dataActive: "false" },
-            { id: "cat1choice2", name: "choice 2", dataActive: "false" },
-            { id: "cat1choice3", name: "choice 3", dataActive: "false" },
-            { id: "cat1choice4", name: "choice 4", dataActive: "false" },
-            { id: "cat1choice5", name: "choice 5", dataActive: "false" },
-            { id: "cat1choice6", name: "choice 6", dataActive: "false" },
-            { id: "cat1choice7", name: "choice 7", dataActive: "false" },
-            { id: "cat1choice8", name: "choice 8", dataActive: "false" },
-            { id: "cat1choice9", name: "choice 9", dataActive: "false" },
-            { id: "cat1choice10", name: "choice 10", dataActive: "false" }
+            { id: "cat1choice1", name: "choice 1", choicesActiveDescendant: "false" },
+            { id: "cat1choice2", name: "choice 2", choicesActiveDescendant: "false" },
+            { id: "cat1choice3", name: "choice 3", choicesActiveDescendant: "false" },
+            { id: "cat1choice4", name: "choice 4", choicesActiveDescendant: "false" },
+            { id: "cat1choice5", name: "choice 5", choicesActiveDescendant: "false" },
+            { id: "cat1choice6", name: "choice 6", choicesActiveDescendant: "false" },
+            { id: "cat1choice7", name: "choice 7", choicesActiveDescendant: "false" },
+            { id: "cat1choice8", name: "choice 8", choicesActiveDescendant: "false" },
+            { id: "cat1choice9", name: "choice 9", choicesActiveDescendant: "false" },
+            { id: "cat1choice10", name: "choice 10", choicesActiveDescendant: "false" }
           ]
         },
         {
@@ -39,19 +39,19 @@ class NavigationMenu extends Component {
           menuLabel: "Category 2 menu",
           activeDescIndexChoices: 0,
           ariaExpanded: false,
-          dataActive: false,
+          choicesActiveDescendant: false,
           ariaHidden: true,
           choices: [
-            { id: "cat2choice1", name: "choice 11", dataActive: "false" },
-            { id: "cat2choice2", name: "choice 12", dataActive: "false" },
-            { id: "cat2choice3", name: "choice 13", dataActive: "false" },
-            { id: "cat2choice4", name: "choice 14", dataActive: "false" },
-            { id: "cat2choice5", name: "choice 15", dataActive: "false" },
-            { id: "cat2choice6", name: "choice 16", dataActive: "false" },
-            { id: "cat2choice7", name: "choice 17", dataActive: "false" },
-            { id: "cat2choice8", name: "choice 18", dataActive: "false" },
-            { id: "cat2choice9", name: "choice 19", dataActive: "false" },
-            { id: "cat2choice10", name: "choice 20", dataActive: "false" }
+            { id: "cat2choice1", name: "choice 11", choicesActiveDescendant: "false" },
+            { id: "cat2choice2", name: "choice 12", choicesActiveDescendant: "false" },
+            { id: "cat2choice3", name: "choice 13", choicesActiveDescendant: "false" },
+            { id: "cat2choice4", name: "choice 14", choicesActiveDescendant: "false" },
+            { id: "cat2choice5", name: "choice 15", choicesActiveDescendant: "false" },
+            { id: "cat2choice6", name: "choice 16", choicesActiveDescendant: "false" },
+            { id: "cat2choice7", name: "choice 17", choicesActiveDescendant: "false" },
+            { id: "cat2choice8", name: "choice 18", choicesActiveDescendant: "false" },
+            { id: "cat2choice9", name: "choice 19", choicesActiveDescendant: "false" },
+            { id: "cat2choice10", name: "choice 20", choicesActiveDescendant: "false" }
           ]
         }
       ]
@@ -84,6 +84,12 @@ class NavigationMenu extends Component {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
     console.log("in handleKeyboardForMenubar");
+    //left arrow key
+    if (e.keyCode === 37) {
+    }
+    //right arrow key
+    if (e.keyCode === 39) {
+    }  
   }
 
   handleKeyboardForChoices(e, index) {
@@ -91,7 +97,7 @@ class NavigationMenu extends Component {
     updatedCategories = this.state.Categories;
 
     for (let i = 0; i < updatedCategories[index].choices.length; i++) {
-      updatedCategories[index].choices[i].dataActive = "false";
+      updatedCategories[index].choices[i].choicesActiveDescendant = "false";
     }
 
     var max = updatedCategories[index].choices.length - 1;
@@ -104,10 +110,10 @@ class NavigationMenu extends Component {
         ].activeDescIndexChoices + 1;
         updatedCategories[index].choices[
           updatedCategories[index].activeDescIndexChoices
-        ].dataActive = "true";
+        ].choicesActiveDescendant = "true";
       } else {
         updatedCategories[index].activeDescIndexChoices = 0;
-        updatedCategories[index].choices[0].dataActive = "true";
+        updatedCategories[index].choices[0].choicesActiveDescendant = "true";
       }
     }
 
@@ -119,10 +125,10 @@ class NavigationMenu extends Component {
         ].activeDescIndexChoices - 1;
         updatedCategories[index].choices[
           updatedCategories[index].activeDescIndexChoices
-        ].dataActive = "true";
+        ].choicesActiveDescendant = "true";
       } else {
           updatedCategories[index].activeDescIndexChoices = max;
-          updatedCategories[index].choices[max].dataActive = "true";
+          updatedCategories[index].choices[max].choicesActiveDescendant = "true";
       }
     }
 
@@ -208,7 +214,7 @@ class NavigationMenu extends Component {
                       key={index}
                       id={choice.id}
                       role="menuitem"
-                      data-active={choice.dataActive}
+                      data-active={choice.choicesActiveDescendant}
                     >
                       {choice.name}
                     </div>
