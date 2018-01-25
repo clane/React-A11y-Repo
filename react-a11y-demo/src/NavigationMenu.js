@@ -18,7 +18,7 @@ class NavigationMenu extends Component {
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
           activeDescIndexChoices: 0,
-          choicesActiveDescendant: false,
+          categoriesActiveDescendant: false,
           ariaExpanded: false,
           ariaHidden: true,
           choices: [
@@ -102,8 +102,11 @@ class NavigationMenu extends Component {
     }
     //right arrow key
     if (e.keyCode === 39) {
-      console.log('left right key');
+      console.log('right arrow key');
       if (this.state.activeDescIndexCategories < max) {
+        updatedActiveDescIndexCategories = this.state.activeDescIndexCategories + 1;
+        updatedCategoriesActiveDescendant = true;
+
       } 
     }  
     this.setState({
