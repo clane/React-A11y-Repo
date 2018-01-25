@@ -64,9 +64,8 @@ class NavigationMenu extends Component {
     console.log(updatedCategories[index].ariaExpanded);
     if(this.state.Categories[index].ariaExpanded === false){
       updatedCategories[index].ariaExpanded = true;
-    }
-    if(this.state.Categories[index].ariaExpanded === true){
-	    //updatedCategories[index].ariaExpanded = false;
+    } else { 
+      updatedCategories[index].ariaExpanded = false;
     }
     //close all other menus
     for (let i = 0; i < updatedCategories.length; i++) {
@@ -78,6 +77,7 @@ class NavigationMenu extends Component {
       Categories: updatedCategories,
       activeMenuIndex: index
     });
+    console.log(this.state.Categories[index].ariaExpanded);
   }
 
   handleKeyboardForMenubar(e, index) {
