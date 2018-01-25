@@ -18,8 +18,8 @@ class NavigationMenu extends Component {
           activeDescIndexChoices: 0,
           activeDescIndexMenubar: 0,
           ariaExpanded: false,
-          dataActive: "false",
-          dataAriaHidden: "true",
+          dataActive: false,
+          dataAriaHidden: true,
           choices: [
             { id: "cat1choice1", name: "choice 1", dataActive: "false" },
             { id: "cat1choice2", name: "choice 2", dataActive: "false" },
@@ -39,7 +39,8 @@ class NavigationMenu extends Component {
           menuLabel: "Category 2 menu",
           activeDescIndexChoices: 0,
           ariaExpanded: false,
-          dataAriaHidden: "true",
+          dataActive: false,
+          dataAriaHidden: true,
           choices: [
             { id: "cat2choice1", name: "choice 11", dataActive: "false" },
             { id: "cat2choice2", name: "choice 12", dataActive: "false" },
@@ -60,14 +61,19 @@ class NavigationMenu extends Component {
   toggleMenu(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
+    console.log(updatedCategories[index].ariaExpanded);
+    if(this.state.Categories[index].ariaExpanded === false){
+      updatedCategories[index].ariaExpanded = true;
+    }
+    if(this.state.Categories[index].ariaExpanded === true){
+	    //updatedCategories[index].ariaExpanded = false;
+    }
     //close all other menus
     for (let i = 0; i < updatedCategories.length; i++) {
       if(i !== index){
-        updatedCategories[i].ariaExpanded = "false";
+        updatedCategories[i].ariaExpanded = false;
       } 
     }
-    //open the menu the use just clicked on
-    updatedCategories[index].ariaExpanded = "true";
     this.setState({
       Categories: updatedCategories,
       activeMenuIndex: index
