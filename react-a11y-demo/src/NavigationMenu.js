@@ -41,7 +41,6 @@ class NavigationMenu extends Component {
           activeDescIndexChoices: 0,
           categoriesActiveDescendant: false,
           ariaExpanded: false,
-          choicesActiveDescendant: false,
           ariaHidden: true,
           choices: [
             { id: "cat2choice1", name: "choice 11", choicesActiveDescendant: "false" },
@@ -94,13 +93,6 @@ class NavigationMenu extends Component {
 
     var max = updatedCategories.length - 1;
 
-    //left arrow key
-    if (e.keyCode === 37) {
-      console.log('left arrow key');
-			console.log(index);
-      updatedIndex = index - 1;
-    }
-
     //right arrow key
     if (e.keyCode === 39) {
       if (index < max) {
@@ -111,8 +103,21 @@ class NavigationMenu extends Component {
 					updatedCategories.activeDescIndexCategories = 0;
         	updatedCategories[0].categoriesActiveDescendant = true;
       }
-
     }  
+
+    //left arrow key
+    if (e.keyCode === 37) {
+      if (index === 0) {
+        updatedCategories.activeDescIndexCategories = max;
+        updatedCategories[max].categoriesActiveDescendant = true;
+
+      } else {
+				  updatedIndex = index + 1;
+          updatedCategories.activeDescIndexCategories = updatedIndex;
+          updatedCategories[updatedIndex].categoriesActiveDescendant = true;
+      }
+    }
+
     this.setState({
       menubarKeydown: true, 
 			activeDescIndexCategories: updatedIndex,
