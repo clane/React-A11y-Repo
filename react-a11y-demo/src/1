@@ -106,10 +106,8 @@ class NavigationMenu extends Component {
       if (index < max) {
         updatedIndex = index + 1;
         updatedCategories.activeDescIndexCategories = updatedIndex;
-        updatedCategories[updatedIndex].categoriesActiveDescendant = true;
+        updatedCategories[index].categoriesActiveDescendant = true;
       } else {
-					updatedCategories.activeDescIndexCategories = 0;
-        	updatedCategories[0].categoriesActiveDescendant = true;
       }
 
     }  
