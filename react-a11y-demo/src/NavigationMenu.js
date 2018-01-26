@@ -86,7 +86,6 @@ class NavigationMenu extends Component {
 
     console.log("in handleKeyboardForMenubar");
 
-    var max = this.state.Categories.length - 1;
 
     //left arrow key
     if (e.keyCode === 37) {
@@ -96,10 +95,9 @@ class NavigationMenu extends Component {
     //right arrow key
     if (e.keyCode === 39) {
       console.log('right arrow key');
-      if (this.state.activeDescIndexCategories < max) {
-        updatedCategories[index].activeDescIndexCategories = this.state.activeDescIndexCategories + 1;
-        updatedCategories[index].categoriesActiveDescendant = true;
-      } 
+      console.log(index);
+       updatedCategories[index].activeDescIndexCategories = this.state.Categories[index].activeDescIndexCategories + 1;
+       updatedCategories[index].categoriesActiveDescendant = true;
     }  
     this.setState({
       Categories: updatedCategories
@@ -185,7 +183,9 @@ class NavigationMenu extends Component {
               tabIndex="0"
               role="menubar"
               aria-label="navigation menu bar"
-              onKeyDown={e => this.handleKeyboardForMenubar(e)}
+
+	      //onKeyDown={e => this.handleKeyboardForMenubar(e, this.state.Categories.activeDescIndexCategories)}
+              onKeyDown={e => this.handleKeyboardForMenubar(e, 0 )}
               aria-activedescendant={this.state.activeDescMenubar}
             >
               {this.state.Categories.map((category, index) => (
