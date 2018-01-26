@@ -94,7 +94,7 @@ class NavigationMenu extends Component {
       console.log('right arrow key');
       console.log(index);
       let nextIndex = index + 1;
-      if(nextIndex === this.state.Categories.length - 1) {
+      if(nextIndex === this.state.Categories.length) {
         updatedCategories[0].categoriesActiveDescendant = true;
       } else {
           updatedCategories[nextIndex].categoriesActiveDescendant = true;
