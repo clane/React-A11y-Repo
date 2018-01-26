@@ -87,6 +87,10 @@ class NavigationMenu extends Component {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
 
+		for (let i = 0; i < updatedCategories.length; i++) {
+      updatedCategories[i].categoriesActiveDescendant = "false";
+    }
+
     //left arrow key
     if (e.keyCode === 37) {
       console.log('left arrow key');
