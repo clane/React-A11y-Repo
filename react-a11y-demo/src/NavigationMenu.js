@@ -107,6 +107,7 @@ class NavigationMenu extends Component {
     }  
     this.setState({
       menubarKeydown: true, 
+			activeDescIndexCategories: updatedIndex,
       Categories: updatedCategories
     });
   }
