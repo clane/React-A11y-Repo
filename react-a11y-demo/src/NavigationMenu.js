@@ -9,7 +9,8 @@ class NavigationMenu extends Component {
     this.categoryRefs = [];
     this.state = {
       activeDescMenubar: "categoryButton1",
-      activeMenuIndex: 0,
+      activeMenuIndex: 0, 
+      menubarKeydown: false, 
       activeDescIndexCategories: 0,
       Categories: [
         {
@@ -81,6 +82,7 @@ class NavigationMenu extends Component {
   }
 
   handleKeyboardForMenubar(e,index) {
+    
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
 
@@ -101,6 +103,7 @@ class NavigationMenu extends Component {
       } 
     }  
     this.setState({
+      menubarKeydown: true, 
       Categories: updatedCategories
     });
   }
@@ -155,7 +158,9 @@ class NavigationMenu extends Component {
   }
 
   componentDidUpdate() {
-    this.menuRefs[this.state.activeMenuIndex].focus();
+    if(!this.state.menubarKeydown){
+      this.menuRefs[this.state.activeMenuIndex].focus();
+    } 
   }
 
   render() {
