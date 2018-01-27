@@ -82,8 +82,10 @@ class NavigationMenu extends Component {
   }
 
   handleKeyboardForMenubar(e,index) {
-    
-    var updatedIndex;
+
+    console.log(index);
+
+    var updatedIndex = index;
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
 
@@ -96,7 +98,7 @@ class NavigationMenu extends Component {
     //right arrow key
     if (e.keyCode === 39) {
       if (index < max) {
-        updatedIndex = index + 1;
+        updatedIndex = updatedIndex + 1;
         updatedCategories.activeDescIndexCategories = updatedIndex;
         updatedCategories[updatedIndex].categoriesActiveDescendant = true;
       } else {
@@ -112,7 +114,7 @@ class NavigationMenu extends Component {
         updatedCategories[max].categoriesActiveDescendant = true;
 
       } else {
-				  updatedIndex = index + 1;
+				  updatedIndex = updatedIndex - 1;
           updatedCategories.activeDescIndexCategories = updatedIndex;
           updatedCategories[updatedIndex].categoriesActiveDescendant = true;
       }
