@@ -11,6 +11,7 @@ class NavigationMenu extends Component {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0, 
       menubarKeydown: false, 
+      activeDescIndexCategories: 0,
       Categories: [
         {
           id: "categoryButton1",
@@ -78,40 +79,23 @@ class NavigationMenu extends Component {
     });
   }
 
-  toggleMenuOnKeydown(e, index) {
-    let updatedCategories = [];
-    updatedCategories = this.state.Categories;
-    if(this.state.Categories[index].ariaExpanded === false){
-      updatedCategories[index].ariaExpanded = true;
-      updatedCategories[index].ariaHidden = false;
-    } else { 
-      updatedCategories[index].ariaExpanded = false;
-      updatedCategories[index].ariaHidden = true;
-    }
-    //close all other menus
-    for (let i = 0; i < updatedCategories.length; i++) {
-      if(i !== index){
-        updatedCategories[i].ariaExpanded = false;
-      } 
-    }
-    this.setState({
-      Categories: updatedCategories,
-      activeMenuIndex: index
-    });
-  }
-
-
-
   handleKeyboardForMenubar(e,index) {
     console.log('in handleKeyboardForMenubar');
     console.log(index);
+    var updatedIndex = index;
 
     //right arrow key
     if (e.keyCode === 39) {
+      updatedIndex = updatedIndex + 1;
+      console.log(index);
+      //this.categoryRefs[updatedIndex].focus();
     }  
 
     //left arrow key
     if (e.keyCode === 37) {
+      updatedIndex = updatedIndex - 1;
+      console.log(index);
+      //this.categoryRefs[updatedIndex].focus();
     }
 
   }
