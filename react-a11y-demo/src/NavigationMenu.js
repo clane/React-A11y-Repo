@@ -7,6 +7,7 @@ class NavigationMenu extends Component {
     super(props);
     this.menuRefs = [];
     this.categoryRefs = [];
+    this.choiceRefs = [];
     this.state = {
       activeMenuIndex: 0, 
       Categories: [
@@ -215,6 +216,9 @@ class NavigationMenu extends Component {
                       id={choice.id}
                       role="menuitem"
                       onKeyDown={e => this.choiceHandler(e, index)}
+                      ref={choiceRef => {
+                        this.choiceRefs[index] = choiceRef;
+                      }}
                     >
                       {choice.name}
                     </div>
