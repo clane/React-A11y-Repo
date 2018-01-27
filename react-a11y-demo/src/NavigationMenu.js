@@ -12,7 +12,6 @@ class NavigationMenu extends Component {
       Categories: [
         {
           id: "categoryButton1",
-					tabIndex: 0,
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
           ariaExpanded: false,
@@ -32,7 +31,6 @@ class NavigationMenu extends Component {
         },
         {
           id: "categoryButton2",
-					tabIndex: 0,
           buttonLabel: "Category 2",
           menuLabel: "Category 2 menu",
           ariaExpanded: false,
@@ -180,7 +178,6 @@ class NavigationMenu extends Component {
               {this.state.Categories.map((category, index) => (
                 <button
                   key={index}
-								  tabIndex={category.tabIndex} 
                   id={category.id}
                   onClick={e => this.toggleMenu(e, index)}
                   onKeyDown={e => this.manageArrowKeysForCategories(e, index)}
