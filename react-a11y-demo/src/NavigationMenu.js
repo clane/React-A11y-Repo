@@ -11,14 +11,12 @@ class NavigationMenu extends Component {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0, 
       menubarKeydown: false, 
-      activeDescIndexCategories: 0,
       Categories: [
         {
           id: "categoryButton1",
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
           activeDescIndexChoices: 0,
-          categoriesActiveDescendant: false,
           ariaExpanded: false,
           ariaHidden: true,
           choices: [
@@ -39,7 +37,6 @@ class NavigationMenu extends Component {
           buttonLabel: "Category 2",
           menuLabel: "Category 2 menu",
           activeDescIndexChoices: 0,
-          categoriesActiveDescendant: false,
           ariaExpanded: false,
           ariaHidden: true,
           choices: [
@@ -103,64 +100,20 @@ class NavigationMenu extends Component {
     });
   }
 
-  handleKeyboardForCategoryButtons(e, index){
-		console.log('in handleKeyboardForCategoryButtons');
-    if (e.keyCode === 13) {
-			console.log('enter key pressed');
-		}
-  }
-
 
 
   handleKeyboardForMenubar(e,index) {
     console.log('in handleKeyboardForMenubar');
     console.log(index);
 
-    var updatedIndex = index;
-    var updatedActiveDescMenubar = this.state.activeDescMenubar;
-    var updatedCategories = [];
-    updatedCategories = this.state.Categories;
-
-		for (let i = 0; i < updatedCategories.length; i++) {
-      updatedCategories[i].categoriesActiveDescendant = "false";
-    }
-
-    var max = updatedCategories.length - 1;
-
     //right arrow key
     if (e.keyCode === 39) {
-      if (index < max) {
-        updatedIndex = updatedIndex + 1;
-        updatedCategories.activeDescIndexCategories = updatedIndex;
-        updatedCategories[updatedIndex].categoriesActiveDescendant = true;
-        updatedActiveDescMenubar = updatedCategories[updatedIndex].id;
-      } else {
-					updatedCategories.activeDescIndexCategories = 0;
-        	updatedCategories[0].categoriesActiveDescendant = true;
-          updatedActiveDescMenubar = updatedCategories[updatedIndex].id;
-      }
     }  
 
     //left arrow key
     if (e.keyCode === 37) {
-      if (index === 0) {
-        updatedCategories.activeDescIndexCategories = max;
-        updatedCategories[max].categoriesActiveDescendant = true;
-        updatedActiveDescMenubar = updatedCategories[max].id;
-      } else {
-				  updatedIndex = updatedIndex - 1;
-          updatedCategories.activeDescIndexCategories = updatedIndex;
-          updatedCategories[updatedIndex].categoriesActiveDescendant = true;
-          updatedActiveDescMenubar = updatedCategories[updatedIndex].id;
-      }
     }
 
-    this.setState({
-			activeDescMenubar: updatedActiveDescMenubar, 
-      menubarKeydown: true, 
-			activeDescIndexCategories: updatedIndex,
-      Categories: updatedCategories
-    });
   }
 
   handleKeyboardForChoices(e, index) {
@@ -258,7 +211,6 @@ class NavigationMenu extends Component {
                     this.categoryRefs[index] = categoryRef;
                   }}
                   data-active={category.categoriesActiveDescendant}
-                  onKeyDown={e => this.handleKeyboardForCategoryButtons(e, index)}
 								  role="menuitem"
                 >
                   {category.buttonLabel}
