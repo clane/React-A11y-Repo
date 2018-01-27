@@ -11,7 +11,7 @@ class NavigationMenu extends Component {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0, 
       menubarKeydown: false, 
-      activeIndexCategories: 0,
+      activeIndexCategories: -1,
       Categories: [
         {
           id: "categoryButton1",
@@ -80,7 +80,6 @@ class NavigationMenu extends Component {
   }
 
   handleKeyboardForMenubar(e,index) {
-    console.log('in handleKeyboardForMenubar');
     var updatedIndex = index;
 		var max = this.state.Categories.length - 1;
 
@@ -107,9 +106,6 @@ class NavigationMenu extends Component {
     this.setState({
 			activeIndexCategories: updatedIndex 
     });
-
-    //this.categoryRefs[this.state.activeIndexCategories].focus();
-    console.log(updatedIndex);
   }
 
   handleKeyboardForChoices(e, index) {
@@ -161,12 +157,6 @@ class NavigationMenu extends Component {
     this.topHeading.focus();
   }
 
-  componentDidUpdate() {
-    if(!this.state.menubarKeydown){
-      //this.menuRefs[this.state.activeMenuIndex].focus();
-    } 
-  }
-
   render() {
     return (
       //BEGIN ROOT
@@ -199,6 +189,7 @@ class NavigationMenu extends Component {
               {this.state.Categories.map((category, index) => (
                 <button
                   key={index}
+								  tabIndex="-1"
                   id={category.id}
                   onClick={e => this.toggleMenu(e, index)}
                   aria-haspopup="true"
