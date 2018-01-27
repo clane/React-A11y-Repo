@@ -81,17 +81,39 @@ class NavigationMenu extends Component {
     });
   }
 
+  toggleMenuOnKeydown(e, index) {
+    let updatedCategories = [];
+    updatedCategories = this.state.Categories;
+    if(this.state.Categories[index].ariaExpanded === false){
+      updatedCategories[index].ariaExpanded = true;
+      updatedCategories[index].ariaHidden = false;
+    } else { 
+      updatedCategories[index].ariaExpanded = false;
+      updatedCategories[index].ariaHidden = true;
+    }
+    //close all other menus
+    for (let i = 0; i < updatedCategories.length; i++) {
+      if(i !== index){
+        updatedCategories[i].ariaExpanded = false;
+      } 
+    }
+    this.setState({
+      Categories: updatedCategories,
+      activeMenuIndex: index
+    });
+  }
+
   handleKeyboardForCategoryButtons(e, index){
 		console.log('in handleKeyboardForCategoryButtons');
     if (e.keyCode === 13) {
-      this.toggleMenu(e, index); 
+			console.log('enter key pressed');
 		}
   }
 
 
 
   handleKeyboardForMenubar(e,index) {
-
+    console.log('in handleKeyboardForMenubar');
     console.log(index);
 
     var updatedIndex = index;
@@ -229,7 +251,6 @@ class NavigationMenu extends Component {
                 <button
                   key={index}
                   id={category.id}
-                  tabIndex="-1"
                   onClick={e => this.toggleMenu(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
@@ -238,6 +259,7 @@ class NavigationMenu extends Component {
                   }}
                   data-active={category.categoriesActiveDescendant}
                   onKeyDown={e => this.handleKeyboardForCategoryButtons(e, index)}
+								  role="menuitem"
                 >
                   {category.buttonLabel}
                 </button>
@@ -250,7 +272,7 @@ class NavigationMenu extends Component {
                 <div
                   key={index}
                   role="menu"
-                  tabIndex="0"
+                  tabIndex="-1"
                   aria-label={category.menuLabel}
                   aria-activedescendant={
                     category.choices[category.activeDescIndexChoices].id
