@@ -237,7 +237,7 @@ class NavigationMenu extends Component {
                   aria-activedescendant={
                     category.choices[category.activeDescIndexChoices].id
                   }
-                  onKeyDown={e => this.handleKeyboardForChoices(e, index)}
+                  onKeyDown={e => this.handleKeyboardForChoices(e, category.activeDescIndexChoices)}
                   ref={menuRef => {
                     this.menuRefs[index] = menuRef;
                   }}
