@@ -74,9 +74,6 @@ class NavigationMenu extends Component {
       activeMenuIndex: index
     });
     
-    if(updatedCategories[index].ariaExpanded === true){
-      this.menuRefs[this.state.activeMenuIndex].focus();
-		}
   }
 
   manageArrowKeysForCategories(e, index) {
@@ -181,6 +178,7 @@ class NavigationMenu extends Component {
                   key={index}
                   id={category.id}
                   onClick={e => this.toggleMenu(e, index)}
+                  onFocus={e => this.toggleMenu(e, index)}
                   onKeyDown={e => this.manageArrowKeysForCategories(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
