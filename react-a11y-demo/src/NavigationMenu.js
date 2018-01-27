@@ -167,6 +167,12 @@ class NavigationMenu extends Component {
       Categories: updatedCategories
     });
   }
+  
+	choiceHandler(e, index){
+    if (e.keyCode === 13) {
+      alert('choice handled'); 
+		}
+	}
 
   componentDidMount() {
     this.topHeading.focus();
@@ -244,6 +250,7 @@ class NavigationMenu extends Component {
                       id={choice.id}
                       role="menuitem"
                       data-active={choice.choicesActiveDescendant}
+                      onKeyDown={e => this.choiceHandler(e, index)}
                     >
                       {choice.name}
                     </div>
