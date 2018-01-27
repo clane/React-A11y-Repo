@@ -105,11 +105,11 @@ class NavigationMenu extends Component {
     this.categoryRefs[updatedIndex].focus();
 
     this.setState({
-		//	activeIndexCategories: updatedIndex 
+			activeIndexCategories: updatedIndex 
     });
 
     //this.categoryRefs[this.state.activeIndexCategories].focus();
-    console.log(index);
+    console.log(updatedIndex);
   }
 
   handleKeyboardForChoices(e, index) {
