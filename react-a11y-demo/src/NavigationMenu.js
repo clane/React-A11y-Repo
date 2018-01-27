@@ -10,7 +10,6 @@ class NavigationMenu extends Component {
     this.state = {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0, 
-      activeIndexCategories: -1,
       Categories: [
         {
           id: "categoryButton1",
@@ -78,7 +77,7 @@ class NavigationMenu extends Component {
     });
   }
 
-  handleKeyboardForMenubar(e,index) {
+  manageArrowKeysForCategories(e, index) {
     var updatedIndex = index;
 		var max = this.state.Categories.length - 1;
 
@@ -188,6 +187,7 @@ class NavigationMenu extends Component {
                   key={index}
                   id={category.id}
                   onClick={e => this.toggleMenu(e, index)}
+                  onKeyDown={e => this.manageArrowKeysForCategories(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
                   ref={categoryRef => {
