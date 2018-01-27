@@ -34,6 +34,7 @@ class NavigationMenu extends Component {
         },
         {
           id: "categoryButton2",
+					tabIndex: 0,
           buttonLabel: "Category 2",
           menuLabel: "Category 2 menu",
           activeDescIndexChoices: 0,
