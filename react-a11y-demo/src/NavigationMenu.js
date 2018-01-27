@@ -11,7 +11,7 @@ class NavigationMenu extends Component {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0, 
       menubarKeydown: false, 
-      activeDescIndexCategories: 0,
+      activeIndexCategories: 0,
       Categories: [
         {
           id: "categoryButton1",
@@ -87,16 +87,18 @@ class NavigationMenu extends Component {
     //right arrow key
     if (e.keyCode === 39) {
       updatedIndex = updatedIndex + 1;
-      console.log(index);
-      //this.categoryRefs[updatedIndex].focus();
+      console.log(updatedIndex);
     }  
 
     //left arrow key
     if (e.keyCode === 37) {
       updatedIndex = updatedIndex - 1;
-      console.log(index);
-      //this.categoryRefs[updatedIndex].focus();
+      console.log(updatedIndex);
     }
+
+    this.setState({
+			activeIndexCategories: updatedIndex 
+    });
 
   }
 
@@ -181,7 +183,7 @@ class NavigationMenu extends Component {
               tabIndex="0"
               role="menubar"
               aria-label="navigation menu bar"
-	      			onKeyDown={e => this.handleKeyboardForMenubar(e, this.state.activeDescIndexCategories)}
+	      			onKeyDown={e => this.handleKeyboardForMenubar(e, this.state.activeIndexCategories)}
               aria-activedescendant={this.state.activeDescMenubar}
             >
               {this.state.Categories.map((category, index) => (
