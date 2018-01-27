@@ -13,6 +13,7 @@ class NavigationMenu extends Component {
       Categories: [
         {
           id: "categoryButton1",
+					tabIndex: 0,
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
           activeDescIndexChoices: 0,
@@ -78,6 +79,9 @@ class NavigationMenu extends Component {
   }
 
   manageArrowKeysForCategories(e, index) {
+    let updatedCategories = [];
+    updatedCategories = this.state.Categories;
+
     var updatedIndex = index;
 		var max = this.state.Categories.length - 1;
 
@@ -102,6 +106,7 @@ class NavigationMenu extends Component {
     this.categoryRefs[updatedIndex].focus();
 
     this.setState({
+			Categories: updatedCategories,
 			activeIndexCategories: updatedIndex 
     });
   }
@@ -185,6 +190,7 @@ class NavigationMenu extends Component {
               {this.state.Categories.map((category, index) => (
                 <button
                   key={index}
+								  tabIndex={category.tabIndex} 
                   id={category.id}
                   onClick={e => this.toggleMenu(e, index)}
                   onKeyDown={e => this.manageArrowKeysForCategories(e, index)}
