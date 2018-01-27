@@ -8,7 +8,6 @@ class NavigationMenu extends Component {
     this.menuRefs = [];
     this.categoryRefs = [];
     this.state = {
-      activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0, 
       Categories: [
         {
@@ -16,20 +15,19 @@ class NavigationMenu extends Component {
 					tabIndex: 0,
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
-          activeDescIndexChoices: 0,
           ariaExpanded: false,
           ariaHidden: true,
           choices: [
-            { id: "cat1choice1", name: "choice 1", choicesActiveDescendant: "false" },
-            { id: "cat1choice2", name: "choice 2", choicesActiveDescendant: "false" },
-            { id: "cat1choice3", name: "choice 3", choicesActiveDescendant: "false" },
-            { id: "cat1choice4", name: "choice 4", choicesActiveDescendant: "false" },
-            { id: "cat1choice5", name: "choice 5", choicesActiveDescendant: "false" },
-            { id: "cat1choice6", name: "choice 6", choicesActiveDescendant: "false" },
-            { id: "cat1choice7", name: "choice 7", choicesActiveDescendant: "false" },
-            { id: "cat1choice8", name: "choice 8", choicesActiveDescendant: "false" },
-            { id: "cat1choice9", name: "choice 9", choicesActiveDescendant: "false" },
-            { id: "cat1choice10", name: "choice 10", choicesActiveDescendant: "false" }
+            { id: "cat1choice1", name: "choice 1",  },
+            { id: "cat1choice2", name: "choice 2",  },
+            { id: "cat1choice3", name: "choice 3",  },
+            { id: "cat1choice4", name: "choice 4",  },
+            { id: "cat1choice5", name: "choice 5",  },
+            { id: "cat1choice6", name: "choice 6",  },
+            { id: "cat1choice7", name: "choice 7",  },
+            { id: "cat1choice8", name: "choice 8",  },
+            { id: "cat1choice9", name: "choice 9",  },
+            { id: "cat1choice10", name: "choice 10",  }
           ]
         },
         {
@@ -37,20 +35,19 @@ class NavigationMenu extends Component {
 					tabIndex: 0,
           buttonLabel: "Category 2",
           menuLabel: "Category 2 menu",
-          activeDescIndexChoices: 0,
           ariaExpanded: false,
           ariaHidden: true,
           choices: [
-            { id: "cat2choice1", name: "choice 11", choicesActiveDescendant: "false" },
-            { id: "cat2choice2", name: "choice 12", choicesActiveDescendant: "false" },
-            { id: "cat2choice3", name: "choice 13", choicesActiveDescendant: "false" },
-            { id: "cat2choice4", name: "choice 14", choicesActiveDescendant: "false" },
-            { id: "cat2choice5", name: "choice 15", choicesActiveDescendant: "false" },
-            { id: "cat2choice6", name: "choice 16", choicesActiveDescendant: "false" },
-            { id: "cat2choice7", name: "choice 17", choicesActiveDescendant: "false" },
-            { id: "cat2choice8", name: "choice 18", choicesActiveDescendant: "false" },
-            { id: "cat2choice9", name: "choice 19", choicesActiveDescendant: "false" },
-            { id: "cat2choice10", name: "choice 20", choicesActiveDescendant: "false" }
+            { id: "cat2choice1", name: "choice 11",  },
+            { id: "cat2choice2", name: "choice 12",  },
+            { id: "cat2choice3", name: "choice 13",  },
+            { id: "cat2choice4", name: "choice 14",  },
+            { id: "cat2choice5", name: "choice 15",  },
+            { id: "cat2choice6", name: "choice 16",  },
+            { id: "cat2choice7", name: "choice 17",  },
+            { id: "cat2choice8", name: "choice 18",  },
+            { id: "cat2choice9", name: "choice 19",  },
+            { id: "cat2choice10", name: "choice 20",  }
           ]
         }
       ]
@@ -127,40 +124,15 @@ class NavigationMenu extends Component {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
 
-    for (let i = 0; i < updatedCategories[index].choices.length; i++) {
-      updatedCategories[index].choices[i].choicesActiveDescendant = "false";
-    }
 
     var max = updatedCategories[index].choices.length - 1;
 
     if (e.keyCode === 40) {
       //down arrow
-      if (this.state.Categories[index].activeDescIndexChoices < max) {
-        updatedCategories[index].activeDescIndexChoices = this.state.Categories[
-          index
-        ].activeDescIndexChoices + 1;
-        updatedCategories[index].choices[
-          updatedCategories[index].activeDescIndexChoices
-        ].choicesActiveDescendant = "true";
-      } else {
-        	updatedCategories[index].activeDescIndexChoices = 0;
-        	updatedCategories[index].choices[0].choicesActiveDescendant = "true";
-      }
     }
 
     if (e.keyCode === 38) {
       //up arrow key
-      if (this.state.Categories[index].activeDescIndexChoices > 0) {
-        updatedCategories[index].activeDescIndexChoices = this.state.Categories[
-          index
-        ].activeDescIndexChoices - 1;
-        updatedCategories[index].choices[
-          updatedCategories[index].activeDescIndexChoices
-        ].choicesActiveDescendant = "true";
-      } else {
-          updatedCategories[index].activeDescIndexChoices = max;
-          updatedCategories[index].choices[max].choicesActiveDescendant = "true";
-      }
     }
 
     this.setState({
@@ -204,7 +176,6 @@ class NavigationMenu extends Component {
               id="menubar"
               role="menubar"
               aria-label="navigation menu bar"
-              aria-activedescendant={this.state.activeDescMenubar}
             >
               {this.state.Categories.map((category, index) => (
                 <button
@@ -218,7 +189,6 @@ class NavigationMenu extends Component {
                   ref={categoryRef => {
                     this.categoryRefs[index] = categoryRef;
                   }}
-                  data-active={category.categoriesActiveDescendant}
 								  role="menuitem"
                 >
                   {category.buttonLabel}
@@ -234,9 +204,6 @@ class NavigationMenu extends Component {
                   role="menu"
                   tabIndex="-1"
                   aria-label={category.menuLabel}
-                  aria-activedescendant={
-                    category.choices[category.activeDescIndexChoices].id
-                  }
                   onKeyDown={e => this.handleKeyboardForChoices(e, index)}
                   ref={menuRef => {
                     this.menuRefs[index] = menuRef;
@@ -249,7 +216,6 @@ class NavigationMenu extends Component {
                       key={index}
                       id={choice.id}
                       role="menuitem"
-                      data-active={choice.choicesActiveDescendant}
                       onKeyDown={e => this.choiceHandler(e, index)}
                     >
                       {choice.name}
