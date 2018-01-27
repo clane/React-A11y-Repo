@@ -18,16 +18,16 @@ class NavigationMenu extends Component {
           ariaExpanded: false,
           ariaHidden: true,
           choices: [
-            { id: "cat1choice1", name: "choice 1",  },
-            { id: "cat1choice2", name: "choice 2",  },
-            { id: "cat1choice3", name: "choice 3",  },
-            { id: "cat1choice4", name: "choice 4",  },
-            { id: "cat1choice5", name: "choice 5",  },
-            { id: "cat1choice6", name: "choice 6",  },
-            { id: "cat1choice7", name: "choice 7",  },
-            { id: "cat1choice8", name: "choice 8",  },
-            { id: "cat1choice9", name: "choice 9",  },
-            { id: "cat1choice10", name: "choice 10",  }
+            { id: "cat1choice1", name: "choice 1", },
+            { id: "cat1choice2", name: "choice 2", },
+            { id: "cat1choice3", name: "choice 3", },
+            { id: "cat1choice4", name: "choice 4", },
+            { id: "cat1choice5", name: "choice 5", },
+            { id: "cat1choice6", name: "choice 6", },
+            { id: "cat1choice7", name: "choice 7", },
+            { id: "cat1choice8", name: "choice 8", },
+            { id: "cat1choice9", name: "choice 9", },
+            { id: "cat1choice10", name: "choice 10", }
           ]
         },
         {
@@ -38,16 +38,16 @@ class NavigationMenu extends Component {
           ariaExpanded: false,
           ariaHidden: true,
           choices: [
-            { id: "cat2choice1", name: "choice 11",  },
-            { id: "cat2choice2", name: "choice 12",  },
-            { id: "cat2choice3", name: "choice 13",  },
-            { id: "cat2choice4", name: "choice 14",  },
-            { id: "cat2choice5", name: "choice 15",  },
-            { id: "cat2choice6", name: "choice 16",  },
-            { id: "cat2choice7", name: "choice 17",  },
-            { id: "cat2choice8", name: "choice 18",  },
-            { id: "cat2choice9", name: "choice 19",  },
-            { id: "cat2choice10", name: "choice 20",  }
+            { id: "cat2choice1", name: "choice 11", },
+            { id: "cat2choice2", name: "choice 12", },
+            { id: "cat2choice3", name: "choice 13", },
+            { id: "cat2choice4", name: "choice 14", },
+            { id: "cat2choice5", name: "choice 15", },
+            { id: "cat2choice6", name: "choice 16", },
+            { id: "cat2choice7", name: "choice 17", },
+            { id: "cat2choice8", name: "choice 18", },
+            { id: "cat2choice9", name: "choice 19", },
+            { id: "cat2choice10", name: "choice 20", }
           ]
         }
       ]
@@ -213,6 +213,7 @@ class NavigationMenu extends Component {
                 >
                   {category.choices.map((choice, index) => (
                     <div
+										  tabIndex="-1"
                       key={index}
                       id={choice.id}
                       role="menuitem"
