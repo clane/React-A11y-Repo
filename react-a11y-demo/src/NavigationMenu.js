@@ -77,6 +77,8 @@ class NavigationMenu extends Component {
       Categories: updatedCategories,
       activeMenuIndex: index
     });
+
+    this.menuRefs[this.state.activeMenuIndex].focus();
   }
 
   manageArrowKeysForCategories(e, index) {
@@ -116,6 +118,11 @@ class NavigationMenu extends Component {
 			Categories: updatedCategories,
 			activeIndexCategories: updatedIndex 
     });
+
+    if (e.keyCode === 13) {
+			console.log('enter key pressed on category button');
+      //this.menuRefs[this.state.activeMenuIndex].focus();
+	  } 
   }
 
   handleKeyboardForChoices(e, index) {
@@ -165,6 +172,10 @@ class NavigationMenu extends Component {
 
   componentDidMount() {
     this.topHeading.focus();
+  }
+	
+	componentDidUpdate() {
+    //this.menuRefs[this.state.activeMenuIndex].focus();
   }
 
   render() {
