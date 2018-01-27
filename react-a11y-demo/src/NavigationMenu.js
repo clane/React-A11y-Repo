@@ -116,13 +116,9 @@ class NavigationMenu extends Component {
 
     this.setState({
 			Categories: updatedCategories,
-			activeIndexCategories: updatedIndex 
+			activeIndexCategories: updatedIndex, 
+      activeMenuIndex: updatedIndex, 
     });
-
-    if (e.keyCode === 13) {
-			console.log('enter key pressed on category button');
-      //this.menuRefs[this.state.activeMenuIndex].focus();
-	  } 
   }
 
   handleKeyboardForChoices(e, index) {
@@ -174,9 +170,6 @@ class NavigationMenu extends Component {
     this.topHeading.focus();
   }
 	
-	componentDidUpdate() {
-    //this.menuRefs[this.state.activeMenuIndex].focus();
-  }
 
   render() {
     return (
