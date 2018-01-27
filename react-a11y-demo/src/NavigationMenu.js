@@ -81,25 +81,35 @@ class NavigationMenu extends Component {
 
   handleKeyboardForMenubar(e,index) {
     console.log('in handleKeyboardForMenubar');
-    console.log(index);
     var updatedIndex = index;
+		var max = this.state.Categories.length - 1;
 
     //right arrow key
     if (e.keyCode === 39) {
-      updatedIndex = updatedIndex + 1;
-      console.log(updatedIndex);
+			if(index === max){
+        updatedIndex = 0;
+			} else {
+          updatedIndex = updatedIndex + 1;
+		  }
     }  
 
     //left arrow key
     if (e.keyCode === 37) {
-      updatedIndex = updatedIndex - 1;
-      console.log(updatedIndex);
+			if(index === 0){
+        updatedIndex = max;
+			} else {
+          updatedIndex = updatedIndex - 1;
+			} 
     }
 
+    this.categoryRefs[updatedIndex].focus();
+
     this.setState({
-			activeIndexCategories: updatedIndex 
+		//	activeIndexCategories: updatedIndex 
     });
 
+    //this.categoryRefs[this.state.activeIndexCategories].focus();
+    console.log(index);
   }
 
   handleKeyboardForChoices(e, index) {
@@ -153,7 +163,7 @@ class NavigationMenu extends Component {
 
   componentDidUpdate() {
     if(!this.state.menubarKeydown){
-      this.menuRefs[this.state.activeMenuIndex].focus();
+      //this.menuRefs[this.state.activeMenuIndex].focus();
     } 
   }
 
