@@ -77,8 +77,10 @@ class NavigationMenu extends Component {
       Categories: updatedCategories,
       activeMenuIndex: index
     });
-
-    this.menuRefs[this.state.activeMenuIndex].focus();
+    
+    if(updatedCategories[index].ariaExpanded === true){
+      this.menuRefs[this.state.activeMenuIndex].focus();
+		}
   }
 
   manageArrowKeysForCategories(e, index) {
