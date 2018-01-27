@@ -86,6 +86,10 @@ class NavigationMenu extends Component {
     var updatedIndex = index;
 		var max = this.state.Categories.length - 1;
 
+    for (let i = 0; i < updatedCategories.length; i++) {
+      updatedCategories[i].tabIndex = -1;
+    }
+
     //right arrow key
     if (e.keyCode === 39) {
 			if(index === max){
@@ -103,6 +107,8 @@ class NavigationMenu extends Component {
           updatedIndex = updatedIndex - 1;
 			} 
     }
+
+    updatedCategories[updatedIndex].tabIndex = 0;
 
     this.categoryRefs[updatedIndex].focus();
 
