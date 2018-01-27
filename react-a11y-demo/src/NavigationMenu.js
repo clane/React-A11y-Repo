@@ -10,7 +10,6 @@ class NavigationMenu extends Component {
     this.state = {
       activeDescMenubar: "categoryButton1",
       activeMenuIndex: 0, 
-      menubarKeydown: false, 
       activeIndexCategories: -1,
       Categories: [
         {
@@ -180,16 +179,13 @@ class NavigationMenu extends Component {
             {/* BEGIN MENUBAR */}
             <div
               id="menubar"
-              tabIndex="0"
               role="menubar"
               aria-label="navigation menu bar"
-	      			onKeyDown={e => this.handleKeyboardForMenubar(e, this.state.activeIndexCategories)}
               aria-activedescendant={this.state.activeDescMenubar}
             >
               {this.state.Categories.map((category, index) => (
                 <button
                   key={index}
-								  tabIndex="-1"
                   id={category.id}
                   onClick={e => this.toggleMenu(e, index)}
                   aria-haspopup="true"
