@@ -169,9 +169,8 @@ class NavigationMenu extends Component {
   }
   
 	choiceHandler(e, index){
-    if (e.keyCode === 13) {
-      alert('choice handled'); 
-		}
+		console.log('in choiceHandler index = ' + index);
+    alert('choice handled'); 
 	}
 
   componentDidMount() {
@@ -251,6 +250,7 @@ class NavigationMenu extends Component {
                       role="menuitem"
                       data-active={choice.choicesActiveDescendant}
                       onKeyDown={e => this.choiceHandler(e, index)}
+                      onClick={e => this.choiceHandler(e, index)}
                     >
                       {choice.name}
                     </div>
