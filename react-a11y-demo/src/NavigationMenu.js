@@ -81,11 +81,21 @@ class NavigationMenu extends Component {
     });
   }
 
+  handleKeyboardForCategoryButtons(e, index){
+		console.log('in handleKeyboardForCategoryButtons');
+    if (e.keyCode === 13) {
+      this.toggleMenu(e, index); 
+		}
+  }
+
+
+
   handleKeyboardForMenubar(e,index) {
 
     console.log(index);
 
     var updatedIndex = index;
+    var updatedActiveDescMenubar = this.state.activeDescMenubar;
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
 
@@ -101,9 +111,11 @@ class NavigationMenu extends Component {
         updatedIndex = updatedIndex + 1;
         updatedCategories.activeDescIndexCategories = updatedIndex;
         updatedCategories[updatedIndex].categoriesActiveDescendant = true;
+        updatedActiveDescMenubar = updatedCategories[updatedIndex].id;
       } else {
 					updatedCategories.activeDescIndexCategories = 0;
         	updatedCategories[0].categoriesActiveDescendant = true;
+          updatedActiveDescMenubar = updatedCategories[updatedIndex].id;
       }
     }  
 
@@ -112,15 +124,17 @@ class NavigationMenu extends Component {
       if (index === 0) {
         updatedCategories.activeDescIndexCategories = max;
         updatedCategories[max].categoriesActiveDescendant = true;
-
+        updatedActiveDescMenubar = updatedCategories[max].id;
       } else {
 				  updatedIndex = updatedIndex - 1;
           updatedCategories.activeDescIndexCategories = updatedIndex;
           updatedCategories[updatedIndex].categoriesActiveDescendant = true;
+          updatedActiveDescMenubar = updatedCategories[updatedIndex].id;
       }
     }
 
     this.setState({
+			activeDescMenubar: updatedActiveDescMenubar, 
       menubarKeydown: true, 
 			activeDescIndexCategories: updatedIndex,
       Categories: updatedCategories
@@ -223,6 +237,7 @@ class NavigationMenu extends Component {
                     this.categoryRefs[index] = categoryRef;
                   }}
                   data-active={category.categoriesActiveDescendant}
+                  onKeyDown={e => this.handleKeyboardForCategoryButtons(e, index)}
                 >
                   {category.buttonLabel}
                 </button>
