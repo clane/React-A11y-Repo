@@ -17,7 +17,7 @@ class NavigationMenu extends Component {
           menuLabel: "Category 1 menu",
           ariaExpanded: false,
           ariaHidden: true,
-					currentChoiceIndex:0,
+          choiceRefs: [],
           choices: [
             { id: "cat1choice1", name: "choice 1", },
             { id: "cat1choice2", name: "choice 2", },
@@ -37,7 +37,7 @@ class NavigationMenu extends Component {
           menuLabel: "Category 2 menu",
           ariaExpanded: false,
           ariaHidden: true,
-					currentChoiceIndex:0,
+          choiceRefs: [],
           choices: [
             { id: "cat2choice1", name: "choice 11", },
             { id: "cat2choice2", name: "choice 12", },
@@ -96,6 +96,7 @@ class NavigationMenu extends Component {
 			} else {
           updatedIndex = updatedIndex + 1;
 		  }
+      this.categoryRefs[updatedIndex].focus();
     }  
 
     //left arrow key
@@ -105,10 +106,10 @@ class NavigationMenu extends Component {
 			} else {
           updatedIndex = updatedIndex - 1;
 			} 
+      this.categoryRefs[updatedIndex].focus();
     }
 
 
-    this.categoryRefs[updatedIndex].focus();
 
     this.setState({
 			Categories: updatedCategories,
@@ -119,7 +120,6 @@ class NavigationMenu extends Component {
   handleKeyboardForChoices(e, index) {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
-
 
     var max = updatedCategories[index].choices.length - 1;
 
