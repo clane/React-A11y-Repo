@@ -113,7 +113,6 @@ class NavigationMenu extends Component {
      if (e.keyCode === 40) {
       //down arrow
 			console.log('down arrow'); 
-      //updatedCategories[updatedIndex].choiceRefs[0].focus();
       updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
     }
 
@@ -125,7 +124,7 @@ class NavigationMenu extends Component {
     });
   }
 
-  handleKeyboardForChoices(e, index) {
+  moveFocusToFirstChoice(e, index) {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
 		var updatedIndex = index;
@@ -133,6 +132,7 @@ class NavigationMenu extends Component {
     var max = updatedCategories[index].choices.length - 1;
 
     if (e.keyCode === 40) {
+			console.log('down arrow'); 
       //down arrow
     	if(index === max){
         updatedIndex = 0;
@@ -140,8 +140,8 @@ class NavigationMenu extends Component {
           updatedIndex = updatedIndex + 1;
 		  }
       //this.categoryRefs[updatedIndex].focus();
-
-			
+     // updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
+      updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
     }
 
     if (e.keyCode === 38) {
@@ -217,7 +217,7 @@ class NavigationMenu extends Component {
                   role="menu"
                   tabIndex="-1"
                   aria-label={category.menuLabel}
-                  onKeyDown={e => this.handleKeyboardForChoices(e, index)}
+                  onKeyDown={e => this.moveFocusToFirstChoice(e, index)}
                   ref={menuRef => {
                     this.menuRefs[index] = menuRef;
                   }}
