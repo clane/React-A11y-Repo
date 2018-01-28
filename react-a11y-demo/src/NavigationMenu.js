@@ -17,6 +17,7 @@ class NavigationMenu extends Component {
           menuLabel: "Category 1 menu",
           ariaExpanded: false,
           ariaHidden: true,
+					currentChoiceIndex:0,
           choices: [
             { id: "cat1choice1", name: "choice 1", },
             { id: "cat1choice2", name: "choice 2", },
@@ -36,6 +37,7 @@ class NavigationMenu extends Component {
           menuLabel: "Category 2 menu",
           ariaExpanded: false,
           ariaHidden: true,
+					currentChoiceIndex:0,
           choices: [
             { id: "cat2choice1", name: "choice 11", },
             { id: "cat2choice2", name: "choice 12", },
@@ -105,13 +107,11 @@ class NavigationMenu extends Component {
 			} 
     }
 
-    updatedCategories[updatedIndex].tabIndex = 0;
 
     this.categoryRefs[updatedIndex].focus();
 
     this.setState({
 			Categories: updatedCategories,
-			activeIndexCategories: updatedIndex, 
       activeMenuIndex: updatedIndex, 
     });
   }
