@@ -255,15 +255,15 @@ class NavigationMenu extends Component {
                   data-aria-expanded={category.ariaExpanded}
                   aria-hidden={category.ariaHidden} 
                 >
-                  {category.choices.map((choice, index) => (
+                  {category.choices.map((choice, choiceIndex) => (
                     <a
 										  tabIndex="-1"
-                      key={index}
+                      key={choiceIndex}
                       id={choice.id}
                       role="menuitem"
-                      onKeyDown={e => this.handleKeydownForChoices(e, index)}
+                      onKeyDown={e => this.handleKeydownForChoices(e, categoryIndex, choiceIndex)}
                       ref={choiceRef => {
-                        category.choiceRefs[index] = choiceRef;
+                        category.choiceRefs[choiceIndex] = choiceRef;
                       }}
                     >
                       {choice.name}
