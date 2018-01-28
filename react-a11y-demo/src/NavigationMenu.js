@@ -125,32 +125,15 @@ class NavigationMenu extends Component {
   }
 
   moveFocusToFirstChoice(e, index) {
-    var updatedCategories = [];
-    updatedCategories = this.state.Categories;
-		var updatedIndex = index;
-
-    var max = updatedCategories[index].choices.length - 1;
 
     if (e.keyCode === 40) {
 			console.log('down arrow'); 
       //down arrow
-    	if(index === max){
-        updatedIndex = 0;
-			} else {
-          updatedIndex = updatedIndex + 1;
-		  }
       //this.categoryRefs[updatedIndex].focus();
      // updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
-      updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
+      //updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
+      this.state.Categories[index].choiceRefs[this.state.Categories[index].choiceIndex].focus();
     }
-
-    if (e.keyCode === 38) {
-      //up arrow key
-    }
-
-    this.setState({
-      Categories: updatedCategories
-    });
   }
   
 	choiceHandler(e, index){
