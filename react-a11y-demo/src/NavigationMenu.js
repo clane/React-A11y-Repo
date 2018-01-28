@@ -208,7 +208,7 @@ class NavigationMenu extends Component {
                   aria-hidden={category.ariaHidden} 
                 >
                   {category.choices.map((choice, index) => (
-                    <div
+                    <a
 										  tabIndex="-1"
                       key={index}
                       id={choice.id}
@@ -219,7 +219,7 @@ class NavigationMenu extends Component {
                       }}
                     >
                       {choice.name}
-                    </div>
+                    </a>
                   ))}
                 </div>
               ))}
