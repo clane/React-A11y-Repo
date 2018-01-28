@@ -57,27 +57,42 @@ class NavigationMenu extends Component {
   }
 
   toggleMenu(e, index) {
+    if(this.state.Categories[index].ariaExpanded === false){
+			this.showCategory(index);
+    } else { 
+        this.hideCategory(index); 
+    }
+  }
+
+  showCategory(index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    if(this.state.Categories[index].ariaExpanded === false){
-      updatedCategories[index].ariaExpanded = true;
-      updatedCategories[index].ariaHidden = false;
-    } else { 
-      updatedCategories[index].ariaExpanded = false;
-      updatedCategories[index].ariaHidden = true;
-    }
     //close all other menus
     for (let i = 0; i < updatedCategories.length; i++) {
       if(i !== index){
         updatedCategories[i].ariaExpanded = false;
       } 
     }
+    updatedCategories[index].ariaExpanded = true;
+    updatedCategories[index].ariaHidden = false;
     this.setState({
       Categories: updatedCategories,
       activeMenuIndex: index
     });
-    
   }
+	
+  hideCategory(index) {
+    let updatedCategories = [];
+    updatedCategories = this.state.Categories;
+		updatedCategories[index].ariaExpanded = false;
+		updatedCategories[index].ariaHidden = true;
+    this.setState({
+      Categories: updatedCategories,
+      activeMenuIndex: index
+    });
+
+  }
+
 
   HandleKeydownForCategories(e, index) {
     let updatedCategories = [];
@@ -112,7 +127,6 @@ class NavigationMenu extends Component {
 
      if (e.keyCode === 40) {
       //down arrow
-			console.log('down arrow'); 
       updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
     }
 
@@ -124,7 +138,6 @@ class NavigationMenu extends Component {
 
   moveFocusToFirstChoice(e, index) {
     if (e.keyCode === 40) {
-			console.log('down arrow'); 
       //down arrow
       this.state.Categories[index].choiceRefs[this.state.Categories[index].choiceIndex].focus();
     }
@@ -142,6 +155,9 @@ class NavigationMenu extends Component {
 	}
 
   HandleMouseLeaveForChoices(e, index){
+    let updatedCategories = [];
+    updatedCategories = this.state.Categories;
+
     this.toggleMenu(e, index);
     this.categoryRefs[index].focus();
 	}
