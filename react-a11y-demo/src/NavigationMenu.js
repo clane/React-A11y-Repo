@@ -143,31 +143,33 @@ class NavigationMenu extends Component {
     }
   }
   
-	handleKeydownForChoices(e, index){
+	handleKeydownForChoices(e, categoryIndex, choiceIndex){
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    var updatedIndex = index;
-		var max = this.state.Categories[index].choices.length - 1;
+    var updatedChoiceIndex = choiceIndex;
+		var max = this.state.Categories[categoryIndex].choices.length - 1;
 		console.log(max);
 
     //down arrow key
     if (e.keyCode === 40) {
-			if(index === max){
-        updatedIndex = 0;
+			if(choiceIndex === max){
+        updatedChoiceIndex = 0;
 			} else {
-          updatedIndex = updatedIndex + 1;
+          updatedChoiceIndex = updatedChoiceIndex + 1;
 		  }
-      this.state.Categories[index].choiceRefs[updatedIndex].focus();
     }  
 
     //up arrow key
     if (e.keyCode === 38) {
-			if(index === 0){
-        updatedIndex = max;
+			if(categoryIndex === 0){
+        categoryIndex = max;
 			} else {
-          updatedIndex = updatedIndex - 1;
+          updatedChoiceIndex = updatedChoiceIndex - 1;
 			} 
     }
+
+    updatedCategories[categoryIndex].choiceIndex = updatedChoiceIndex;
+    this.state.Categories[categoryIndex].choiceRefs[updatedChoiceIndex].focus();
 
     this.setState({
 			Categories: updatedCategories,
