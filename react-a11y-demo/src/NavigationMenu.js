@@ -125,7 +125,7 @@ class NavigationMenu extends Component {
       this.categoryRefs[updatedIndex].focus();
     }
 
-     if (e.keyCode === 40) {
+    if (e.keyCode === 40) {
       //down arrow
       updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
     }
@@ -146,9 +146,9 @@ class NavigationMenu extends Component {
 	handleKeydownForChoices(e, index){
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-
     var updatedIndex = index;
 		var max = this.state.Categories[index].choices.length - 1;
+		console.log(max);
 
     //down arrow key
     if (e.keyCode === 40) {
@@ -167,7 +167,6 @@ class NavigationMenu extends Component {
 			} else {
           updatedIndex = updatedIndex - 1;
 			} 
-      this.state.Categories[index].choiceRefs[updatedIndex].focus();
     }
 
     this.setState({
