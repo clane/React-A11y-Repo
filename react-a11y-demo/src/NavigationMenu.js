@@ -7,7 +7,6 @@ class NavigationMenu extends Component {
     super(props);
     this.menuRefs = [];
     this.categoryRefs = [];
-    this.choiceRefs = [];
     this.state = {
       activeMenuIndex: 0, 
       Categories: [
@@ -18,6 +17,7 @@ class NavigationMenu extends Component {
           ariaExpanded: false,
           ariaHidden: true,
           choiceRefs: [],
+					choiceIndex: 0,
           choices: [
             { id: "cat1choice1", name: "choice 1", },
             { id: "cat1choice2", name: "choice 2", },
@@ -38,6 +38,7 @@ class NavigationMenu extends Component {
           ariaExpanded: false,
           ariaHidden: true,
           choiceRefs: [],
+					choiceIndex: 0,
           choices: [
             { id: "cat2choice1", name: "choice 11", },
             { id: "cat2choice2", name: "choice 12", },
@@ -107,6 +108,12 @@ class NavigationMenu extends Component {
           updatedIndex = updatedIndex - 1;
 			} 
       this.categoryRefs[updatedIndex].focus();
+    }
+
+     if (e.keyCode === 40) {
+      //down arrow
+			console.log('down arrow'); 
+      updatedCategories[updatedIndex].choiceRefs[0].focus();
     }
 
 
@@ -215,7 +222,7 @@ class NavigationMenu extends Component {
                       role="menuitem"
                       onKeyDown={e => this.choiceHandler(e, index)}
                       ref={choiceRef => {
-                        this.choiceRefs[index] = choiceRef;
+                        category.choiceRefs[index] = choiceRef;
                       }}
                     >
                       {choice.name}
