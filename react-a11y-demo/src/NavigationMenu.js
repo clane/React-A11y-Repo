@@ -242,15 +242,15 @@ class NavigationMenu extends Component {
             {/* END MENUBAR */}
             {/* BEGIN MENUS */}
             <div id="menusContainer">
-              {this.state.Categories.map((category, index) => (
+              {this.state.Categories.map((category, categoryIndex) => (
                 <div
-                  key={index}
+                  key={categoryIndex}
                   role="menu"
                   tabIndex="-1"
                   aria-label={category.menuLabel}
-                  onKeyDown={e => this.moveFocusToFirstChoice(e, index)}
+                  onKeyDown={e => this.moveFocusToFirstChoice(e, categoryIndex)}
                   ref={menuRef => {
-                    this.menuRefs[index] = menuRef;
+                    this.menuRefs[categoryIndex] = menuRef;
                   }}
                   data-aria-expanded={category.ariaExpanded}
                   aria-hidden={category.ariaHidden} 
