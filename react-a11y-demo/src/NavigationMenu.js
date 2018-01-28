@@ -141,6 +141,11 @@ class NavigationMenu extends Component {
     this.state.Categories[index].choiceRefs[this.state.Categories[index].choiceIndex].focus();
 	}
 
+  HandleMouseLeaveForChoices(e, index){
+    this.toggleMenu(e, index);
+    this.categoryRefs[index].focus();
+	}
+
   componentDidMount() {
     this.topHeading.focus();
   }
@@ -179,6 +184,7 @@ class NavigationMenu extends Component {
                   onClick={e => this.toggleMenu(e, index)}
                   onFocus={e => this.toggleMenu(e, index)}
                   onMouseEnter={e => this.HandleMouseEnterForChoices(e, index)}
+                  onMouseLeave={e => this.HandleMouseLeaveForChoices(e, index)}
                   onKeyDown={e => this.HandleKeydownForCategories(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
