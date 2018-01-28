@@ -143,7 +143,37 @@ class NavigationMenu extends Component {
     }
   }
   
-	HandleKeydownForChoices(e, index){
+	handleKeydownForChoices(e, index){
+    let updatedCategories = [];
+    updatedCategories = this.state.Categories;
+
+    var updatedIndex = index;
+		var max = this.state.Categories[index].choices.length - 1;
+
+    //down arrow key
+    if (e.keyCode === 40) {
+			if(index === max){
+        updatedIndex = 0;
+			} else {
+          updatedIndex = updatedIndex + 1;
+		  }
+      this.state.Categories[index].choiceRefs[updatedIndex].focus();
+    }  
+
+    //up arrow key
+    if (e.keyCode === 38) {
+			if(index === 0){
+        updatedIndex = max;
+			} else {
+          updatedIndex = updatedIndex - 1;
+			} 
+      this.state.Categories[index].choiceRefs[updatedIndex].focus();
+    }
+
+    this.setState({
+			Categories: updatedCategories,
+    });
+
     if (e.keyCode === 13) {
       alert('choice handled'); 
 		}
@@ -232,7 +262,7 @@ class NavigationMenu extends Component {
                       key={index}
                       id={choice.id}
                       role="menuitem"
-                      onKeyDown={e => this.HandleKeydownForChoices(e, index)}
+                      onKeyDown={e => this.handleKeydownForChoices(e, index)}
                       ref={choiceRef => {
                         category.choiceRefs[index] = choiceRef;
                       }}
