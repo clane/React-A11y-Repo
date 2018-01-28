@@ -138,8 +138,8 @@ class NavigationMenu extends Component {
 
   HandleMouseEnterForChoices(e, index){
     this.toggleMenu(e, index);
-    //this.state.Categories[index].choiceRefs[this.state.Categories[index].choiceIndex].focus();
-    this.state.Categories[index].choiceRefs[0].focus();
+    this.state.Categories[index].choiceRefs[this.state.Categories[index].choiceIndex].focus();
+    //this.state.Categories[index].choiceRefs[0].focus();
 		console.log(document.activeElement);
 	}
 
