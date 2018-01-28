@@ -79,7 +79,7 @@ class NavigationMenu extends Component {
     
   }
 
-  manageArrowKeysForCategories(e, index) {
+  HandleKeydownForCategories(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
 
@@ -116,8 +116,6 @@ class NavigationMenu extends Component {
       updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
     }
 
-
-
     this.setState({
 			Categories: updatedCategories,
       activeMenuIndex: updatedIndex, 
@@ -125,18 +123,14 @@ class NavigationMenu extends Component {
   }
 
   moveFocusToFirstChoice(e, index) {
-
     if (e.keyCode === 40) {
 			console.log('down arrow'); 
       //down arrow
-      //this.categoryRefs[updatedIndex].focus();
-     // updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
-      //updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
       this.state.Categories[index].choiceRefs[this.state.Categories[index].choiceIndex].focus();
     }
   }
   
-	choiceHandler(e, index){
+	HandleKeydownForChoices(e, index){
     if (e.keyCode === 13) {
       alert('choice handled'); 
 		}
@@ -179,7 +173,7 @@ class NavigationMenu extends Component {
                   id={category.id}
                   onClick={e => this.toggleMenu(e, index)}
                   onFocus={e => this.toggleMenu(e, index)}
-                  onKeyDown={e => this.manageArrowKeysForCategories(e, index)}
+                  onKeyDown={e => this.HandleKeydownForCategories(e, index)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
                   ref={categoryRef => {
@@ -213,7 +207,7 @@ class NavigationMenu extends Component {
                       key={index}
                       id={choice.id}
                       role="menuitem"
-                      onKeyDown={e => this.choiceHandler(e, index)}
+                      onKeyDown={e => this.HandleKeydownForChoices(e, index)}
                       ref={choiceRef => {
                         category.choiceRefs[index] = choiceRef;
                       }}
