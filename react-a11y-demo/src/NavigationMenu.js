@@ -219,19 +219,19 @@ class NavigationMenu extends Component {
               role="menubar"
               aria-label="navigation menu bar"
             >
-              {this.state.Categories.map((category, index) => (
+              {this.state.Categories.map((category, categoryIndex) => (
                 <button
-                  key={index}
+                  key={categoryIndex}
                   id={category.id}
-                  onClick={e => this.toggleMenu(e, index)}
-                  onFocus={e => this.toggleMenu(e, index)}
-                  onMouseEnter={e => this.HandleMouseEnterForChoices(e, index)}
-                  onMouseLeave={e => this.HandleMouseLeaveForChoices(e, index)}
-                  onKeyDown={e => this.HandleKeydownForCategories(e, index)}
+                  onClick={e => this.toggleMenu(e, categoryIndex)}
+                  onFocus={e => this.toggleMenu(e, categoryIndex)}
+                  onMouseEnter={e => this.HandleMouseEnterForChoices(e, categoryIndex)}
+                  onMouseLeave={e => this.HandleMouseLeaveForChoices(e, categoryIndex)}
+                  onKeyDown={e => this.HandleKeydownForCategories(e, categoryIndex)}
                   aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
                   ref={categoryRef => {
-                    this.categoryRefs[index] = categoryRef;
+                    this.categoryRefs[categoryIndex] = categoryRef;
                   }}
 								  role="menuitem"
                 >
