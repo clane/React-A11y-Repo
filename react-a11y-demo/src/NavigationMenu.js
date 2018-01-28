@@ -113,7 +113,8 @@ class NavigationMenu extends Component {
      if (e.keyCode === 40) {
       //down arrow
 			console.log('down arrow'); 
-      updatedCategories[updatedIndex].choiceRefs[0].focus();
+      //updatedCategories[updatedIndex].choiceRefs[0].focus();
+      updatedCategories[updatedIndex].choiceRefs[updatedCategories[updatedIndex].choiceIndex].focus();
     }
 
 
@@ -127,11 +128,20 @@ class NavigationMenu extends Component {
   handleKeyboardForChoices(e, index) {
     var updatedCategories = [];
     updatedCategories = this.state.Categories;
+		var updatedIndex = index;
 
     var max = updatedCategories[index].choices.length - 1;
 
     if (e.keyCode === 40) {
       //down arrow
+    	if(index === max){
+        updatedIndex = 0;
+			} else {
+          updatedIndex = updatedIndex + 1;
+		  }
+      //this.categoryRefs[updatedIndex].focus();
+
+			
     }
 
     if (e.keyCode === 38) {
