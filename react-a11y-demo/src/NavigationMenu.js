@@ -161,8 +161,8 @@ class NavigationMenu extends Component {
 
     //up arrow key
     if (e.keyCode === 38) {
-			if(categoryIndex === 0){
-        categoryIndex = max;
+			if(choiceIndex === 0){
+        updatedChoiceIndex = max;
 			} else {
           updatedChoiceIndex = updatedChoiceIndex - 1;
 			} 
