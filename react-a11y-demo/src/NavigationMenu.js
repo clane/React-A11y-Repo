@@ -93,18 +93,14 @@ class NavigationMenu extends Component {
 
   }
 
-
   HandleKeydownForCategories(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-
     var updatedIndex = index;
 		var max = this.state.Categories.length - 1;
-
     for (let i = 0; i < updatedCategories.length; i++) {
       updatedCategories[i].tabIndex = -1;
     }
-
     //right arrow key
     if (e.keyCode === 39) {
 			if(index === max){
@@ -114,7 +110,6 @@ class NavigationMenu extends Component {
 		  }
       this.categoryRefs[updatedIndex].focus();
     }  
-
     //left arrow key
     if (e.keyCode === 37) {
 			if(index === 0){
@@ -148,8 +143,6 @@ class NavigationMenu extends Component {
     updatedCategories = this.state.Categories;
     var updatedChoiceIndex = choiceIndex;
 		var max = this.state.Categories[categoryIndex].choices.length - 1;
-		console.log(max);
-
     //down arrow key
     if (e.keyCode === 40) {
 			if(choiceIndex === max){
@@ -158,7 +151,6 @@ class NavigationMenu extends Component {
           updatedChoiceIndex = updatedChoiceIndex + 1;
 		  }
     }  
-
     //up arrow key
     if (e.keyCode === 38) {
 			if(choiceIndex === 0){
@@ -186,7 +178,7 @@ class NavigationMenu extends Component {
 	}
 
   HandleMouseLeaveForChoices(e, index){
-    this.showCategory(index);
+    this.hideCategory(index);
     this.categoryRefs[index].focus();
 	}
 
