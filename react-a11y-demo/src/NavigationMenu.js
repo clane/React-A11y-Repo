@@ -290,8 +290,19 @@ class NavigationMenu extends Component {
                       {choice.name}
                       {choice.submenu ? (
                         <div className="submenu" role="menu">
-                          {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(<p>hello</p> ))}
-                          has sub-menu
+                          {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(
+                          	<a
+                      				tabIndex="-1"
+															key={submenuChoiceIndex}
+															id={submenuChoice.id}
+															role="menuitem"
+														>
+														{submenuChoice.name}
+														</a>
+
+
+
+													))}
                         </div>
                       ) : (
                         false
