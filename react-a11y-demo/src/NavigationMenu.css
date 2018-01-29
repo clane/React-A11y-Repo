@@ -6,7 +6,7 @@
 .navigation-menu [role="menubar"] button { width:20%; float:left; margin-left:20px; }
 .navigation-menu #menusContainer { width:90%; overflow:hidden; }
 .navigation-menu .individualMenu  { width:30%; float:left; }
-.navigation-menu [role="menu"] a[role="menuitem"] { float:none; display:block } 
+.navigation-menu [role="menu"] a[role="menuitem"] { float:none; display:block; position:relative; } 
 .navigation-menu [data-active='false'] { }
 .navigation-menu [data-active='true'] {outline: 5px dotted #000; } 
 .navigation-menu [role="menu"]  {
@@ -14,6 +14,16 @@
   width: 20%;
   float:left;
 }
+
+.navigation-menu a[role="menuitem"] div.submenu[role="menu"]  {
+  display: block;
+  width: 100%;
+	position:absolute;;
+	left:70%; 
+	top:1px;
+	float:none;
+}
+
 .navigation-menu [role="menu"][data-aria-expanded="false"]  {
   opacity:0;  
 } 
