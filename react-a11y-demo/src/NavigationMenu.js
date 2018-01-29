@@ -176,7 +176,7 @@ class NavigationMenu extends Component {
     });
 
     if (e.keyCode === 13) {
-      alert('choice handled'); 
+      alert('Mock navigation to ' + updatedCategories[categoryIndex].choices[updatedChoiceIndex].name); 
 		}
 	}
 
@@ -214,7 +214,7 @@ class NavigationMenu extends Component {
             Navigation Menu
           </h2>
           {/* BEGIN NAVIGATION REGION */}
-          <div role="navigation" aria-label="navigation menu of course">
+          <div role="application" aria-label="navigation menu">
             {/* BEGIN MENUBAR */}
             <div
               id="menubar"
