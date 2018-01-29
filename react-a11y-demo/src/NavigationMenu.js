@@ -21,7 +21,14 @@ class NavigationMenu extends Component {
           choices: [
             { id: "cat1choice1", name: "choice 1", },
             { id: "cat1choice2", name: "choice 2", },
-            { id: "cat1choice3", name: "choice 3", },
+            { id: "cat1choice3", name: "choice 3",
+							 submenu: [
+							 { id: "cat1choice3sub1", name: "choice 1", },
+							 { id: "cat1choice3sub2", name: "choice 2", },
+							 { id: "cat1choice3sub3", name: "choice 3", },
+							 { id: "cat1choice3sub4", name: "choice 4", },
+						  ]
+						},
             { id: "cat1choice4", name: "choice 4", },
             { id: "cat1choice5", name: "choice 5", },
             { id: "cat1choice6", name: "choice 6", },
