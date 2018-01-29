@@ -288,7 +288,7 @@ class NavigationMenu extends Component {
                       }}
                     >
                       {choice.name}
-                      {choice.ariaHasPopup ? (
+                      {choice.submenu ? (
                         <div className="submenu" role="menu">
                           has sub-menu
                         </div>
