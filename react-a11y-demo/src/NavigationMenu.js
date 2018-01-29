@@ -290,6 +290,7 @@ class NavigationMenu extends Component {
                       {choice.name}
                       {choice.submenu ? (
                         <div className="submenu" role="menu">
+                          {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(<p>hello</p> ))}
                           has sub-menu
                         </div>
                       ) : (
