@@ -26,10 +26,10 @@ class NavigationMenu extends Component {
               name: "choice 3",
               ariaHasPopup: true,
               submenu: [
-                { id: "cat1choice3sub1", name: "choice 1" },
-                { id: "cat1choice3sub2", name: "choice 2" },
-                { id: "cat1choice3sub3", name: "choice 3" },
-                { id: "cat1choice3sub4", name: "choice 4" }
+                { id: "cat1choice3sub1", name: "category 1 choice 3 submenu choice 1" },
+                { id: "cat1choice3sub2", name: "category 1 choice 3 submenu choice 2" },
+                { id: "cat1choice3sub3", name: "category 1 choice 3 submenu choice 3" },
+                { id: "cat1choice3sub4", name: "category 1 choice 3 submenu choice 4" }
               ]
             },
             { id: "cat1choice4", name: "choice 4", ariaHasPopup: false },
