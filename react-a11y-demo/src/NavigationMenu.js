@@ -172,14 +172,14 @@ class NavigationMenu extends Component {
 		}
 	}
 
-  HandleMouseEnterForChoices(e, index){
-    this.showCategory(index);
-    this.state.Categories[index].choiceRefs[this.state.Categories[index].choiceIndex].focus();
+  HandleMouseEnterForChoices(e, categoryIndex){
+    this.showCategory(categoryIndex);
+    this.state.Categories[categoryIndex].choiceRefs[this.state.Categories[categoryIndex].choiceIndex].focus();
 	}
 
-  HandleMouseLeaveForChoices(e, index){
-    this.hideCategory(index);
-    this.categoryRefs[index].focus();
+  HandleMouseLeaveForChoices(e, categoryIndex){
+    this.hideCategory(categoryIndex);
+    this.state.Categories[categoryIndex].choiceRefs[this.state.Categories[categoryIndex].choiceIndex].focus();
 	}
 
   componentDidMount() {
@@ -219,7 +219,7 @@ class NavigationMenu extends Component {
                   id={category.id}
                   onClick={e => this.toggleMenu(e, categoryIndex)}
                   onFocus={e => this.toggleMenu(e, categoryIndex)}
-                  onMouseEnter={e => this.HandleMouseEnterForChoices(e, categoryIndex)}
+                  onMouseEnter={e => this.HandleMouseEnterForChoices(e,categoryIndex)}
                   onMouseLeave={e => this.HandleMouseLeaveForChoices(e, categoryIndex)}
                   onKeyDown={e => this.HandleKeydownForCategories(e, categoryIndex)}
                   aria-haspopup="true"
