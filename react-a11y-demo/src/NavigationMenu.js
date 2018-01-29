@@ -206,69 +206,71 @@ class NavigationMenu extends Component {
             Navigation Menu
           </h2>
           {/* BEGIN NAVIGATION REGION */}
-          <div role="application" aria-label="navigation menu">
-            {/* BEGIN MENUBAR */}
-            <div
-              id="menubar"
-              role="menubar"
-              aria-label="navigation menu bar"
-            >
-              {this.state.Categories.map((category, categoryIndex) => (
-                <button
-                  key={categoryIndex}
-                  id={category.id}
-                  onClick={e => this.toggleMenu(e, categoryIndex)}
-                  onFocus={e => this.toggleMenu(e, categoryIndex)}
-                  onMouseEnter={e => this.HandleMouseEnterForChoices(e,categoryIndex)}
-                  onMouseLeave={e => this.HandleMouseLeaveForChoices(e, categoryIndex)}
-                  onKeyDown={e => this.HandleKeydownForCategories(e, categoryIndex)}
-                  aria-haspopup="true"
-                  aria-expanded={category.ariaExpanded}
-                  ref={categoryRef => {
-                    this.categoryRefs[categoryIndex] = categoryRef;
-                  }}
-								  role="menuitem"
-                >
-                  {category.buttonLabel}
-                </button>
-              ))}
-            </div>
-            {/* END MENUBAR */}
-            {/* BEGIN MENUS */}
-            <div id="menusContainer">
-              {this.state.Categories.map((category, categoryIndex) => (
-                <div
-                  key={categoryIndex}
-                  role="menu"
-                  tabIndex="-1"
-                  aria-label={category.menuLabel}
-                  onKeyDown={e => this.moveFocusToFirstChoice(e, categoryIndex)}
-                  ref={menuRef => {
-                    this.menuRefs[categoryIndex] = menuRef;
-                  }}
-                  data-aria-expanded={category.ariaExpanded}
-                  aria-hidden={category.ariaHidden} 
-                >
-                  {category.choices.map((choice, choiceIndex) => (
-                    <a
-										  tabIndex="-1"
-                      key={choiceIndex}
-                      id={choice.id}
-                      role="menuitem"
-                      onKeyDown={e => this.handleKeydownForChoices(e, categoryIndex, choiceIndex)}
-                      ref={choiceRef => {
-                        category.choiceRefs[choiceIndex] = choiceRef;
-                      }}
-                    >
-                      {choice.name}
-                    </a>
-                  ))}
-                </div>
-              ))}
-            </div>
-            {/* END MENUS */}
-          </div>
-          {/* END NAVIGATION REGION */}
+				  <nav>
+						<div role="application" aria-label="navigation menu">
+							{/* BEGIN MENUBAR */}
+							<div
+								id="menubar"
+								role="menubar"
+								aria-label="navigation menu bar"
+							>
+								{this.state.Categories.map((category, categoryIndex) => (
+									<button
+										key={categoryIndex}
+										id={category.id}
+										onClick={e => this.toggleMenu(e, categoryIndex)}
+										onFocus={e => this.toggleMenu(e, categoryIndex)}
+										onMouseEnter={e => this.HandleMouseEnterForChoices(e,categoryIndex)}
+										onMouseLeave={e => this.HandleMouseLeaveForChoices(e, categoryIndex)}
+										onKeyDown={e => this.HandleKeydownForCategories(e, categoryIndex)}
+										aria-haspopup="true"
+										aria-expanded={category.ariaExpanded}
+										ref={categoryRef => {
+											this.categoryRefs[categoryIndex] = categoryRef;
+										}}
+										role="menuitem"
+									>
+										{category.buttonLabel}
+									</button>
+								))}
+							</div>
+							{/* END MENUBAR */}
+							{/* BEGIN MENUS */}
+							<div id="menusContainer">
+								{this.state.Categories.map((category, categoryIndex) => (
+									<div
+										key={categoryIndex}
+										role="menu"
+										tabIndex="-1"
+										aria-label={category.menuLabel}
+										onKeyDown={e => this.moveFocusToFirstChoice(e, categoryIndex)}
+										ref={menuRef => {
+											this.menuRefs[categoryIndex] = menuRef;
+										}}
+										data-aria-expanded={category.ariaExpanded}
+										aria-hidden={category.ariaHidden} 
+									>
+										{category.choices.map((choice, choiceIndex) => (
+											<a
+												tabIndex="-1"
+												key={choiceIndex}
+												id={choice.id}
+												role="menuitem"
+												onKeyDown={e => this.handleKeydownForChoices(e, categoryIndex, choiceIndex)}
+												ref={choiceRef => {
+													category.choiceRefs[choiceIndex] = choiceRef;
+												}}
+											>
+												{choice.name}
+											</a>
+										))}
+									</div>
+								))}
+							</div>
+							{/* END MENUS */}
+						</div>
+						{/* END NAVIGATION REGION */}
+				  </nav>
         </div>
       )
       //END ROOT
