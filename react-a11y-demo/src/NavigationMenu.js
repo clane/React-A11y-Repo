@@ -269,7 +269,8 @@ class NavigationMenu extends Component {
 												}}
 											>
 												{choice.name}
-											{choice.ariaHasPopup  ? 'has sub-menu' : 'no-sub-menu'}
+										  	{choice.ariaHasPopup  ? (<div role="">'has sub-menu'</div>) : false}
+
 											</a>
 										))}
 									</div>
