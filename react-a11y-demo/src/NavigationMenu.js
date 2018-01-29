@@ -19,9 +19,9 @@ class NavigationMenu extends Component {
           choiceRefs: [],
 					choiceIndex: 0,
           choices: [
-            { id: "cat1choice1", name: "choice 1", },
-            { id: "cat1choice2", name: "choice 2", },
-            { id: "cat1choice3", name: "choice 3",
+            { id: "cat1choice1", name: "choice 1", ariaHasPopup: false, },
+            { id: "cat1choice2", name: "choice 2", ariaHasPopup: false, },
+            { id: "cat1choice3", name: "choice 3", ariaHasPopup: true,
 							 submenu: [
 							 { id: "cat1choice3sub1", name: "choice 1", },
 							 { id: "cat1choice3sub2", name: "choice 2", },
@@ -29,13 +29,13 @@ class NavigationMenu extends Component {
 							 { id: "cat1choice3sub4", name: "choice 4", },
 						  ]
 						},
-            { id: "cat1choice4", name: "choice 4", },
-            { id: "cat1choice5", name: "choice 5", },
-            { id: "cat1choice6", name: "choice 6", },
-            { id: "cat1choice7", name: "choice 7", },
-            { id: "cat1choice8", name: "choice 8", },
-            { id: "cat1choice9", name: "choice 9", },
-            { id: "cat1choice10", name: "choice 10", }
+            { id: "cat1choice4", name: "choice 4", ariaHasPopup: false, },
+            { id: "cat1choice5", name: "choice 5", ariaHasPopup: false, },
+            { id: "cat1choice6", name: "choice 6", ariaHasPopup: false, },
+            { id: "cat1choice7", name: "choice 7", ariaHasPopup: false, },
+            { id: "cat1choice8", name: "choice 8", ariaHasPopup: false, },
+            { id: "cat1choice9", name: "choice 9", ariaHasPopup: false, },
+            { id: "cat1choice10", name: "choice 10", ariaHasPopup: false, }
           ]
         },
         {
@@ -47,16 +47,16 @@ class NavigationMenu extends Component {
           choiceRefs: [],
 					choiceIndex: 0,
           choices: [
-            { id: "cat2choice1", name: "choice 11", },
-            { id: "cat2choice2", name: "choice 12", },
-            { id: "cat2choice3", name: "choice 13", },
-            { id: "cat2choice4", name: "choice 14", },
-            { id: "cat2choice5", name: "choice 15", },
-            { id: "cat2choice6", name: "choice 16", },
-            { id: "cat2choice7", name: "choice 17", },
-            { id: "cat2choice8", name: "choice 18", },
-            { id: "cat2choice9", name: "choice 19", },
-            { id: "cat2choice10", name: "choice 20", }
+            { id: "cat2choice1", name: "choice 11", ariaHasPopup: false, },
+            { id: "cat2choice2", name: "choice 12", ariaHasPopup: false, },
+            { id: "cat2choice3", name: "choice 13", ariaHasPopup: false, },
+            { id: "cat2choice4", name: "choice 14", ariaHasPopup: false, },
+            { id: "cat2choice5", name: "choice 15", ariaHasPopup: false, },
+            { id: "cat2choice6", name: "choice 16", ariaHasPopup: false, },
+            { id: "cat2choice7", name: "choice 17", ariaHasPopup: false, },
+            { id: "cat2choice8", name: "choice 18", ariaHasPopup: false, },
+            { id: "cat2choice9", name: "choice 19", ariaHasPopup: false, },
+            { id: "cat2choice10", name: "choice 20", ariaHasPopup: false, }
           ]
         }
       ]
@@ -230,7 +230,7 @@ class NavigationMenu extends Component {
 										onMouseEnter={e => this.HandleMouseEnterForChoices(e,categoryIndex)}
 										onMouseLeave={e => this.HandleMouseLeaveForChoices(e, categoryIndex)}
 										onKeyDown={e => this.HandleKeydownForCategories(e, categoryIndex)}
-										aria-haspopup="true"
+										ariaHasPopup="true"
 										aria-expanded={category.ariaExpanded}
 										ref={categoryRef => {
 											this.categoryRefs[categoryIndex] = categoryRef;
@@ -269,6 +269,7 @@ class NavigationMenu extends Component {
 												}}
 											>
 												{choice.name}
+											{choice.ariaHasPopup  ? 'has sub-menu' : 'no-sub-menu'}
 											</a>
 										))}
 									</div>
