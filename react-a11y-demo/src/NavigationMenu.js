@@ -206,6 +206,13 @@ class NavigationMenu extends Component {
     this.topHeading.focus();
   }
 
+  handleFocusForChoices(e,) {
+		console.log('in handleFocusForChoices'); 
+
+
+  }
+
+
   render() {
     return (
       //BEGIN ROOT
@@ -243,7 +250,7 @@ class NavigationMenu extends Component {
                   onKeyDown={e =>
                     this.HandleKeydownForCategories(e, categoryIndex)
                   }
-                  ariaHasPopup="true"
+                  aria-haspopup="true"
                   aria-expanded={category.ariaExpanded}
                   ref={categoryRef => {
                     this.categoryRefs[categoryIndex] = categoryRef;
@@ -271,7 +278,7 @@ class NavigationMenu extends Component {
                   aria-hidden={category.ariaHidden}
                 >
                   {category.choices.map((choice, choiceIndex) => (
-                    <a
+                    <div
                       tabIndex="-1"
                       key={choiceIndex}
                       id={choice.id}
@@ -286,28 +293,26 @@ class NavigationMenu extends Component {
                       ref={choiceRef => {
                         category.choiceRefs[choiceIndex] = choiceRef;
                       }}
+										  onFocus={e => this.handleFocusForChoices(e, choiceIndex)}
                     >
                       {choice.name}
                       {choice.submenu ? (
                         <div className="submenu" role="menu">
                           {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(
-                          	<a
+                          	<div
                       				tabIndex="-1"
 															key={submenuChoiceIndex}
 															id={submenuChoice.id}
 															role="menuitem"
 														>
 														{submenuChoice.name}
-														</a>
-
-
-
+														</div>
 													))}
                         </div>
                       ) : (
                         false
                       )}
-                    </a>
+                    </div>
                   ))}
                 </div>
               ))}
