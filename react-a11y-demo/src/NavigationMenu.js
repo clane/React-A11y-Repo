@@ -296,7 +296,7 @@ class NavigationMenu extends Component {
 										  onFocus={e => this.handleFocusForChoices(e, choiceIndex)}
                     >
                       {choice.name}
-                      {choice.submenu ? (<img src={rightArrow} alt="subment to the right" />) : (false)}
+                      {choice.submenu ? (<img className="subMenuArrow" src={rightArrow} alt="subment to the right" />) : (false)}
                       {choice.submenu ? (
                         <div className="submenu" role="menu">
                           {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(
