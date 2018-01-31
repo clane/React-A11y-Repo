@@ -14,7 +14,7 @@ class NavigationMenu extends Component {
           id: "categoryButton1",
           buttonLabel: "Category 1",
           menuLabel: "Category 1 menu",
-          ariaExpanded: false,
+          menuExpanded: false,
           ariaHidden: true,
           choiceRefs: [],
           choiceIndex: 0,
@@ -45,7 +45,7 @@ class NavigationMenu extends Component {
           id: "categoryButton2",
           buttonLabel: "Category 2",
           menuLabel: "Category 2 menu",
-          ariaExpanded: false,
+          menuExpanded: false,
           ariaHidden: true,
           choiceRefs: [],
           choiceIndex: 0,
@@ -67,7 +67,7 @@ class NavigationMenu extends Component {
   }
 
   toggleMenu(e, index) {
-    if (this.state.Categories[index].ariaExpanded === false) {
+    if (this.state.Categories[index].menuExpanded === false) {
       this.showCategory(index);
     } else {
       this.hideCategory(index);
@@ -80,10 +80,10 @@ class NavigationMenu extends Component {
     //close all other menus
     for (let i = 0; i < updatedCategories.length; i++) {
       if (i !== index) {
-        updatedCategories[i].ariaExpanded = false;
+        updatedCategories[i].menuExpanded = false;
       }
     }
-    updatedCategories[index].ariaExpanded = true;
+    updatedCategories[index].menuExpanded = true;
     updatedCategories[index].ariaHidden = false;
     this.setState({
       Categories: updatedCategories,
@@ -94,7 +94,7 @@ class NavigationMenu extends Component {
   hideCategory(index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    updatedCategories[index].ariaExpanded = false;
+    updatedCategories[index].menuExpanded = false;
     updatedCategories[index].ariaHidden = true;
     this.setState({
       Categories: updatedCategories,
@@ -251,7 +251,6 @@ class NavigationMenu extends Component {
                     this.HandleKeydownForCategories(e, categoryIndex)
                   }
                   aria-haspopup="true"
-                  aria-expanded={category.ariaExpanded}
                   ref={categoryRef => {
                     this.categoryRefs[categoryIndex] = categoryRef;
                   }}
@@ -274,7 +273,7 @@ class NavigationMenu extends Component {
                   ref={menuRef => {
                     this.menuRefs[categoryIndex] = menuRef;
                   }}
-                  data-aria-expanded={category.ariaExpanded}
+                  data-menu-expanded={category.menuExpanded}
                   aria-hidden={category.ariaHidden}
                 >
                   {category.choices.map((choice, choiceIndex) => (

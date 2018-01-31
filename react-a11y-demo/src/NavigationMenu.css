@@ -24,7 +24,7 @@
 	float:none;
 }
 
-.navigation-menu [role="menu"][data-aria-expanded="false"]  {
+.navigation-menu [role="menu"][data-menu-expanded="false"]  {
   opacity:0;  
 } 
 
