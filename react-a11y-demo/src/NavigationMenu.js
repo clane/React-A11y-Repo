@@ -216,6 +216,10 @@ class NavigationMenu extends Component {
     ].focus();
   }
 
+  handleKeydownForChoices(e,) {
+	  console.log('in	handleKeydownForChoices');
+  } 
+
   componentDidMount() {
     this.topHeading.focus();
   }
