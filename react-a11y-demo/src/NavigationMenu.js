@@ -286,13 +286,13 @@ class NavigationMenu extends Component {
                       ref={choiceRef => {
                         category.choiceRefs[choiceIndex] = choiceRef;
                       }}
-										  onFocus={e => this.handleFocusForChoices(e, choiceIndex)}
                     >
                       {choice.name}
                       {choice.submenu ? (<img className="subMenuArrow" src={rightArrow} alt="subment to the right" />) : (false)}
                       {choice.submenu ? (
-                        <div className="submenu" role="menu">
-                          {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(
+										  //BEGIN SUBMENU
+                       <div className="submenu" role="menu">
+                         {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(
                           	<div
                       				tabIndex="-1"
 															key={submenuChoiceIndex}
@@ -303,6 +303,7 @@ class NavigationMenu extends Component {
 														</div>
 													))}
                         </div>
+												//END SUBMENU
                       ) : (
                         false
                       )}
