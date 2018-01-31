@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
 import "./NavigationMenu.css";
+import rightArrow from "./slideControls/right_arrow.svg";
 
 class NavigationMenu extends Component {
   constructor(props) {
@@ -295,6 +296,7 @@ class NavigationMenu extends Component {
 										  onFocus={e => this.handleFocusForChoices(e, choiceIndex)}
                     >
                       {choice.name}
+                      {choice.submenu ? (<img src={rightArrow} alt="subment to the right" />) : (false)}
                       {choice.submenu ? (
                         <div className="submenu" role="menu">
                           {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(
