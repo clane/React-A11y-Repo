@@ -26,11 +26,24 @@ class NavigationMenu extends Component {
               id: "cat1choice3",
               name: "choice 3",
               ariaHasPopup: true,
+              submenuExpanded: false,
               submenu: [
-                { id: "cat1choice3sub1", name: "category 1 choice 3 submenu choice 1" },
-                { id: "cat1choice3sub2", name: "category 1 choice 3 submenu choice 2" },
-                { id: "cat1choice3sub3", name: "category 1 choice 3 submenu choice 3" },
-                { id: "cat1choice3sub4", name: "category 1 choice 3 submenu choice 4" }
+                {
+                  id: "cat1choice3sub1",
+                  name: "category 1 choice 3 submenu choice 1"
+                },
+                {
+                  id: "cat1choice3sub2",
+                  name: "category 1 choice 3 submenu choice 2"
+                },
+                {
+                  id: "cat1choice3sub3",
+                  name: "category 1 choice 3 submenu choice 3"
+                },
+                {
+                  id: "cat1choice3sub4",
+                  name: "category 1 choice 3 submenu choice 4"
+                }
               ]
             },
             { id: "cat1choice4", name: "choice 4", ariaHasPopup: false },
@@ -210,114 +223,126 @@ class NavigationMenu extends Component {
   render() {
     return (
       //BEGIN ROOT
-      <div className="navigation-menu">
-        <Helmet>
-          <html lang="en" />
-          <meta charSet="utf-8" />
-          <title>Navigation Menu</title>
-        </Helmet>
-        <h2
-          tabIndex="-1"
-          ref={componentH2 => {
-            this.topHeading = componentH2;
-          }}
-        >
-          Navigation Menu
-        </h2>
-        {/* BEGIN NAVIGATION REGION */}
-        <nav>
-          <div role="application" aria-label="navigation menu">
-            {/* BEGIN MENUBAR */}
-            <div id="menubar" role="menubar" aria-label="navigation menu bar">
-              {this.state.Categories.map((category, categoryIndex) => (
-                <button
-                  key={categoryIndex}
-                  id={category.id}
-                  onClick={e => this.toggleMenu(e, categoryIndex)}
-                  onFocus={e => this.toggleMenu(e, categoryIndex)}
-                  onMouseEnter={e =>
-                    this.HandleMouseEnterForChoices(e, categoryIndex)
-                  }
-                  onMouseLeave={e =>
-                    this.HandleMouseLeaveForChoices(e, categoryIndex)
-                  }
-                  onKeyDown={e =>
-                    this.HandleKeydownForCategories(e, categoryIndex)
-                  }
-                  aria-haspopup="true"
-                  ref={categoryRef => {
-                    this.categoryRefs[categoryIndex] = categoryRef;
-                  }}
-                  role="menuitem"
-                >
-                  {category.buttonLabel}
-                </button>
-              ))}
+      (
+        <div className="navigation-menu">
+          <Helmet>
+            <html lang="en" />
+            <meta charSet="utf-8" />
+            <title>Navigation Menu</title>
+          </Helmet>
+          <h2
+            tabIndex="-1"
+            ref={componentH2 => {
+              this.topHeading = componentH2;
+            }}
+          >
+            Navigation Menu
+          </h2>
+          {/* BEGIN NAVIGATION REGION */}
+          <nav>
+            {/* BEGIN APPLICATION CONTAINER */}
+            <div role="application" aria-label="navigation menu">
+              {/* BEGIN MENUBAR */}
+              <div id="menubar" role="menubar" aria-label="navigation menu bar">
+                {this.state.Categories.map((category, categoryIndex) => (
+                  <button
+                    key={categoryIndex}
+                    id={category.id}
+                    onClick={e => this.toggleMenu(e, categoryIndex)}
+                    onFocus={e => this.toggleMenu(e, categoryIndex)}
+                    onMouseEnter={e =>
+                      this.HandleMouseEnterForChoices(e, categoryIndex)}
+                    onMouseLeave={e =>
+                      this.HandleMouseLeaveForChoices(e, categoryIndex)}
+                    onKeyDown={e =>
+                      this.HandleKeydownForCategories(e, categoryIndex)}
+                    aria-haspopup="true"
+                    ref={categoryRef => {
+                      this.categoryRefs[categoryIndex] = categoryRef;
+                    }}
+                    role="menuitem"
+                  >
+                    {category.buttonLabel}
+                  </button>
+                ))}
+              </div>
+              {/* END MENUBAR */}
+              {/* BEGIN menusContainer */}
+              <div id="menusContainer">
+                {this.state.Categories.map((category, categoryIndex) => (
+                  //BEGIN MENUS
+                  <div
+                    key={categoryIndex}
+                    role="menu"
+                    tabIndex="-1"
+                    aria-label={category.menuLabel}
+                    onKeyDown={e =>
+                      this.moveFocusToFirstChoice(e, categoryIndex)}
+                    ref={menuRef => {
+                      this.menuRefs[categoryIndex] = menuRef;
+                    }}
+                    data-menu-expanded={category.menuExpanded}
+                    aria-hidden={category.ariaHidden}
+                  >
+                    {category.choices.map((choice, choiceIndex) => (
+                      //BEGIN CHOICES
+                      <div
+                        tabIndex="-1"
+                        key={choiceIndex}
+                        id={choice.id}
+                        role="menuitem"
+                        onKeyDown={e =>
+                          this.handleKeydownForChoices(
+                            e,
+                            categoryIndex,
+                            choiceIndex
+                          )}
+                        ref={choiceRef => {
+                          category.choiceRefs[choiceIndex] = choiceRef;
+                        }}
+                      >
+                        {choice.name}
+                        {choice.submenu
+                          ? <img
+                              className="subMenuArrow"
+                              src={rightArrow}
+                              alt="subment to the right"
+                            />
+                          : false}
+                        {choice.submenu
+                          ? //BEGIN SUBMENU
+                            <div className="submenu" role="menu">
+                              {choice.submenu.map(
+                                (submenuChoice, submenuChoiceIndex) => (
+                                  <div
+                                    tabIndex="-1"
+                                    key={submenuChoiceIndex}
+                                    id={submenuChoice.id}
+                                    role="menuitem"
+                                  >
+                                    {submenuChoice.name}
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          : //END SUBMENU
+                            false}
+                      </div>
+											//END CHOICES
+                    ))
+                    }
+                  </div>
+                  //END MENUS
+                ))}
+              </div>
+              {/* END menusContainer */}
             </div>
-            {/* END MENUBAR */}
-            {/* BEGIN MENUS */}
-            <div id="menusContainer">
-              {this.state.Categories.map((category, categoryIndex) => (
-                <div
-                  key={categoryIndex}
-                  role="menu"
-                  tabIndex="-1"
-                  aria-label={category.menuLabel}
-                  onKeyDown={e => this.moveFocusToFirstChoice(e, categoryIndex)}
-                  ref={menuRef => {
-                    this.menuRefs[categoryIndex] = menuRef;
-                  }}
-                  data-menu-expanded={category.menuExpanded}
-                  aria-hidden={category.ariaHidden}
-                >
-                  {category.choices.map((choice, choiceIndex) => (
-                    <div
-                      tabIndex="-1"
-                      key={choiceIndex}
-                      id={choice.id}
-                      role="menuitem"
-                      onKeyDown={e =>
-                        this.handleKeydownForChoices(
-                          e,
-                          categoryIndex,
-                          choiceIndex
-                        )
-                      }
-                      ref={choiceRef => {
-                        category.choiceRefs[choiceIndex] = choiceRef;
-                      }}
-                    >
-                      {choice.name}
-                      {choice.submenu ? (<img className="subMenuArrow" src={rightArrow} alt="subment to the right" />) : (false)}
-                      {choice.submenu ? (
-										  //BEGIN SUBMENU
-                       <div className="submenu" role="menu">
-                         {choice.submenu.map((submenuChoice, submenuChoiceIndex) =>(
-                          	<div
-                      				tabIndex="-1"
-															key={submenuChoiceIndex}
-															id={submenuChoice.id}
-															role="menuitem"
-														>
-														{submenuChoice.name}
-														</div>
-													))}
-                        </div>
-												//END SUBMENU
-                      ) : (
-                        false
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-            {/* END MENUS */}
-          </div>
+            {/* END APPLICATION CONTAINER */}
+          </nav>
           {/* END NAVIGATION REGION */}
-        </nav>
-      </div>
-      //END ROOT
+        </div>
+        //END ROOT
+      )
     );
   }
 }
