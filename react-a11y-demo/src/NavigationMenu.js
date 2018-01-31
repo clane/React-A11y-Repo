@@ -207,13 +207,6 @@ class NavigationMenu extends Component {
     this.topHeading.focus();
   }
 
-  handleFocusForChoices(e,) {
-		console.log('in handleFocusForChoices'); 
-
-
-  }
-
-
   render() {
     return (
       //BEGIN ROOT
