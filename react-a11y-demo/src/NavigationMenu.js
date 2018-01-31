@@ -300,6 +300,7 @@ class NavigationMenu extends Component {
                         ref={choiceRef => {
                           category.choiceRefs[choiceIndex] = choiceRef;
                         }}
+                        aria-haspopup={choice.submenu ? true : false}  
                       >
                         {choice.name}
                         {choice.submenu
