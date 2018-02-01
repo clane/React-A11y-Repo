@@ -166,14 +166,12 @@ class NavigationMenu extends Component {
   }
 
   handleKeydownForChoices(e, categoryIndex, choiceIndex) {
-		console.log('in handkeKeydownForChoices');
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
     var updatedChoiceIndex = choiceIndex;
     var max = this.state.Categories[categoryIndex].choices.length - 1;
     //down arrow key
     if (e.keyCode === 40) {
-		  console.log('in handkeKeydownForChoices down arrow key pressed');
       if (choiceIndex === max) {
         updatedChoiceIndex = 0;
       } else {
@@ -317,7 +315,7 @@ class NavigationMenu extends Component {
                               alt="subment to the right"
                             />
                           : false}
-                        {choice.submenu
+                        {choice.submenu && choice.submenuExpanded
                           ? //BEGIN SUBMENU
                             <div className="submenu" role="menu">
                               {choice.submenu.map(
