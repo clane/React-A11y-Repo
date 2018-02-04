@@ -18,7 +18,6 @@ this.linkRefs[4].focus();
 } 
 
 render() {
-  //http://www.mattzabriskie.com/blog/react-referencing-dynamic-childrenhttp://www.mattzabriskie.com/blog/react-referencing-dynamic-children
   
    //var index = 0; 
 let links = [];
