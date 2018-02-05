@@ -116,7 +116,7 @@ class NavigationMenu extends Component {
     });
   }
 
-  HandleKeydownForCategories(e, index) {
+  handleKeydownForCategories(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
     var updatedIndex = index;
@@ -141,7 +141,7 @@ class NavigationMenu extends Component {
         updatedIndex = updatedIndex - 1;
       }
       this.categoryRefs[updatedIndex].focus();
-    }
+   }
 
     if (e.keyCode === 40) {
       //down arrow
@@ -187,6 +187,11 @@ class NavigationMenu extends Component {
       }
     }
 
+    //right arrow key
+    if (e.keyCode === 39) {
+			console.log('right arrow key pressed on choices'); 
+    }
+
     updatedCategories[categoryIndex].choiceIndex = updatedChoiceIndex;
     this.state.Categories[categoryIndex].choiceRefs[updatedChoiceIndex].focus();
 
@@ -202,21 +207,33 @@ class NavigationMenu extends Component {
     }
   }
 
-  HandleMouseEnterForChoices(e, categoryIndex) {
+  handleMouseEnterForChoices(e, categoryIndex) {
     this.showCategory(categoryIndex);
     this.state.Categories[categoryIndex].choiceRefs[
       this.state.Categories[categoryIndex].choiceIndex
     ].focus();
   }
 
-  HandleMouseLeaveForChoices(e, categoryIndex) {
+/*
+  handleMouseLeaveForChoices(e, categoryIndex) {
     this.hideCategory(categoryIndex);
     this.state.Categories[categoryIndex].choiceRefs[
       this.state.Categories[categoryIndex].choiceIndex
     ].focus();
   }
+*/
 
-  handleKeydownForSubmenuChoices(e,) {
+
+  handleClickForChoices(e, categoryIndex, choiceIndex) {
+    let updatedCategories = [];
+    updatedCategories = this.state.Categories;
+    alert(
+      "Mock navigation to " +
+      updatedCategories[categoryIndex].choices[choiceIndex].name
+    );
+	}
+
+  handleKeydownForSubmenuChoices(e) {
 	  console.log('in	handleKeydownForSubmenuChoices');
   } 
 
@@ -255,11 +272,14 @@ class NavigationMenu extends Component {
                     onClick={e => this.toggleMenu(e, categoryIndex)}
                     onFocus={e => this.toggleMenu(e, categoryIndex)}
                     onMouseEnter={e =>
-                      this.HandleMouseEnterForChoices(e, categoryIndex)}
+                      this.handleMouseEnterForChoices(e, categoryIndex)}
+									/*
                     onMouseLeave={e =>
-                      this.HandleMouseLeaveForChoices(e, categoryIndex)}
+                      this.handleMouseLeaveForChoices(e, categoryIndex)}
+									*/
+
                     onKeyDown={e =>
-                      this.HandleKeydownForCategories(e, categoryIndex)}
+                      this.handleKeydownForCategories(e, categoryIndex)}
                     aria-haspopup="true"
                     ref={categoryRef => {
                       this.categoryRefs[categoryIndex] = categoryRef;
@@ -301,6 +321,12 @@ class NavigationMenu extends Component {
                             categoryIndex,
                             choiceIndex
                           )}
+                        onClick={e =>
+                          this.handleClickForChoices(
+                          e,
+                          categoryIndex,
+                          choiceIndex
+                        )}
                         ref={choiceRef => {
                           category.choiceRefs[choiceIndex] = choiceRef;
                         }}
