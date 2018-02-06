@@ -80,39 +80,39 @@ class NavigationMenu extends Component {
     };
   }
 
-  toggleMenu(e, index) {
-    if (this.state.Categories[index].menuExpanded === false) {
-      this.showCategory(index);
+  toggleCategoryMenu(e, categoryIndex) {
+    if (this.state.Categories[categoryIndex].menuExpanded === false) {
+      this.showCategoryMenu(categoryIndex);
     } else {
-      this.hideCategory(index);
+      this.hideCategoryMenu(categoryIndex);
     }
   }
 
-  showCategory(index) {
+  showCategoryMenu(categoryIndex) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
     //close all other menus
     for (let i = 0; i < updatedCategories.length; i++) {
-      if (i !== index) {
+      if (i !== categoryIndex) {
         updatedCategories[i].menuExpanded = false;
       }
     }
-    updatedCategories[index].menuExpanded = true;
-    updatedCategories[index].ariaHidden = false;
+    updatedCategories[categoryIndex].menuExpanded = true;
+    updatedCategories[categoryIndex].ariaHidden = false;
     this.setState({
       Categories: updatedCategories,
-      activeMenuIndex: index
+      activeMenuIndex: categoryIndex
     });
   }
 
-  hideCategory(index) {
+  hideCategoryMenu(categoryIndex) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    updatedCategories[index].menuExpanded = false;
-    updatedCategories[index].ariaHidden = true;
+    updatedCategories[categoryIndex].menuExpanded = false;
+    updatedCategories[categoryIndex].ariaHidden = true;
     this.setState({
       Categories: updatedCategories,
-      activeMenuIndex: index
+      activeMenuIndex: categoryIndex
     });
   }
 
@@ -208,7 +208,7 @@ class NavigationMenu extends Component {
   }
 
   handleMouseEnterForCategories(e, categoryIndex) {
-    this.showCategory(categoryIndex);
+    this.showCategoryMenu(categoryIndex);
     this.state.Categories[categoryIndex].choiceRefs[
       this.state.Categories[categoryIndex].choiceIndex
     ].focus();
@@ -216,6 +216,11 @@ class NavigationMenu extends Component {
 
   handleMouseLeaveForCategories(e, categoryIndex) {
 		console.log('handleMouseLeaveForCategories');
+  }
+
+  handleMouseLeaveForChoices(e, categoryIndex) {
+		console.log('handleMouseLeaveForChoices');
+		this.hideCategoryMenu(categoryIndex); 
   }
 
   handleClickForChoices(e, categoryIndex, choiceIndex) {
@@ -263,8 +268,8 @@ class NavigationMenu extends Component {
                   <button
                     key={categoryIndex}
                     id={category.id}
-                    onClick={e => this.toggleMenu(e, categoryIndex)}
-                    onFocus={e => this.toggleMenu(e, categoryIndex)}
+                    onClick={e => this.toggleCategoryMenu(e, categoryIndex)}
+                    onFocus={e => this.toggleCategoryMenu(e, categoryIndex)}
                     onMouseEnter={e =>
 											this.handleMouseEnterForCategories(e, categoryIndex)}
                     onMouseLeave={e =>
