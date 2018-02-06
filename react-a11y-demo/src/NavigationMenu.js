@@ -207,7 +207,7 @@ class NavigationMenu extends Component {
     }
   }
 
-  handleMouseEnterForChoices(e, categoryIndex) {
+  handleMouseEnterForCategories(e, categoryIndex) {
     this.showCategory(categoryIndex);
     this.state.Categories[categoryIndex].choiceRefs[
       this.state.Categories[categoryIndex].choiceIndex
@@ -266,10 +266,8 @@ class NavigationMenu extends Component {
                     id={category.id}
                     onClick={e => this.toggleMenu(e, categoryIndex)}
                     onFocus={e => this.toggleMenu(e, categoryIndex)}
-                    onMouseEnter={e =>
-                      this.handleMouseEnterForChoices(e, categoryIndex)}
-	                    onKeyDown={e =>
-                      this.handleKeydownForCategories(e, categoryIndex)}
+                    onMouseEnter={e => this.handleMouseEnterForCategories(e, categoryIndex)}
+	                  onKeyDown={e => this.handleKeydownForCategories(e, categoryIndex)}
                     aria-haspopup="true"
                     ref={categoryRef => {
                       this.categoryRefs[categoryIndex] = categoryRef;
