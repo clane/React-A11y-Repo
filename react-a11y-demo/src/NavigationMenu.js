@@ -214,11 +214,9 @@ class NavigationMenu extends Component {
     ].focus();
   }
 
-  handleMouseLeaveForChoices(e, categoryIndex) {
+  handleMouseLeaveForCategories(e, categoryIndex) {
     this.hideCategory(categoryIndex);
-    this.state.Categories[categoryIndex].choiceRefs[
-      this.state.Categories[categoryIndex].choiceIndex
-    ].focus();
+		console.log('handleMouseLeaveForCategories');
   }
 
   handleClickForChoices(e, categoryIndex, choiceIndex) {
@@ -320,8 +318,7 @@ class NavigationMenu extends Component {
                           choiceIndex
                         )}
 
-                        onMouseLeave={e =>
-                          this.handleMouseLeaveForChoices(e, categoryIndex)}
+                        onMouseLeave={e => this.handleMouseLeaveForCategories(e, categoryIndex)}
 
                         ref={choiceRef => {
                           category.choiceRefs[choiceIndex] = choiceRef;
