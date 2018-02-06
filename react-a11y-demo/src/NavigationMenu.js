@@ -218,6 +218,13 @@ class NavigationMenu extends Component {
 		console.log('handleMouseLeaveForCategories');
   }
 
+  handleMouseLeaveForCategoryMenu(e, categoryIndex) {
+		console.log('handleMouseLeaveForCategoryMenu');
+		this.hideCategoryMenu(categoryIndex);
+  }
+
+
+ 
   handleMouseLeaveForChoices(e, categoryIndex) {
 		console.log('handleMouseLeaveForChoices');
 		this.hideCategoryMenu(categoryIndex); 
@@ -297,6 +304,8 @@ class NavigationMenu extends Component {
                     aria-label={category.menuLabel}
                     onKeyDown={e =>
                       this.moveFocusToFirstChoice(e, categoryIndex)}
+                    onMouseLeave={e =>
+                      this.handleMouseLeaveForCategoryMenu(e, categoryIndex)}
                     ref={menuRef => {
                       this.menuRefs[categoryIndex] = menuRef;
                     }}
