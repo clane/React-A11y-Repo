@@ -215,7 +215,6 @@ class NavigationMenu extends Component {
   }
 
   handleMouseLeaveForCategories(e, categoryIndex) {
-    this.hideCategory(categoryIndex);
 		console.log('handleMouseLeaveForCategories');
   }
 
@@ -266,7 +265,10 @@ class NavigationMenu extends Component {
                     id={category.id}
                     onClick={e => this.toggleMenu(e, categoryIndex)}
                     onFocus={e => this.toggleMenu(e, categoryIndex)}
-                    onMouseEnter={e => this.handleMouseEnterForCategories(e, categoryIndex)}
+                    onMouseEnter={e =>
+											this.handleMouseEnterForCategories(e, categoryIndex)}
+                    onMouseLeave={e =>
+											this.handleMouseLeaveForCategories(e, categoryIndex)}
 	                  onKeyDown={e => this.handleKeydownForCategories(e, categoryIndex)}
                     aria-haspopup="true"
                     ref={categoryRef => {
@@ -316,7 +318,6 @@ class NavigationMenu extends Component {
                           choiceIndex
                         )}
 
-                        onMouseLeave={e => this.handleMouseLeaveForCategories(e, categoryIndex)}
 
                         ref={choiceRef => {
                           category.choiceRefs[choiceIndex] = choiceRef;
