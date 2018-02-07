@@ -116,6 +116,8 @@ class NavigationMenu extends Component {
     });
   }
 
+	//BEGIN KEYBOARD METHODS
+	
   handleKeydownForCategories(e, index) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
@@ -207,16 +209,14 @@ class NavigationMenu extends Component {
     }
   }
 
-  handleMouseEnterForCategories(e, categoryIndex) {
-    this.showCategoryMenu(categoryIndex);
-  }
+  handleKeydownForSubmenuChoices(e) {
+	  console.log('in	handleKeydownForSubmenuChoices');
+  } 
 
-  handleMouseLeaveForCategoryMenu(e, categoryIndex) {
-		if(!this.state.Categories[categoryIndex].submenuExpanded){
-		  this.hideCategoryMenu(categoryIndex);
-		}
-  }
-
+	//END KEYBOARD METHODS
+	
+	//BEGIN CLICK METHODS
+	
   handleClickForChoices(e, categoryIndex, choiceIndex) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
@@ -233,16 +233,30 @@ class NavigationMenu extends Component {
 		}
 	}
 
-  handleKeydownForSubmenuChoices(e) {
-	  console.log('in	handleKeydownForSubmenuChoices');
-  } 
+	//END CLICK METHODS
+	
+	//BEGIN MOUSE METHODS
+  handleMouseEnterForCategories(e, categoryIndex) {
+    this.showCategoryMenu(categoryIndex);
+  }
+
+  handleMouseLeaveForCategoryMenu(e, categoryIndex) {
+		if(!this.state.Categories[categoryIndex].submenuExpanded){
+		  this.hideCategoryMenu(categoryIndex);
+		}
+  }
 
   handleMouseLeaveForSubmenu(e, categoryIndex){
 	  console.log('in	handleMouseLeaveForSubmenu');
-	  this.hideCategoryMenu(categoryIndex);
+    let updatedCategories = [];
+    updatedCategories = this.state.Categories;
+    updatedCategories[categoryIndex].submenuExpanded = false;
+    this.setState({
+      Categories: updatedCategories
+    });
   }
-
-
+	//END MOUSE METHODS
+	
   componentDidMount() {
     this.topHeading.focus();
   }
