@@ -19,6 +19,7 @@ class NavigationMenu extends Component {
           ariaHidden: true,
           choiceRefs: [],
           choiceIndex: 0,
+          submenuExpanded: false,
           choices: [
             { id: "cat1choice1", name: "choice 1", ariaHasPopup: false },
             { id: "cat1choice2", name: "choice 2", ariaHasPopup: false },
@@ -26,7 +27,6 @@ class NavigationMenu extends Component {
               id: "cat1choice3",
               name: "choice 3",
               ariaHasPopup: true,
-              submenuExpanded: false,
               submenu: [
                 {
                   id: "cat1choice3sub1",
@@ -219,7 +219,7 @@ class NavigationMenu extends Component {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
 		if(updatedCategories[categoryIndex].choices[choiceIndex].submenu){
-      updatedCategories[categoryIndex].choices[choiceIndex].submenuExpanded = true;
+      updatedCategories[categoryIndex].submenuExpanded = true;
       this.setState({
         Categories: updatedCategories
       });
@@ -327,7 +327,7 @@ class NavigationMenu extends Component {
                           category.choiceRefs[choiceIndex] = choiceRef;
                         }}
                         aria-haspopup={choice.submenu ? true : false}  
-                        data-submenu-expanded={choice.submenuExpanded}
+                        data-submenu-expanded={category.submenuExpanded}
                       >
                         {choice.name}
                         {choice.submenu
@@ -337,7 +337,7 @@ class NavigationMenu extends Component {
                               alt="subment to the right"
                             />
                           : false}
-                        {choice.submenu && choice.submenuExpanded
+                        {choice.submenu && category.submenuExpanded
                           ? //BEGIN SUBMENU
                             <div className="submenu" role="menu">
                               {choice.submenu.map(
