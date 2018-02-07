@@ -224,10 +224,15 @@ class NavigationMenu extends Component {
   handleClickForChoices(e, categoryIndex, choiceIndex) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
-    alert(
-      "Mock navigation to " +
-      updatedCategories[categoryIndex].choices[choiceIndex].name
-    );
+		if(updatedCategories[categoryIndex].choices[choiceIndex].submenu){
+			console.log('there is a submenu'); 
+
+		} else { 
+				alert(
+					"Mock navigation to " +
+					updatedCategories[categoryIndex].choices[choiceIndex].name
+				);
+		}
 	}
 
   handleKeydownForSubmenuChoices(e) {
