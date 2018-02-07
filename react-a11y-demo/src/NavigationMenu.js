@@ -212,7 +212,9 @@ class NavigationMenu extends Component {
   }
 
   handleMouseLeaveForCategoryMenu(e, categoryIndex) {
-		this.hideCategoryMenu(categoryIndex);
+		if(!this.state.Categories[categoryIndex].submenuExpanded){
+		  this.hideCategoryMenu(categoryIndex);
+		}
   }
 
   handleClickForChoices(e, categoryIndex, choiceIndex) {
