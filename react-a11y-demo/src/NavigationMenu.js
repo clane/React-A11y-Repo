@@ -237,6 +237,12 @@ class NavigationMenu extends Component {
 	  console.log('in	handleKeydownForSubmenuChoices');
   } 
 
+  handleMouseLeaveForSubmenu(e, categoryIndex){
+	  console.log('in	handleMouseLeaveForSubmenu');
+	  this.hideCategoryMenu(categoryIndex);
+  }
+
+
   componentDidMount() {
     this.topHeading.focus();
   }
@@ -323,8 +329,6 @@ class NavigationMenu extends Component {
                           categoryIndex,
                           choiceIndex
                         )}
-
-
                         ref={choiceRef => {
                           category.choiceRefs[choiceIndex] = choiceRef;
                         }}
@@ -341,7 +345,12 @@ class NavigationMenu extends Component {
                           : false}
                         {choice.submenu && category.submenuExpanded
                           ? //BEGIN SUBMENU
-                            <div className="submenu" role="menu">
+                            <div 
+													    className="submenu"
+													    role="menu"
+                              onMouseLeave={e =>
+                                this.handleMouseLeaveForSubmenu(e, categoryIndex)}
+														>
                               {choice.submenu.map(
                                 (submenuChoice, submenuChoiceIndex) => (
                                   <div
