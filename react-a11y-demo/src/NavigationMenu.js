@@ -226,7 +226,10 @@ class NavigationMenu extends Component {
     updatedCategories = this.state.Categories;
 		if(updatedCategories[categoryIndex].choices[choiceIndex].submenu){
 			console.log('there is a submenu'); 
-
+      updatedCategories[categoryIndex].choices[choiceIndex].submenuExpanded = true;
+      this.setState({
+        Categories: updatedCategories
+      });
 		} else { 
 				alert(
 					"Mock navigation to " +
