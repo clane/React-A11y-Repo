@@ -23,7 +23,7 @@
 }
 
 .navigation-menu [role="menu"][data-menu-expanded="false"]  {
-  opacity:0;  
+  visibility:hidden;  
 } 
 
 
