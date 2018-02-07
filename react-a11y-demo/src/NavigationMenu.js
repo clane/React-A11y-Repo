@@ -211,21 +211,14 @@ class NavigationMenu extends Component {
     this.showCategoryMenu(categoryIndex);
   }
 
-
   handleMouseLeaveForCategoryMenu(e, categoryIndex) {
 		this.hideCategoryMenu(categoryIndex);
-  }
-
-  handleMouseLeaveForChoices(e, categoryIndex) {
-		console.log('handleMouseLeaveForChoices');
-		this.hideCategoryMenu(categoryIndex); 
   }
 
   handleClickForChoices(e, categoryIndex, choiceIndex) {
     let updatedCategories = [];
     updatedCategories = this.state.Categories;
 		if(updatedCategories[categoryIndex].choices[choiceIndex].submenu){
-			console.log('there is a submenu'); 
       updatedCategories[categoryIndex].choices[choiceIndex].submenuExpanded = true;
       this.setState({
         Categories: updatedCategories
