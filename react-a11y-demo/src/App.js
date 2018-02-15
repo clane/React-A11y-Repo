@@ -15,6 +15,7 @@ import NavigationMenu from './NavigationMenu.js';
 import logo from './logo.svg';
 import RefsTest from './RefsTest.js';
 import SimpleNav from './SimpleNav.js';
+import AccDC from './AccDC.js';
 
 class App extends Component {
 
@@ -80,6 +81,7 @@ class App extends Component {
               <Route path="/NavigationMenu" component={NavigationMenu} />
               <Route path="/RefsTest" component={RefsTest} />
               <Route path="/SimpleNav" component={SimpleNav} />
+              <Route path="/AccDC" component={AccDC} />
 	      <Redirect from="/" to="/HomePage"/>
             </Switch>
           </div>

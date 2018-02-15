@@ -13,6 +13,7 @@ class NavigationList extends Component {
           <li><Link to="Game">Tic-Tac-Toe</Link></li>
           <li><Link to="Slideshow">Slideshow</Link></li>
           <li><Link to="NavigationMenu">Navigation Menu</Link></li>
+          <li><Link to="AccDC">AccDC and React</Link></li>
         </ul>
       </div>
     );

@@ -66,7 +66,7 @@ h2 { width:60%; font-weight:700; font-size:2rem; margin:10px 0 10px 0; }
 
 /* begin routing link styles */
 .Navigation-List ul[role="navigation"] { margin:10px 0px 10px 0px; padding:0;  } 
-.Navigation-List [role="navigation"]  li { background-color:yellow; width:23%; display:inline-block; list-style-type:none; margin-right:10px; margin-left:0; padding:0;  } 
+.Navigation-List [role="navigation"]  li { background-color:yellow; width:23%; display:inline-block; list-style-type:none; margin-right:10px; margin-left:0; padding:0; margin-bottom:5px; } 
 .Navigation-List [role="navigation"]  li:last-of-type { margin-right:0; } 
 .Navigation-List [role="navigation"] li a { padding:0; text-decoration:none; color:#000; font-size:1.2rem; display:inline-block; width:220px; text-align:center; font-weight:700; } 
 /* end routing link styles */
