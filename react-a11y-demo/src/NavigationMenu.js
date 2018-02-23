@@ -27,6 +27,7 @@ class NavigationMenu extends Component {
               id: "cat1choice3",
               name: "choice 3",
               ariaHasPopup: true,
+							submenuRefs: [],
               submenu: [
                 {
                   id: "cat1choice3sub1",
@@ -380,6 +381,10 @@ class NavigationMenu extends Component {
                                     key={submenuChoiceIndex}
                                     id={submenuChoice.id}
                                     role="menuitem"
+                                    ref={submenuRef => {
+                                      submenuChoice = submenuRef;
+                                    }}
+
                                   >
                                     {submenuChoice.name}
                                   </div>
