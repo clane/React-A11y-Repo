@@ -191,8 +191,14 @@ class NavigationMenu extends Component {
 
     //right arrow key
     if (e.keyCode === 39) {
-			console.log('right arrow key pressed on choices'); 
+      this.handleClickForChoices(e, categoryIndex, updatedChoiceIndex); 
     }
+   
+		//left arrow key
+    if (e.keyCode === 37) {
+			console.log('left arrow key pressed on choices'); 
+		}
+
 
     updatedCategories[categoryIndex].choiceIndex = updatedChoiceIndex;
     this.state.Categories[categoryIndex].choiceRefs[updatedChoiceIndex].focus();
