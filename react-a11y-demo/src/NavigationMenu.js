@@ -191,7 +191,12 @@ class NavigationMenu extends Component {
 
     //right arrow key
     if (e.keyCode === 39) {
-      this.handleClickForChoices(e, categoryIndex, updatedChoiceIndex); 
+			if(updatedCategories[categoryIndex].choices[choiceIndex].submenu){
+				updatedCategories[categoryIndex].submenuExpanded = true;
+				this.setState({
+					Categories: updatedCategories
+				});
+			}  
     }
    
 		//left arrow key
