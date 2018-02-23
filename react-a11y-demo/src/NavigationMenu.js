@@ -202,11 +202,8 @@ class NavigationMenu extends Component {
     });
 
     if (e.keyCode === 13) {
-      alert(
-        "Mock navigation to " +
-          updatedCategories[categoryIndex].choices[updatedChoiceIndex].name
-      );
-    }
+      this.handleClickForChoices(e, categoryIndex, updatedChoiceIndex); 
+    } 
   }
 
   handleKeydownForSubmenuChoices(e) {
