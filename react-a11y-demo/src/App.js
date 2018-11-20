@@ -11,11 +11,8 @@ import NavigationList from './NavigationList.js';
 import HomePage from './HomePage.js';
 import Game from './Game.js';
 import Slideshow from './Slideshow.js';
-import NavigationMenu from './NavigationMenu.js';
 import logo from './logo.svg';
-import RefsTest from './RefsTest.js';
 import SimpleNav from './SimpleNav.js';
-import AccDC from './AccDC.js';
 
 class App extends Component {
 
@@ -71,18 +68,14 @@ class App extends Component {
 
         <div id="skipTarget" tabIndex="-1" ref={(node) => {this.skipTarget = node;}} className={skipLinkClass}>[main content]</div>
 
-        <BrowserRouter>
+      <BrowserRouter>
   	  <div>
 	    <NavigationList/>
             <Switch>
               <Route path="/HomePage" component={HomePage} />
               <Route path="/Game" component={Game} />
               <Route path="/Slideshow" component={Slideshow} />
-              <Route path="/NavigationMenu" component={NavigationMenu} />
-              <Route path="/RefsTest" component={RefsTest} />
-              <Route path="/SimpleNav" component={SimpleNav} />
-              <Route path="/AccDC" component={AccDC} />
-	      <Redirect from="/" to="/HomePage"/>
+	            <Redirect from="/" to="/HomePage"/>
             </Switch>
           </div>
         </BrowserRouter>
