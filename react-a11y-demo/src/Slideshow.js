@@ -181,7 +181,6 @@ class Slideshow extends Component {
   }
 
   componentDidMount() {
-    this.topHeading.focus();
     this.initLiveRegion();
   }
 
@@ -281,14 +280,7 @@ class Slideshow extends Component {
           <meta charSet="utf-8" />
           <title>Slide Show</title>
         </Helmet>
-        <h2
-          tabIndex="-1"
-          ref={componentH2 => {
-            this.topHeading = componentH2;
-          }}
-        >
-          Slide Show{" "}
-        </h2>
+        <h2>Slide Show</h2>
 
         <div style={slideShowWrapper}>
           <div style={slideContainerStyle} aria-hidden="true">

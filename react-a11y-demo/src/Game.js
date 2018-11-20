@@ -381,9 +381,6 @@ class Board extends Component {
 }
 
 export class Game extends Component {
-  componentDidMount() {
-    this.topHeading.focus();
-  }
 
   render() {
     return (
@@ -393,15 +390,7 @@ export class Game extends Component {
           <meta charSet="utf-8" />
           <title>Tic-Tac-Toe</title>
         </Helmet>
-        <h2
-          ref={componentH2 => {
-            this.topHeading = componentH2;
-          }}
-          tabIndex="-1"
-        >
-          Tic-Tac-Toe
-        </h2>
-
+        <h2>Tic-Tac-Toe</h2>
         <p>
           Tic-tac-toe is a game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
         </p>

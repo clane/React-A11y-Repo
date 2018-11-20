@@ -5,9 +5,9 @@ import {
   BrowserRouter,
   Route,
   Redirect,
-  Switch
+  Switch,
+	Link
 } from 'react-router-dom'
-import NavigationList from './NavigationList.js';
 import HomePage from './HomePage.js';
 import Game from './Game.js';
 import Slideshow from './Slideshow.js';
@@ -31,6 +31,11 @@ class App extends Component {
   skipLinkClick(){
     this.skipTarget.focus();
   } 
+
+  focusTop(){
+    this.topElementRef.focus();
+  } 
+
 
   shouldComponentUpdate(prevProps,prevState){
     if(prevState.skipLinkVisible && !this.state.skipLinkVisible){
@@ -58,7 +63,13 @@ class App extends Component {
           <title>A11y React Demo</title>
         </Helmet>
 
-			  <div id="top" tabindex="-1" >Top Element</div>
+			  <div id="top" tabIndex="-1"
+			      ref={topRef => {
+              this.topElementRef = topRef;
+            }}
+			   >
+			       Top Element
+			   </div>
 
         <a id="skipLink" className={skipLinkClass} onFocus={e => this.skipLinkFocus(e)} onClick={e => this.skipLinkClick(e)} href="#content">Skip to main content</a>
 
@@ -71,7 +82,15 @@ class App extends Component {
 
       <BrowserRouter>
   	  <div>
-	    <NavigationList/>
+
+			 	 <div className="Navigation-List">
+						<ul role="navigation">
+							<li><Link onClick={() => this.focusTop()} to="HomePage">Home</Link></li>
+							<li><Link onClick={() => this.focusTop()} to="Game">Tic-Tac-Toe</Link></li>
+							<li><Link onClick={() => this.focusTop()} to="Slideshow">Slideshow</Link></li>
+						</ul>
+					</div>
+
             <Switch>
               <Route path="/HomePage" component={HomePage} />
               <Route path="/Game" component={Game} />

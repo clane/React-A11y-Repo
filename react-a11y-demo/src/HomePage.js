@@ -3,10 +3,6 @@ import { Helmet } from "react-helmet";
 
 class HomePage extends Component {
 
-  componentDidMount() {
-    this.topHeading.focus();
-  }
-
   render() {
     return (
       <div className="home-page">
@@ -15,13 +11,7 @@ class HomePage extends Component {
           <meta charSet="utf-8" />
           <title>Home</title>
         </Helmet>
-        <h2 
-          tabIndex="-1"
-          ref={componentH2 => {
-            this.topHeading = componentH2;
-          }}
-         >
-         Welcome to my A11y React Demo</h2>
+        <h2>Welcome to my A11y React Demo</h2>
         <p>These examples demonstrate the following accessibility concepts:</p>
         <ul>
           <li>Contextual page titles</li>
