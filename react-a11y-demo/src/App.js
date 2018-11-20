@@ -32,7 +32,9 @@ class App extends Component {
     this.skipTarget.focus();
   } 
 
-  focusTop(){
+  focusTop(title){
+		console.log(title);
+		this.topElementRef.textContent = title;
     this.topElementRef.focus();
   } 
 
@@ -57,7 +59,7 @@ class App extends Component {
 
     return (
       <div className="App">
-	<Helmet>
+	     <Helmet>
           <html lang="en" />
           <meta charSet="utf-8" />
           <title>A11y React Demo</title>
@@ -76,21 +78,21 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="Reacts official logo" />
           <h1 className="App-title">A11y React Demo</h1>
-	</header>
+       	</header>
 
-        <div id="skipTarget" tabIndex="-1" ref={(node) => {this.skipTarget = node;}} className={skipLinkClass}>[main content]</div>
 
       <BrowserRouter>
   	  <div>
 
 			 	 <div className="Navigation-List">
 						<ul role="navigation">
-							<li><Link onClick={() => this.focusTop()} to="HomePage">Home</Link></li>
-							<li><Link onClick={() => this.focusTop()} to="Game">Tic-Tac-Toe</Link></li>
-							<li><Link onClick={() => this.focusTop()} to="Slideshow">Slideshow</Link></li>
+							<li><Link onClick={() => this.focusTop("Home")} to="HomePage">Home</Link></li>
+							<li><Link onClick={() => this.focusTop("Tic-Tac-Toe")} to="Game">Tic-Tac-Toe</Link></li>
+							<li><Link onClick={() => this.focusTop("Slideshow")} to="Slideshow">Slideshow</Link></li>
 						</ul>
 					</div>
 
+        <div id="skipTarget" tabIndex="-1" ref={(node) => {this.skipTarget = node;}} className={skipLinkClass}>[main content]</div>
             <Switch>
               <Route path="/HomePage" component={HomePage} />
               <Route path="/Game" component={Game} />
@@ -99,6 +101,8 @@ class App extends Component {
             </Switch>
           </div>
         </BrowserRouter>
+
+
 
       </div>
     );
