@@ -12,7 +12,6 @@ import HomePage from './HomePage.js';
 import Game from './Game.js';
 import Slideshow from './Slideshow.js';
 import logo from './logo.svg';
-import SimpleNav from './SimpleNav.js';
 
 class App extends Component {
 
@@ -58,6 +57,8 @@ class App extends Component {
           <meta charSet="utf-8" />
           <title>A11y React Demo</title>
         </Helmet>
+
+			  <div id="top" tabindex="-1" >Top Element</div>
 
         <a id="skipLink" className={skipLinkClass} onFocus={e => this.skipLinkFocus(e)} onClick={e => this.skipLinkClick(e)} href="#content">Skip to main content</a>
 
