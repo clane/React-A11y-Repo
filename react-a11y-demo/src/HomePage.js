@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
 
+import {
+  BrowserRouter,
+  Route,
+  Redirect,
+  Switch,
+	Link
+} from 'react-router-dom';
+
+import Game from './Game.js';
+import Slideshow from './Slideshow.js';
+
+
 class HomePage extends Component {
 
   render() {
@@ -27,6 +39,14 @@ class HomePage extends Component {
           <li>Use of aria-hidden</li>
         </ul>
         <p>The code can be found at <a href="https://github.com/clane/React-A11y-Repo">https://github.com/clane/React-A11y-Repo</a>.</p>
+
+						<Link to="Slideshow">Slideshow</Link>
+
+            <Switch>
+              <Route path="/Slideshow" component={Slideshow} />
+            </Switch>
+
+
       </div>
          
     );
