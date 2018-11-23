@@ -22,6 +22,11 @@ class App extends Component {
     }
 
 		this.routeFocus = this.focusTop.bind(this);
+		
+		this.homeLinkText = "Home";
+		this.gameLinkText = "Game";
+		this.slideShowLinkText = "Carousel";
+
   }
  
   skipLinkFocus(){
@@ -87,15 +92,15 @@ class App extends Component {
 
 			 	 <div className="Navigation-List">
 						<ul role="navigation">
-							<li><Link onClick={() => this.focusTop("Home")} to="HomePage">Home</Link></li>
-							<li><Link onClick={() => this.focusTop("Tic-Tac-Toe")} to="Game">Tic-Tac-Toe</Link></li>
-							<li><Link onClick={() => this.focusTop("Slideshow")} to="Slideshow">Slideshow</Link></li>
+							<li><Link onClick={() => this.focusTop( this.homeLinkText )} to="HomePage"> {this.homeLinkText} </Link></li>
+							<li><Link onClick={() => this.focusTop( this.gameLinkText)} to="Game"> {this.gameLinkText} </Link></li>
+							<li><Link onClick={() => this.focusTop( this.slideShowLinkText )} to="Slideshow"> {this.slideShowLinkText} </Link></li>
 						</ul>
 					</div>
 
         <div id="skipTarget" tabIndex="-1" ref={(node) => {this.skipTarget = node;}} className={skipLinkClass}>[main content]</div>
             <Switch>
-              <Route path="/HomePage" render={(props) => <HomePage {...props} focusTopMethod={this.routeFocus} />}/>
+              <Route path="/HomePage" render={(props) => <HomePage {...props} focusTopMethod={this.routeFocus}  />}/>
               <Route path="/Slideshow" component={Slideshow} />
               <Route path="/Game" component={Game} />
 	            <Redirect from="/" to="/HomePage"/>
