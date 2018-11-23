@@ -20,6 +20,8 @@ class App extends Component {
     this.state={
       skipLinkVisible: false 
     }
+
+		this.routeFocus = this.focusTop.bind(this);
   }
  
   skipLinkFocus(){
@@ -32,9 +34,9 @@ class App extends Component {
     this.skipTarget.focus();
   } 
 
-  focusTop(title){
-		console.log(title);
-		this.topElementRef.textContent = title;
+  focusTop(){
+		//console.log(title);
+		//this.topElementRef.textContent = title;
     this.topElementRef.focus();
   } 
 
@@ -95,7 +97,7 @@ class App extends Component {
 
         <div id="skipTarget" tabIndex="-1" ref={(node) => {this.skipTarget = node;}} className={skipLinkClass}>[main content]</div>
             <Switch>
-              <Route path="/HomePage" render={(props) => <HomePage {...props} test={this.focusTop} />}/>
+              <Route path="/HomePage" render={(props) => <HomePage {...props} test={this.routeFocus} />}/>
 			{/* <Route path="/HomePage" component={HomePage} /> */} 
               <Route path="/Slideshow" component={Slideshow} />
               <Route path="/Game" component={Game} />

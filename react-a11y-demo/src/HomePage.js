@@ -14,7 +14,8 @@ class HomePage extends Component {
 
   childRouterLinkActivated() {
      //console.log(this.props); 
-		 console.log(this.props.test);
+		 //console.log(this.props.test);
+		 this.props.test();
 	}
 
   render() {
