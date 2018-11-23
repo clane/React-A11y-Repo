@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
 
 import {
-  BrowserRouter,
   Route,
-  Redirect,
   Switch,
 	Link
 } from 'react-router-dom';
 
-import Game from './Game.js';
 import Slideshow from './Slideshow.js';
 
 
 class HomePage extends Component {
+
+  childRouterLinkActivated() {
+     //console.log(this.props); 
+		 console.log(this.props.test);
+	}
 
   render() {
     return (
@@ -40,7 +42,7 @@ class HomePage extends Component {
         </ul>
         <p>The code can be found at <a href="https://github.com/clane/React-A11y-Repo">https://github.com/clane/React-A11y-Repo</a>.</p>
 
-						<Link to="Slideshow">Slideshow</Link>
+						<Link onClick={() => this.childRouterLinkActivated()} to="Slideshow">Slideshow</Link>
 
             <Switch>
               <Route path="/Slideshow" component={Slideshow} />
