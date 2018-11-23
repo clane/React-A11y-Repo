@@ -90,14 +90,12 @@ class App extends Component {
 							<li><Link onClick={() => this.focusTop("Home")} to="HomePage">Home</Link></li>
 							<li><Link onClick={() => this.focusTop("Tic-Tac-Toe")} to="Game">Tic-Tac-Toe</Link></li>
 							<li><Link onClick={() => this.focusTop("Slideshow")} to="Slideshow">Slideshow</Link></li>
-			{/*<li><Link onClick={() => this.focusTop("Slideshow")} to="Slideshow">Slideshow</Link></li>*/}
 						</ul>
 					</div>
 
         <div id="skipTarget" tabIndex="-1" ref={(node) => {this.skipTarget = node;}} className={skipLinkClass}>[main content]</div>
             <Switch>
-              <Route path="/HomePage" render={(props) => <HomePage {...props} test={this.routeFocus} />}/>
-			{/* <Route path="/HomePage" component={HomePage} /> */} 
+              <Route path="/HomePage" render={(props) => <HomePage {...props} focusTopMethod={this.routeFocus} />}/>
               <Route path="/Slideshow" component={Slideshow} />
               <Route path="/Game" component={Game} />
 	            <Redirect from="/" to="/HomePage"/>
