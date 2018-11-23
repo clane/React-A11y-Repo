@@ -13,9 +13,7 @@ import Slideshow from './Slideshow.js';
 class HomePage extends Component {
 
   childRouterLinkActivated() {
-     //console.log(this.props); 
-		 //console.log(this.props.test);
-		 this.props.test();
+		 this.props.test("test");
 	}
 
   render() {

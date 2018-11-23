@@ -34,9 +34,8 @@ class App extends Component {
     this.skipTarget.focus();
   } 
 
-  focusTop(){
-		//console.log(title);
-		//this.topElementRef.textContent = title;
+  focusTop(title){
+		this.topElementRef.textContent = title;
     this.topElementRef.focus();
   } 
 
