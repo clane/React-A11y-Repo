@@ -100,7 +100,7 @@ class App extends Component {
 
         <div id="skipTarget" tabIndex="-1" ref={(node) => {this.skipTarget = node;}} className={skipLinkClass}>[main content]</div>
             <Switch>
-              <Route path="/HomePage" render={(props) => <HomePage {...props} focusTopMethod={this.routeFocus}  />}/>
+              <Route path="/HomePage" render={(props) => <HomePage {...props} focusTopMethod={this.routeFocus} slideShowLinkText={this.slideShowLinkText}  />}/>
               <Route path="/Slideshow" component={Slideshow} />
               <Route path="/Game" component={Game} />
 	            <Redirect from="/" to="/HomePage"/>
