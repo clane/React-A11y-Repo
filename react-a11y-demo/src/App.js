@@ -18,7 +18,9 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-      skipLinkVisible: false 
+      skipLinkVisible: false,
+			routingOccurredState: false,
+			routeTitle: "Top",
     }
 
 		this.routeFocus = this.focusTop.bind(this);
@@ -35,23 +37,53 @@ class App extends Component {
     });
   } 
 
+	routingOccurred() {
+		 console.log('routing occured'); 
+     this.setState({
+      routingOccurredState: true
+    });
+
+		
+	} 
+
   skipLinkClick(){
     this.skipTarget.focus();
   } 
 
-  focusTop(title){
-		this.topElementRef.textContent = title;
+  focusTop(){
+    console.log('in focus top'); 
+    this.topElementRef.textContent = this.state.routeTitle;
     this.topElementRef.focus();
+    this.setState({
+      routingOccurredState: false 
+    });
+
+
   } 
 
 
   shouldComponentUpdate(prevProps,prevState){
-    if(prevState.skipLinkVisible && !this.state.skipLinkVisible){
+    if(
+			  (prevState.skipLinkVisible && !this.state.skipLinkVisible) 
+			  ||
+			  (prevState.routingOccurredState && !this.state.routingOccurredState) 
+		){
+			console.log('should update'); 
       return true;
     } else {
         return false;
     } 
   }
+
+	componentDidMount() {
+    this.focusTop(); 
+  }
+
+	componentDidUpdate() {
+		if(this.state.routingOccurredState){
+      this.focusTop(); 
+		}
+	} 
 
   render() {
 
@@ -92,9 +124,9 @@ class App extends Component {
 
 			 	 <div className="Navigation-List">
 						<ul role="navigation">
-							<li><Link onClick={() => this.focusTop( this.homeLinkText )} to="HomePage"> {this.homeLinkText} </Link></li>
-							<li><Link onClick={() => this.focusTop( this.gameLinkText)} to="Game"> {this.gameLinkText} </Link></li>
-							<li><Link onClick={() => this.focusTop( this.slideShowLinkText )} to="Slideshow"> {this.slideShowLinkText} </Link></li>
+							<li><Link onClick={() => this.routingOccurred()} to="HomePage"> {this.homeLinkText} </Link></li>
+							<li><Link to="Game"> {this.gameLinkText} </Link></li>
+							<li><Link to="Slideshow"> {this.slideShowLinkText} </Link></li>
 						</ul>
 					</div>
 
