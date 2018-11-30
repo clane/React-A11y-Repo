@@ -37,10 +37,11 @@ class App extends Component {
     });
   } 
 
-	routingOccurred() {
+	routingOccurred(title) {
 		 console.log('routing occured'); 
      this.setState({
-      routingOccurredState: true
+      routingOccurredState: true,
+			routeTitle: title, 
     });
 
 		
@@ -124,9 +125,9 @@ class App extends Component {
 
 			 	 <div className="Navigation-List">
 						<ul role="navigation">
-							<li><Link onClick={() => this.routingOccurred()} to="HomePage"> {this.homeLinkText} </Link></li>
-							<li><Link onClick={() => this.routingOccurred()} to="Game"> {this.gameLinkText} </Link></li>
-							<li><Link onClick={() => this.routingOccurred()} to="Slideshow"> {this.slideShowLinkText} </Link></li>
+							<li><Link onClick={() => this.routingOccurred(this.homeLinkText)} to="HomePage"> {this.homeLinkText} </Link></li>
+							<li><Link onClick={() => this.routingOccurred(this.gameLinkText)} to="Game"> {this.gameLinkText} </Link></li>
+							<li><Link onClick={() => this.routingOccurred(this.slideShowLinkText)} to="Slideshow"> {this.slideShowLinkText} </Link></li>
 						</ul>
 					</div>
 
