@@ -40,7 +40,7 @@ class HomePage extends Component {
           <li>Use of aria-hidden</li>
         </ul>
         <p>The code can be found at <a href="https://github.com/clane/React-A11y-Repo">https://github.com/clane/React-A11y-Repo</a>.</p>
-						<Link onClick={() => this.childRouterLinkActivated("Slideshow")} to="Slideshow">{this.props.slideShowLinkText}</Link>
+						<Link onClick={() => this.childRouterLinkActivated()} to="Slideshow">{this.props.slideShowLinkText}</Link>
 
             <Switch>
               <Route path="/Slideshow" component={Slideshow} />
