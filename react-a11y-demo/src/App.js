@@ -126,8 +126,12 @@ class App extends Component {
 			 	 <div className="Navigation-List">
 						<ul role="navigation">
 							<li><Link onClick={() => this.routingOccurred(this.homeLinkText)} to="HomePage"> {this.homeLinkText} </Link></li>
-							<li><Link onClick={() => this.routingOccurred(this.gameLinkText)} to="Game"> {this.gameLinkText} </Link></li>
+
+
 							<li><Link onClick={() => this.routingOccurred(this.slideShowLinkText)} to="Slideshow"> {this.slideShowLinkText} </Link></li>
+
+							<li><Link onClick={() => this.routingOccurred(this.gameLinkText)} to="Game"> {this.gameLinkText} </Link></li> 
+
 						</ul>
 					</div>
 
